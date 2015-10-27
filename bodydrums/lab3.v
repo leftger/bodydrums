@@ -463,7 +463,9 @@ endmodule
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-module pong_game (
+module pong_game #(parameter SCRN_WIDTH = 1024, SCRN_HEIGHT = 768,
+	PUCK_WH = 64)
+(
    input vclock,	// 65MHz clock
    input reset,		// 1 to initialize module
    input up,		// 1 when paddle should move up
@@ -480,8 +482,6 @@ module pong_game (
    output pblank,	// pong game's blanking
    output [23:0] pixel	// pong game's pixel  // r=23:16, g=15:8, b=7:0 
    );
-
-   wire [2:0] checkerboard;
 	
    // REPLACE ME! The code below just generates a color checkerboard
    // using 64 pixel by 64 pixel squares.
@@ -489,11 +489,57 @@ module pong_game (
    assign phsync = hsync;
    assign pvsync = vsync;
    assign pblank = blank;
-   assign checkerboard = hcount[8:6] + vcount[8:6];
 
    // here we use three bits from hcount and vcount to generate the \
    // checkerboard
+	reg is_running;
+	reg [10:0] x_pos[5:0]; // 6 x_pos for 6 rectangles
+	reg [9:0] y_pos[5:0]; // 6 y_pos for 6 rectangles
+	reg direction;
+	wire [23:0] square_pixel[6:0]; // 6 square pixel lines
+		
+   assign pixel = square_pixel[0] | square_pixel[1] | square_pixel[2]
+		| square_pixel[3] | square_pixel[4] | square_pixel[5];
+   /*rectangle myrec(.x(x_pos),.y(y_pos),.hcount(hcount),.vcount(vcount),
+      .pixel(square_pixel));*/
+		
+	wire [15:0] switch_sync;
+   genvar i;
+   generate for(i=0; i<6; i=i+1)
+     begin: gen_modules  // generate 6 rectangle modules
+       rectangle myrec(.x(x_pos[i]), .y(y_pos[i]), .hcount(hcount),
+		 .vcount(vcount), .pixel(square_pixel[i]));
+     end
+   endgenerate
+	
+	integer x;
+   initial begin
+		for(x = 0; x < 6; x = x+1) begin
+			x_pos[x] = (SCRN_WIDTH - PUCK_WH) >> 1;
+			y_pos[x] = x << 7 ;
+		end
+		direction = 0;
+		is_running = 1; 
+   end
 
-   assign pixel = {{8{checkerboard[2]}}, {8{checkerboard[1]}}, {8{checkerboard[0]}}} ;
+   always @(negedge vsync) begin
+		if(reset) begin
+			for(x = 0; x < 6; x = x+1) begin
+				x_pos[x] <= (SCRN_WIDTH - PUCK_WH) >> 1;
+				y_pos[x] <= x << 7 ;
+			end
+			direction <= 0;
+			is_running <= 1;
+		end else if (is_running) begin
+			case(direction)
+				0: begin for(x = 0; x < 6; x = x+1) begin
+						y_pos[x] <= y_pos[x] + pspeed ;
+					end end
+				1: begin for(x = 0; x < 6; x = x+1) begin
+						y_pos[x] <= y_pos[x] - pspeed ;
+					end end
+			endcase
+		end	
+   end
      
 endmodule

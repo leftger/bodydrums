@@ -28,7 +28,7 @@ module rectangle
     input [10:0] hcount,
     input [9:0] y,
     input [9:0] vcount,
-    output [23:0] pixel
+    output reg [23:0] pixel
     );
 
     always @ * begin
