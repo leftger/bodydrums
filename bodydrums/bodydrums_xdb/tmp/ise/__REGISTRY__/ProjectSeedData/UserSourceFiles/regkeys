@@ -1,5 +1,5 @@
 NUM_USER_FILES
-3
+5
 s
 user_file_1
 circle.v
@@ -9,4 +9,10 @@ rectangle.v
 s
 user_file_3
 triangle.v
+s
+user_file_4
+labkit.ucf
+s
+user_file_5
+lab3.v
 s
