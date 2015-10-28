@@ -498,7 +498,10 @@ module pong_game #(parameter SCRN_WIDTH = 1024, SCRN_HEIGHT = 768,
 	reg direction;
 	wire [23:0] shapes[11:0]; // 12 shapes lines
 		
-   assign pixel = |shapes[11:0];
+   assign pixel = shapes[11] | shapes [10] | shapes [9]
+		| shapes [8] | shapes [7] | shapes [6]
+		| shapes [5] | shapes [4] | shapes [3]
+		| shapes [2] | shapes [1] | shapes [0];
    /*rectangle myrec(.x(x_pos),.y(y_pos),.hcount(hcount),.vcount(vcount),
       .pixel(shapes));*/
 		
@@ -524,8 +527,7 @@ module pong_game #(parameter SCRN_WIDTH = 1024, SCRN_HEIGHT = 768,
 
    generate for(i=6; i<12; i=i+1)
       begin: gen_circles // generate 6 circle modules
-         circle mycirc#(.RADIUS(32))(.clk(vsync),.x(x_pos),.y(y_pos),.hcount(hcount),
-            .vcount(vcount),.pixel(pixels[i]));
+         circle #(.RADIUS(32)) mycirc (.clk(vsync),.x(x_pos[i]),.y(y_pos[i]),.hcount(hcount),.vcount(vcount),.pixel(shapes[i]));
       end
    endgenerate
 
@@ -536,7 +538,7 @@ module pong_game #(parameter SCRN_WIDTH = 1024, SCRN_HEIGHT = 768,
          // initial x_position for the squares
 			x_pos[x] = (SCRN_WIDTH - PUCK_WH) >> 1;
          // initial x_position for the circles
-         x_pos[x+6] = (SCRN_WIDTH - PUCK_WH) >> 2;
+         x_pos[x+6] = ((SCRN_WIDTH - PUCK_WH) >> 2) * 3;
 			y_pos[x] = x << 7 ;
          y_pos[x+6] = x << 7;
 		end
@@ -548,11 +550,11 @@ module pong_game #(parameter SCRN_WIDTH = 1024, SCRN_HEIGHT = 768,
 		if(reset) begin
 			for(x = 0; x < 6; x = x+1) begin
 				// initial x_position for the squares
-            x_pos[x] = (SCRN_WIDTH - PUCK_WH) >> 1;
+            x_pos[x] <= (SCRN_WIDTH - PUCK_WH) >> 1;
             // initial x_position for the circles
-            x_pos[x+6] = (SCRN_WIDTH - PUCK_WH) >> 2;
-            y_pos[x] = x << 7 ;
-            y_pos[x+6] = x << 7;
+            x_pos[x+6] <= (SCRN_WIDTH - PUCK_WH) >> 2;
+            y_pos[x] <= x << 7 ;
+            y_pos[x+6] <= x << 7;
 			end
 			direction <= 0;
 			is_running <= 1;
