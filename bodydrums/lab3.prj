@@ -1,2 +1,3 @@
 verilog work "rectangle.v"
+verilog work "circle.v"
 verilog work "lab3.v"

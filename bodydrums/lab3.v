@@ -493,30 +493,54 @@ module pong_game #(parameter SCRN_WIDTH = 1024, SCRN_HEIGHT = 768,
    // here we use three bits from hcount and vcount to generate the \
    // checkerboard
 	reg is_running;
-	reg [10:0] x_pos[5:0]; // 6 x_pos for 6 rectangles
-	reg [9:0] y_pos[5:0]; // 6 y_pos for 6 rectangles
+	reg [10:0] x_pos[11:0]; // 6 x_pos for 6 rectangles and 6 circles
+	reg [9:0] y_pos[11:0]; // 6 y_pos for 6 rectangles and 6 circles
 	reg direction;
-	wire [23:0] square_pixel[6:0]; // 6 square pixel lines
+	wire [23:0] shapes[11:0]; // 12 shapes lines
 		
-   assign pixel = square_pixel[0] | square_pixel[1] | square_pixel[2]
-		| square_pixel[3] | square_pixel[4] | square_pixel[5];
+   assign pixel = shapes[11] | shapes [10] | shapes [9]
+		| shapes [8] | shapes [7] | shapes [6]
+		| shapes [5] | shapes [4] | shapes [3]
+		| shapes [2] | shapes [1] | shapes [0];
    /*rectangle myrec(.x(x_pos),.y(y_pos),.hcount(hcount),.vcount(vcount),
-      .pixel(square_pixel));*/
+      .pixel(shapes));*/
 		
 	wire [15:0] switch_sync;
    genvar i;
    generate for(i=0; i<6; i=i+1)
-     begin: gen_modules  // generate 6 rectangle modules
-       rectangle myrec(.x(x_pos[i]), .y(y_pos[i]), .hcount(hcount),
-		 .vcount(vcount), .pixel(square_pixel[i]));
+      begin: gen_rectangles  // generate 6 rectangle modules
+         rectangle myrec(.x(x_pos[i]), .y(y_pos[i]), .hcount(hcount),
+            .vcount(vcount), .pixel(shapes[i]));
      end
    endgenerate
+
+   /*module circle
+   #(parameter RADIUS = 10,
+            COLOR = 24'hFF_FF_FF)
+   (input clk,
+    input [10:0] x,
+    input [10:0] hcount,
+    input [9:0] y,
+    input [9:0] vcount,
+    output reg [23:0] pixel
+    );*/
+
+   generate for(i=6; i<12; i=i+1)
+      begin: gen_circles // generate 6 circle modules
+         circle #(.RADIUS(32)) mycirc (.clk(vsync),.x(x_pos[i]),.y(y_pos[i]),.hcount(hcount),.vcount(vcount),.pixel(shapes[i]));
+      end
+   endgenerate
+
 	
 	integer x;
    initial begin
 		for(x = 0; x < 6; x = x+1) begin
+         // initial x_position for the squares
 			x_pos[x] = (SCRN_WIDTH - PUCK_WH) >> 1;
+         // initial x_position for the circles
+         x_pos[x+6] = ((SCRN_WIDTH - PUCK_WH) >> 2) * 3;
 			y_pos[x] = x << 7 ;
+         y_pos[x+6] = x << 7;
 		end
 		direction = 0;
 		is_running = 1; 
@@ -525,17 +549,21 @@ module pong_game #(parameter SCRN_WIDTH = 1024, SCRN_HEIGHT = 768,
    always @(negedge vsync) begin
 		if(reset) begin
 			for(x = 0; x < 6; x = x+1) begin
-				x_pos[x] <= (SCRN_WIDTH - PUCK_WH) >> 1;
-				y_pos[x] <= x << 7 ;
+				// initial x_position for the squares
+            x_pos[x] <= (SCRN_WIDTH - PUCK_WH) >> 1;
+            // initial x_position for the circles
+            x_pos[x+6] <= (SCRN_WIDTH - PUCK_WH) >> 2;
+            y_pos[x] <= x << 7 ;
+            y_pos[x+6] <= x << 7;
 			end
 			direction <= 0;
 			is_running <= 1;
 		end else if (is_running) begin
 			case(direction)
-				0: begin for(x = 0; x < 6; x = x+1) begin
+				0: begin for(x = 0; x < 11; x = x+1) begin
 						y_pos[x] <= y_pos[x] + pspeed ;
 					end end
-				1: begin for(x = 0; x < 6; x = x+1) begin
+				1: begin for(x = 0; x < 11; x = x+1) begin
 						y_pos[x] <= y_pos[x] - pspeed ;
 					end end
 			endcase
