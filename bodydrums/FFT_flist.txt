@@ -1,0 +1,13 @@
+# Output products list for <FFT>
+FFT.asy
+FFT.ngc
+FFT.sym
+FFT.v
+FFT.veo
+FFT.vhd
+FFT.vho
+FFT.xco
+FFT_flist.txt
+FFT_mem1.mif
+FFT_mem2.mif
+FFT_xmdf.tcl

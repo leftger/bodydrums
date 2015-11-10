@@ -1,0 +1,48 @@
+##############################################################
+#
+# Xilinx Core Generator version K.39
+# Date: Tue Nov 10 22:34:55 2015
+#
+##############################################################
+#
+#  This file contains the customisation parameters for a
+#  Xilinx CORE Generator IP GUI. It is strongly recommended
+#  that you do not manually alter this file as it may cause
+#  unexpected and unsupported behavior.
+#
+##############################################################
+#
+# BEGIN Project Options
+SET addpads = False
+SET asysymbol = True
+SET busformat = BusFormatAngleBracketNotRipped
+SET createndf = False
+SET designentry = VHDL
+SET device = xc2v6000
+SET devicefamily = virtex2
+SET flowvendor = Foundation_iSE
+SET formalverification = False
+SET foundationsym = False
+SET implementationfiletype = Ngc
+SET package = bf957
+SET removerpms = False
+SET simulationfiles = Behavioral
+SET speedgrade = -4
+SET verilogsim = True
+SET vhdlsim = True
+# END Project Options
+# BEGIN Select
+SELECT 32_Point_Parameterisable_Complex_Fast_Fourier_Transform family Xilinx,_Inc. 3.0
+# END Select
+# BEGIN Parameters
+CSET butterfly_precision=16
+CSET component_name=FFT
+CSET data_memory=Distributed
+CSET memory_architecture=TMS
+CSET multiplier_construction=Dedicated_Multiplier
+CSET phase_factor_precision=16
+CSET scaling_schedule=21111
+# END Parameters
+GENERATE
+# CRC: e65f9f7c
+
