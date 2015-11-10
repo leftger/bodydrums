@@ -1,5 +1,5 @@
 NUM_USER_FILES
-3
+4
 s
 user_file_1
 graphics.v
@@ -9,4 +9,7 @@ FFT.xco
 s
 user_file_3
 labkit.ucf
+s
+user_file_4
+labkit.v
 s
