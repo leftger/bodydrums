@@ -1,0 +1,11 @@
+# Output products list for <fft16384u>
+fft16384u.asy
+fft16384u.ngc
+fft16384u.sym
+fft16384u.v
+fft16384u.veo
+fft16384u.vhd
+fft16384u.vho
+fft16384u.xco
+fft16384u_flist.txt
+wrap_TRIG_ROM.mif
