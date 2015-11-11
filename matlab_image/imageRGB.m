@@ -203,3 +203,36 @@ axis square
 colormap(color_table)
 colorbar                            
 title('Regenerated Picture')
+
+%% Writing data to coe files for putting them on the fpga
+%You can instantiate BRAMs to take their values from a file you feed them
+%when you flash the FPGA.  You can use this technique to send them
+%colortables, image data, anything.  Here's how to send the red component
+%of the color table of the last example
+
+data = dec2bin(pixel_columns,6);     %convert the binary data to 6 bit binary #s
+
+%open a file
+output_name = 'image_data.coe';
+file = fopen(output_name,'w');
+
+%write the header info
+fprintf(file,'memory_initialization_radix=2;\n');
+fprintf(file,'memory_initialization_vector=\n');
+fclose(file);
+
+%put commas in the data
+rowxcolumn = size(data);
+rows = rowxcolumn(1);
+columns = rowxcolumn(2);
+output = data;
+for i = 1:(rows-1)
+    output(i,(columns+1)) = ',';
+end
+output(rows,(columns+1)) = ';';
+
+%append the numeric values to the file
+dlmwrite(output_name,output,'-append','delimiter','', 'newline', 'pc');
+
+%You're done!
+
