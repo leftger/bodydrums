@@ -494,6 +494,9 @@ module pong_game (
    // here we use three bits from hcount and vcount to generate the \
    // checkerboard
 
-   assign pixel = {{8{checkerboard[2]}}, {8{checkerboard[1]}}, {8{checkerboard[0]}}} ;
-     
+   //assign pixel = {{8{checkerboard[2]}}, {8{checkerboard[1]}}, {8{checkerboard[0]}}} ;
+   picture_blob myblob
+	(.pixel_clk(vclock),.x((1024 - 320) >> 1),.hcount(hcount),
+	.y((768 - 240) >> 1),.vcount(vcount),
+	 .pixel(pixel));
 endmodule

@@ -1,0 +1,13 @@
+# Output products list for <green_table>
+green_table.asy
+green_table.mif
+green_table.ngc
+green_table.sym
+green_table.v
+green_table.veo
+green_table.vhd
+green_table.vho
+green_table.xco
+green_table_blk_mem_gen_v2_8_xst_1.ngc_xst.xrpt
+green_table_flist.txt
+green_table_xmdf.tcl

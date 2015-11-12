@@ -1,0 +1,13 @@
+# Output products list for <red_table>
+red_table.asy
+red_table.mif
+red_table.ngc
+red_table.sym
+red_table.v
+red_table.veo
+red_table.vhd
+red_table.vho
+red_table.xco
+red_table_blk_mem_gen_v2_8_xst_1.ngc_xst.xrpt
+red_table_flist.txt
+red_table_xmdf.tcl
