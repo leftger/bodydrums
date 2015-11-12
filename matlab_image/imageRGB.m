@@ -133,13 +133,13 @@ title('4 bit bitmap displayed using color table')
 %colortables, image data, anything.  Here's how to send the red component
 %of the color table of the last example
 
-red = color_table(:,3);             %grabs the red part of the colortable
+red = color_table(:,1);             %grabs the red part of the colortable
 scaled_data = red*255;              %scales the floats back to 0-255
 rounded_data = round(scaled_data);  %rounds them down
 data = dec2bin(rounded_data,8);     %convert the binary data to 8 bit binary #s
 
 %open a file
-output_name = 'color_table_blue.coe';
+output_name = 'color_table_red.coe';
 file = fopen(output_name,'w');
 
 %write the header info
