@@ -19,7 +19,11 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 module compression(
+    input incoming_samples [11:0],
+    output modified_samples [11:0]
     );
-
+    
+    
+    
 
 endmodule
