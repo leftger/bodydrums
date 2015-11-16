@@ -59,7 +59,7 @@ title('Red values in 24 bit bitmap')
 %table where each index specifies an r, g, and b value separately.
 %
 %Because of this, now we need to load both the image and it's colormap.
-[picture color_table] = imread('paulrevere6.bmp');
+[picture color_table] = imread('hud.bmp');
 
 %% Displaying without the color table
 %If we try to display the picture without the colormap, the image does not
@@ -210,10 +210,10 @@ title('Regenerated Picture')
 %colortables, image data, anything.  Here's how to send the red component
 %of the color table of the last example
 
-data = dec2bin(pixel_columns,6);     %convert the binary data to 6 bit binary #s
+data = dec2bin(pixel_columns,2);     %convert the binary data to 6 bit binary #s
 
 %open a file
-output_name = 'image_data.coe';
+output_name = 'hud_image.coe';
 file = fopen(output_name,'w');
 
 %write the header info
