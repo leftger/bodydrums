@@ -1,5 +1,5 @@
 NUM_USER_FILES
-3
+5
 s
 user_file_1
 ../Test Effects Modules Verilog Files/test_delay.v
@@ -9,4 +9,10 @@ user_file_2
 s
 user_file_3
 ../../Final Project  Sound Analysis/Verilog Files/limiter_module.v
+s
+user_file_4
+../../Final Project  Sound Analysis/Verilog Files/delay_module.v
+s
+user_file_5
+../../Final Project  Sound Analysis/Verilog Files/mybram.v
 s
