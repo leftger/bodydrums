@@ -3,14 +3,15 @@ Xilinx Map Application Log File for Design 'fft'
 
 Design Information
 ------------------
-Command Line   : map -ise "/afs/athena.mit.edu/user/g/i/gim/junk/fft_newpc
-(copy)/wednesday.ise" -intstyle ise -p xc2v6000-bf957-4 -cm area -pr off -k 4 -c
-100 -tx off -o fft_map.ncd fft.ngd fft.pcf 
+Command Line   : map -ise
+/afs/athena.mit.edu/user/g/e/germainm/6.111/Final_Project/bodydrums/fft/wednesda
+y.ise -intstyle ise -p xc2v6000-bf957-4 -cm area -pr off -k 4 -c 100 -tx off -o
+fft_map.ncd fft.ngd fft.pcf 
 Target Device  : xc2v6000
 Target Package : bf957
 Target Speed   : -4
 Mapper Version : virtex2 -- $Revision: 1.46.12.2 $
-Mapped Date    : Thu Oct 11 18:22:23 2012
+Mapped Date    : Sun Nov 15 19:00:37 2015
 
 Mapping design into LUTs...
 Running directed packing...
@@ -22,30 +23,30 @@ Design Summary
 
 Design Summary:
 Number of errors:      0
-Number of warnings:  342
+Number of warnings:  352
 Logic Utilization:
-  Number of Slice Flip Flops:         6,102 out of  67,584    9%
-  Number of 4 input LUTs:             6,100 out of  67,584    9%
+  Number of Slice Flip Flops:         7,616 out of  67,584   11%
+  Number of 4 input LUTs:             7,333 out of  67,584   10%
 Logic Distribution:
-  Number of occupied Slices:          4,658 out of  33,792   13%
-    Number of Slices containing only related logic:   4,658 out of   4,658 100%
-    Number of Slices containing unrelated logic:          0 out of   4,658   0%
+  Number of occupied Slices:          5,763 out of  33,792   17%
+    Number of Slices containing only related logic:   5,763 out of   5,763 100%
+    Number of Slices containing unrelated logic:          0 out of   5,763   0%
       *See NOTES below for an explanation of the effects of unrelated logic.
-  Total Number of 4 input LUTs:       6,210 out of  67,584    9%
-    Number used as logic:             4,605
-    Number used as a route-thru:        110
-    Number used for Dual Port RAMs:     416
+  Total Number of 4 input LUTs:       7,448 out of  67,584   11%
+    Number used as logic:             5,560
+    Number used as a route-thru:        115
+    Number used for Dual Port RAMs:     512
       (Two LUTs used per Dual Port RAM)
-    Number used as Shift registers:   1,079
+    Number used as Shift registers:   1,261
   Number of bonded IOBs:                576 out of     684   84%
-  Number of RAMB16s:                     26 out of     144   18%
-  Number of MULT18X18s:                  27 out of     144   18%
+  Number of RAMB16s:                     36 out of     144   25%
+  Number of MULT18X18s:                  33 out of     144   22%
   Number of BUFGMUXs:                     3 out of      16   18%
   Number of DCMs:                         1 out of      12    8%
 
-Peak Memory Usage:  628 MB
-Total REAL time to MAP completion:  16 secs 
-Total CPU time to MAP completion:   15 secs 
+Peak Memory Usage:  654 MB
+Total REAL time to MAP completion:  20 secs 
+Total CPU time to MAP completion:   19 secs 
 
 NOTES:
 
