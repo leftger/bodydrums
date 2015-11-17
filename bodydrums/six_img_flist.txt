@@ -1,0 +1,13 @@
+# Output products list for <six_img>
+six_img.asy
+six_img.mif
+six_img.ngc
+six_img.sym
+six_img.v
+six_img.veo
+six_img.vhd
+six_img.vho
+six_img.xco
+six_img_blk_mem_gen_v2_8_xst_1.ngc_xst.xrpt
+six_img_flist.txt
+six_img_xmdf.tcl

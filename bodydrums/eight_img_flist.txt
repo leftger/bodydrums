@@ -1,0 +1,13 @@
+# Output products list for <eight_img>
+eight_img.asy
+eight_img.mif
+eight_img.ngc
+eight_img.sym
+eight_img.v
+eight_img.veo
+eight_img.vhd
+eight_img.vho
+eight_img.xco
+eight_img_blk_mem_gen_v2_8_xst_1.ngc_xst.xrpt
+eight_img_flist.txt
+eight_img_xmdf.tcl
