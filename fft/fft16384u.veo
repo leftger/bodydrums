@@ -23,7 +23,7 @@
 *     appliances, devices, or systems. Use in such applications are            *
 *     expressly prohibited.                                                    *
 *                                                                              *
-*     (c) Copyright 1995-2006 Xilinx, Inc.                                     *
+*     (c) Copyright 1995-2007 Xilinx, Inc.                                     *
 *     All rights reserved.                                                     *
 *******************************************************************************/
 // The following must be inserted into your Verilog file for this
@@ -32,17 +32,17 @@
 
 //----------- Begin Cut here for INSTANTIATION Template ---// INST_TAG
 fft16384u YourInstanceName (
-	.xn_re(xn_re),
-	.xn_im(xn_im),
+	.xn_re(xn_re), // Bus [11 : 0] 
+	.xn_im(xn_im), // Bus [11 : 0] 
 	.start(start),
 	.fwd_inv(fwd_inv),
 	.fwd_inv_we(fwd_inv_we),
 	.ce(ce),
 	.clk(clk),
-	.xk_re(xk_re),
-	.xk_im(xk_im),
-	.xn_index(xn_index),
-	.xk_index(xk_index),
+	.xk_re(xk_re), // Bus [26 : 0] 
+	.xk_im(xk_im), // Bus [26 : 0] 
+	.xn_index(xn_index), // Bus [13 : 0] 
+	.xk_index(xk_index), // Bus [13 : 0] 
 	.rfd(rfd),
 	.busy(busy),
 	.dv(dv),

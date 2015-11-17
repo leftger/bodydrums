@@ -9,17 +9,17 @@
 // (in parentheses) to your own signal names.
  
 fft16384u YourInstanceName (
-    .xn_re(xn_re),
-    .xn_im(xn_im),
+    .xn_re(xn_re), // Bus [11 : 0] 
+    .xn_im(xn_im), // Bus [11 : 0] 
     .start(start),
     .fwd_inv(fwd_inv),
     .fwd_inv_we(fwd_inv_we),
     .ce(ce),
     .clk(clk),
-    .xk_re(xk_re),
-    .xk_im(xk_im),
-    .xn_index(xn_index),
-    .xk_index(xk_index),
+    .xk_re(xk_re), // Bus [26 : 0] 
+    .xk_im(xk_im), // Bus [26 : 0] 
+    .xn_index(xn_index), // Bus [13 : 0] 
+    .xk_index(xk_index), // Bus [13 : 0] 
     .rfd(rfd),
     .busy(busy),
     .dv(dv),
@@ -37,15 +37,15 @@ fft16384u YourInstanceName (
  
 component fft16384u
     port (
-    xn_re: IN std_logic_VECTOR(7 downto 0);
-    xn_im: IN std_logic_VECTOR(7 downto 0);
+    xn_re: IN std_logic_VECTOR(11 downto 0);
+    xn_im: IN std_logic_VECTOR(11 downto 0);
     start: IN std_logic;
     fwd_inv: IN std_logic;
     fwd_inv_we: IN std_logic;
     ce: IN std_logic;
     clk: IN std_logic;
-    xk_re: OUT std_logic_VECTOR(22 downto 0);
-    xk_im: OUT std_logic_VECTOR(22 downto 0);
+    xk_re: OUT std_logic_VECTOR(26 downto 0);
+    xk_im: OUT std_logic_VECTOR(26 downto 0);
     xn_index: OUT std_logic_VECTOR(13 downto 0);
     xk_index: OUT std_logic_VECTOR(13 downto 0);
     rfd: OUT std_logic;
@@ -54,7 +54,6 @@ component fft16384u
     edone: OUT std_logic;
     done: OUT std_logic);
 end component;
-
 
 
  
