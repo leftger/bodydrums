@@ -755,7 +755,8 @@ module fft   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
    assign to_ac97_data = from_ac97_data;
 
    // process incoming audio data, store results in histogram memory
-   wire [9:0] hdata,haddr;
+   wire [9:0] haddr;
+   wire [13:0] hdata;
    wire hwe,sel;
    process_audio a1(clock_27mhz,reset,switch[7:4],ready,from_ac97_data,haddr,hdata,hwe);
 
@@ -769,7 +770,7 @@ module fft   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
    // use 1Kx(16+2) dual port BRAM
    wire [15:0] dout;
    RAMB16_S18_S18 histogram(
-     .CLKA(clock_27mhz),.ADDRA(haddr),.DIA({6'b0,hdata}),.DIPA(2'b0),.WEA(hwe),
+     .CLKA(clock_27mhz),.ADDRA(haddr),.DIA({2'b0,hdata}),.DIPA(2'b0),.WEA(hwe),
      .ENA(1'b1),.SSRA(1'b0),
      .CLKB(clock_65mhz),.ADDRB(hcount),.DOB(dout),
      .DIB(16'b0),.DIPB(2'b0),.WEB(1'b0),.ENB(1'b1),.SSRB(1'b0));
@@ -779,7 +780,7 @@ module fft   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
    reg phsync,pvsync,pblank;
    reg xhsync,xvsync,xblank;
    reg [9:0] xvcount;
-   always @ (posedge clock_65mhz) begin
+    always @ (posedge clock_65mhz) begin
      // first pipe stage: memory access
      xhsync <= hsync;
      xvsync <= vsync;
@@ -910,26 +911,26 @@ module process_audio(clock_27mhz,reset,sel,ready,from_ac97_data,haddr,hdata,hwe)
   // Transform length: 16384
   // Implementation options: Pipelined, Streaming I/O
   // Transform length options: none
-  // Input data width: 8
-  // Phase factor width: 8
+  // Input data width: 12
+  // Phase factor width: 12
   // Optional pins: CE
   // Scaling options: Unscaled
   // Rounding mode: Truncation
   // Number of stages using Block Ram: 7
   // Output ordering: Bit/Digit Reversed Order
   fft16384u fft(.clk(clock_27mhz), .ce(reset | ready),
-                .xn_re(from_ac97_data[15:8]), .xn_im(8'b0),
+                .xn_re(from_ac97_data[15:4]), .xn_im(12'b0),
                 .start(1'b1), .fwd_inv(1'b1), .fwd_inv_we(reset),
                 .xk_re(xk_re), .xk_im(xk_im), .xk_index(xk_index));
 
-  wire signed [9:0] xk_re_scaled = xk_re >> sel;
-  wire signed [9:0] xk_im_scaled = xk_im >> sel;
+  wire signed [13:0] xk_re_scaled = xk_re >> sel;
+  wire signed [13:0] xk_im_scaled = xk_im >> sel;
 
   // process fft data
   reg [2:0] state;
   reg [9:0] haddr;
-  reg [19:0] rere,imim;
-  reg [19:0] mag2;
+  reg [27:0] rere,imim;
+  reg [27:0] mag2;
   reg hwe;
   wire sqrt_done;
 
@@ -958,9 +959,9 @@ module process_audio(clock_27mhz,reset,sel,ready,from_ac97_data,haddr,hdata,hwe)
     endcase
   end
 
-  wire [9:0] mag;
+  wire [13:0] mag;
   sqrt sqmag(clock_27mhz,mag2,state==2,mag,sqrt_done);
-  defparam sqmag.NBITS = 20;
+  defparam sqmag.NBITS = 28;
 
   assign hdata = mag;
 

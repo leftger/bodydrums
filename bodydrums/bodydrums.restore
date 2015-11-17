@@ -870,7 +870,6 @@ proc restore { { project_dir "" } } {
       "image_rom.veo" 
       "image_rom.vhd" 
       "image_rom.vho" 
-      "labkit_guide.ncd" 
       "red_table.asy" 
       "red_table.ngc" 
       "red_table.sym" 

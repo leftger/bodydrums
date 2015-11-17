@@ -23,7 +23,7 @@
 --     appliances, devices, or systems. Use in such applications are          --
 --     expressly prohibited.                                                  --
 --                                                                            --
---     (c) Copyright 1995-2006 Xilinx, Inc.                                   --
+--     (c) Copyright 1995-2007 Xilinx, Inc.                                   --
 --     All rights reserved.                                                   --
 --------------------------------------------------------------------------------
 -- The following code must appear in the VHDL architecture header:
@@ -31,15 +31,15 @@
 ------------- Begin Cut here for COMPONENT Declaration ------ COMP_TAG
 component fft16384u
 	port (
-	xn_re: IN std_logic_VECTOR(7 downto 0);
-	xn_im: IN std_logic_VECTOR(7 downto 0);
+	xn_re: IN std_logic_VECTOR(11 downto 0);
+	xn_im: IN std_logic_VECTOR(11 downto 0);
 	start: IN std_logic;
 	fwd_inv: IN std_logic;
 	fwd_inv_we: IN std_logic;
 	ce: IN std_logic;
 	clk: IN std_logic;
-	xk_re: OUT std_logic_VECTOR(22 downto 0);
-	xk_im: OUT std_logic_VECTOR(22 downto 0);
+	xk_re: OUT std_logic_VECTOR(26 downto 0);
+	xk_im: OUT std_logic_VECTOR(26 downto 0);
 	xn_index: OUT std_logic_VECTOR(13 downto 0);
 	xk_index: OUT std_logic_VECTOR(13 downto 0);
 	rfd: OUT std_logic;
@@ -48,10 +48,6 @@ component fft16384u
 	edone: OUT std_logic;
 	done: OUT std_logic);
 end component;
-
--- FPGA Express Black Box declaration
-attribute fpga_dont_touch: string;
-attribute fpga_dont_touch of fft16384u: component is "true";
 
 -- Synplicity black box declaration
 attribute syn_black_box : boolean;

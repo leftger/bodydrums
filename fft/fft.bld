@@ -3,13 +3,16 @@ Copyright (c) 1995-2008 Xilinx, Inc.  All rights reserved.
 
 Command Line:
 /afs/csail.mit.edu/proj/redsocs/Xilinx10.1/ISE/bin/lin64/unwrapped/ngdbuild -ise
-/afs/athena.mit.edu/user/g/i/gim/junk/fft_newpc (copy)/wednesday.ise -intstyle
-ise -dd _ngo -aul -nt timestamp -i -p xc2v6000-bf957-4 fft.ngc fft.ngd
+/afs/athena.mit.edu/user/g/e/germainm/6.111/Final_Project/bodydrums/fft/wednesda
+y.ise -intstyle ise -dd _ngo -aul -nt timestamp -i -p xc2v6000-bf957-4 fft.ngc
+fft.ngd
 
-Reading NGO file "/afs/athena.mit.edu/user/g/i/gim/junk/fft_newpc
-(copy)/fft.ngc" ...
-Loading design module "/afs/athena.mit.edu/user/g/i/gim/junk/fft_newpc
-(copy)/fft16384u.ngc"...
+Reading NGO file
+"/afs/athena.mit.edu/user/g/e/germainm/6.111/Final_Project/bodydrums/fft/fft.ngc
+" ...
+Loading design module
+"/afs/athena.mit.edu/user/g/e/germainm/6.111/Final_Project/bodydrums/fft/fft1638
+4u.ngc"...
 Reading in constraint information from 'labkit.ucf'...
 Gathering constraint information from source properties...
 Done.
@@ -25,25 +28,19 @@ Done...
 Checking Partitions ...
 
 Checking expanded design ...
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000004c2' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000004d8' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000004c4' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000004da' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000004c6' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000004dc' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00000605' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk0000061d' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00000607' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk0000061f' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00000609' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00000621' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk0000060b' has unconnected output
-   pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk0000060d' has unconnected output
-   pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk0000060f' has unconnected output
-   pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00000611' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00000623' has unconnected output
    pin
 WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00000625' has unconnected output
    pin
@@ -51,657 +48,787 @@ WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00000627' has unconnected output
    pin
 WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00000629' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk0000062b' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk0000063d' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk0000062d' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk0000063f' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk0000062f' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00000641' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00000631' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00000643' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk0000066f' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00000645' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00000671' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00000647' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk0000079b' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00000649' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000007ce' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00000687' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00000802' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00000689' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00000836' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk0000080b' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000009c8' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00000852' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00000a00' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk0000089a' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00000a39' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000008e2' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00000a72' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00000b0a' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00000b4b' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00000b56' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00000b8b' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00000ba3' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00000bf2' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00000bf0' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00000c59' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00000cc9' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00000c8f' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00000d09' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00000daf' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00000d70' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00000db3' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00000df4' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00000db7' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00000e3e' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00000dbb' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00000fca' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00000dbf' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00000fce' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00000dc3' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00000fd2' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00000dc7' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00000fd6' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00000df7' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00000fda' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00000dfb' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00000fde' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00000dfe' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00000fe2' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00000e04' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00000fe6' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00000e08' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00000fea' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00000e0c' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00000fee' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00000e10' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00000ff2' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00000e14' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001032' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00000e18' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001036' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00000e1c' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001039' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00000e4c' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk0000103f' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00000e50' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001043' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00000e53' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001047' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00000e81' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk0000104b' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00000e83' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk0000104f' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00000f99' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001053' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00000fdb' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001057' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk0000101e' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk0000105b' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001061' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk0000105f' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk0000125b' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001063' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000012a2' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001067' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000012ea' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000010a7' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001332' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000010ab' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000013ed' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000010ae' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001423' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000010dc' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk0000147b' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000010de' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000014dc' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001249' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001512' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk0000129f' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk0000165f' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000012f6' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001663' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk0000134d' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001667' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000015db' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk0000166b' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001636' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk0000166f' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001692' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001673' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000016ee' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001677' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000017a9' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000016af' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000017df' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000016b3' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001837' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000016b7' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000018b4' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000016ba' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000018fe' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000016c0' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001a0d' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000016c4' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001a11' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000016c8' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001a15' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000016cc' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001a18' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000016d0' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001a19' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000016d4' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001a51' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000016d8' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001a55' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001710' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001a59' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001714' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001a5c' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001718' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001a5d' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk0000171b' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001a9d' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001741' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001ac2' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001743' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001ac6' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk0000187d' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001aca' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000018c9' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001ace' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001916' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001ad2' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001963' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001ad6' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001ba2' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001ada' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001bf3' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001ade' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001c45' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001ae2' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001c97' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001ae6' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001d3f' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001aea' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001ec2' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001b32' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001ec6' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001b36' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001eca' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001b3a' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001ece' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001b3d' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001ed2' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001b43' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001ed6' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001b47' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001eda' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001b4b' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001f1a' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001b4f' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001f1e' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001b53' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001f22' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001b57' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001f25' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001b5b' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001f2b' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001b5f' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001f2f' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001b63' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001f33' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001b67' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001f37' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001b6b' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001f3b' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001bb3' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001f3f' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001bb7' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001f43' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001bbb' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001f83' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001bbe' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001f87' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001be4' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001f8b' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001be6' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001f8e' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001d74' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001fac' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001dd4' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001fae' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001e35' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk0000210e' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00001e96' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002164' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk0000216a' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000021bb' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000021cf' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002212' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002235' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000022a7' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk0000229b' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000022aa' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002343' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000022ad' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000024df' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000022b0' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002585' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000022b3' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk0000262c' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000022b6' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002664' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000022b9' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002668' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000022bc' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk0000266c' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000022bf' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002670' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000022c2' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002674' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000022c5' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002678' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000022c8' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk0000267c' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000022cb' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002680' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000022ce' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002684' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000022d1' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002688' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000022d4' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk0000268c' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000022d7' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000026dc' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000022da' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000026e0' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000022dd' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000026e4' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000022e0' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000026e7' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000022e3' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000026ed' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000022e6' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000026f1' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000022e9' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000026f5' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000022ec' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000026f9' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000022ef' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000026fd' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000022f2' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002701' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000022f5' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002705' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000022f8' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002709' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000022fb' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk0000270d' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000022fe' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002711' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002301' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002715' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002304' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002765' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002307' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002769' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk0000230a' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk0000276d' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000024fc' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002770' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002557' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk0000278e' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000025b3' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002790' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk0000260f' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002945' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002697' has unconnected output
-   pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000029ca' has unconnected output
-   pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000029cb' has unconnected output
-   pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000029d0' has unconnected output
-   pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000029d4' has unconnected output
-   pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000029d8' has unconnected output
-   pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000029d9' has unconnected output
-   pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000029da' has unconnected output
-   pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000029db' has unconnected output
-   pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000029dc' has unconnected output
-   pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002a0a' has unconnected output
-   pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002a0b' has unconnected output
-   pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002a10' has unconnected output
-   pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002a14' has unconnected output
-   pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002a18' has unconnected output
-   pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002a19' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000029af' has unconnected output
    pin
 WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002a1a' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002a1b' has unconnected output
-   pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002a1c' has unconnected output
-   pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002a47' has unconnected output
-   pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002a75' has unconnected output
-   pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002a79' has unconnected output
-   pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002a7d' has unconnected output
-   pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002a81' has unconnected output
-   pin
 WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002a85' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002a89' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002b3a' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002a8d' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002b3d' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002ad5' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002b40' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002ad9' has unconnected output
-   pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002add' has unconnected output
-   pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002ae0' has unconnected output
-   pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002ae6' has unconnected output
-   pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002aea' has unconnected output
-   pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002aee' has unconnected output
-   pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002af2' has unconnected output
-   pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002af6' has unconnected output
-   pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002afa' has unconnected output
-   pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002afe' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002b43' has unconnected output
    pin
 WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002b46' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002b4a' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002b49' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002b4e' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002b4c' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002b51' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002b4f' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002b53' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002b52' has unconnected output
    pin
 WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002b55' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002b57' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002b58' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002b5f' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002b5b' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002b5e' has unconnected output
    pin
 WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002b61' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002b63' has unconnected output
-   pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002b65' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002b64' has unconnected output
    pin
 WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002b67' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002b69' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002b6a' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002c04' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002b6d' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002c07' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002b70' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002c0a' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002b73' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002c0d' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002b76' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002c10' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002b79' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002c13' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002b7c' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002c16' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002b7f' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002c19' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002b82' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002c1c' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002b85' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002c1f' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002b88' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002c22' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002b8b' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002c25' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002b8e' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002c28' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002b91' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002c2b' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002b94' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002c2e' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002b97' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002c31' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002b9a' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002c34' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002b9d' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002c37' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002ba0' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002c3a' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002ba3' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002c3d' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002ba6' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002c40' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002ba9' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002c43' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002bac' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002c46' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002baf' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002c49' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002bb2' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002c4c' has unconnected output
-   pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002c4f' has unconnected output
-   pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002c52' has unconnected output
-   pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002c55' has unconnected output
-   pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002c58' has unconnected output
-   pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002c5b' has unconnected output
-   pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002c5e' has unconnected output
-   pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002c61' has unconnected output
-   pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002c64' has unconnected output
-   pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002c67' has unconnected output
-   pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002c6a' has unconnected output
-   pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002c6d' has unconnected output
-   pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002d5a' has unconnected output
-   pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002dba' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002bb5' has unconnected output
    pin
 WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002e1b' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002e7c' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002e8a' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00003215' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002efa' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000033f3' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002f6a' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk0000347d' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00002ff2' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00003508' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000034cc' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk0000353c' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk0000357e' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00003540' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00003631' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00003544' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk0000366b' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00003548' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk0000366f' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk0000354c' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00003673' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00003550' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00003677' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00003554' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk0000367b' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000035a4' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk0000367f' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000035a8' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00003683' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000035ac' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00003687' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000035af' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk0000368b' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000035b5' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk0000368f' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000035b9' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00003693' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000035bd' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000036eb' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000035c1' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000036ef' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000035c5' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000036f3' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000035c9' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000036f6' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000035cd' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000036fc' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk0000361d' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00003700' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00003621' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00003704' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00003625' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00003708' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00003628' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk0000370c' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk0000362a' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00003710' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00003632' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00003714' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00003634' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00003718' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00003636' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk0000371c' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00003638' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00003720' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00003bd7' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00003724' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00003d65' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk0000377c' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00003dfb' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00003780' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00003e92' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00003784' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00003ec8' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00003787' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00003ecc' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00003789' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00003ed0' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk0000378b' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00003ed4' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk0000378d' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00003ed8' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00003795' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00003edc' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00003797' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00003ee0' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00003799' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00003f38' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk0000379b' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00003f3c' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk0000379d' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00003f40' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk0000379f' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00003f43' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk0000385a' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00003f49' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk0000385d' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00003f4d' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00003860' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00003f51' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00003863' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00003f55' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00003866' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00003f59' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00003869' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00003f5d' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk0000386c' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00003f61' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk0000386f' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00003fb9' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00003872' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00003fbd' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00003875' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00003fc1' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00003878' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00003fc4' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk0000387b' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00003fca' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk0000387e' has unconnected output
    pin
-WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00003fcc' has unconnected output
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00003881' has unconnected output
    pin
-WARNING:NgdBuild:452 - logical net 'a1/fft/blk00000003/sig000042a3' has no
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00003884' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00003887' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk0000388a' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk0000388d' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00003890' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00003893' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00003896' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00003899' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk0000389c' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk0000389f' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000038a2' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000038a5' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000038a8' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000038ab' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000038ae' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000038b1' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000038b4' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000038b7' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000038ba' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000038bd' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000038c0' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000038c3' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000038c6' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000038c9' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000038cc' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000038cf' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000038d2' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000038d5' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000038d8' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000038db' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000039fc' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00003a70' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00003ae5' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00003b5a' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00003f9b' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00004221' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000042df' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk0000439e' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000043da' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000043de' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000043e2' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000043e6' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000043ea' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000043ee' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000043f2' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000043f6' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000043fa' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000043fe' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00004402' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00004462' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00004466' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk0000446a' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk0000446d' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00004473' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00004477' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk0000447b' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk0000447f' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00004483' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00004487' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk0000448b' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk0000448f' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00004493' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00004497' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk0000449b' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000044fb' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000044ff' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00004503' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00004506' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00004508' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00004510' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00004512' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00004514' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00004516' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00004bbd' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00004dc3' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00004e8d' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00004f58' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00004f96' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00004f9a' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00004f9e' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00004fa2' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00004fa6' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00004faa' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00004fae' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00004fb2' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00004fb6' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00004fba' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00004fbe' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00005026' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk0000502a' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk0000502e' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00005031' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00005037' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk0000503b' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk0000503f' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00005043' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00005047' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk0000504b' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk0000504f' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00005053' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk00005057' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk0000505b' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk0000505f' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000050c7' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000050cb' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000050cf' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000050d2' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000050d8' has unconnected output
+   pin
+WARNING:NgdBuild:440 - FF primitive 'a1/fft/blk000050da' has unconnected output
+   pin
+WARNING:NgdBuild:452 - logical net 'a1/fft/blk00000003/sig000055b6' has no
    driver
-WARNING:NgdBuild:452 - logical net 'a1/fft/blk00000003/sig000042b8' has no
+WARNING:NgdBuild:452 - logical net 'a1/fft/blk00000003/sig000055e8' has no
    driver
-WARNING:NgdBuild:452 - logical net 'a1/fft/blk00000003/sig000042b9' has no
+WARNING:NgdBuild:452 - logical net 'a1/fft/blk00000003/sig000055e9' has no
    driver
-WARNING:NgdBuild:452 - logical net 'a1/fft/blk00000003/sig000042ba' has no
+WARNING:NgdBuild:452 - logical net 'a1/fft/blk00000003/sig000055ea' has no
    driver
-WARNING:NgdBuild:452 - logical net 'a1/fft/blk00000003/sig000042bb' has no
+WARNING:NgdBuild:452 - logical net 'a1/fft/blk00000003/sig000055eb' has no
    driver
-WARNING:NgdBuild:452 - logical net 'a1/fft/blk00000003/sig000042bc' has no
+WARNING:NgdBuild:452 - logical net 'a1/fft/blk00000003/sig000055ec' has no
    driver
-WARNING:NgdBuild:452 - logical net 'a1/fft/blk00000003/sig000042bd' has no
+WARNING:NgdBuild:452 - logical net 'a1/fft/blk00000003/sig000055ed' has no
    driver
-WARNING:NgdBuild:452 - logical net 'a1/fft/blk00000003/sig000042be' has no
+WARNING:NgdBuild:452 - logical net 'a1/fft/blk00000003/sig000055ee' has no
    driver
-WARNING:NgdBuild:452 - logical net 'a1/fft/blk00000003/sig000042bf' has no
+WARNING:NgdBuild:452 - logical net 'a1/fft/blk00000003/sig000055ef' has no
    driver
-WARNING:NgdBuild:452 - logical net 'a1/fft/blk00000003/sig000042c0' has no
+WARNING:NgdBuild:452 - logical net 'a1/fft/blk00000003/sig000055f0' has no
    driver
-WARNING:NgdBuild:452 - logical net 'a1/fft/blk00000003/sig000042c1' has no
+WARNING:NgdBuild:452 - logical net 'a1/fft/blk00000003/sig000055f1' has no
    driver
-WARNING:NgdBuild:452 - logical net 'a1/fft/blk00000003/sig000042c2' has no
+WARNING:NgdBuild:452 - logical net 'a1/fft/blk00000003/sig000055f2' has no
    driver
-WARNING:NgdBuild:452 - logical net 'a1/fft/blk00000003/sig000042c3' has no
+WARNING:NgdBuild:452 - logical net 'a1/fft/blk00000003/sig000055f3' has no
    driver
-WARNING:NgdBuild:452 - logical net 'a1/fft/blk00000003/sig000042c4' has no
+WARNING:NgdBuild:452 - logical net 'a1/fft/blk00000003/sig000055f4' has no
    driver
-WARNING:NgdBuild:452 - logical net 'a1/fft/blk00000003/sig000042c5' has no
+WARNING:NgdBuild:452 - logical net 'a1/fft/blk00000003/sig000055f5' has no
    driver
-WARNING:NgdBuild:452 - logical net 'a1/fft/blk00000003/sig0000429c' has no
+WARNING:NgdBuild:452 - logical net 'a1/fft/blk00000003/sig000055da' has no
    driver
-WARNING:NgdBuild:452 - logical net 'a1/fft/blk00000003/sig000042aa' has no
+WARNING:NgdBuild:452 - logical net 'a1/fft/blk00000003/sig000055db' has no
    driver
-WARNING:NgdBuild:452 - logical net 'a1/fft/blk00000003/sig000042ab' has no
+WARNING:NgdBuild:452 - logical net 'a1/fft/blk00000003/sig000055dc' has no
    driver
-WARNING:NgdBuild:452 - logical net 'a1/fft/blk00000003/sig000042ac' has no
+WARNING:NgdBuild:452 - logical net 'a1/fft/blk00000003/sig000055dd' has no
    driver
-WARNING:NgdBuild:452 - logical net 'a1/fft/blk00000003/sig000042ad' has no
+WARNING:NgdBuild:452 - logical net 'a1/fft/blk00000003/sig000055de' has no
    driver
-WARNING:NgdBuild:452 - logical net 'a1/fft/blk00000003/sig000042ae' has no
+WARNING:NgdBuild:452 - logical net 'a1/fft/blk00000003/sig000055df' has no
    driver
-WARNING:NgdBuild:452 - logical net 'a1/fft/blk00000003/sig000042af' has no
+WARNING:NgdBuild:452 - logical net 'a1/fft/blk00000003/sig000055e0' has no
    driver
-WARNING:NgdBuild:452 - logical net 'a1/fft/blk00000003/sig000042b0' has no
+WARNING:NgdBuild:452 - logical net 'a1/fft/blk00000003/sig000055ab' has no
    driver
 WARNING:NgdBuild:470 - bidirect pad net 'user3<28>' has no legal driver
 WARNING:NgdBuild:470 - bidirect pad net 'user3<4>' has no legal driver
@@ -990,9 +1117,9 @@ Partition Implementation Status
 
 NGDBUILD Design Results Summary:
   Number of errors:     0
-  Number of warnings: 616
+  Number of warnings: 678
 
-Total memory usage is 301704 kilobytes
+Total memory usage is 318820 kilobytes
 
 Writing NGD file "fft.ngd" ...
 

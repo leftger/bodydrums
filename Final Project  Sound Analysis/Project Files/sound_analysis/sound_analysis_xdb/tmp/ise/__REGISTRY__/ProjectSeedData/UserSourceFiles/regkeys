@@ -1,6 +1,21 @@
 NUM_USER_FILES
-1
+6
 s
 user_file_1
 ../../Verilog Files/compression.v
+s
+user_file_2
+../../Verilog Files/debounce.v
+s
+user_file_3
+../../Verilog Files/labkit.ucf
+s
+user_file_4
+../../Verilog Files/delay_module.v
+s
+user_file_5
+../../Verilog Files/limiter_module.v
+s
+user_file_6
+../../Verilog Files/mybram.v
 s
