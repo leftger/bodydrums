@@ -1,0 +1,13 @@
+# Output products list for <red_hud>
+red_hud.asy
+red_hud.mif
+red_hud.ngc
+red_hud.sym
+red_hud.v
+red_hud.veo
+red_hud.vhd
+red_hud.vho
+red_hud.xco
+red_hud_blk_mem_gen_v2_8_xst_1.ngc_xst.xrpt
+red_hud_flist.txt
+red_hud_xmdf.tcl

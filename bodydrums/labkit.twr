@@ -37,11 +37,11 @@ Setup/Hold to clock clock_27mhz
             |  Setup to  |  Hold to   |                  | Clock  |
 Source      | clk (edge) | clk (edge) |Internal Clock(s) | Phase  |
 ------------+------------+------------+------------------+--------+
-button_down |    1.507(R)|    1.498(R)|clock_65mhz       |   0.000|
-button_enter|    0.764(R)|    1.033(R)|clock_65mhz       |   0.000|
-button_up   |    1.297(R)|    1.149(R)|clock_65mhz       |   0.000|
-switch<0>   |    8.298(R)|   -0.665(R)|clock_65mhz       |   0.000|
-switch<1>   |   10.018(R)|   -3.149(R)|clock_65mhz       |   0.000|
+button_down |    0.901(R)|    1.504(R)|clock_65mhz       |   0.000|
+button_enter|    0.321(R)|    1.077(R)|clock_65mhz       |   0.000|
+button_up   |    1.084(R)|    1.200(R)|clock_65mhz       |   0.000|
+switch<0>   |    6.901(R)|   -1.914(R)|clock_65mhz       |   0.000|
+switch<1>   |   10.897(R)|   -5.631(R)|clock_65mhz       |   0.000|
 ------------+------------+------------+------------------+--------+
 
 Clock clock_27mhz to Pad
@@ -49,36 +49,36 @@ Clock clock_27mhz to Pad
                 | clk (edge) |                  | Clock  |
 Destination     |   to PAD   |Internal Clock(s) | Phase  |
 ----------------+------------+------------------+--------+
-led<2>          |   17.609(R)|clock_65mhz       |   0.000|
+led<2>          |   17.276(R)|clock_65mhz       |   0.000|
 led<3>          |   14.192(R)|clock_65mhz       |   0.000|
-led<4>          |   14.085(R)|clock_65mhz       |   0.000|
-vga_out_blank_b |   13.043(R)|clock_65mhz       |   0.000|
-vga_out_blue<0> |   13.266(R)|clock_65mhz       |   0.000|
-vga_out_blue<1> |   12.851(R)|clock_65mhz       |   0.000|
-vga_out_blue<2> |   12.758(R)|clock_65mhz       |   0.000|
-vga_out_blue<3> |   12.021(R)|clock_65mhz       |   0.000|
-vga_out_blue<4> |   12.360(R)|clock_65mhz       |   0.000|
-vga_out_blue<5> |   12.411(R)|clock_65mhz       |   0.000|
-vga_out_blue<6> |   11.611(R)|clock_65mhz       |   0.000|
-vga_out_blue<7> |   11.237(R)|clock_65mhz       |   0.000|
-vga_out_green<0>|   12.646(R)|clock_65mhz       |   0.000|
-vga_out_green<1>|   13.530(R)|clock_65mhz       |   0.000|
-vga_out_green<2>|   12.533(R)|clock_65mhz       |   0.000|
-vga_out_green<3>|   12.399(R)|clock_65mhz       |   0.000|
-vga_out_green<4>|   13.179(R)|clock_65mhz       |   0.000|
-vga_out_green<5>|   13.550(R)|clock_65mhz       |   0.000|
-vga_out_green<6>|   13.706(R)|clock_65mhz       |   0.000|
-vga_out_green<7>|   13.492(R)|clock_65mhz       |   0.000|
-vga_out_hsync   |   12.794(R)|clock_65mhz       |   0.000|
-vga_out_red<0>  |   12.904(R)|clock_65mhz       |   0.000|
-vga_out_red<1>  |   12.532(R)|clock_65mhz       |   0.000|
-vga_out_red<2>  |   13.103(R)|clock_65mhz       |   0.000|
-vga_out_red<3>  |   13.141(R)|clock_65mhz       |   0.000|
-vga_out_red<4>  |   13.663(R)|clock_65mhz       |   0.000|
-vga_out_red<5>  |   12.803(R)|clock_65mhz       |   0.000|
-vga_out_red<6>  |   13.972(R)|clock_65mhz       |   0.000|
-vga_out_red<7>  |   13.265(R)|clock_65mhz       |   0.000|
-vga_out_vsync   |   13.474(R)|clock_65mhz       |   0.000|
+led<4>          |   13.689(R)|clock_65mhz       |   0.000|
+vga_out_blank_b |   13.364(R)|clock_65mhz       |   0.000|
+vga_out_blue<0> |   14.572(R)|clock_65mhz       |   0.000|
+vga_out_blue<1> |   14.365(R)|clock_65mhz       |   0.000|
+vga_out_blue<2> |   13.789(R)|clock_65mhz       |   0.000|
+vga_out_blue<3> |   13.120(R)|clock_65mhz       |   0.000|
+vga_out_blue<4> |   13.447(R)|clock_65mhz       |   0.000|
+vga_out_blue<5> |   13.502(R)|clock_65mhz       |   0.000|
+vga_out_blue<6> |   12.623(R)|clock_65mhz       |   0.000|
+vga_out_blue<7> |   12.564(R)|clock_65mhz       |   0.000|
+vga_out_green<0>|   13.133(R)|clock_65mhz       |   0.000|
+vga_out_green<1>|   13.276(R)|clock_65mhz       |   0.000|
+vga_out_green<2>|   13.387(R)|clock_65mhz       |   0.000|
+vga_out_green<3>|   13.134(R)|clock_65mhz       |   0.000|
+vga_out_green<4>|   14.673(R)|clock_65mhz       |   0.000|
+vga_out_green<5>|   13.326(R)|clock_65mhz       |   0.000|
+vga_out_green<6>|   14.256(R)|clock_65mhz       |   0.000|
+vga_out_green<7>|   14.332(R)|clock_65mhz       |   0.000|
+vga_out_hsync   |   12.733(R)|clock_65mhz       |   0.000|
+vga_out_red<0>  |   15.384(R)|clock_65mhz       |   0.000|
+vga_out_red<1>  |   15.271(R)|clock_65mhz       |   0.000|
+vga_out_red<2>  |   14.791(R)|clock_65mhz       |   0.000|
+vga_out_red<3>  |   13.664(R)|clock_65mhz       |   0.000|
+vga_out_red<4>  |   14.886(R)|clock_65mhz       |   0.000|
+vga_out_red<5>  |   13.743(R)|clock_65mhz       |   0.000|
+vga_out_red<6>  |   14.790(R)|clock_65mhz       |   0.000|
+vga_out_red<7>  |   13.746(R)|clock_65mhz       |   0.000|
+vga_out_vsync   |   13.366(R)|clock_65mhz       |   0.000|
 ----------------+------------+------------------+--------+
 
 Clock to Setup on destination clock clock_27mhz
@@ -86,7 +86,7 @@ Clock to Setup on destination clock clock_27mhz
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-clock_27mhz    |   17.831|         |         |         |
+clock_27mhz    |   19.280|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 Pad to Pad
@@ -99,14 +99,14 @@ switch<1>      |led<1>             |    6.840|
 ---------------+-------------------+---------+
 
 
-Analysis completed Wed Nov 11 22:27:45 2015 
+Analysis completed Sun Nov 15 21:26:01 2015 
 --------------------------------------------------------------------------------
 
 Trace Settings:
 -------------------------
 Trace Settings 
 
-Peak Memory Usage: 344 MB
+Peak Memory Usage: 347 MB
 
 
 

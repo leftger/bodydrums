@@ -1,8 +1,11 @@
 NUM_USER_FILES
-7
+10
 s
 user_file_1
 labkit.ucf
+s
+user_file_10
+hud_blob.v
 s
 user_file_2
 labkit.v
@@ -21,4 +24,10 @@ blue_table.xco
 s
 user_file_7
 image_rom.xco
+s
+user_file_8
+red_hud.xco
+s
+user_file_9
+hud_img.xco
 s

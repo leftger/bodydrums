@@ -495,8 +495,17 @@ module pong_game (
    // checkerboard
 
    //assign pixel = {{8{checkerboard[2]}}, {8{checkerboard[1]}}, {8{checkerboard[0]}}} ;
-   picture_blob myblob
+   wire [23:0] pic_pixel;
+	picture_blob myblob
 	(.pixel_clk(vclock),.x((1024 - 320) >> 1),.hcount(hcount),
 	.y((768 - 240) >> 1),.vcount(vcount),
-	 .pixel(pixel));
+	 .pixel(pic_pixel));
+	
+	wire [23:0] hud_pixel;
+	
+	hud_blob thehud
+	(.pixel_clk(vclock),.x(512),.hcount(hcount),.y(0),.vcount(vcount),
+	.pixel(hud_pixel));
+	
+	assign pixel = hud_pixel | pic_pixel;
 endmodule
