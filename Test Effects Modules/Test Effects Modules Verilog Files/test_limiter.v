@@ -26,6 +26,8 @@ module test_limiter();
     reg [5:0] cycle;      // wait 64 clocks between samples
     integer fin,fout,code; 
     wire done;   
+    reg [1:0] limiter_setting=2'b01;
+    
     
     // Shamelessly stealing code from lab 5 to test the limiter functions
     // (making sure it performs EXACTLY how we expect them to)
@@ -78,7 +80,7 @@ module test_limiter();
     end
     
     limiter_module uut(.clock(clk), .reset(reset), .ready(ready),
-        .incoming_sample(x), .limiting_amount(2'b10), 
+        .incoming_sample(x), .limiting_amount(limiter_setting), 
         .modified_sample(y), .done(done));
 
 

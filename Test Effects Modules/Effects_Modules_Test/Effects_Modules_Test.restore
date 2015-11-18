@@ -836,7 +836,9 @@ proc restore { { project_dir "" } } {
   } "A problem occured while restoring project settings."
 
   set user_files { 
+      "../../Final Project  Sound Analysis/Verilog Files/delay_module.v" 
       "../../Final Project  Sound Analysis/Verilog Files/limiter_module.v" 
+      "../../Final Project  Sound Analysis/Verilog Files/mybram.v" 
       "../Test Effects Modules Verilog Files/test_delay.v" 
       "../Test Effects Modules Verilog Files/test_limiter.v"}
 
@@ -858,7 +860,7 @@ proc restore { { project_dir "" } } {
       "A" "" "" "" "PROPEXT_xilxSynthAddBufg_virtex2" "16" 
       "A" "" "" "" "PROPEXT_xilxSynthMaxFanout_virtex2" "500" 
       "A" "" "" "" "PROP_AutoGenFile" "false" 
-      "A" "" "" "" "PROP_BehavioralSimTop" "Module|test_limiter" 
+      "A" "" "" "" "PROP_BehavioralSimTop" "Module|test_delay" 
       "A" "" "" "" "PROP_CPLDFitkeepio" "false" 
       "A" "" "" "" "PROP_CompxlibAbelLib" "true" 
       "A" "" "" "" "PROP_CompxlibCPLDDetLib" "true" 

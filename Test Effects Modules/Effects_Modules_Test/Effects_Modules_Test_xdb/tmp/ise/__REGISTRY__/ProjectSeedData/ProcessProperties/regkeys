@@ -131,7 +131,7 @@ prop_11_name
 PROP_BehavioralSimTop
 s
 prop_11_val
-"Module|test_limiter"
+"Module|test_delay"
 s
 prop_120_name
 PROP_primeFlatternOutputNetlist
