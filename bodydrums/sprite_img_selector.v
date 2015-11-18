@@ -40,5 +40,6 @@ module sprite_img_selector(
 			14'b01xxxxxxxxxxxx : selected = 13;
 			14'b1xxxxxxxxxxxxx : selected = 14;
 			default: selected = 0;
+		endcase
 	 end
 endmodule

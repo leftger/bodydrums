@@ -44,19 +44,30 @@ module hud_digits(
 	 wire [10:0] address_out;
 	 wire [3:0] num_sel_out;
 	 
+	 // selects the sprite to pull the address from depending
+	 // if the hcount and vcount overlap with the sprite's location
+	 sprite_img_selector the_sel(.sprites(overlap),.selected(selected_sprite));
+	 
+	 always @(*) begin
+		case(selected_sprite)
+			for(g = 1; g < 15: g = g+1) begin
+				g : begin address_out <= image_addr[g];
+					num_sel_out <= out_num[g]; end
+			end
+			default : begin address_out <= 0;
+				num_sel_out <= 0; end
+		endcase
+	 end
+	 
+	 
 	 wire [7:0] red_pixel;
 	 
 	 assign pixel = {red_pixel,8'b0, 8'b0};
 	 
+	 // selects which digit to pull from memory to display on the screen
+	 // then pulls the pixel out from the color map and pushes it out to
+	 // the VGA bus
 	 digit_selector the_dig (.address(address_out),.num_sel(num_sel_out),
 		.clk(clk),.red_pixel(red_pixel));
 	 
-
-	 
-	 // selects the sprite to pull the address from depending
-	 // if the hcount and vcount overlap with the sprite's location
-	 sprite_img_selector the_sel(.sprites(overlap),.selected(selected_sprite));
-
-
-
 endmodule
