@@ -31,7 +31,7 @@ module debounce (
       // waiting for .01 sec to pass
       count <= count+1;
 
-endmodule //debounce
+endmodule
 
 ///////////////////////////////////////////////////////////////////////////////
 //
@@ -39,7 +39,7 @@ endmodule //debounce
 //
 ///////////////////////////////////////////////////////////////////////////////
 
-module modifiedlab5audio (
+module lab5audio (
   input wire clock_27mhz,
   input wire reset,
   input wire [4:0] volume,
@@ -103,7 +103,7 @@ module modifiedlab5audio (
                     .command_valid(command_valid),
                     .volume(volume),
                     .source(3'b000));     // mic
-endmodule //modifiedlab5audio
+endmodule
 
 // assemble/disassemble AC97 serial frames
 module ac97 (
@@ -121,7 +121,7 @@ module ac97 (
   output reg ac97_synch,
   input wire ac97_bit_clock
 );
-  reg [7:0] bit_count;
+  reg [8:0] bit_count;
 
   reg [19:0] l_cmd_addr;
   reg [19:0] l_cmd_data;
@@ -153,20 +153,20 @@ module ac97 (
 
   always @(posedge ac97_bit_clock) begin
     // Generate the sync signal
-    if (bit_count == 255)
+    if (bit_count == 511)
       ac97_synch <= 1'b1;
     if (bit_count == 15)
       ac97_synch <= 1'b0;
 
     // Generate the ready signal
-    if (bit_count == 128)
+    if (bit_count == 255)
       ready <= 1'b1;
     if (bit_count == 2)
       ready <= 1'b0;
 
     // Latch user data at the end of each frame. This ensures that the
     // first frame after reset will be empty.
-    if (bit_count == 255) begin
+    if (bit_count == 511) begin
       l_cmd_addr <= {command_address, 12'h000};
       l_cmd_data <= {command_data, 4'h0};
       l_cmd_v <= command_valid;
@@ -214,7 +214,7 @@ module ac97 (
       // Slot 4: Right channel
       right_in_data <= { right_in_data[18:0], ac97_sdata_in };
   end
-endmodule //ac97
+endmodule
 
 // issue initialization commands to AC97
 module ac97commands (
@@ -620,7 +620,6 @@ module modifiedlab5   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_
    wire [35:0] mem_write;
    wire we0;
    wire we1;
-   wire [11:0] audio_out;
    
    addresscalculator addr_calc(.reset(switch_sync[7]), //in
                .clk(clock_27mhz),.ready(ready),.record_mode(switch_sync[5]), //in
@@ -642,7 +641,7 @@ module modifiedlab5   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_
                .we0(we0),//out
                .we1(we1),
                .mem_write(mem_write),
-               .audio_out(audio_out)
+               .audio_out(to_ac97_data)
                );//out
    zbt_6111 zbt0(.clk(clock_27mhz),.cen(1'b1),.we(we0),
                .addr(mem_address),.write_data(mem_write),
@@ -660,9 +659,10 @@ module modifiedlab5   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_
    assign led[4] = ~we0;
    assign led[5] = ~we1;
    assign led[3:0] = ~switch[3:0];
-   if (switch_sync[7]) assign led[5:4] = 2'b11;
+   /*if (switch_sync[7]) assign led[5:4] = 2'b11;
+   assign led[5:4] = switch_sync[7] ? 2'b11 : 2'b00
    if (we0) assign led[4] = 0'b0;
-   if (we1) assign led[5] = 0'b0;
+   if (we1) assign led[5] = 0'b0;*/
    
    
    // output useful things to the logic analyzer connectors
