@@ -33,14 +33,14 @@ module delay_module #(parameter SAMPLING_RATE=24000, SAMPLES=240)
     // past samples from the ZBT memory, but I'm assuming that I don't have any
     // access to the ZBT memory.
     
-    reg [12:0] addr;
+    reg [12:0] addr=12'h000;
     
     reg write;
-    reg [11:0] mem_in;
-    wire [11:0] mem_out;
+    reg signed [11:0] mem_in=12'h000;
+    wire signed [11:0] mem_out;
     
-    reg [12:0] current_pointer;
-    reg [12:0] delayed_pointer;
+    reg [12:0] current_pointer=12'h000;
+    reg [12:0] delayed_pointer=12'h000;
     
     // To have a delay from 10 ms to 320 ms, need to count
     // up to 32 *0.01 s * 240 samples per 0.01 s = 7680 samples. This means
@@ -52,7 +52,7 @@ module delay_module #(parameter SAMPLING_RATE=24000, SAMPLES=240)
        store_delay_samples(.addr(addr),.clk(clock),
        .we(write),.din(mem_in),.dout(mem_out));
        
-    reg [1:0] delay_state;
+    reg [1:0] delay_state=2'b00;
     
     // This thing has 4 states:
     // 00: do nothing until ready is asserted.
@@ -67,12 +67,11 @@ module delay_module #(parameter SAMPLING_RATE=24000, SAMPLES=240)
        else begin
           case(delay_state)
              2'b00: begin
-                done <= 1'b0;
                 if (reset || ready) begin
-                   delay_state <= 2'b01;
-                   addr <= current_pointer;
-                   current_pointer <= current_pointer + 1;
+                   done <= 1'b0;
+                   current_pointer <= current_pointer + 12'd1;
                    delayed_pointer <= current_pointer - (SAMPLES*delay_amount);
+                   delay_state <= 2'b01;
                 end
              end
           
@@ -88,7 +87,7 @@ module delay_module #(parameter SAMPLING_RATE=24000, SAMPLES=240)
                 delay_state <= 2'b11;
              end
              2'b11: begin
-                modified_sample <= incoming_sample + (mem_out << 1);
+                modified_sample <= (incoming_sample / 4) + (mem_out / 4);
                 done <= 1'b1;
                 delay_state <= 2'b00;
              end

@@ -18,8 +18,7 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module test_delay(
-    );
+module test_delay();
     reg clk,reset,ready;	// fir31 signals
     reg signed [11:0] x;
     wire signed [11:0] y;
@@ -28,6 +27,8 @@ module test_delay(
     integer fin,fout,code; 
     wire done;
     reg [4:0] delay_amount=5'b00001;
+    wire [12:0] current_address;
+    wire [12:0] delay_address;
      
     
     // Shamelessly stealing code from lab 5 to test the limiter functions
@@ -82,6 +83,7 @@ module test_delay(
     
     delay_module uut(.clock(clk), .reset(reset), .ready(ready),
         .incoming_sample(x), .delay_amount(delay_amount), 
-        .modified_sample(y), .done(done));
+        .modified_sample(y), .done(done), .current_pointer(current_address),
+        .delayed_pointer(delay_address));
 
 endmodule
