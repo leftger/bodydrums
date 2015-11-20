@@ -39,20 +39,13 @@ module addresscalculator(reset, clk, ready, /*clkmultik,*/ record_mode,
     reg [3:0] addr_index; //index within highest_addr we are at
     reg [18:0] song_max; //max addr the song can go to when writing
     reg [1:0] counter3; //makes sure address is incremented every 3 sound bits
+    
     reg record_state; //makes sure read/write is constant, fail-safe
-    reg every_other_ac97; //makes sure we sample every other time data is available from ac97
-    
-    
-    /*
-    test
-    */
     
     always @(posedge ready) begin
-        every_other_ac97 <= ~every_other_ac97;
         if (reset) begin //reset
             counter3 <= 0;
             song_done <= 1; //not play a song until start is asserted
-            every_other_ac97 <= 0;
             highest_addr[0] <= SONG1_ADDR;
             highest_addr[1] <= SONG2_ADDR;
             highest_addr[2] <= SONG3_ADDR;
@@ -65,9 +58,11 @@ module addresscalculator(reset, clk, ready, /*clkmultik,*/ record_mode,
             highest_addr[9] <= SONG4_ADDR;
             highest_addr[10] <= SONG5_ADDR;
             highest_addr[11] <= SONG6_ADDR;
+            record_state <= record_mode; //set record state
         end else begin
             if (start_song) begin
             
+                record_state <= record_mode; //set record state
                 song_done <= 0; //free to start incrementing address, unlocks functionality of code
                 //record_state <= record_mode; //saves state of record/playback 
                 
@@ -149,7 +144,7 @@ module addresscalculator(reset, clk, ready, /*clkmultik,*/ record_mode,
             end //start song
             
             //if not paused and not song done and every other instance of every_other, increment the address and check stuff out
-            else if (~pause_song & ~song_done & every_other_ac97) begin 
+            else if (~pause_song & ~song_done) begin 
             
                 //increment counter 
                 if (counter3 == 2) counter3 <= 0; //reset
@@ -158,7 +153,7 @@ module addresscalculator(reset, clk, ready, /*clkmultik,*/ record_mode,
                 //increment memaddress if counter3 == 0 if conditions are met
                 if (counter3 == 0) begin
                 
-                    if (record_mode) begin //write
+                    if (record_state) begin //write
                         if (mem_address < song_max) begin //increment mem_address and highest addr
                             mem_address <= mem_address + 1;
                             highest_addr[addr_index] <= highest_addr[addr_index] + 19'b1;

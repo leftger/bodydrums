@@ -2,7 +2,7 @@ CommandLine-Map
 
 s
 CommandLine-Ngdbuild
-/afs/csail.mit.edu/proj/redsocs/Xilinx10.1/ISE/bin/lin64/unwrapped/ngdbuild -ise /afs/athena.mit.edu/user/m/q/mqiu/Downloads/6111/zbtmemory/zbtmemory.ise -intstyle ise -dd _ngo -aul -nt timestamp -i -p xc2v6000-bf957-4 modifiedlab5.ngc modifiedlab5.ngd
+/afs/csail.mit.edu/proj/redsocs/Xilinx10.1/ISE/bin/lin64/unwrapped/ngdbuild -ise /afs/athena.mit.edu/user/m/q/mqiu/Downloads/6111/bodydrums/zbt mem files/zbtmemory.ise -intstyle ise -dd _ngo -aul -nt timestamp -i -p xc2v6000-bf957-4 modifiedlab5.ngc modifiedlab5.ngd
 s
 CommandLine-Par
 
