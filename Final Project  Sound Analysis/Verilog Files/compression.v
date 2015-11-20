@@ -20,14 +20,26 @@
 //////////////////////////////////////////////////////////////////////////////////
 module compression #(parameter SAMPLING_RATE=24000)
     (input wire clock,reset,ready,
-    input wire signed [11:0] incoming_samples,
-    input [1:0] compression_amount
-    output reg signed [11:0] modified_samples
+    input wire signed [11:0] incoming_sample,
+    input [1:0] compression_amount,
+    output reg signed [11:0] modified_sample
     );
     
-    always @(posedge clock)begin
-       
+    reg signed [11:0] last_output_sample=12'h000;
+    
+    reg signed [11:0] current_sample;
+    
+    
+    
+    
+    
+    always @(posedge clock) begin
+       current_sample <= incoming_sample;
        if (ready || reset) begin
+          
+          
+          
+          
           
        end       
     end

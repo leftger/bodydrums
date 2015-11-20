@@ -1,5 +1,5 @@
 CommandLine
-/afs/csail.mit.edu/proj/redsocs/Xilinx10.1/ISE/bin/lin64/unwrapped/xst -ise /afs/athena.mit.edu/user/g/e/germainm/6.111/Final_Project/bodydrums/Final Project  Sound Analysis/Project Files/sound_analysis/sound_analysis.ise -intstyle ise -ifn /afs/athena.mit.edu/user/g/e/germainm/6.111/Final_Project/bodydrums/Final Project  Sound Analysis/Project Files/sound_analysis/delay_module.xst -ofn /afs/athena.mit.edu/user/g/e/germainm/6.111/Final_Project/bodydrums/Final Project  Sound Analysis/Project Files/sound_analysis/delay_module.syr -finalclean 1
+/afs/csail.mit.edu/proj/redsocs/Xilinx10.1/ISE/bin/lin64/unwrapped/xst -ise /afs/athena.mit.edu/user/g/e/germainm/6.111/Final_Project/bodydrums/Final Project  Sound Analysis/Project Files/sound_analysis/sound_analysis.ise -intstyle ise -ifn signed_binary_12bit_to_dB.xst -ofn signed_binary_12bit_to_dB.stx -finalclean 1
 s
 FormatString
 xst [-ifn <InputFile>] [-ofn <OutputFile>] [-ise <iseProjectFile>] [--quiet] [-intstyle <Style>] [--deb <DebugLevel>] [--finalclean <Clean>] [--PcubeFlow] [--globOptFlow] [--XstNtrc]
