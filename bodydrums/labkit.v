@@ -278,6 +278,7 @@ module labkit   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
    // PS/2 Ports
    // mouse_clock, mouse_data, keyboard_clock, and keyboard_data are inputs
 
+/*
    // LED Displays
    assign disp_blank = 1'b1;
    assign disp_clock = 1'b0;
@@ -286,6 +287,7 @@ module labkit   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
    assign disp_reset_b = 1'b0;
    assign disp_data_out = 1'b0;
    // disp_data_in is an input
+*/
 
    // Buttons, Switches, and Individual LEDs
    //lab3 assign led = 8'hFF;
@@ -353,6 +355,15 @@ module labkit   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 	debounce db4(.reset(reset),.clock(clock_65mhz),.noisy(~button_left),.clean(left));
    debounce db5(.reset(reset),.clock(clock_65mhz),.noisy(~button_right),.clean(right));
 	debounce db6(.reset(reset),.clock(clock_65mhz),.noisy(~button_enter),.clean(enter));
+	
+	wire [3:0] num, blob;
+	
+	display_16hex disp(reset, clock_27mhz, {4'b0,
+                                          4'b0,
+                                          blob, //blob selected
+														num}, // number to output
+		disp_blank, disp_clock, disp_rs, disp_ce_b,
+		disp_reset_b, disp_data_out);
 	
    // generate basic XVGA video signals
    wire [10:0] hcount;
@@ -485,7 +496,9 @@ module pong_game (
    output phsync,	// pong game's horizontal sync
    output pvsync,	// pong game's vertical sync
    output pblank,	// pong game's blanking
-   output [23:0] pixel	// pong game's pixel  // r=23:16, g=15:8, b=7:0 
+   output [23:0] pixel	,	// pong game's pixel  // r=23:16, g=15:8, b=7:0
+	output reg[3:0] num,
+	output reg[3:0] blob
    );
 
    wire [2:0] checkerboard;
@@ -516,9 +529,6 @@ module pong_game (
 	
 	wire [23:0] digit_pixel;
 
-	 
-	 reg[3:0] num;
-	 reg[3:0] blob;
 	 reg num_or_blob;
 	 
 	 initial begin
@@ -542,8 +552,8 @@ module pong_game (
 		end
 	 end
 	 
-	 hud_digits ma_digs(.clk(vclock),.write(button_enter),.num(num),
+	 hud_digits ma_digs(.clk(vclock),.write(enter),.num(num),
 		.blob(blob),.hcount(hcount),.vcount(vcount),.pixel(digit_pixel));
 	
-	assign pixel = hud_pixel | pic_pixel | digit_pixel;
+	assign pixel = /*hud_pixel | pic_pixel | */digit_pixel;
 endmodule

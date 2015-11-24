@@ -26,6 +26,10 @@ module digit_blob
 	output [10:0] image_addr,
 	output reg overlap
 	);
+	
+	initial begin
+		overlap = 0;
+	end
 	 
 	 
 	 always@ (posedge pixel_clk) begin

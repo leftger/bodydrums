@@ -839,6 +839,7 @@ proc restore { { project_dir "" } } {
       "blue_table.xco" 
       "digit_blob.v" 
       "digit_selector.v" 
+      "display_16hex.v" 
       "eight_img.xco" 
       "five_img.xco" 
       "four_img.xco" 

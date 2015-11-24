@@ -152,8 +152,10 @@ Compiling verilog file "hud_digits.v" in library work
 Module <picture_blob> compiled
 Compiling verilog file "hud_blob.v" in library work
 Module <hud_digits> compiled
-Compiling verilog file "labkit.v" in library work
+Compiling verilog file "display_16hex.v" in library work
 Module <hud_blob> compiled
+Compiling verilog file "labkit.v" in library work
+Module <display_16hex> compiled
 Module <debounce> compiled
 Module <labkit> compiled
 Module <xvga> compiled
@@ -168,6 +170,8 @@ Analysis of file <"labkit.prj"> succeeded.
 Analyzing hierarchy for module <labkit> in library <work>.
 
 Analyzing hierarchy for module <debounce> in library <work>.
+
+Analyzing hierarchy for module <display_16hex> in library <work>.
 
 Analyzing hierarchy for module <xvga> in library <work>.
 
@@ -191,10 +195,10 @@ Analyzing hierarchy for module <digit_blob> in library <work> with parameters.
 	HEIGHT = "00000000000000000000000000110100"
 	WIDTH = "00000000000000000000000000011001"
 
-WARNING:Xst:2591 - "labkit.v" line 331: attribute on instance <CLKFX_DIVIDE> overrides generic/parameter on entity. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "labkit.v" line 331: attribute on instance <CLKFX_MULTIPLY> overrides generic/parameter on entity. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "labkit.v" line 331: attribute on instance <CLKIN_PERIOD> overrides generic/parameter on entity. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "labkit.v" line 331: attribute on instance <CLK_FEEDBACK> overrides generic/parameter on entity. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "labkit.v" line 333: attribute on instance <CLKFX_DIVIDE> overrides generic/parameter on entity. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "labkit.v" line 333: attribute on instance <CLKFX_MULTIPLY> overrides generic/parameter on entity. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "labkit.v" line 333: attribute on instance <CLKIN_PERIOD> overrides generic/parameter on entity. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "labkit.v" line 333: attribute on instance <CLK_FEEDBACK> overrides generic/parameter on entity. It is possible that simulator will not take this attribute into account.
 
 =========================================================================
 *                            HDL Analysis                               *
@@ -222,6 +226,10 @@ Module <labkit> is correct for synthesis.
 Analyzing module <debounce> in library <work>.
 Module <debounce> is correct for synthesis.
  
+Analyzing module <display_16hex> in library <work>.
+INFO:Xst:1433 - Contents of array <dots> may be accessed with an index that exceeds the array size. This could cause simulation mismatch.
+Module <display_16hex> is correct for synthesis.
+ 
 Analyzing module <xvga> in library <work>.
 Module <xvga> is correct for synthesis.
  
@@ -239,20 +247,6 @@ Analyzing module <hud_blob> in library <work>.
 Module <hud_blob> is correct for synthesis.
  
 Analyzing module <hud_digits> in library <work>.
-WARNING:Xst:852 - "hud_digits.v" line 38: Unconnected input port 'pixel_clk' of instance 'ripple[0].un_blob' is tied to GND.
-WARNING:Xst:852 - "hud_digits.v" line 38: Unconnected input port 'pixel_clk' of instance 'ripple[1].un_blob' is tied to GND.
-WARNING:Xst:852 - "hud_digits.v" line 38: Unconnected input port 'pixel_clk' of instance 'ripple[2].un_blob' is tied to GND.
-WARNING:Xst:852 - "hud_digits.v" line 38: Unconnected input port 'pixel_clk' of instance 'ripple[3].un_blob' is tied to GND.
-WARNING:Xst:852 - "hud_digits.v" line 38: Unconnected input port 'pixel_clk' of instance 'ripple[4].un_blob' is tied to GND.
-WARNING:Xst:852 - "hud_digits.v" line 38: Unconnected input port 'pixel_clk' of instance 'ripple[5].un_blob' is tied to GND.
-WARNING:Xst:852 - "hud_digits.v" line 38: Unconnected input port 'pixel_clk' of instance 'ripple[6].un_blob' is tied to GND.
-WARNING:Xst:852 - "hud_digits.v" line 38: Unconnected input port 'pixel_clk' of instance 'ripple[7].un_blob' is tied to GND.
-WARNING:Xst:852 - "hud_digits.v" line 38: Unconnected input port 'pixel_clk' of instance 'ripple[8].un_blob' is tied to GND.
-WARNING:Xst:852 - "hud_digits.v" line 38: Unconnected input port 'pixel_clk' of instance 'ripple[9].un_blob' is tied to GND.
-WARNING:Xst:852 - "hud_digits.v" line 38: Unconnected input port 'pixel_clk' of instance 'ripple[10].un_blob' is tied to GND.
-WARNING:Xst:852 - "hud_digits.v" line 38: Unconnected input port 'pixel_clk' of instance 'ripple[11].un_blob' is tied to GND.
-WARNING:Xst:852 - "hud_digits.v" line 38: Unconnected input port 'pixel_clk' of instance 'ripple[12].un_blob' is tied to GND.
-WARNING:Xst:852 - "hud_digits.v" line 38: Unconnected input port 'pixel_clk' of instance 'ripple[13].un_blob' is tied to GND.
 Module <hud_digits> is correct for synthesis.
  
 Analyzing module <sprite_img_selector> in library <work>.
@@ -308,6 +302,46 @@ Synthesizing Unit <debounce>.
 Unit <debounce> synthesized.
 
 
+Synthesizing Unit <display_16hex>.
+    Related source file is "display_16hex.v".
+    Found finite state machine <FSM_0> for signal <state>.
+    -----------------------------------------------------------------------
+    | States             | 7                                              |
+    | Transitions        | 11                                             |
+    | Inputs             | 3                                              |
+    | Outputs            | 7                                              |
+    | Clock              | clock (rising_edge)                            |
+    | Reset              | dreset (positive)                              |
+    | Reset type         | synchronous                                    |
+    | Reset State        | 00000000                                       |
+    | Encoding           | automatic                                      |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 16x40-bit ROM for signal <dots>.
+    Found 1-bit register for signal <disp_ce_b>.
+    Found 1-bit register for signal <disp_data_out>.
+    Found 1-bit register for signal <disp_rs>.
+    Found 1-bit register for signal <disp_reset_b>.
+    Found 1-bit 40-to-1 multiplexer for signal <$varindex0000> created at line 159.
+    Found 4-bit register for signal <char_index>.
+    Found 4-bit subtractor for signal <char_index$addsub0000> created at line 165.
+    Found 1-bit register for signal <clock>.
+    Found 32-bit register for signal <control>.
+    Found 5-bit up counter for signal <count>.
+    Found 10-bit register for signal <dot_index>.
+    Found 10-bit addsub for signal <dot_index$share0000> created at line 94.
+    Found 4-bit 16-to-1 multiplexer for signal <nibble>.
+    Found 8-bit down counter for signal <reset_count>.
+    Summary:
+	inferred   1 Finite State Machine(s).
+	inferred   1 ROM(s).
+	inferred   2 Counter(s).
+	inferred  51 D-type flip-flop(s).
+	inferred   2 Adder/Subtractor(s).
+	inferred   5 Multiplexer(s).
+Unit <display_16hex> synthesized.
+
+
 Synthesizing Unit <xvga>.
     Related source file is "labkit.v".
     Found 10-bit up counter for signal <vcount>.
@@ -333,18 +367,18 @@ Unit <sprite_img_selector> synthesized.
 
 Synthesizing Unit <digit_blob>.
     Related source file is "digit_blob.v".
-WARNING:Xst:643 - "digit_blob.v" line 39: The result of a 11x7-bit multiplication is partially used. Only the 11 least significant bits are used. If you are doing this on purpose, you may safely ignore this warning. Otherwise, make sure you are not losing information, leading to unexpected circuit behavior.
+WARNING:Xst:643 - "digit_blob.v" line 43: The result of a 11x7-bit multiplication is partially used. Only the 11 least significant bits are used. If you are doing this on purpose, you may safely ignore this warning. Otherwise, make sure you are not losing information, leading to unexpected circuit behavior.
     Found 11-bit adder for signal <image_addr>.
     Found 1-bit register for signal <overlap>.
-    Found 11-bit adder carry out for signal <add0000$addsub0000> created at line 32.
-    Found 10-bit adder carry out for signal <add0001$addsub0000> created at line 32.
-    Found 11-bit subtractor for signal <image_addr$addsub0000> created at line 39.
-    Found 11-bit subtractor for signal <image_addr$addsub0001> created at line 39.
-    Found 11x7-bit multiplier for signal <image_addr$mult0001> created at line 39.
-    Found 11-bit comparator greatequal for signal <overlap$cmp_ge0000> created at line 32.
-    Found 10-bit comparator greatequal for signal <overlap$cmp_ge0001> created at line 32.
-    Found 12-bit comparator less for signal <overlap$cmp_lt0000> created at line 32.
-    Found 11-bit comparator less for signal <overlap$cmp_lt0001> created at line 32.
+    Found 11-bit adder carry out for signal <add0000$addsub0000> created at line 36.
+    Found 10-bit adder carry out for signal <add0001$addsub0000> created at line 36.
+    Found 11-bit subtractor for signal <image_addr$addsub0000> created at line 43.
+    Found 11-bit subtractor for signal <image_addr$addsub0001> created at line 43.
+    Found 11x7-bit multiplier for signal <image_addr$mult0001> created at line 43.
+    Found 11-bit comparator greatequal for signal <overlap$cmp_ge0000> created at line 36.
+    Found 10-bit comparator greatequal for signal <overlap$cmp_ge0001> created at line 36.
+    Found 12-bit comparator less for signal <overlap$cmp_lt0000> created at line 36.
+    Found 11-bit comparator less for signal <overlap$cmp_lt0001> created at line 36.
     Summary:
 	inferred   1 D-type flip-flop(s).
 	inferred   5 Adder/Subtractor(s).
@@ -412,12 +446,12 @@ Unit <hud_digits> synthesized.
 Synthesizing Unit <pong_game>.
     Related source file is "labkit.v".
 WARNING:Xst:647 - Input <pspeed> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-WARNING:Xst:647 - Input <enter> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <reset> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:646 - Signal <pic_pixel> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <hud_pixel> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <checkerboard> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:653 - Signal <button_enter> is used but never assigned. This sourceless signal will be automatically connected to value 0.
-    Found 4-bit updown counter for signal <blob>.
     Found 4-bit updown counter for signal <num>.
+    Found 4-bit updown counter for signal <blob>.
     Found 1-bit register for signal <num_or_blob>.
     Summary:
 	inferred   2 Counter(s).
@@ -731,6 +765,8 @@ WARNING:Xst:2565 - Inout <user3<31>> is never assigned.
 WARNING:Xst:2565 - Inout <user3<2>> is never assigned.
 WARNING:Xst:2565 - Inout <user3<27>> is never assigned.
 WARNING:Xst:2565 - Inout <user3<3>> is never assigned.
+WARNING:Xst:653 - Signal <num> is used but never assigned. This sourceless signal will be automatically connected to value 0000.
+WARNING:Xst:653 - Signal <blob> is used but never assigned. This sourceless signal will be automatically connected to value 0000.
     Found 1-bit register for signal <b>.
     Found 1-bit 4-to-1 multiplexer for signal <b$mux0000>.
     Found 1-bit register for signal <hs>.
@@ -744,42 +780,52 @@ WARNING:Xst:2565 - Inout <user3<3>> is never assigned.
 	inferred  27 Multiplexer(s).
 Unit <labkit> synthesized.
 
+INFO:Xst:1767 - HDL ADVISOR - Resource sharing has identified that some arithmetic operations in this design can share the same physical resources for reduced device utilization. For improved clock frequency you may try to disable resource sharing.
 
 =========================================================================
 HDL Synthesis Report
 
 Macro Statistics
+# ROMs                                                 : 1
+ 16x40-bit ROM                                         : 1
 # Multipliers                                          : 15
  11x11-bit multiplier                                  : 1
  11x7-bit multiplier                                   : 14
-# Adders/Subtractors                                   : 75
+# Adders/Subtractors                                   : 77
  10-bit adder carry out                                : 14
+ 10-bit addsub                                         : 1
  11-bit adder                                          : 14
  11-bit adder carry out                                : 14
  11-bit subtractor                                     : 29
  13-bit subtractor                                     : 2
  17-bit adder                                          : 2
-# Counters                                             : 10
+ 4-bit subtractor                                      : 1
+# Counters                                             : 12
  10-bit up counter                                     : 1
  11-bit up counter                                     : 1
  20-bit up counter                                     : 6
  4-bit updown counter                                  : 2
-# Registers                                            : 56
- 1-bit register                                        : 35
+ 5-bit up counter                                      : 1
+ 8-bit down counter                                    : 1
+# Registers                                            : 64
+ 1-bit register                                        : 40
+ 10-bit register                                       : 1
  11-bit register                                       : 1
  2-bit register                                        : 1
  24-bit register                                       : 3
- 4-bit register                                        : 16
+ 32-bit register                                       : 1
+ 4-bit register                                        : 17
 # Comparators                                          : 63
  10-bit comparator greatequal                          : 15
  11-bit comparator greatequal                          : 16
  11-bit comparator less                                : 16
  12-bit comparator less                                : 16
-# Multiplexers                                         : 6
+# Multiplexers                                         : 8
  1-bit 4-to-1 multiplexer                              : 3
+ 1-bit 40-to-1 multiplexer                             : 1
  11-bit 16-to-1 multiplexer                            : 1
  24-bit 4-to-1 multiplexer                             : 1
- 4-bit 16-to-1 multiplexer                             : 1
+ 4-bit 16-to-1 multiplexer                             : 2
 # Xors                                                 : 6
  1-bit xor2                                            : 6
 
@@ -789,6 +835,19 @@ Macro Statistics
 *                       Advanced HDL Synthesis                          *
 =========================================================================
 
+Analyzing FSM <FSM_0> for best encoding.
+Optimizing FSM <disp/state/FSM> on signal <state[1:3]> with sequential encoding.
+----------------------
+ State    | Encoding
+----------------------
+ 00000000 | 000
+ 00000001 | 001
+ 00000010 | 010
+ 00000011 | 011
+ 00000100 | 100
+ 00000101 | 101
+ 00000110 | 110
+----------------------
 Loading device for application Rf_Device from file '2v6000.nph' in environment /afs/csail.mit.edu/proj/redsocs/Xilinx10.1/ISE.
 Reading core <image_rom.ngc>.
 Reading core <red_table.ngc>.
@@ -861,112 +920,77 @@ WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_12> (without 
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_13> (without init value) has a constant value of 0 in block <hud_blob>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_14> (without init value) has a constant value of 0 in block <hud_blob>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_15> (without init value) has a constant value of 0 in block <hud_blob>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <number_12_3> (without init value) has a constant value of 0 in block <ma_digs>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <number_12_2> (without init value) has a constant value of 0 in block <ma_digs>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <number_12_1> (without init value) has a constant value of 0 in block <ma_digs>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <number_12_0> (without init value) has a constant value of 0 in block <ma_digs>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <number_11_3> (without init value) has a constant value of 0 in block <ma_digs>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <number_11_2> (without init value) has a constant value of 0 in block <ma_digs>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <number_11_1> (without init value) has a constant value of 0 in block <ma_digs>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <number_11_0> (without init value) has a constant value of 0 in block <ma_digs>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <number_10_3> (without init value) has a constant value of 0 in block <ma_digs>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <number_10_2> (without init value) has a constant value of 0 in block <ma_digs>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <number_10_1> (without init value) has a constant value of 0 in block <ma_digs>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <number_10_0> (without init value) has a constant value of 0 in block <ma_digs>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <number_9_3> (without init value) has a constant value of 0 in block <ma_digs>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <number_9_2> (without init value) has a constant value of 0 in block <ma_digs>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <number_9_1> (without init value) has a constant value of 0 in block <ma_digs>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <number_9_0> (without init value) has a constant value of 0 in block <ma_digs>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <number_8_3> (without init value) has a constant value of 0 in block <ma_digs>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <overlap> (without init value) has a constant value of 0 in block <ripple[13].un_blob>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <overlap> (without init value) has a constant value of 0 in block <ripple[12].un_blob>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <overlap> (without init value) has a constant value of 0 in block <ripple[11].un_blob>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <overlap> (without init value) has a constant value of 0 in block <ripple[10].un_blob>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <overlap> (without init value) has a constant value of 0 in block <ripple[9].un_blob>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <overlap> (without init value) has a constant value of 0 in block <ripple[8].un_blob>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <overlap> (without init value) has a constant value of 0 in block <ripple[7].un_blob>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <overlap> (without init value) has a constant value of 0 in block <ripple[6].un_blob>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <overlap> (without init value) has a constant value of 0 in block <ripple[5].un_blob>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <overlap> (without init value) has a constant value of 0 in block <ripple[4].un_blob>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <overlap> (without init value) has a constant value of 0 in block <ripple[3].un_blob>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <overlap> (without init value) has a constant value of 0 in block <ripple[2].un_blob>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <overlap> (without init value) has a constant value of 0 in block <ripple[1].un_blob>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <overlap> (without init value) has a constant value of 0 in block <ripple[0].un_blob>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <number_13_3> (without init value) has a constant value of 0 in block <ma_digs>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <number_13_2> (without init value) has a constant value of 0 in block <ma_digs>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <number_13_1> (without init value) has a constant value of 0 in block <ma_digs>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <number_13_0> (without init value) has a constant value of 0 in block <ma_digs>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <number_4_0> (without init value) has a constant value of 0 in block <ma_digs>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <number_2_3> (without init value) has a constant value of 0 in block <ma_digs>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <number_2_2> (without init value) has a constant value of 0 in block <ma_digs>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <number_2_1> (without init value) has a constant value of 0 in block <ma_digs>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <number_2_0> (without init value) has a constant value of 0 in block <ma_digs>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <number_1_3> (without init value) has a constant value of 0 in block <ma_digs>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <number_1_2> (without init value) has a constant value of 0 in block <ma_digs>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <number_1_1> (without init value) has a constant value of 0 in block <ma_digs>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <number_1_0> (without init value) has a constant value of 0 in block <ma_digs>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <number_3_3> (without init value) has a constant value of 0 in block <ma_digs>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <number_3_2> (without init value) has a constant value of 0 in block <ma_digs>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <number_3_1> (without init value) has a constant value of 0 in block <ma_digs>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <number_3_0> (without init value) has a constant value of 0 in block <ma_digs>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <number_0_3> (without init value) has a constant value of 0 in block <ma_digs>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <number_0_2> (without init value) has a constant value of 0 in block <ma_digs>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <number_0_1> (without init value) has a constant value of 0 in block <ma_digs>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <number_0_0> (without init value) has a constant value of 0 in block <ma_digs>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <number_8_2> (without init value) has a constant value of 0 in block <ma_digs>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <number_8_1> (without init value) has a constant value of 0 in block <ma_digs>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <number_8_0> (without init value) has a constant value of 0 in block <ma_digs>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <number_7_3> (without init value) has a constant value of 0 in block <ma_digs>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <number_7_2> (without init value) has a constant value of 0 in block <ma_digs>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <number_7_1> (without init value) has a constant value of 0 in block <ma_digs>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <number_7_0> (without init value) has a constant value of 0 in block <ma_digs>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <number_6_3> (without init value) has a constant value of 0 in block <ma_digs>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <number_6_2> (without init value) has a constant value of 0 in block <ma_digs>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <number_6_1> (without init value) has a constant value of 0 in block <ma_digs>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <number_6_0> (without init value) has a constant value of 0 in block <ma_digs>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <number_5_3> (without init value) has a constant value of 0 in block <ma_digs>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <number_5_2> (without init value) has a constant value of 0 in block <ma_digs>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <number_5_1> (without init value) has a constant value of 0 in block <ma_digs>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <number_5_0> (without init value) has a constant value of 0 in block <ma_digs>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <number_4_3> (without init value) has a constant value of 0 in block <ma_digs>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <number_4_2> (without init value) has a constant value of 0 in block <ma_digs>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <number_4_1> (without init value) has a constant value of 0 in block <ma_digs>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:2677 - Node <clean> of sequential type is unconnected in block <db6>.
-WARNING:Xst:2677 - Node <clean> of sequential type is unconnected in block <db4>.
-WARNING:Xst:2677 - Node <clean> of sequential type is unconnected in block <db5>.
-WARNING:Xst:2677 - Node <num_or_blob> of sequential type is unconnected in block <pg>.
+WARNING:Xst:2677 - Node <pixel_0> of sequential type is unconnected in block <myblob>.
+WARNING:Xst:2677 - Node <pixel_1> of sequential type is unconnected in block <myblob>.
+WARNING:Xst:2677 - Node <pixel_2> of sequential type is unconnected in block <myblob>.
+WARNING:Xst:2677 - Node <pixel_3> of sequential type is unconnected in block <myblob>.
+WARNING:Xst:2677 - Node <pixel_4> of sequential type is unconnected in block <myblob>.
+WARNING:Xst:2677 - Node <pixel_5> of sequential type is unconnected in block <myblob>.
+WARNING:Xst:2677 - Node <pixel_6> of sequential type is unconnected in block <myblob>.
+WARNING:Xst:2677 - Node <pixel_7> of sequential type is unconnected in block <myblob>.
+WARNING:Xst:2677 - Node <pixel_8> of sequential type is unconnected in block <myblob>.
+WARNING:Xst:2677 - Node <pixel_9> of sequential type is unconnected in block <myblob>.
+WARNING:Xst:2677 - Node <pixel_10> of sequential type is unconnected in block <myblob>.
+WARNING:Xst:2677 - Node <pixel_11> of sequential type is unconnected in block <myblob>.
+WARNING:Xst:2677 - Node <pixel_12> of sequential type is unconnected in block <myblob>.
+WARNING:Xst:2677 - Node <pixel_13> of sequential type is unconnected in block <myblob>.
+WARNING:Xst:2677 - Node <pixel_14> of sequential type is unconnected in block <myblob>.
+WARNING:Xst:2677 - Node <pixel_15> of sequential type is unconnected in block <myblob>.
+WARNING:Xst:2677 - Node <pixel_16> of sequential type is unconnected in block <myblob>.
+WARNING:Xst:2677 - Node <pixel_17> of sequential type is unconnected in block <myblob>.
+WARNING:Xst:2677 - Node <pixel_18> of sequential type is unconnected in block <myblob>.
+WARNING:Xst:2677 - Node <pixel_19> of sequential type is unconnected in block <myblob>.
+WARNING:Xst:2677 - Node <pixel_20> of sequential type is unconnected in block <myblob>.
+WARNING:Xst:2677 - Node <pixel_21> of sequential type is unconnected in block <myblob>.
+WARNING:Xst:2677 - Node <pixel_22> of sequential type is unconnected in block <myblob>.
+WARNING:Xst:2677 - Node <pixel_23> of sequential type is unconnected in block <myblob>.
+WARNING:Xst:2677 - Node <pixel_16> of sequential type is unconnected in block <thehud>.
+WARNING:Xst:2677 - Node <pixel_17> of sequential type is unconnected in block <thehud>.
+WARNING:Xst:2677 - Node <pixel_18> of sequential type is unconnected in block <thehud>.
+WARNING:Xst:2677 - Node <pixel_19> of sequential type is unconnected in block <thehud>.
+WARNING:Xst:2677 - Node <pixel_20> of sequential type is unconnected in block <thehud>.
+WARNING:Xst:2677 - Node <pixel_21> of sequential type is unconnected in block <thehud>.
+WARNING:Xst:2677 - Node <pixel_22> of sequential type is unconnected in block <thehud>.
+WARNING:Xst:2677 - Node <pixel_23> of sequential type is unconnected in block <thehud>.
 
 =========================================================================
 Advanced HDL Synthesis Report
 
 Macro Statistics
+# ROMs                                                 : 1
+ 16x40-bit ROM                                         : 1
 # Multipliers                                          : 15
  11x11-bit multiplier                                  : 1
  11x7-bit multiplier                                   : 14
-# Adders/Subtractors                                   : 75
+# Adders/Subtractors                                   : 77
  10-bit adder carry out                                : 14
+ 10-bit addsub                                         : 1
  11-bit adder                                          : 14
  11-bit adder carry out                                : 14
  11-bit subtractor                                     : 29
  13-bit subtractor                                     : 2
  17-bit adder                                          : 2
-# Counters                                             : 10
+ 4-bit subtractor                                      : 1
+# Counters                                             : 12
  10-bit up counter                                     : 1
  11-bit up counter                                     : 1
  20-bit up counter                                     : 6
  4-bit updown counter                                  : 2
-# Registers                                            : 165
- Flip-Flops                                            : 165
+ 5-bit up counter                                      : 1
+ 8-bit down counter                                    : 1
+# Registers                                            : 219
+ Flip-Flops                                            : 219
 # Comparators                                          : 63
  10-bit comparator greatequal                          : 15
  11-bit comparator greatequal                          : 16
  11-bit comparator less                                : 16
  12-bit comparator less                                : 16
-# Multiplexers                                         : 6
+# Multiplexers                                         : 8
  1-bit 4-to-1 multiplexer                              : 3
+ 1-bit 40-to-1 multiplexer                             : 1
  11-bit 16-to-1 multiplexer                            : 1
  24-bit 4-to-1 multiplexer                             : 1
- 4-bit 16-to-1 multiplexer                             : 1
+ 4-bit 16-to-1 multiplexer                             : 2
 # Xors                                                 : 6
  1-bit xor2                                            : 6
 
@@ -975,82 +999,94 @@ Macro Statistics
 =========================================================================
 *                         Low Level Synthesis                           *
 =========================================================================
-WARNING:Xst:1710 - FF/Latch <ripple[13].un_blob/overlap> (without init value) has a constant value of 0 in block <hud_digits>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <ripple[12].un_blob/overlap> (without init value) has a constant value of 0 in block <hud_digits>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <ripple[11].un_blob/overlap> (without init value) has a constant value of 0 in block <hud_digits>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <ripple[10].un_blob/overlap> (without init value) has a constant value of 0 in block <hud_digits>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <ripple[9].un_blob/overlap> (without init value) has a constant value of 0 in block <hud_digits>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <ripple[8].un_blob/overlap> (without init value) has a constant value of 0 in block <hud_digits>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <ripple[7].un_blob/overlap> (without init value) has a constant value of 0 in block <hud_digits>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <ripple[6].un_blob/overlap> (without init value) has a constant value of 0 in block <hud_digits>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <ripple[5].un_blob/overlap> (without init value) has a constant value of 0 in block <hud_digits>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <ripple[4].un_blob/overlap> (without init value) has a constant value of 0 in block <hud_digits>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <ripple[3].un_blob/overlap> (without init value) has a constant value of 0 in block <hud_digits>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <ripple[2].un_blob/overlap> (without init value) has a constant value of 0 in block <hud_digits>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <ripple[1].un_blob/overlap> (without init value) has a constant value of 0 in block <hud_digits>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <ripple[0].un_blob/overlap> (without init value) has a constant value of 0 in block <hud_digits>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <number_11_0> (without init value) has a constant value of 0 in block <hud_digits>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <number_10_3> (without init value) has a constant value of 0 in block <hud_digits>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <number_10_2> (without init value) has a constant value of 0 in block <hud_digits>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <number_10_1> (without init value) has a constant value of 0 in block <hud_digits>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <number_10_0> (without init value) has a constant value of 0 in block <hud_digits>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <number_9_3> (without init value) has a constant value of 0 in block <hud_digits>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <number_9_2> (without init value) has a constant value of 0 in block <hud_digits>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <number_9_1> (without init value) has a constant value of 0 in block <hud_digits>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <number_9_0> (without init value) has a constant value of 0 in block <hud_digits>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <number_8_3> (without init value) has a constant value of 0 in block <hud_digits>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <number_11_1> (without init value) has a constant value of 0 in block <hud_digits>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <number_11_2> (without init value) has a constant value of 0 in block <hud_digits>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <number_11_3> (without init value) has a constant value of 0 in block <hud_digits>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <number_12_0> (without init value) has a constant value of 0 in block <hud_digits>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <number_12_1> (without init value) has a constant value of 0 in block <hud_digits>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <number_12_2> (without init value) has a constant value of 0 in block <hud_digits>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <number_12_3> (without init value) has a constant value of 0 in block <hud_digits>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <number_13_0> (without init value) has a constant value of 0 in block <hud_digits>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <number_13_1> (without init value) has a constant value of 0 in block <hud_digits>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <number_13_2> (without init value) has a constant value of 0 in block <hud_digits>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <number_13_3> (without init value) has a constant value of 0 in block <hud_digits>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <number_4_0> (without init value) has a constant value of 0 in block <hud_digits>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <number_2_3> (without init value) has a constant value of 0 in block <hud_digits>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <number_2_2> (without init value) has a constant value of 0 in block <hud_digits>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <number_2_1> (without init value) has a constant value of 0 in block <hud_digits>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <number_2_0> (without init value) has a constant value of 0 in block <hud_digits>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <number_1_3> (without init value) has a constant value of 0 in block <hud_digits>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <number_1_2> (without init value) has a constant value of 0 in block <hud_digits>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <number_1_1> (without init value) has a constant value of 0 in block <hud_digits>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <number_1_0> (without init value) has a constant value of 0 in block <hud_digits>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <number_3_3> (without init value) has a constant value of 0 in block <hud_digits>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <number_3_2> (without init value) has a constant value of 0 in block <hud_digits>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <number_3_1> (without init value) has a constant value of 0 in block <hud_digits>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <number_3_0> (without init value) has a constant value of 0 in block <hud_digits>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <number_0_3> (without init value) has a constant value of 0 in block <hud_digits>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <number_0_2> (without init value) has a constant value of 0 in block <hud_digits>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <number_0_1> (without init value) has a constant value of 0 in block <hud_digits>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <number_0_0> (without init value) has a constant value of 0 in block <hud_digits>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <number_8_2> (without init value) has a constant value of 0 in block <hud_digits>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <number_8_1> (without init value) has a constant value of 0 in block <hud_digits>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <number_8_0> (without init value) has a constant value of 0 in block <hud_digits>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <number_7_3> (without init value) has a constant value of 0 in block <hud_digits>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <number_7_2> (without init value) has a constant value of 0 in block <hud_digits>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <number_7_1> (without init value) has a constant value of 0 in block <hud_digits>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <number_7_0> (without init value) has a constant value of 0 in block <hud_digits>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <number_6_3> (without init value) has a constant value of 0 in block <hud_digits>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <number_6_2> (without init value) has a constant value of 0 in block <hud_digits>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <number_6_1> (without init value) has a constant value of 0 in block <hud_digits>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <number_6_0> (without init value) has a constant value of 0 in block <hud_digits>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <number_5_3> (without init value) has a constant value of 0 in block <hud_digits>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <number_5_2> (without init value) has a constant value of 0 in block <hud_digits>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <number_5_1> (without init value) has a constant value of 0 in block <hud_digits>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <number_5_0> (without init value) has a constant value of 0 in block <hud_digits>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <number_4_3> (without init value) has a constant value of 0 in block <hud_digits>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <number_4_2> (without init value) has a constant value of 0 in block <hud_digits>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <number_4_1> (without init value) has a constant value of 0 in block <hud_digits>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <num_sel_out_0> (without init value) has a constant value of 0 in block <hud_digits>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <num_sel_out_1> (without init value) has a constant value of 0 in block <hud_digits>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <num_sel_out_2> (without init value) has a constant value of 0 in block <hud_digits>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <num_sel_out_3> (without init value) has a constant value of 0 in block <hud_digits>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:2677 - Node <pg/thehud/pixel_16> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <pg/thehud/pixel_17> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <pg/thehud/pixel_18> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <pg/thehud/pixel_19> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <pg/thehud/pixel_20> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <pg/thehud/pixel_21> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <pg/thehud/pixel_22> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <pg/thehud/pixel_23> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <pg/myblob/pixel_0> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <pg/myblob/pixel_1> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <pg/myblob/pixel_2> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <pg/myblob/pixel_3> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <pg/myblob/pixel_4> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <pg/myblob/pixel_5> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <pg/myblob/pixel_6> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <pg/myblob/pixel_7> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <pg/myblob/pixel_8> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <pg/myblob/pixel_9> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <pg/myblob/pixel_10> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <pg/myblob/pixel_11> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <pg/myblob/pixel_12> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <pg/myblob/pixel_13> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <pg/myblob/pixel_14> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <pg/myblob/pixel_15> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <pg/myblob/pixel_16> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <pg/myblob/pixel_17> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <pg/myblob/pixel_18> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <pg/myblob/pixel_19> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <pg/myblob/pixel_20> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <pg/myblob/pixel_21> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <pg/myblob/pixel_22> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <pg/myblob/pixel_23> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <number_3_0> of sequential type is unconnected in block <hud_digits>.
+WARNING:Xst:2677 - Node <number_3_1> of sequential type is unconnected in block <hud_digits>.
+WARNING:Xst:2677 - Node <number_3_2> of sequential type is unconnected in block <hud_digits>.
+WARNING:Xst:2677 - Node <number_3_3> of sequential type is unconnected in block <hud_digits>.
+WARNING:Xst:2677 - Node <number_1_0> of sequential type is unconnected in block <hud_digits>.
+WARNING:Xst:2677 - Node <number_1_1> of sequential type is unconnected in block <hud_digits>.
+WARNING:Xst:2677 - Node <number_1_2> of sequential type is unconnected in block <hud_digits>.
+WARNING:Xst:2677 - Node <number_1_3> of sequential type is unconnected in block <hud_digits>.
+WARNING:Xst:2677 - Node <number_2_0> of sequential type is unconnected in block <hud_digits>.
+WARNING:Xst:2677 - Node <number_2_1> of sequential type is unconnected in block <hud_digits>.
+WARNING:Xst:2677 - Node <number_2_2> of sequential type is unconnected in block <hud_digits>.
+WARNING:Xst:2677 - Node <number_2_3> of sequential type is unconnected in block <hud_digits>.
+WARNING:Xst:2677 - Node <number_4_0> of sequential type is unconnected in block <hud_digits>.
+WARNING:Xst:2677 - Node <number_4_1> of sequential type is unconnected in block <hud_digits>.
+WARNING:Xst:2677 - Node <number_4_2> of sequential type is unconnected in block <hud_digits>.
+WARNING:Xst:2677 - Node <number_4_3> of sequential type is unconnected in block <hud_digits>.
+WARNING:Xst:2677 - Node <number_5_0> of sequential type is unconnected in block <hud_digits>.
+WARNING:Xst:2677 - Node <number_5_1> of sequential type is unconnected in block <hud_digits>.
+WARNING:Xst:2677 - Node <number_5_2> of sequential type is unconnected in block <hud_digits>.
+WARNING:Xst:2677 - Node <number_5_3> of sequential type is unconnected in block <hud_digits>.
+WARNING:Xst:2677 - Node <number_6_0> of sequential type is unconnected in block <hud_digits>.
+WARNING:Xst:2677 - Node <number_6_1> of sequential type is unconnected in block <hud_digits>.
+WARNING:Xst:2677 - Node <number_6_2> of sequential type is unconnected in block <hud_digits>.
+WARNING:Xst:2677 - Node <number_6_3> of sequential type is unconnected in block <hud_digits>.
+WARNING:Xst:2677 - Node <number_7_0> of sequential type is unconnected in block <hud_digits>.
+WARNING:Xst:2677 - Node <number_7_1> of sequential type is unconnected in block <hud_digits>.
+WARNING:Xst:2677 - Node <number_7_2> of sequential type is unconnected in block <hud_digits>.
+WARNING:Xst:2677 - Node <number_7_3> of sequential type is unconnected in block <hud_digits>.
+WARNING:Xst:2677 - Node <number_8_0> of sequential type is unconnected in block <hud_digits>.
+WARNING:Xst:2677 - Node <number_8_1> of sequential type is unconnected in block <hud_digits>.
+WARNING:Xst:2677 - Node <number_8_2> of sequential type is unconnected in block <hud_digits>.
+WARNING:Xst:2677 - Node <number_8_3> of sequential type is unconnected in block <hud_digits>.
+WARNING:Xst:2677 - Node <number_9_0> of sequential type is unconnected in block <hud_digits>.
+WARNING:Xst:2677 - Node <number_9_1> of sequential type is unconnected in block <hud_digits>.
+WARNING:Xst:2677 - Node <number_9_2> of sequential type is unconnected in block <hud_digits>.
+WARNING:Xst:2677 - Node <number_9_3> of sequential type is unconnected in block <hud_digits>.
+WARNING:Xst:2677 - Node <number_10_0> of sequential type is unconnected in block <hud_digits>.
+WARNING:Xst:2677 - Node <number_10_1> of sequential type is unconnected in block <hud_digits>.
+WARNING:Xst:2677 - Node <number_10_2> of sequential type is unconnected in block <hud_digits>.
+WARNING:Xst:2677 - Node <number_10_3> of sequential type is unconnected in block <hud_digits>.
+WARNING:Xst:2677 - Node <number_11_0> of sequential type is unconnected in block <hud_digits>.
+WARNING:Xst:2677 - Node <number_11_1> of sequential type is unconnected in block <hud_digits>.
+WARNING:Xst:2677 - Node <number_11_2> of sequential type is unconnected in block <hud_digits>.
+WARNING:Xst:2677 - Node <number_11_3> of sequential type is unconnected in block <hud_digits>.
+WARNING:Xst:2677 - Node <number_12_0> of sequential type is unconnected in block <hud_digits>.
+WARNING:Xst:2677 - Node <number_12_1> of sequential type is unconnected in block <hud_digits>.
+WARNING:Xst:2677 - Node <number_12_2> of sequential type is unconnected in block <hud_digits>.
+WARNING:Xst:2677 - Node <number_12_3> of sequential type is unconnected in block <hud_digits>.
+WARNING:Xst:2677 - Node <number_13_0> of sequential type is unconnected in block <hud_digits>.
+WARNING:Xst:2677 - Node <number_13_1> of sequential type is unconnected in block <hud_digits>.
+WARNING:Xst:2677 - Node <number_13_2> of sequential type is unconnected in block <hud_digits>.
+WARNING:Xst:2677 - Node <number_13_3> of sequential type is unconnected in block <hud_digits>.
 
 Optimizing unit <labkit> ...
+
+Optimizing unit <display_16hex> ...
 
 Optimizing unit <xvga> ...
 
@@ -1058,96 +1094,29 @@ Optimizing unit <digit_selector> ...
 
 Optimizing unit <hud_digits> ...
 
-Optimizing unit <pong_game> ...
-WARNING:Xst:2677 - Node <db6/clean> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <db6/new> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <db5/clean> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <db5/new> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <db4/clean> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <db4/new> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <db6/count_0> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <db6/count_1> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <db6/count_2> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <db6/count_3> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <db6/count_4> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <db6/count_5> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <db6/count_6> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <db6/count_7> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <db6/count_8> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <db6/count_9> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <db6/count_10> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <db6/count_11> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <db6/count_12> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <db6/count_13> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <db6/count_14> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <db6/count_15> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <db6/count_16> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <db6/count_17> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <db6/count_18> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <db6/count_19> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <db5/count_0> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <db5/count_1> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <db5/count_2> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <db5/count_3> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <db5/count_4> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <db5/count_5> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <db5/count_6> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <db5/count_7> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <db5/count_8> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <db5/count_9> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <db5/count_10> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <db5/count_11> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <db5/count_12> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <db5/count_13> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <db5/count_14> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <db5/count_15> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <db5/count_16> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <db5/count_17> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <db5/count_18> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <db5/count_19> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <db4/count_0> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <db4/count_1> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <db4/count_2> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <db4/count_3> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <db4/count_4> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <db4/count_5> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <db4/count_6> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <db4/count_7> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <db4/count_8> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <db4/count_9> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <db4/count_10> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <db4/count_11> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <db4/count_12> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <db4/count_13> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <db4/count_14> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <db4/count_15> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <db4/count_16> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <db4/count_17> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <db4/count_18> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <db4/count_19> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <pg/blob_3> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <pg/blob_2> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <pg/blob_1> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <pg/blob_0> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <pg/num_3> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <pg/num_2> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <pg/num_1> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <pg/num_0> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <pg/num_or_blob> of sequential type is unconnected in block <labkit>.
-
 Mapping all equations...
 Building and optimizing final netlist ...
-Found area constraint ratio of 100 (+ 5) on block labkit, actual ratio is 0.
-FlipFlop xvga1/vcount_3 has been replicated 1 time(s)
+INFO:Xst:2261 - The FF/Latch <rgb_0> in Unit <labkit> is equivalent to the following 7 FFs/Latches, which will be removed : <rgb_1> <rgb_2> <rgb_3> <rgb_4> <rgb_5> <rgb_6> <rgb_7> 
+INFO:Xst:2261 - The FF/Latch <rgb_8> in Unit <labkit> is equivalent to the following 7 FFs/Latches, which will be removed : <rgb_9> <rgb_10> <rgb_11> <rgb_12> <rgb_13> <rgb_14> <rgb_15> 
+Found area constraint ratio of 100 (+ 5) on block labkit, actual ratio is 1.
 
 Final Macro Processing ...
+
+Processing Unit <labkit> :
+	Found 7-bit shift register for signal <disp/control_30>.
+	Found 7-bit shift register for signal <disp/control_22>.
+	Found 7-bit shift register for signal <disp/control_14>.
+	Found 7-bit shift register for signal <disp/control_6>.
+Unit <labkit> processed.
 
 =========================================================================
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 166
- Flip-Flops                                            : 166
+# Registers                                            : 255
+ Flip-Flops                                            : 255
+# Shift Registers                                      : 4
+ 7-bit shift register                                  : 4
 
 =========================================================================
 
@@ -1176,40 +1145,44 @@ Design Statistics
 # IOs                              : 576
 
 Cell Usage :
-# BELS                             : 618
+# BELS                             : 1239
 #      GND                         : 18
-#      INV                         : 23
-#      LUT1                        : 76
-#      LUT2                        : 39
-#      LUT2_D                      : 2
-#      LUT3                        : 79
+#      INV                         : 61
+#      LUT1                        : 160
+#      LUT2                        : 93
+#      LUT3                        : 122
 #      LUT3_D                      : 1
 #      LUT3_L                      : 1
-#      LUT4                        : 93
+#      LUT4                        : 231
 #      LUT4_D                      : 5
-#      MUXCY                       : 124
-#      MUXF5                       : 20
-#      MUXF6                       : 2
+#      MUXCY                       : 285
+#      MUXF5                       : 52
+#      MUXF6                       : 6
+#      MUXF7                       : 1
 #      VCC                         : 18
-#      XORCY                       : 117
-# FlipFlops/Latches                : 175
-#      FD                          : 18
-#      FDE                         : 15
-#      FDR                         : 44
-#      FDRE                        : 73
-#      FDS                         : 25
+#      XORCY                       : 185
+# FlipFlops/Latches                : 278
+#      FD                          : 20
+#      FDE                         : 45
+#      FDE_1                       : 1
+#      FDR                         : 38
+#      FDRE                        : 137
+#      FDRS                        : 14
+#      FDS                         : 13
+#      FDSE                        : 10
 # RAMS                             : 59
 #      RAMB16_S1_S1                : 40
 #      RAMB16_S2_S2                : 3
 #      RAMB16_S36_S36              : 5
 #      RAMB16_S4_S4                : 1
 #      RAMB16_S9_S9                : 10
-# Shift Registers                  : 1
+# Shift Registers                  : 5
 #      SRL16                       : 1
-# Clock Buffers                    : 1
-#      BUFG                        : 1
-# IO Buffers                       : 246
-#      IBUF                        : 5
+#      SRL16E                      : 4
+# Clock Buffers                    : 2
+#      BUFG                        : 2
+# IO Buffers                       : 248
+#      IBUF                        : 7
 #      IBUFG                       : 1
 #      OBUF                        : 240
 # DCMs                             : 1
@@ -1223,16 +1196,16 @@ Device utilization summary:
 
 Selected Device : 2v6000bf957-4 
 
- Number of Slices:                      184  out of  33792     0%  
- Number of Slice Flip Flops:            175  out of  67584     0%  
- Number of 4 input LUTs:                320  out of  67584     0%  
-    Number used as logic:               319
-    Number used as Shift registers:       1
+ Number of Slices:                      357  out of  33792     1%  
+ Number of Slice Flip Flops:            278  out of  67584     0%  
+ Number of 4 input LUTs:                679  out of  67584     1%  
+    Number used as logic:               674
+    Number used as Shift registers:       5
  Number of IOs:                         576
- Number of bonded IOBs:                 246  out of    684    35%  
+ Number of bonded IOBs:                 248  out of    684    36%  
  Number of BRAMs:                        59  out of    144    40%  
  Number of MULT18X18s:                    2  out of    144     1%  
- Number of GCLKs:                         1  out of     16     6%  
+ Number of GCLKs:                         2  out of     16    12%  
  Number of DCMs:                          1  out of     12     8%  
 
 ---------------------------
@@ -1256,19 +1229,22 @@ Clock Information:
 -----------------------------------------+---------------------------------------------------------------------------------------------------------------------+-------+
 Clock Signal                             | Clock buffer(FF name)                                                                                               | Load  |
 -----------------------------------------+---------------------------------------------------------------------------------------------------------------------+-------+
-clock_27mhz                              | vclk1:CLKFX                                                                                                         | 235   |
-pg/ma_digs/the_dig/img_nueve/BU2/dbiterr | NONE(pg/ma_digs/the_dig/img_nueve/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_init.ram/dpram.dp9x9.ram) | 1     |
-pg/ma_digs/the_dig/img_ocho/BU2/dbiterr  | NONE(pg/ma_digs/the_dig/img_ocho/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_init.ram/dpram.dp9x9.ram)  | 1     |
-pg/ma_digs/the_dig/img_siete/BU2/dbiterr | NONE(pg/ma_digs/the_dig/img_siete/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_init.ram/dpram.dp9x9.ram) | 1     |
-pg/ma_digs/the_dig/img_seis/BU2/dbiterr  | NONE(pg/ma_digs/the_dig/img_seis/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_init.ram/dpram.dp9x9.ram)  | 1     |
-pg/ma_digs/the_dig/img_cinco/BU2/dbiterr | NONE(pg/ma_digs/the_dig/img_cinco/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_init.ram/dpram.dp9x9.ram) | 1     |
-pg/ma_digs/the_dig/img_cuatro/BU2/dbiterr| NONE(pg/ma_digs/the_dig/img_cuatro/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_init.ram/dpram.dp9x9.ram)| 1     |
-pg/ma_digs/the_dig/img_tres/BU2/dbiterr  | NONE(pg/ma_digs/the_dig/img_tres/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_init.ram/dpram.dp9x9.ram)  | 1     |
-pg/ma_digs/the_dig/img_dos/BU2/dbiterr   | NONE(pg/ma_digs/the_dig/img_dos/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_init.ram/dpram.dp9x9.ram)   | 1     |
-pg/ma_digs/the_dig/img_uno/BU2/dbiterr   | NONE(pg/ma_digs/the_dig/img_uno/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_init.ram/dpram.dp9x9.ram)   | 1     |
-pg/ma_digs/the_dig/img_cero/BU2/dbiterr  | NONE(pg/ma_digs/the_dig/img_cero/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_init.ram/dpram.dp9x9.ram)  | 1     |
+clock_27mhz                              | vclk1:CLKFX                                                                                                         | 276   |
 pg/thehud/rom2/BU2/dbiterr               | NONE(pg/thehud/rom2/BU2/U0/blk_mem_generator/valid.cstr/ramloop[14].ram.r/v2_init.ram/dpram.dp1x1.ram)              | 15    |
 pg/myblob/rom1/BU2/dbiterr               | NONE(pg/myblob/rom1/BU2/U0/blk_mem_generator/valid.cstr/ramloop[28].ram.r/v2_init.ram/dpram.dp1x1.ram)              | 29    |
+xvga1/vsync                              | NONE(pg/num_or_blob)                                                                                                | 9     |
+clock_27mhz                              | IBUFG                                                                                                               | 14    |
+disp/clock1                              | BUFG                                                                                                                | 43    |
+pg/ma_digs/the_dig/img_cero/BU2/dbiterr  | NONE(pg/ma_digs/the_dig/img_cero/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_init.ram/dpram.dp9x9.ram)  | 1     |
+pg/ma_digs/the_dig/img_uno/BU2/dbiterr   | NONE(pg/ma_digs/the_dig/img_uno/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_init.ram/dpram.dp9x9.ram)   | 1     |
+pg/ma_digs/the_dig/img_dos/BU2/dbiterr   | NONE(pg/ma_digs/the_dig/img_dos/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_init.ram/dpram.dp9x9.ram)   | 1     |
+pg/ma_digs/the_dig/img_tres/BU2/dbiterr  | NONE(pg/ma_digs/the_dig/img_tres/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_init.ram/dpram.dp9x9.ram)  | 1     |
+pg/ma_digs/the_dig/img_cuatro/BU2/dbiterr| NONE(pg/ma_digs/the_dig/img_cuatro/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_init.ram/dpram.dp9x9.ram)| 1     |
+pg/ma_digs/the_dig/img_cinco/BU2/dbiterr | NONE(pg/ma_digs/the_dig/img_cinco/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_init.ram/dpram.dp9x9.ram) | 1     |
+pg/ma_digs/the_dig/img_seis/BU2/dbiterr  | NONE(pg/ma_digs/the_dig/img_seis/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_init.ram/dpram.dp9x9.ram)  | 1     |
+pg/ma_digs/the_dig/img_siete/BU2/dbiterr | NONE(pg/ma_digs/the_dig/img_siete/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_init.ram/dpram.dp9x9.ram) | 1     |
+pg/ma_digs/the_dig/img_ocho/BU2/dbiterr  | NONE(pg/ma_digs/the_dig/img_ocho/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_init.ram/dpram.dp9x9.ram)  | 1     |
+pg/ma_digs/the_dig/img_nueve/BU2/dbiterr | NONE(pg/ma_digs/the_dig/img_nueve/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_init.ram/dpram.dp9x9.ram) | 1     |
 -----------------------------------------+---------------------------------------------------------------------------------------------------------------------+-------+
 INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
 
@@ -1280,10 +1256,10 @@ Timing Summary:
 ---------------
 Speed Grade: -4
 
-   Minimum period: 38.495ns (Maximum Frequency: 25.978MHz)
-   Minimum input arrival time before clock: 6.334ns
-   Maximum output required time after clock: 9.289ns
-   Maximum combinational path delay: 7.195ns
+   Minimum period: 39.011ns (Maximum Frequency: 25.634MHz)
+   Minimum input arrival time before clock: 6.236ns
+   Maximum output required time after clock: 9.450ns
+   Maximum combinational path delay: 7.097ns
 
 Timing Detail:
 --------------
@@ -1291,10 +1267,10 @@ All values displayed in nanoseconds (ns)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clock_27mhz'
-  Clock period: 38.495ns (frequency: 25.978MHz)
-  Total number of paths / destination ports: 153900 / 1198
+  Clock period: 39.011ns (frequency: 25.634MHz)
+  Total number of paths / destination ports: 155314 / 1349
 -------------------------------------------------------------------------
-Delay:               16.040ns (Levels of Logic = 9)
+Delay:               16.255ns (Levels of Logic = 9)
   Source:            xvga1/vcount_5 (FF)
   Destination:       pg/myblob/rom1/BU2/U0/blk_mem_generator/valid.cstr/ramloop[15].ram.r/v2_init.ram/dpram.dp4x4.ram (RAM)
   Source Clock:      clock_27mhz rising 2.4X
@@ -1304,10 +1280,10 @@ Delay:               16.040ns (Levels of Logic = 9)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDRE:C->Q            16   0.568   1.208  xvga1/vcount_5 (xvga1/vcount_5)
-     LUT4_D:I1->O          1   0.439   0.552  pg/myblob/Msub_image_addr_addsub0000_xor<10>11_SW0 (N32)
-     LUT4:I2->O            1   0.439   0.517  pg/myblob/Msub_image_addr_addsub0000_xor<9>12 (pg/myblob/image_addr_addsub0000<9>)
-     MULT18X18:A9->P15     1   6.216   0.551  pg/myblob/Mmult_image_addr_mult0001 (pg/myblob/image_addr_mult0001<15>)
+     FDRE:C->Q            13   0.568   1.240  xvga1/vcount_5 (xvga1/vcount_5)
+     LUT3_D:I0->O          2   0.439   0.736  pg/myblob/Msub_image_addr_addsub0000_xor<6>111 (N61)
+     LUT4:I2->O            1   0.439   0.517  pg/myblob/Msub_image_addr_addsub0000_xor<8>11 (pg/myblob/image_addr_addsub0000<8>)
+     MULT18X18:A8->P15     1   6.216   0.551  pg/myblob/Mmult_image_addr_mult0001 (pg/myblob/image_addr_mult0001<15>)
      LUT4:I2->O            1   0.439   0.000  pg/myblob/Madd_image_addr_lut<15> (pg/myblob/Madd_image_addr_lut<15>)
      MUXCY:S->O            0   0.298   0.000  pg/myblob/Madd_image_addr_cy<15> (pg/myblob/Madd_image_addr_cy<15>)
      XORCY:CI->O           7   1.274   1.024  pg/myblob/Madd_image_addr_xor<16> (pg/myblob/image_addr<16>)
@@ -1317,36 +1293,87 @@ Delay:               16.040ns (Levels of Logic = 9)
      LUT3:I2->O            1   0.439   0.518  U0/blk_mem_generator/valid.cstr/bindec_a.bindec_inst_a/enout_18_cmp_eq00001 (U0/blk_mem_generator/valid.cstr/bindec_a.bindec_inst_a/enout_18_cmp_eq0000)
      RAMB16_S4_S4:ENA          0.359          U0/blk_mem_generator/valid.cstr/ramloop[15].ram.r/v2_init.ram/dpram.dp4x4.ram
     ----------------------------------------
-    Total                     16.040ns (10.910ns logic, 5.129ns route)
-                                       (68.0% logic, 32.0% route)
+    Total                     16.255ns (10.910ns logic, 5.344ns route)
+                                       (67.1% logic, 32.9% route)
 
 =========================================================================
-Timing constraint: Default OFFSET IN BEFORE for Clock 'clock_27mhz'
-  Total number of paths / destination ports: 216 / 120
+Timing constraint: Default period analysis for Clock 'xvga1/vsync'
+  Clock period: 3.004ns (frequency: 332.889MHz)
+  Total number of paths / destination ports: 35 / 17
 -------------------------------------------------------------------------
-Offset:              6.334ns (Levels of Logic = 4)
-  Source:            switch<0> (PAD)
-  Destination:       rgb_0 (FF)
-  Destination Clock: clock_27mhz rising 2.4X
+Delay:               3.004ns (Levels of Logic = 1)
+  Source:            pg/num_or_blob (FF)
+  Destination:       pg/blob_0 (FF)
+  Source Clock:      xvga1/vsync falling
+  Destination Clock: xvga1/vsync falling
 
-  Data Path: switch<0> to rgb_0
+  Data Path: pg/num_or_blob to pg/blob_0
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O            22   0.825   1.337  switch_0_IBUF (switch_0_IBUF)
-     LUT2:I0->O            1   0.439   0.726  Mmux_rgb_mux0000110209 (Mmux_rgb_mux0000110209)
-     LUT4:I1->O            3   0.439   1.010  Mmux_rgb_mux0000110213 (N1)
-     LUT4:I0->O            8   0.439   0.840  Mmux_rgb_mux00001011 (N3)
+     FDE_1:C->Q            3   0.568   1.009  pg/num_or_blob (pg/num_or_blob)
+     LUT3:I0->O            4   0.439   0.747  pg/num_not00011 (pg/num_not0001)
+     FDE:CE                    0.240          pg/num_0
+    ----------------------------------------
+    Total                      3.004ns (1.247ns logic, 1.757ns route)
+                                       (41.5% logic, 58.5% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'disp/clock1'
+  Clock period: 10.698ns (frequency: 93.480MHz)
+  Total number of paths / destination ports: 1396 / 74
+-------------------------------------------------------------------------
+Delay:               10.698ns (Levels of Logic = 8)
+  Source:            disp/dot_index_3 (FF)
+  Destination:       disp/dot_index_1 (FF)
+  Source Clock:      disp/clock1 rising
+  Destination Clock: disp/clock1 rising
+
+  Data Path: disp/dot_index_3 to disp/dot_index_1
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDRS:C->Q            15   0.568   1.274  disp/dot_index_3 (disp/dot_index_3)
+     LUT4:I0->O            1   0.439   0.000  disp/dot_index_mux0000<4>51 (disp/dot_index_mux0000<4>5)
+     MUXF5:I0->O           6   0.436   0.827  disp/dot_index_mux0000<4>5_f5 (disp/N25)
+     LUT3:I2->O            1   0.439   0.557  disp/state_cmp_eq0001_SW0 (N35)
+     LUT4:I3->O           15   0.439   1.023  disp/state_cmp_eq0001 (disp/state_cmp_eq0001)
+     LUT3:I2->O            5   0.439   0.978  disp/char_index_mux0000<1>21 (disp/N31)
+     LUT4:I1->O            4   0.439   1.032  disp/dot_index_mux0000<7>1 (disp/N10)
+     LUT4:I0->O            1   0.439   0.558  disp/dot_index_mux0000<8>_SW1 (N21)
+     LUT4:I3->O            1   0.439   0.000  disp/dot_index_mux0000<8> (disp/dot_index_mux0000<8>)
+     FDR:D                     0.370          disp/dot_index_1
+    ----------------------------------------
+    Total                     10.698ns (4.447ns logic, 6.250ns route)
+                                       (41.6% logic, 58.4% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'clock_27mhz'
+  Total number of paths / destination ports: 200 / 164
+-------------------------------------------------------------------------
+Offset:              6.236ns (Levels of Logic = 4)
+  Source:            switch<0> (PAD)
+  Destination:       rgb_16 (FF)
+  Destination Clock: clock_27mhz rising 2.4X
+
+  Data Path: switch<0> to rgb_16
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O            13   0.825   1.240  switch_0_IBUF (switch_0_IBUF)
+     LUT2:I0->O            1   0.439   0.726  Mmux_rgb_mux00001011185 (Mmux_rgb_mux00001011185)
+     LUT4:I1->O            3   0.439   1.010  Mmux_rgb_mux00001011189 (N211)
+     LUT4:I0->O            8   0.439   0.840  Mmux_rgb_mux00001012 (N11)
      FDS:S                     0.280          rgb_16
     ----------------------------------------
-    Total                      6.334ns (2.422ns logic, 3.912ns route)
-                                       (38.2% logic, 61.8% route)
+    Total                      6.236ns (2.422ns logic, 3.814ns route)
+                                       (38.8% logic, 61.2% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'clock_27mhz'
-  Total number of paths / destination ports: 31 / 30
+  Total number of paths / destination ports: 32 / 31
 -------------------------------------------------------------------------
-Offset:              9.289ns (Levels of Logic = 2)
+Offset:              9.450ns (Levels of Logic = 2)
   Source:            reset_sr (FF)
   Destination:       led<2> (PAD)
   Source Clock:      clock_27mhz rising 2.4X
@@ -1355,18 +1382,37 @@ Offset:              9.289ns (Levels of Logic = 2)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     SRL16:CLK->Q          9   2.901   1.070  reset_sr (power_on_reset)
+     SRL16:CLK->Q         18   2.901   1.231  reset_sr (power_on_reset)
      LUT2:I1->O            1   0.439   0.517  led<2>1 (led_2_OBUF)
      OBUF:I->O                 4.361          led_2_OBUF (led<2>)
     ----------------------------------------
-    Total                      9.289ns (7.701ns logic, 1.588ns route)
-                                       (82.9% logic, 17.1% route)
+    Total                      9.450ns (7.701ns logic, 1.749ns route)
+                                       (81.5% logic, 18.5% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'disp/clock1'
+  Total number of paths / destination ports: 4 / 4
+-------------------------------------------------------------------------
+Offset:              5.630ns (Levels of Logic = 1)
+  Source:            disp/disp_rs (FF)
+  Destination:       disp_rs (PAD)
+  Source Clock:      disp/clock1 rising
+
+  Data Path: disp/disp_rs to disp_rs
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDE:C->Q              2   0.568   0.701  disp/disp_rs (disp/disp_rs)
+     OBUF:I->O                 4.361          disp_rs_OBUF (disp_rs)
+    ----------------------------------------
+    Total                      5.630ns (4.929ns logic, 0.701ns route)
+                                       (87.5% logic, 12.5% route)
 
 =========================================================================
 Timing constraint: Default path analysis
   Total number of paths / destination ports: 2 / 2
 -------------------------------------------------------------------------
-Delay:               7.195ns (Levels of Logic = 3)
+Delay:               7.097ns (Levels of Logic = 3)
   Source:            switch<1> (PAD)
   Destination:       led<1> (PAD)
 
@@ -1374,25 +1420,25 @@ Delay:               7.195ns (Levels of Logic = 3)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O            22   0.825   1.052  switch_1_IBUF (switch_1_IBUF)
+     IBUF:I->O            13   0.825   0.955  switch_1_IBUF (switch_1_IBUF)
      INV:I->O              1   0.439   0.517  led<1>1_INV_0 (led_1_OBUF)
      OBUF:I->O                 4.361          led_1_OBUF (led<1>)
     ----------------------------------------
-    Total                      7.195ns (5.625ns logic, 1.570ns route)
-                                       (78.2% logic, 21.8% route)
+    Total                      7.097ns (5.625ns logic, 1.472ns route)
+                                       (79.3% logic, 20.7% route)
 
 =========================================================================
 
 
-Total REAL time to Xst completion: 21.00 secs
-Total CPU time to Xst completion: 19.96 secs
+Total REAL time to Xst completion: 26.00 secs
+Total CPU time to Xst completion: 25.09 secs
  
 --> 
 
 
-Total memory usage is 488308 kilobytes
+Total memory usage is 500476 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :  614 (   0 filtered)
-Number of infos    :   26 (   0 filtered)
+Number of warnings :  496 (   0 filtered)
+Number of infos    :   30 (   0 filtered)
 
