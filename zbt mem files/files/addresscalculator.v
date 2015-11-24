@@ -1,5 +1,5 @@
 //address calculator
-/*
+/* :)
 takes in address requests from the FSM
 increments the address every 3 cycles of the clock
 resets the address to the specified predetermined address location when start_song is asserted
@@ -15,7 +15,6 @@ module addresscalculator(reset, clk, ready, /*clkmultik,*/ record_mode,
     input reset; //reset, from switches
     input clk; // system clock, system
     input ready; //when data is available from ac97, from ac97 modules
-    //input clkmultik;// some other clock
     input [3:0] song_choice; //choice of 16 songs, i choose length, from fsm
     input start_song; //start to reset address, from fsm
     input pause_song; //pause to hold address incrementation, from fsm
@@ -42,7 +41,7 @@ module addresscalculator(reset, clk, ready, /*clkmultik,*/ record_mode,
     
     reg record_state; //makes sure read/write is constant, fail-safe
     
-    always @(posedge ready) begin
+    always @(posedge clk) begin
         if (reset) begin //reset
             counter3 <= 0;
             song_done <= 1; //not play a song until start is asserted
@@ -64,9 +63,8 @@ module addresscalculator(reset, clk, ready, /*clkmultik,*/ record_mode,
             
                 record_state <= record_mode; //set record state
                 song_done <= 0; //free to start incrementing address, unlocks functionality of code
-                //record_state <= record_mode; //saves state of record/playback 
                 
-                //uhm long case block :P
+                //uhm long case block :P based on song choice, choose song
                 case(song_choice)
                     4'b0000: begin //song 1
                         mem_address <= SONG1_ADDR;
@@ -134,17 +132,21 @@ module addresscalculator(reset, clk, ready, /*clkmultik,*/ record_mode,
                         if (record_mode) highest_addr[10] <= SONG5_ADDR;
                         addr_index <= 10;
                     end
-                    default: begin //song 12 and default
+                    4'b1101: begin //song 12
                         mem_address <= SONG6_ADDR;
                         song_max <= MAX_ADDR - 1;
                         if (record_mode) highest_addr[11] <= SONG6_ADDR;
                         addr_index <= 11;
                     end
+                    default: begin //default. no.
+                        mem_address <= MAX_ADDR;
+                        song_max <= MAX_ADDR;
+                    end
                 endcase
             end //start song
             
-            //if not paused and not song done and every other instance of every_other, increment the address and check stuff out
-            else if (~pause_song & ~song_done) begin 
+            //if not paused and not song done and ready increment the address and check if song finished
+            else if (~pause_song & ~song_done & ready) begin 
             
                 //increment counter 
                 if (counter3 == 2) counter3 <= 0; //reset
@@ -157,15 +159,13 @@ module addresscalculator(reset, clk, ready, /*clkmultik,*/ record_mode,
                         if (mem_address < song_max) begin //increment mem_address and highest addr
                             mem_address <= mem_address + 1;
                             highest_addr[addr_index] <= highest_addr[addr_index] + 19'b1;
-                            //temp_highest_addr <= mem_address + 1;
                         end else begin //if mem_address hit the song max
                             song_done <= 1; //stop incrementing addresses and writing
                         end
                     end 
                     
                     else begin //playback
-                        if (mem_address < highest_addr[addr_index]) begin
-                        //if (mem_address < highest_addr[addr_index]) begin //increment memory address
+                        if (mem_address < highest_addr[addr_index]) begin //increment memory address
                             mem_address <= mem_address + 1;
                         end else begin //if mem_addr hits the highest_addr recorded
                             song_done <= 1; //stop incrementing addresses

@@ -1,7 +1,7 @@
 `default_nettype none
 
 ///////////////////////////////////////////////////////////////////////////////
-//
+// :)
 // Switch Debounce Module
 //
 ///////////////////////////////////////////////////////////////////////////////
@@ -39,7 +39,7 @@ endmodule
 //
 ///////////////////////////////////////////////////////////////////////////////
 
-module lab5audio (
+module modifiedlab5audio (
   input wire clock_27mhz,
   input wire reset,
   input wire [4:0] volume,
@@ -159,7 +159,7 @@ module ac97 (
       ac97_synch <= 1'b0;
 
     // Generate the ready signal
-    if (bit_count == 255)
+    if (bit_count == 256)
       ready <= 1'b1;
     if (bit_count == 2)
       ready <= 1'b0;
@@ -564,7 +564,7 @@ module modifiedlab5   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_
    wire [11:0] from_ac97_data, to_ac97_data;
    wire ready;
 
-   // allow user to adjust volume
+   // allow user to adjust volume with up/down
    wire vup,vdown;
    reg old_vup,old_vdown;
    debounce bup(.reset(reset),.clock(clock_27mhz),.noisy(~button_up),.clean(vup));
@@ -581,15 +581,15 @@ module modifiedlab5   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_
    end
 
    // AC97 driver
-   lab5audio a(clock_27mhz, reset, volume, from_ac97_data, to_ac97_data, ready,
+   modifiedlab5audio a(clock_27mhz, reset, volume, from_ac97_data, to_ac97_data, ready,
 	       audio_reset_b, ac97_sdata_out, ac97_sdata_in,
 	       ac97_synch, ac97_bit_clock);
 
-   // push ENTER button to start song
+   // push ENTER button to start song/playback
    wire start_song;
    debounce benter(.reset(reset),.clock(clock_27mhz),.noisy(~button_enter),.clean(start_song));
 
-   // switch 0 up for filtering, down for no filtering
+
    //SYNCHRONIZATION OF switches
     wire [7:0] switch_sync;
     genvar i;
@@ -599,27 +599,23 @@ module modifiedlab5   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_
         end
     endgenerate
    
-   // light up LEDs when recording, show volume during playback.
-   // led is active low
-   //assign led[5:0] = ~switch_sync[5:0];
-   assign led[7] = ~switch_sync[7];
+   /*
+   SWITCH ASSIGNMENTS:
+   switch[3:0]: song selection
+   switch 4: pause
+   switch 5: on = record, off = playback
+   switch 7: on = reset, off = not reset
+   */
    
-   
-   //TO BE REPLACED
-   // record module
-//   recorder r(.clock(clock_27mhz), .reset(reset), .ready(ready),
-//              .playback(playback), .filter(filter),
-//              .from_ac97_data(from_ac97_data),.to_ac97_data(to_ac97_data));
-   
-   //holla
+   //relevant wires/modules
    
    wire song_done;
-   wire [18:0] mem_address;
-   wire [35:0] mem_read0;
-   wire [35:0] mem_read1;
-   wire [35:0] mem_write;
-   wire we0;
-   wire we1;
+   wire [18:0] mem_address; //memory address to write to
+   wire [35:0] mem_read0; //read memory from zbt0
+   wire [35:0] mem_read1; //read memory from zbt1
+   wire [35:0] mem_write; //data to write to memory
+   wire we0; //write enable for zbt0
+   wire we1; //write enable for zbt1
    
    addresscalculator addr_calc(.reset(switch_sync[7]), //in
                .clk(clock_27mhz),.ready(ready),.record_mode(switch_sync[5]), //in
@@ -627,22 +623,23 @@ module modifiedlab5   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_
                .pause_song(switch_sync[4]), //in
                .mem_address(mem_address),.song_done(song_done));//out
    memprocessor mem_pros(
-               .reset(switch_sync[7]),
+               .reset(switch_sync[7]),//in
                .clk(clock_27mhz),//in
-               .ready(ready),
+               .ready(ready),//in
                .audio_in(from_ac97_data),
                .start_song(start_song),//in
                .song_choice(switch_sync[3:0]),
                .record_mode(switch_sync[5]),//in
                .pause_song(switch_sync[4]),//in
-               .mem_read0(mem_read0),
+               .mem_read0(mem_read0),//in
                .mem_read1(mem_read1),//in
                .song_done(song_done),//in
                .we0(we0),//out
-               .we1(we1),
-               .mem_write(mem_write),
-               .audio_out(to_ac97_data)
+               .we1(we1),//out
+               .mem_write(mem_write),//out
+               .audio_out(to_ac97_data)//out
                );//out
+   //zbt drivers
    zbt_6111 zbt0(.clk(clock_27mhz),.cen(1'b1),.we(we0),
                .addr(mem_address),.write_data(mem_write),
                .read_data(mem_read0),
@@ -655,14 +652,12 @@ module modifiedlab5   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_
                .ram_clk(ram1_clk),.ram_we_b(ram1_we_b),
                .ram_address(ram1_address),.ram_data(ram1_data),
                .ram_cen_b(ram1_cen_b));
-   assign led[6] = ~song_done;
-   assign led[4] = ~we0;
-   assign led[5] = ~we1;
-   assign led[3:0] = ~switch[3:0];
-   /*if (switch_sync[7]) assign led[5:4] = 2'b11;
-   assign led[5:4] = switch_sync[7] ? 2'b11 : 2'b00
-   if (we0) assign led[4] = 0'b0;
-   if (we1) assign led[5] = 0'b0;*/
+   
+   // led assignment, led is active low
+   assign led[7] = ~switch_sync[7]; //on if reset is enabled, else off
+   assign led[6] = ~song_done; //on if song is done, off if not
+   assign led[5:4] = ~switch_sync[5:4]; //record and pause
+   assign led[3:0] = ~switch_sync[3:0]; //songs: 0,1,2,3,4,5,8,9,10,11,12,13
    
    
    // output useful things to the logic analyzer connectors

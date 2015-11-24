@@ -1,0 +1,4 @@
+verilog work "files/zbt_6111.v"
+verilog work "files/memprocessor.v"
+verilog work "files/addresscalculator.v"
+verilog work "files/lab5.v"

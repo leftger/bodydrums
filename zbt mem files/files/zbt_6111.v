@@ -1,4 +1,4 @@
-//
+// :)
 // File:   zbt_6111.v
 // Date:   27-Nov-05
 // Author: I. Chuang <ichuang@mit.edu>
