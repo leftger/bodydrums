@@ -1,5 +1,5 @@
 //memory processor
-/*
+/* :)
 determines when to write to memory and what should be written/read from memory
 a translator between ac97 and the zbt memory output.
 does not handle address calculation.
@@ -48,7 +48,7 @@ module memprocessor(reset, clk, ready, audio_in, start_song,
         
             
             //write logic
-            //write if not paused, song not done, record mode, every other ready asserted, and counter3 == 0
+            //write if not paused, song not done, record mode, ready asserted, and counter3 == 0
             if (~pause_song & ~song_done & record_state & ready & counter3 == 0) begin
                 if (current_song_choice[3]) begin //write to correct zbt SRAM
                     we1 <= 1;
@@ -63,15 +63,14 @@ module memprocessor(reset, clk, ready, audio_in, start_song,
             end //end writing logic
             
             //rest of the logic - what to write, what audio is
-            if (start_song) begin
+            if (start_song) begin //start song, restart read/write
                mem_write <= 36'b0;
-               last_read_mem <= 0;
+               last_read_mem <= 36'b0;
                counter3 <= 0;
                record_state <= record_mode;
                current_song_choice <= song_choice;
             end else
-            if (ready & ~pause_song & ~song_done) begin //if every other ready asserted and song not paused or done
-               
+            if (ready & ~pause_song & ~song_done) begin //if ready asserted and song not paused or done
                
                 //counter incrementation
                 if (counter3 == 2) begin //counter3 ==2, update memory and reset counter3 to 0
@@ -81,13 +80,16 @@ module memprocessor(reset, clk, ready, audio_in, start_song,
                     
                     counter3 <= 0; //reset counter3 to 0 
                 end else counter3 <= counter3 + 1; //increment counter3
-                
-                case (counter3) //which part of last_read_mem you should be reading from for audio
-                    2'b00: audio_out <= last_read_mem[35:24];
-                    2'b01: audio_out <= last_read_mem[23:12];
-                    2'b10: audio_out <= last_read_mem[11:0];
-                    default: audio_out <= 12'b0; //invalid?
-                endcase
+                if (~record_state) begin //playback
+                   case (counter3) //which part of last_read_mem you should be reading from for audio
+                       2'b00: audio_out <= last_read_mem[35:24];
+                       2'b01: audio_out <= last_read_mem[23:12];
+                       2'b10: audio_out <= last_read_mem[11:0];
+                       default: audio_out <= 12'b0; //invalid?
+                   endcase
+                end else begin //record
+                   audio_out <= audio_in;
+                end
                 
                 //update what will be written to memory, shift the mem_write
                 mem_write <= {mem_write[23:0],audio_in};
