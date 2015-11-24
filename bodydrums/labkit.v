@@ -380,7 +380,7 @@ module labkit   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 		.hcount(hcount),.vcount(vcount),
                 .hsync(hsync),.vsync(vsync),.blank(blank),
 		.phsync(phsync),.pvsync(pvsync),.pblank(pblank),.pixel(pixel),
-		.left(left),.right(right),.enter(enter));
+		.left(left),.right(right),.enter(enter),.num(num),.blob(blob));
 
    // switch[1:0] selects which video generator to use:
    //  00: user's pong game
@@ -533,6 +533,8 @@ module pong_game (
 	 
 	 initial begin
 		num_or_blob = 0;
+      num = 0;
+      blob = 0;
 	 end
 	 
 	 always@(negedge vsync) begin
