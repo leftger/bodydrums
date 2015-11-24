@@ -1,0 +1,13 @@
+# Output products list for <three_img>
+three_img.asy
+three_img.mif
+three_img.ngc
+three_img.sym
+three_img.v
+three_img.veo
+three_img.vhd
+three_img.vho
+three_img.xco
+three_img_blk_mem_gen_v2_8_xst_1.ngc_xst.xrpt
+three_img_flist.txt
+three_img_xmdf.tcl

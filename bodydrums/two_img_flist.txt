@@ -1,0 +1,13 @@
+# Output products list for <two_img>
+two_img.asy
+two_img.mif
+two_img.ngc
+two_img.sym
+two_img.v
+two_img.veo
+two_img.vhd
+two_img.vho
+two_img.xco
+two_img_blk_mem_gen_v2_8_xst_1.ngc_xst.xrpt
+two_img_flist.txt
+two_img_xmdf.tcl

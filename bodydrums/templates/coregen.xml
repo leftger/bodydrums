@@ -1,0 +1,647 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RootFolder label="COREGEN" treetype="folder" language="COREGEN">
+	<Folder label="VERILOG Component Instantiation" treetype="folder">
+		<Template label="zero_img" treetype="template">
+ 
+ 
+// The following must be inserted into your Verilog file for this
+// core to be instantiated. Change the instance name and port connections
+// (in parentheses) to your own signal names.
+ 
+zero_img YourInstanceName (
+    .clka(clka),
+    .addra(addra), // Bus [10 : 0] 
+    .douta(douta)); // Bus [1 : 0] 
+
+ 
+		</Template>
+		<Template label="one_img" treetype="template">
+ 
+ 
+// The following must be inserted into your Verilog file for this
+// core to be instantiated. Change the instance name and port connections
+// (in parentheses) to your own signal names.
+ 
+one_img YourInstanceName (
+    .clka(clka),
+    .addra(addra), // Bus [10 : 0] 
+    .douta(douta)); // Bus [1 : 0] 
+
+ 
+		</Template>
+		<Template label="two_img" treetype="template">
+ 
+ 
+// The following must be inserted into your Verilog file for this
+// core to be instantiated. Change the instance name and port connections
+// (in parentheses) to your own signal names.
+ 
+two_img YourInstanceName (
+    .clka(clka),
+    .addra(addra), // Bus [10 : 0] 
+    .douta(douta)); // Bus [1 : 0] 
+
+ 
+		</Template>
+		<Template label="three_img" treetype="template">
+ 
+ 
+// The following must be inserted into your Verilog file for this
+// core to be instantiated. Change the instance name and port connections
+// (in parentheses) to your own signal names.
+ 
+three_img YourInstanceName (
+    .clka(clka),
+    .addra(addra), // Bus [10 : 0] 
+    .douta(douta)); // Bus [1 : 0] 
+
+ 
+		</Template>
+		<Template label="four_img" treetype="template">
+ 
+ 
+// The following must be inserted into your Verilog file for this
+// core to be instantiated. Change the instance name and port connections
+// (in parentheses) to your own signal names.
+ 
+four_img YourInstanceName (
+    .clka(clka),
+    .addra(addra), // Bus [10 : 0] 
+    .douta(douta)); // Bus [1 : 0] 
+
+ 
+		</Template>
+		<Template label="five_img" treetype="template">
+ 
+ 
+// The following must be inserted into your Verilog file for this
+// core to be instantiated. Change the instance name and port connections
+// (in parentheses) to your own signal names.
+ 
+five_img YourInstanceName (
+    .clka(clka),
+    .addra(addra), // Bus [10 : 0] 
+    .douta(douta)); // Bus [1 : 0] 
+
+ 
+		</Template>
+		<Template label="six_img" treetype="template">
+ 
+ 
+// The following must be inserted into your Verilog file for this
+// core to be instantiated. Change the instance name and port connections
+// (in parentheses) to your own signal names.
+ 
+six_img YourInstanceName (
+    .clka(clka),
+    .addra(addra), // Bus [10 : 0] 
+    .douta(douta)); // Bus [1 : 0] 
+
+ 
+		</Template>
+		<Template label="seven_img" treetype="template">
+ 
+ 
+// The following must be inserted into your Verilog file for this
+// core to be instantiated. Change the instance name and port connections
+// (in parentheses) to your own signal names.
+ 
+seven_img YourInstanceName (
+    .clka(clka),
+    .addra(addra), // Bus [10 : 0] 
+    .douta(douta)); // Bus [1 : 0] 
+
+ 
+		</Template>
+		<Template label="eight_img" treetype="template">
+ 
+ 
+// The following must be inserted into your Verilog file for this
+// core to be instantiated. Change the instance name and port connections
+// (in parentheses) to your own signal names.
+ 
+eight_img YourInstanceName (
+    .clka(clka),
+    .addra(addra), // Bus [10 : 0] 
+    .douta(douta)); // Bus [1 : 0] 
+
+ 
+		</Template>
+		<Template label="nine_img" treetype="template">
+ 
+ 
+// The following must be inserted into your Verilog file for this
+// core to be instantiated. Change the instance name and port connections
+// (in parentheses) to your own signal names.
+ 
+nine_img YourInstanceName (
+    .clka(clka),
+    .addra(addra), // Bus [10 : 0] 
+    .douta(douta)); // Bus [1 : 0] 
+
+ 
+		</Template>
+		<Template label="hud_img" treetype="template">
+ 
+ 
+// The following must be inserted into your Verilog file for this
+// core to be instantiated. Change the instance name and port connections
+// (in parentheses) to your own signal names.
+ 
+hud_img YourInstanceName (
+    .clka(clka),
+    .addra(addra), // Bus [16 : 0] 
+    .douta(douta)); // Bus [1 : 0] 
+
+ 
+		</Template>
+		<Template label="red_hud" treetype="template">
+ 
+ 
+// The following must be inserted into your Verilog file for this
+// core to be instantiated. Change the instance name and port connections
+// (in parentheses) to your own signal names.
+ 
+red_hud YourInstanceName (
+    .clka(clka),
+    .addra(addra), // Bus [1 : 0] 
+    .douta(douta)); // Bus [7 : 0] 
+
+ 
+		</Template>
+		<Template label="image_rom" treetype="template">
+ 
+ 
+// The following must be inserted into your Verilog file for this
+// core to be instantiated. Change the instance name and port connections
+// (in parentheses) to your own signal names.
+ 
+image_rom YourInstanceName (
+    .clka(clka),
+    .addra(addra), // Bus [16 : 0] 
+    .douta(douta)); // Bus [5 : 0] 
+
+ 
+		</Template>
+		<Template label="red_table" treetype="template">
+ 
+ 
+// The following must be inserted into your Verilog file for this
+// core to be instantiated. Change the instance name and port connections
+// (in parentheses) to your own signal names.
+ 
+red_table YourInstanceName (
+    .clka(clka),
+    .addra(addra), // Bus [5 : 0] 
+    .douta(douta)); // Bus [7 : 0] 
+
+ 
+		</Template>
+		<Template label="green_table" treetype="template">
+ 
+ 
+// The following must be inserted into your Verilog file for this
+// core to be instantiated. Change the instance name and port connections
+// (in parentheses) to your own signal names.
+ 
+green_table YourInstanceName (
+    .clka(clka),
+    .addra(addra), // Bus [5 : 0] 
+    .douta(douta)); // Bus [7 : 0] 
+
+ 
+		</Template>
+		<Template label="blue_table" treetype="template">
+ 
+ 
+// The following must be inserted into your Verilog file for this
+// core to be instantiated. Change the instance name and port connections
+// (in parentheses) to your own signal names.
+ 
+blue_table YourInstanceName (
+    .clka(clka),
+    .addra(addra), // Bus [5 : 0] 
+    .douta(douta)); // Bus [7 : 0] 
+
+ 
+		</Template>
+	</Folder>
+	<Folder label="VHDL Component Instantiation" treetype="folder">
+		<Template label="zero_img" treetype="template">
+ 
+ 
+-- The following code must appear in the VHDL architecture header:
+ 
+component zero_img
+    port (
+    clka: IN std_logic;
+    addra: IN std_logic_VECTOR(10 downto 0);
+    douta: OUT std_logic_VECTOR(1 downto 0));
+end component;
+
+
+ 
+-------------------------------------------------------------
+ 
+-- The following code must appear in the VHDL architecture body.
+-- Substitute your own instance name and net names.
+ 
+your_instance_name : zero_img
+        port map (
+            clka =&gt; clka,
+            addra =&gt; addra,
+            douta =&gt; douta);
+ 
+		</Template>
+		<Template label="one_img" treetype="template">
+ 
+ 
+-- The following code must appear in the VHDL architecture header:
+ 
+component one_img
+    port (
+    clka: IN std_logic;
+    addra: IN std_logic_VECTOR(10 downto 0);
+    douta: OUT std_logic_VECTOR(1 downto 0));
+end component;
+
+
+ 
+-------------------------------------------------------------
+ 
+-- The following code must appear in the VHDL architecture body.
+-- Substitute your own instance name and net names.
+ 
+your_instance_name : one_img
+        port map (
+            clka =&gt; clka,
+            addra =&gt; addra,
+            douta =&gt; douta);
+ 
+		</Template>
+		<Template label="two_img" treetype="template">
+ 
+ 
+-- The following code must appear in the VHDL architecture header:
+ 
+component two_img
+    port (
+    clka: IN std_logic;
+    addra: IN std_logic_VECTOR(10 downto 0);
+    douta: OUT std_logic_VECTOR(1 downto 0));
+end component;
+
+
+ 
+-------------------------------------------------------------
+ 
+-- The following code must appear in the VHDL architecture body.
+-- Substitute your own instance name and net names.
+ 
+your_instance_name : two_img
+        port map (
+            clka =&gt; clka,
+            addra =&gt; addra,
+            douta =&gt; douta);
+ 
+		</Template>
+		<Template label="three_img" treetype="template">
+ 
+ 
+-- The following code must appear in the VHDL architecture header:
+ 
+component three_img
+    port (
+    clka: IN std_logic;
+    addra: IN std_logic_VECTOR(10 downto 0);
+    douta: OUT std_logic_VECTOR(1 downto 0));
+end component;
+
+
+ 
+-------------------------------------------------------------
+ 
+-- The following code must appear in the VHDL architecture body.
+-- Substitute your own instance name and net names.
+ 
+your_instance_name : three_img
+        port map (
+            clka =&gt; clka,
+            addra =&gt; addra,
+            douta =&gt; douta);
+ 
+		</Template>
+		<Template label="four_img" treetype="template">
+ 
+ 
+-- The following code must appear in the VHDL architecture header:
+ 
+component four_img
+    port (
+    clka: IN std_logic;
+    addra: IN std_logic_VECTOR(10 downto 0);
+    douta: OUT std_logic_VECTOR(1 downto 0));
+end component;
+
+
+ 
+-------------------------------------------------------------
+ 
+-- The following code must appear in the VHDL architecture body.
+-- Substitute your own instance name and net names.
+ 
+your_instance_name : four_img
+        port map (
+            clka =&gt; clka,
+            addra =&gt; addra,
+            douta =&gt; douta);
+ 
+		</Template>
+		<Template label="five_img" treetype="template">
+ 
+ 
+-- The following code must appear in the VHDL architecture header:
+ 
+component five_img
+    port (
+    clka: IN std_logic;
+    addra: IN std_logic_VECTOR(10 downto 0);
+    douta: OUT std_logic_VECTOR(1 downto 0));
+end component;
+
+
+ 
+-------------------------------------------------------------
+ 
+-- The following code must appear in the VHDL architecture body.
+-- Substitute your own instance name and net names.
+ 
+your_instance_name : five_img
+        port map (
+            clka =&gt; clka,
+            addra =&gt; addra,
+            douta =&gt; douta);
+ 
+		</Template>
+		<Template label="six_img" treetype="template">
+ 
+ 
+-- The following code must appear in the VHDL architecture header:
+ 
+component six_img
+    port (
+    clka: IN std_logic;
+    addra: IN std_logic_VECTOR(10 downto 0);
+    douta: OUT std_logic_VECTOR(1 downto 0));
+end component;
+
+
+ 
+-------------------------------------------------------------
+ 
+-- The following code must appear in the VHDL architecture body.
+-- Substitute your own instance name and net names.
+ 
+your_instance_name : six_img
+        port map (
+            clka =&gt; clka,
+            addra =&gt; addra,
+            douta =&gt; douta);
+ 
+		</Template>
+		<Template label="seven_img" treetype="template">
+ 
+ 
+-- The following code must appear in the VHDL architecture header:
+ 
+component seven_img
+    port (
+    clka: IN std_logic;
+    addra: IN std_logic_VECTOR(10 downto 0);
+    douta: OUT std_logic_VECTOR(1 downto 0));
+end component;
+
+
+ 
+-------------------------------------------------------------
+ 
+-- The following code must appear in the VHDL architecture body.
+-- Substitute your own instance name and net names.
+ 
+your_instance_name : seven_img
+        port map (
+            clka =&gt; clka,
+            addra =&gt; addra,
+            douta =&gt; douta);
+ 
+		</Template>
+		<Template label="eight_img" treetype="template">
+ 
+ 
+-- The following code must appear in the VHDL architecture header:
+ 
+component eight_img
+    port (
+    clka: IN std_logic;
+    addra: IN std_logic_VECTOR(10 downto 0);
+    douta: OUT std_logic_VECTOR(1 downto 0));
+end component;
+
+
+ 
+-------------------------------------------------------------
+ 
+-- The following code must appear in the VHDL architecture body.
+-- Substitute your own instance name and net names.
+ 
+your_instance_name : eight_img
+        port map (
+            clka =&gt; clka,
+            addra =&gt; addra,
+            douta =&gt; douta);
+ 
+		</Template>
+		<Template label="nine_img" treetype="template">
+ 
+ 
+-- The following code must appear in the VHDL architecture header:
+ 
+component nine_img
+    port (
+    clka: IN std_logic;
+    addra: IN std_logic_VECTOR(10 downto 0);
+    douta: OUT std_logic_VECTOR(1 downto 0));
+end component;
+
+
+ 
+-------------------------------------------------------------
+ 
+-- The following code must appear in the VHDL architecture body.
+-- Substitute your own instance name and net names.
+ 
+your_instance_name : nine_img
+        port map (
+            clka =&gt; clka,
+            addra =&gt; addra,
+            douta =&gt; douta);
+ 
+		</Template>
+		<Template label="hud_img" treetype="template">
+ 
+ 
+-- The following code must appear in the VHDL architecture header:
+ 
+component hud_img
+    port (
+    clka: IN std_logic;
+    addra: IN std_logic_VECTOR(16 downto 0);
+    douta: OUT std_logic_VECTOR(1 downto 0));
+end component;
+
+
+ 
+-------------------------------------------------------------
+ 
+-- The following code must appear in the VHDL architecture body.
+-- Substitute your own instance name and net names.
+ 
+your_instance_name : hud_img
+        port map (
+            clka =&gt; clka,
+            addra =&gt; addra,
+            douta =&gt; douta);
+ 
+		</Template>
+		<Template label="red_hud" treetype="template">
+ 
+ 
+-- The following code must appear in the VHDL architecture header:
+ 
+component red_hud
+    port (
+    clka: IN std_logic;
+    addra: IN std_logic_VECTOR(1 downto 0);
+    douta: OUT std_logic_VECTOR(7 downto 0));
+end component;
+
+
+ 
+-------------------------------------------------------------
+ 
+-- The following code must appear in the VHDL architecture body.
+-- Substitute your own instance name and net names.
+ 
+your_instance_name : red_hud
+        port map (
+            clka =&gt; clka,
+            addra =&gt; addra,
+            douta =&gt; douta);
+ 
+		</Template>
+		<Template label="image_rom" treetype="template">
+ 
+ 
+-- The following code must appear in the VHDL architecture header:
+ 
+component image_rom
+    port (
+    clka: IN std_logic;
+    addra: IN std_logic_VECTOR(16 downto 0);
+    douta: OUT std_logic_VECTOR(5 downto 0));
+end component;
+
+
+ 
+-------------------------------------------------------------
+ 
+-- The following code must appear in the VHDL architecture body.
+-- Substitute your own instance name and net names.
+ 
+your_instance_name : image_rom
+        port map (
+            clka =&gt; clka,
+            addra =&gt; addra,
+            douta =&gt; douta);
+ 
+		</Template>
+		<Template label="red_table" treetype="template">
+ 
+ 
+-- The following code must appear in the VHDL architecture header:
+ 
+component red_table
+    port (
+    clka: IN std_logic;
+    addra: IN std_logic_VECTOR(5 downto 0);
+    douta: OUT std_logic_VECTOR(7 downto 0));
+end component;
+
+
+ 
+-------------------------------------------------------------
+ 
+-- The following code must appear in the VHDL architecture body.
+-- Substitute your own instance name and net names.
+ 
+your_instance_name : red_table
+        port map (
+            clka =&gt; clka,
+            addra =&gt; addra,
+            douta =&gt; douta);
+ 
+		</Template>
+		<Template label="green_table" treetype="template">
+ 
+ 
+-- The following code must appear in the VHDL architecture header:
+ 
+component green_table
+    port (
+    clka: IN std_logic;
+    addra: IN std_logic_VECTOR(5 downto 0);
+    douta: OUT std_logic_VECTOR(7 downto 0));
+end component;
+
+
+ 
+-------------------------------------------------------------
+ 
+-- The following code must appear in the VHDL architecture body.
+-- Substitute your own instance name and net names.
+ 
+your_instance_name : green_table
+        port map (
+            clka =&gt; clka,
+            addra =&gt; addra,
+            douta =&gt; douta);
+ 
+		</Template>
+		<Template label="blue_table" treetype="template">
+ 
+ 
+-- The following code must appear in the VHDL architecture header:
+ 
+component blue_table
+    port (
+    clka: IN std_logic;
+    addra: IN std_logic_VECTOR(5 downto 0);
+    douta: OUT std_logic_VECTOR(7 downto 0));
+end component;
+
+
+ 
+-------------------------------------------------------------
+ 
+-- The following code must appear in the VHDL architecture body.
+-- Substitute your own instance name and net names.
+ 
+your_instance_name : blue_table
+        port map (
+            clka =&gt; clka,
+            addra =&gt; addra,
+            douta =&gt; douta);
+ 
+		</Template>
+	</Folder>
+</RootFolder>

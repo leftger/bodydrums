@@ -1,0 +1,13 @@
+# Output products list for <hud_img>
+hud_img.asy
+hud_img.mif
+hud_img.ngc
+hud_img.sym
+hud_img.v
+hud_img.veo
+hud_img.vhd
+hud_img.vho
+hud_img.xco
+hud_img_blk_mem_gen_v2_8_xst_1.ngc_xst.xrpt
+hud_img_flist.txt
+hud_img_xmdf.tcl

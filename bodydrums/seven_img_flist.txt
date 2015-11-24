@@ -1,0 +1,13 @@
+# Output products list for <seven_img>
+seven_img.asy
+seven_img.mif
+seven_img.ngc
+seven_img.sym
+seven_img.v
+seven_img.veo
+seven_img.vhd
+seven_img.vho
+seven_img.xco
+seven_img_blk_mem_gen_v2_8_xst_1.ngc_xst.xrpt
+seven_img_flist.txt
+seven_img_xmdf.tcl

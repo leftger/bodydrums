@@ -1,0 +1,13 @@
+# Output products list for <one_img>
+one_img.asy
+one_img.mif
+one_img.ngc
+one_img.sym
+one_img.v
+one_img.veo
+one_img.vhd
+one_img.vho
+one_img.xco
+one_img_blk_mem_gen_v2_8_xst_1.ngc_xst.xrpt
+one_img_flist.txt
+one_img_xmdf.tcl

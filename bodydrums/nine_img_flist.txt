@@ -1,0 +1,13 @@
+# Output products list for <nine_img>
+nine_img.asy
+nine_img.mif
+nine_img.ngc
+nine_img.sym
+nine_img.v
+nine_img.veo
+nine_img.vhd
+nine_img.vho
+nine_img.xco
+nine_img_blk_mem_gen_v2_8_xst_1.ngc_xst.xrpt
+nine_img_flist.txt
+nine_img_xmdf.tcl

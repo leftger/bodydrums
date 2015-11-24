@@ -1,0 +1,13 @@
+# Output products list for <blue_table>
+blue_table.asy
+blue_table.mif
+blue_table.ngc
+blue_table.sym
+blue_table.v
+blue_table.veo
+blue_table.vhd
+blue_table.vho
+blue_table.xco
+blue_table_blk_mem_gen_v2_8_xst_1.ngc_xst.xrpt
+blue_table_flist.txt
+blue_table_xmdf.tcl
