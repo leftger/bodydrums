@@ -21,20 +21,14 @@
 module digit_blob
 	#(parameter WIDTH = 25, HEIGHT = 52)
 	(input pixel_clk,
-	input [3:0] number,
-	input write_num,
 	input [10:0] x,hcount,
 	input [9:0] y,vcount,
 	output [10:0] image_addr,
-	output reg overlap,
-	output reg [3:0] out_num
+	output reg overlap
 	);
 	 
 	 
 	 always@ (posedge pixel_clk) begin
-		if (write_num)
-			out_num <= number;
-		else out_num <= out_num;
 		if ((hcount >= x && hcount < (x+WIDTH)) &&
 			(vcount >= y && vcount < (y+HEIGHT)))
 			overlap <= 1;

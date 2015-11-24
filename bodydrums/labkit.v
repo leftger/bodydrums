@@ -347,10 +347,13 @@ module labkit   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
    assign reset = user_reset | power_on_reset;
    
    // UP and DOWN buttons for pong paddle
-   wire up,down;
+   wire up,down,left,right,enter;
    debounce db2(.reset(reset),.clock(clock_65mhz),.noisy(~button_up),.clean(up));
    debounce db3(.reset(reset),.clock(clock_65mhz),.noisy(~button_down),.clean(down));
-
+	debounce db4(.reset(reset),.clock(clock_65mhz),.noisy(~button_left),.clean(left));
+   debounce db5(.reset(reset),.clock(clock_65mhz),.noisy(~button_right),.clean(right));
+	debounce db6(.reset(reset),.clock(clock_65mhz),.noisy(~button_enter),.clean(enter));
+	
    // generate basic XVGA video signals
    wire [10:0] hcount;
    wire [9:0]  vcount;
@@ -365,7 +368,8 @@ module labkit   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
                 .up(up),.down(down),.pspeed(switch[7:4]),
 		.hcount(hcount),.vcount(vcount),
                 .hsync(hsync),.vsync(vsync),.blank(blank),
-		.phsync(phsync),.pvsync(pvsync),.pblank(pblank),.pixel(pixel));
+		.phsync(phsync),.pvsync(pvsync),.pblank(pblank),.pixel(pixel),
+		.left(left),.right(right),.enter(enter));
 
    // switch[1:0] selects which video generator to use:
    //  00: user's pong game
@@ -468,6 +472,9 @@ module pong_game (
    input reset,		// 1 to initialize module
    input up,		// 1 when paddle should move up
    input down,  	// 1 when paddle should move down
+	input left,
+	input right,
+	input enter,
    input [3:0] pspeed,  // puck speed in pixels/tick 
    input [10:0] hcount,	// horizontal index of current pixel (0..1023)
    input [9:0] 	vcount, // vertical index of current pixel (0..767)
@@ -507,5 +514,36 @@ module pong_game (
 	(.pixel_clk(vclock),.x(512),.hcount(hcount),.y(0),.vcount(vcount),
 	.pixel(hud_pixel));
 	
-	assign pixel = hud_pixel | pic_pixel;
+	wire [23:0] digit_pixel;
+
+	 
+	 reg[3:0] num;
+	 reg[3:0] blob;
+	 reg num_or_blob;
+	 
+	 initial begin
+		num_or_blob = 0;
+	 end
+	 
+	 always@(negedge vsync) begin
+		if(right || left) begin
+			num_or_blob <= ~num_or_blob;
+		end
+		if(up) begin
+			case(num_or_blob)
+				0 : num <= num + 1;
+				1 : blob <= blob + 1;
+			endcase
+		end else if (down) begin
+			case(num_or_blob)
+				0 : num <= num - 1;
+				1 : blob <= blob - 1;
+			endcase
+		end
+	 end
+	 
+	 hud_digits ma_digs(.clk(vclock),.write(button_enter),.num(num),
+		.blob(blob),.hcount(hcount),.vcount(vcount),.pixel(digit_pixel));
+	
+	assign pixel = hud_pixel | pic_pixel | digit_pixel;
 endmodule

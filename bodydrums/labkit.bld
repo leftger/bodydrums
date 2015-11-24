@@ -11,11 +11,41 @@ Reading NGO file
 "/afs/athena.mit.edu/user/g/r/grosas/6.111/Final_Project/bodydrums/bodydrums/lab
 kit.ngc" ...
 Loading design module
-"/afs/athena.mit.edu/user/g/r/grosas/6.111/Final_Project/bodydrums/bodydrums/hud
-_img.ngc"...
-Loading design module
 "/afs/athena.mit.edu/user/g/r/grosas/6.111/Final_Project/bodydrums/bodydrums/red
 _hud.ngc"...
+Loading design module
+"/afs/athena.mit.edu/user/g/r/grosas/6.111/Final_Project/bodydrums/bodydrums/nin
+e_img.ngc"...
+Loading design module
+"/afs/athena.mit.edu/user/g/r/grosas/6.111/Final_Project/bodydrums/bodydrums/eig
+ht_img.ngc"...
+Loading design module
+"/afs/athena.mit.edu/user/g/r/grosas/6.111/Final_Project/bodydrums/bodydrums/sev
+en_img.ngc"...
+Loading design module
+"/afs/athena.mit.edu/user/g/r/grosas/6.111/Final_Project/bodydrums/bodydrums/six
+_img.ngc"...
+Loading design module
+"/afs/athena.mit.edu/user/g/r/grosas/6.111/Final_Project/bodydrums/bodydrums/fiv
+e_img.ngc"...
+Loading design module
+"/afs/athena.mit.edu/user/g/r/grosas/6.111/Final_Project/bodydrums/bodydrums/fou
+r_img.ngc"...
+Loading design module
+"/afs/athena.mit.edu/user/g/r/grosas/6.111/Final_Project/bodydrums/bodydrums/thr
+ee_img.ngc"...
+Loading design module
+"/afs/athena.mit.edu/user/g/r/grosas/6.111/Final_Project/bodydrums/bodydrums/two
+_img.ngc"...
+Loading design module
+"/afs/athena.mit.edu/user/g/r/grosas/6.111/Final_Project/bodydrums/bodydrums/one
+_img.ngc"...
+Loading design module
+"/afs/athena.mit.edu/user/g/r/grosas/6.111/Final_Project/bodydrums/bodydrums/zer
+o_img.ngc"...
+Loading design module
+"/afs/athena.mit.edu/user/g/r/grosas/6.111/Final_Project/bodydrums/bodydrums/hud
+_img.ngc"...
 Loading design module
 "/afs/athena.mit.edu/user/g/r/grosas/6.111/Final_Project/bodydrums/bodydrums/ima
 ge_rom.ngc"...
@@ -332,7 +362,7 @@ NGDBUILD Design Results Summary:
   Number of errors:     0
   Number of warnings: 277
 
-Total memory usage is 231204 kilobytes
+Total memory usage is 233768 kilobytes
 
 Writing NGD file "labkit.ngd" ...
 

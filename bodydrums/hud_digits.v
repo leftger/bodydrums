@@ -19,47 +19,96 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 module hud_digits(
-    input [10:0] clk,
-    input [9:0] hcount,
-    input vcount,
+    input clk,
+	 input write,
+	 input [3:0] num,
+	 input [3:0] blob,
+    input [10:0] hcount,
+    input [9:0] vcount,
     output [23:0] pixel
     );
 	 wire [10:0] image_addr[13:0];
 	 reg [3:0] number [13:0];
 	 wire [13:0] overlap;
-	 wire [13:0] write_num;
-	 wire [3:0] out_num [13:0];
 	 
 	 genvar i;
+	 // generate the digit sprites/blobs
 	 generate
-		 for ( i = 0; i < 13; i = i+1 ) begin : ripple
+		 for ( i = 0; i < 14; i = i+1 ) begin : ripple
 			 digit_blob un_blob(.x(i*25),.hcount(hcount), .y(767-52),
 				 .vcount(vcount),.image_addr(image_addr[i]),
-				 .overlap(overlap[i]),.write_num(write_num[i]),
-				 .out_num(out_num[i]),.number(number[i]));
+				 .overlap(overlap[i]));
 		 end
 	 endgenerate
 	 
+	 // write specified digit to sprite for display
+	 
+	 always @(posedge clk) begin
+		if(write) begin
+			case(blob)
+				0 : number[0] <= num;
+				1 : number[1] <= num;
+				2 : number[2] <= num;
+				3 : number[3] <= num;
+				4 : number[4] <= num;
+				5 : number[5] <= num;
+				6 : number[6] <= num;
+				7 : number[7] <= num;
+				8 : number[8] <= num;
+				9 : number[9] <= num;
+				10 : number[10] <= num;
+				11 : number[11] <= num;
+				12 : number[12] <= num;
+				13 : number[13] <= num;
+				default: number[0] <= number[0];
+			endcase
+		end
+	 end
+ 
 	 wire [3:0] selected_sprite;
-	 wire [10:0] address_out;
-	 wire [3:0] num_sel_out;
+	 reg [10:0] address_out;
+	 reg [3:0] num_sel_out;
 	 
 	 // selects the sprite to pull the address from depending
 	 // if the hcount and vcount overlap with the sprite's location
-	 sprite_img_selector the_sel(.sprites(overlap),.selected(selected_sprite));
+	 sprite_img_selector the_sel(.clk(clk),.sprites(overlap),.selected(selected_sprite));
+
 	 
-	 always @(*) begin
+	 always @(posedge clk) begin
 		case(selected_sprite)
-			for(g = 1; g < 15: g = g+1) begin
-				g : begin address_out <= image_addr[g];
-					num_sel_out <= out_num[g]; end
-			end
-			default : begin address_out <= 0;
-				num_sel_out <= 0; end
+				1 : begin address_out <= image_addr[0];
+					num_sel_out <= number[0]; end
+				2 : begin address_out <= image_addr[1];
+					num_sel_out <= number[1]; end
+				3 : begin address_out<= image_addr[2];
+					num_sel_out<= number[2]; end
+				4 : begin address_out<= image_addr[3];
+					num_sel_out<= number[3]; end
+				5 : begin address_out<= image_addr[4];
+					num_sel_out<= number[4]; end
+				6 : begin address_out<= image_addr[5];
+					num_sel_out<= number[5]; end
+				7 : begin address_out<= image_addr[6];
+					num_sel_out<= number[6]; end
+				8 : begin address_out<= image_addr[7];
+					num_sel_out <=number[7]; end
+				9 : begin address_out <=image_addr[8];
+					num_sel_out<= number[8]; end
+				10 : begin address_out<= image_addr[9];
+					num_sel_out<= number[9]; end
+				11 : begin address_out<= image_addr[10];
+					num_sel_out<= number[10]; end
+				12 : begin address_out<= image_addr[11];
+					num_sel_out<= number[11]; end
+				13 : begin address_out <=image_addr[12];
+					num_sel_out<= number[12]; end
+				14 : begin address_out <=image_addr[13];
+					num_sel_out <=number[13]; end
+			default : begin address_out<= 0;
+				num_sel_out<= 0; end
 		endcase
 	 end
-	 
-	 
+
 	 wire [7:0] red_pixel;
 	 
 	 assign pixel = {red_pixel,8'b0, 8'b0};

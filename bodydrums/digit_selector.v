@@ -26,7 +26,8 @@ module digit_selector(
     );
 	 
 	 wire [1:0] zeroes, ones, twos, threes, fours, fives, sixes,
-		sevens, eights, nines, to_color_map;
+		sevens, eights, nines;
+	 reg [1:0]to_color_map;
 		
 	 zero_img img_cero(.clka(clk),.addra(address),.douta(zeroes));
 	 one_img img_uno(.clka(clk),.addra(address),.douta(ones));
@@ -39,19 +40,19 @@ module digit_selector(
 	 eight_img img_ocho(.clka(clk),.addra(address),.douta(eights));
 	 nine_img img_nueve(.clka(clk),.addra(address),.douta(nines));
 	 
-	 always @(*) begin
+	 always @(posedge clk) begin
 		case (num_sel)
-			0: to_color_map = zeroes;
-			1: to_color_map = ones;
-			2: to_color_map = twos;
-			3: to_color_map = threes;
-			4: to_color_map = fours;
-			5: to_color_map = fives;
-			6: to_color_map = sixes;
-			7: to_color_map = sevens;
-			8: to_color_map = eights;
-			9: to_color_map = nines;
-			default: to_color_map = 2'b00;
+			0: to_color_map <= zeroes;
+			1: to_color_map <= ones;
+			2: to_color_map <= twos;
+			3: to_color_map <= threes;
+			4: to_color_map <= fours;
+			5: to_color_map <= fives;
+			6: to_color_map <= sixes;
+			7: to_color_map <= sevens;
+			8: to_color_map <= eights;
+			9: to_color_map <= nines;
+			default: to_color_map <= 2'b00;
 		endcase
 	 end
 	 
