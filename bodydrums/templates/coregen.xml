@@ -225,6 +225,8 @@ blue_table YourInstanceName (
 
  
 		</Template>
+		<Template label="stupid_ram" treetype="template">
+		</Template>
 	</Folder>
 	<Folder label="VHDL Component Instantiation" treetype="folder">
 		<Template label="zero_img" treetype="template">
@@ -642,6 +644,8 @@ your_instance_name : blue_table
             addra =&gt; addra,
             douta =&gt; douta);
  
+		</Template>
+		<Template label="stupid_ram" treetype="template">
 		</Template>
 	</Folder>
 </RootFolder>
