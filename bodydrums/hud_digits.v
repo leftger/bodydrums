@@ -35,7 +35,7 @@ module hud_digits(
 	 // generate the digit sprites/blobs
 	 generate
 		 for ( i = 0; i < 14; i = i+1 ) begin : ripple
-			 digit_blob un_blob(.pixel_clk(clk),.x(i*26),.hcount(hcount), .y(1),
+			 digit_blob un_blob(.pixel_clk(clk),.x(i*27),.hcount(hcount), .y(1),
 				 .vcount(vcount),.image_addr(image_addr[i]),
 				 .overlap(overlap[i]));
 		 end

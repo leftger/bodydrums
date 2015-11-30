@@ -557,5 +557,5 @@ module pong_game (
 	 hud_digits ma_digs(.clk(vclock),.write(enter),.num(num),
 		.blob(blob),.hcount(hcount),.vcount(vcount),.pixel(digit_pixel));
 	
-	assign pixel = /*hud_pixel | pic_pixel | */digit_pixel;
+	assign pixel = hud_pixel | pic_pixel | digit_pixel;
 endmodule

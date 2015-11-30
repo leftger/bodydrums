@@ -1,5 +1,5 @@
 NUM_USER_FILES
-25
+26
 s
 user_file_1
 digit_blob.v
@@ -54,6 +54,9 @@ labkit.ucf
 s
 user_file_25
 display_16hex.v
+s
+user_file_26
+hud_digits_tb.v
 s
 user_file_3
 hud_blob.v

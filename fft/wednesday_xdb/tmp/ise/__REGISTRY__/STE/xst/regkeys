@@ -1,5 +1,5 @@
 CommandLine
-/afs/csail.mit.edu/proj/redsocs/Xilinx10.1/ISE/bin/lin64/unwrapped/xst -ise /afs/athena.mit.edu/user/g/e/germainm/6.111/Final_Project/bodydrums/fft/wednesday.ise -intstyle ise -ifn /afs/athena.mit.edu/user/g/e/germainm/6.111/Final_Project/bodydrums/fft/fft.xst -ofn /afs/athena.mit.edu/user/g/e/germainm/6.111/Final_Project/bodydrums/fft/fft.syr -finalclean 1
+/afs/csail.mit.edu/proj/redsocs/Xilinx10.1/ISE/bin/lin64/unwrapped/xst -ise /afs/athena.mit.edu/user/g/r/grosas/6.111/Final_Project/bodydrums/fft/wednesday.ise -intstyle ise -ifn /afs/athena.mit.edu/user/g/r/grosas/6.111/Final_Project/bodydrums/fft/fft.xst -ofn /afs/athena.mit.edu/user/g/r/grosas/6.111/Final_Project/bodydrums/fft/fft.syr -finalclean 1
 s
 FormatString
 xst [-ifn <InputFile>] [-ofn <OutputFile>] [-ise <iseProjectFile>] [--quiet] [-intstyle <Style>] [--deb <DebugLevel>] [--finalclean <Clean>] [--PcubeFlow] [--globOptFlow] [--XstNtrc]

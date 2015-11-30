@@ -1,2 +1,2 @@
-verilog work "fft16384u.v"
+verilog work "./fft16384u.v"
 verilog work "fft.v"

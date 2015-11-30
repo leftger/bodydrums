@@ -1,5 +1,5 @@
-set -tmpdir "/afs/athena.mit.edu/user/g/e/germainm/6.111/Final_Project/bodydrums/fft/xst/projnav.tmp"
-set -xsthdpdir "/afs/athena.mit.edu/user/g/e/germainm/6.111/Final_Project/bodydrums/fft/xst"
+set -tmpdir "/afs/athena.mit.edu/user/g/r/grosas/6.111/Final_Project/bodydrums/fft/xst/projnav.tmp"
+set -xsthdpdir "/afs/athena.mit.edu/user/g/r/grosas/6.111/Final_Project/bodydrums/fft/xst"
 run
 -ifn fft.prj
 -ifmt mixed

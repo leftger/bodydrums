@@ -5,14 +5,14 @@ Parameter TMPDIR set to /afs/athena.mit.edu/user/g/r/grosas/6.111/Final_Project/
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.05 secs
+Total CPU time to Xst completion: 0.06 secs
  
 --> 
 Parameter xsthdpdir set to /afs/athena.mit.edu/user/g/r/grosas/6.111/Final_Project/bodydrums/bodydrums/xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.05 secs
+Total CPU time to Xst completion: 0.06 secs
  
 --> 
 Reading design: labkit.prj
@@ -447,8 +447,6 @@ Synthesizing Unit <pong_game>.
     Related source file is "labkit.v".
 WARNING:Xst:647 - Input <pspeed> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <reset> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-WARNING:Xst:646 - Signal <pic_pixel> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:646 - Signal <hud_pixel> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <checkerboard> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
     Found 4-bit updown counter for signal <num>.
     Found 4-bit updown counter for signal <blob>.
@@ -765,8 +763,6 @@ WARNING:Xst:2565 - Inout <user3<31>> is never assigned.
 WARNING:Xst:2565 - Inout <user3<2>> is never assigned.
 WARNING:Xst:2565 - Inout <user3<27>> is never assigned.
 WARNING:Xst:2565 - Inout <user3<3>> is never assigned.
-WARNING:Xst:653 - Signal <num> is used but never assigned. This sourceless signal will be automatically connected to value 0000.
-WARNING:Xst:653 - Signal <blob> is used but never assigned. This sourceless signal will be automatically connected to value 0000.
     Found 1-bit register for signal <b>.
     Found 1-bit 4-to-1 multiplexer for signal <b$mux0000>.
     Found 1-bit register for signal <hs>.
@@ -920,38 +916,6 @@ WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_12> (without 
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_13> (without init value) has a constant value of 0 in block <hud_blob>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_14> (without init value) has a constant value of 0 in block <hud_blob>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_15> (without init value) has a constant value of 0 in block <hud_blob>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:2677 - Node <pixel_0> of sequential type is unconnected in block <myblob>.
-WARNING:Xst:2677 - Node <pixel_1> of sequential type is unconnected in block <myblob>.
-WARNING:Xst:2677 - Node <pixel_2> of sequential type is unconnected in block <myblob>.
-WARNING:Xst:2677 - Node <pixel_3> of sequential type is unconnected in block <myblob>.
-WARNING:Xst:2677 - Node <pixel_4> of sequential type is unconnected in block <myblob>.
-WARNING:Xst:2677 - Node <pixel_5> of sequential type is unconnected in block <myblob>.
-WARNING:Xst:2677 - Node <pixel_6> of sequential type is unconnected in block <myblob>.
-WARNING:Xst:2677 - Node <pixel_7> of sequential type is unconnected in block <myblob>.
-WARNING:Xst:2677 - Node <pixel_8> of sequential type is unconnected in block <myblob>.
-WARNING:Xst:2677 - Node <pixel_9> of sequential type is unconnected in block <myblob>.
-WARNING:Xst:2677 - Node <pixel_10> of sequential type is unconnected in block <myblob>.
-WARNING:Xst:2677 - Node <pixel_11> of sequential type is unconnected in block <myblob>.
-WARNING:Xst:2677 - Node <pixel_12> of sequential type is unconnected in block <myblob>.
-WARNING:Xst:2677 - Node <pixel_13> of sequential type is unconnected in block <myblob>.
-WARNING:Xst:2677 - Node <pixel_14> of sequential type is unconnected in block <myblob>.
-WARNING:Xst:2677 - Node <pixel_15> of sequential type is unconnected in block <myblob>.
-WARNING:Xst:2677 - Node <pixel_16> of sequential type is unconnected in block <myblob>.
-WARNING:Xst:2677 - Node <pixel_17> of sequential type is unconnected in block <myblob>.
-WARNING:Xst:2677 - Node <pixel_18> of sequential type is unconnected in block <myblob>.
-WARNING:Xst:2677 - Node <pixel_19> of sequential type is unconnected in block <myblob>.
-WARNING:Xst:2677 - Node <pixel_20> of sequential type is unconnected in block <myblob>.
-WARNING:Xst:2677 - Node <pixel_21> of sequential type is unconnected in block <myblob>.
-WARNING:Xst:2677 - Node <pixel_22> of sequential type is unconnected in block <myblob>.
-WARNING:Xst:2677 - Node <pixel_23> of sequential type is unconnected in block <myblob>.
-WARNING:Xst:2677 - Node <pixel_16> of sequential type is unconnected in block <thehud>.
-WARNING:Xst:2677 - Node <pixel_17> of sequential type is unconnected in block <thehud>.
-WARNING:Xst:2677 - Node <pixel_18> of sequential type is unconnected in block <thehud>.
-WARNING:Xst:2677 - Node <pixel_19> of sequential type is unconnected in block <thehud>.
-WARNING:Xst:2677 - Node <pixel_20> of sequential type is unconnected in block <thehud>.
-WARNING:Xst:2677 - Node <pixel_21> of sequential type is unconnected in block <thehud>.
-WARNING:Xst:2677 - Node <pixel_22> of sequential type is unconnected in block <thehud>.
-WARNING:Xst:2677 - Node <pixel_23> of sequential type is unconnected in block <thehud>.
 
 =========================================================================
 Advanced HDL Synthesis Report
@@ -999,38 +963,6 @@ Macro Statistics
 =========================================================================
 *                         Low Level Synthesis                           *
 =========================================================================
-WARNING:Xst:2677 - Node <pg/thehud/pixel_16> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <pg/thehud/pixel_17> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <pg/thehud/pixel_18> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <pg/thehud/pixel_19> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <pg/thehud/pixel_20> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <pg/thehud/pixel_21> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <pg/thehud/pixel_22> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <pg/thehud/pixel_23> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <pg/myblob/pixel_0> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <pg/myblob/pixel_1> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <pg/myblob/pixel_2> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <pg/myblob/pixel_3> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <pg/myblob/pixel_4> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <pg/myblob/pixel_5> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <pg/myblob/pixel_6> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <pg/myblob/pixel_7> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <pg/myblob/pixel_8> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <pg/myblob/pixel_9> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <pg/myblob/pixel_10> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <pg/myblob/pixel_11> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <pg/myblob/pixel_12> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <pg/myblob/pixel_13> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <pg/myblob/pixel_14> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <pg/myblob/pixel_15> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <pg/myblob/pixel_16> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <pg/myblob/pixel_17> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <pg/myblob/pixel_18> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <pg/myblob/pixel_19> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <pg/myblob/pixel_20> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <pg/myblob/pixel_21> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <pg/myblob/pixel_22> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <pg/myblob/pixel_23> of sequential type is unconnected in block <labkit>.
 WARNING:Xst:2677 - Node <number_3_0> of sequential type is unconnected in block <hud_digits>.
 WARNING:Xst:2677 - Node <number_3_1> of sequential type is unconnected in block <hud_digits>.
 WARNING:Xst:2677 - Node <number_3_2> of sequential type is unconnected in block <hud_digits>.
@@ -1094,10 +1026,10 @@ Optimizing unit <digit_selector> ...
 
 Optimizing unit <hud_digits> ...
 
+Optimizing unit <pong_game> ...
+
 Mapping all equations...
 Building and optimizing final netlist ...
-INFO:Xst:2261 - The FF/Latch <rgb_0> in Unit <labkit> is equivalent to the following 7 FFs/Latches, which will be removed : <rgb_1> <rgb_2> <rgb_3> <rgb_4> <rgb_5> <rgb_6> <rgb_7> 
-INFO:Xst:2261 - The FF/Latch <rgb_8> in Unit <labkit> is equivalent to the following 7 FFs/Latches, which will be removed : <rgb_9> <rgb_10> <rgb_11> <rgb_12> <rgb_13> <rgb_14> <rgb_15> 
 Found area constraint ratio of 100 (+ 5) on block labkit, actual ratio is 1.
 
 Final Macro Processing ...
@@ -1113,8 +1045,8 @@ Unit <labkit> processed.
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 255
- Flip-Flops                                            : 255
+# Registers                                            : 301
+ Flip-Flops                                            : 301
 # Shift Registers                                      : 4
  7-bit shift register                                  : 4
 
@@ -1145,30 +1077,31 @@ Design Statistics
 # IOs                              : 576
 
 Cell Usage :
-# BELS                             : 1239
+# BELS                             : 1318
 #      GND                         : 18
-#      INV                         : 61
-#      LUT1                        : 160
-#      LUT2                        : 93
-#      LUT3                        : 122
+#      INV                         : 59
+#      LUT1                        : 155
+#      LUT2                        : 100
+#      LUT2_D                      : 1
+#      LUT3                        : 144
 #      LUT3_D                      : 1
 #      LUT3_L                      : 1
-#      LUT4                        : 231
-#      LUT4_D                      : 5
+#      LUT4                        : 279
+#      LUT4_D                      : 6
 #      MUXCY                       : 285
-#      MUXF5                       : 52
+#      MUXF5                       : 59
 #      MUXF6                       : 6
 #      MUXF7                       : 1
 #      VCC                         : 18
 #      XORCY                       : 185
-# FlipFlops/Latches                : 278
+# FlipFlops/Latches                : 324
 #      FD                          : 20
 #      FDE                         : 45
 #      FDE_1                       : 1
-#      FDR                         : 38
+#      FDR                         : 71
 #      FDRE                        : 137
-#      FDRS                        : 14
-#      FDS                         : 13
+#      FDRS                        : 13
+#      FDS                         : 27
 #      FDSE                        : 10
 # RAMS                             : 59
 #      RAMB16_S1_S1                : 40
@@ -1196,10 +1129,10 @@ Device utilization summary:
 
 Selected Device : 2v6000bf957-4 
 
- Number of Slices:                      357  out of  33792     1%  
- Number of Slice Flip Flops:            278  out of  67584     0%  
- Number of 4 input LUTs:                679  out of  67584     1%  
-    Number used as logic:               674
+ Number of Slices:                      403  out of  33792     1%  
+ Number of Slice Flip Flops:            324  out of  67584     0%  
+ Number of 4 input LUTs:                751  out of  67584     1%  
+    Number used as logic:               746
     Number used as Shift registers:       5
  Number of IOs:                         576
  Number of bonded IOBs:                 248  out of    684    36%  
@@ -1229,22 +1162,22 @@ Clock Information:
 -----------------------------------------+---------------------------------------------------------------------------------------------------------------------+-------+
 Clock Signal                             | Clock buffer(FF name)                                                                                               | Load  |
 -----------------------------------------+---------------------------------------------------------------------------------------------------------------------+-------+
-clock_27mhz                              | vclk1:CLKFX                                                                                                         | 276   |
+clock_27mhz                              | vclk1:CLKFX                                                                                                         | 322   |
+disp/clock1                              | BUFG                                                                                                                | 43    |
+clock_27mhz                              | IBUFG                                                                                                               | 14    |
+pg/ma_digs/the_dig/img_nueve/BU2/dbiterr | NONE(pg/ma_digs/the_dig/img_nueve/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_init.ram/dpram.dp9x9.ram) | 1     |
+pg/ma_digs/the_dig/img_ocho/BU2/dbiterr  | NONE(pg/ma_digs/the_dig/img_ocho/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_init.ram/dpram.dp9x9.ram)  | 1     |
+pg/ma_digs/the_dig/img_siete/BU2/dbiterr | NONE(pg/ma_digs/the_dig/img_siete/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_init.ram/dpram.dp9x9.ram) | 1     |
+pg/ma_digs/the_dig/img_seis/BU2/dbiterr  | NONE(pg/ma_digs/the_dig/img_seis/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_init.ram/dpram.dp9x9.ram)  | 1     |
+pg/ma_digs/the_dig/img_cinco/BU2/dbiterr | NONE(pg/ma_digs/the_dig/img_cinco/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_init.ram/dpram.dp9x9.ram) | 1     |
+pg/ma_digs/the_dig/img_cuatro/BU2/dbiterr| NONE(pg/ma_digs/the_dig/img_cuatro/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_init.ram/dpram.dp9x9.ram)| 1     |
+pg/ma_digs/the_dig/img_tres/BU2/dbiterr  | NONE(pg/ma_digs/the_dig/img_tres/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_init.ram/dpram.dp9x9.ram)  | 1     |
+pg/ma_digs/the_dig/img_dos/BU2/dbiterr   | NONE(pg/ma_digs/the_dig/img_dos/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_init.ram/dpram.dp9x9.ram)   | 1     |
+pg/ma_digs/the_dig/img_uno/BU2/dbiterr   | NONE(pg/ma_digs/the_dig/img_uno/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_init.ram/dpram.dp9x9.ram)   | 1     |
+pg/ma_digs/the_dig/img_cero/BU2/dbiterr  | NONE(pg/ma_digs/the_dig/img_cero/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_init.ram/dpram.dp9x9.ram)  | 1     |
+xvga1/vsync                              | NONE(pg/blob_3)                                                                                                     | 9     |
 pg/thehud/rom2/BU2/dbiterr               | NONE(pg/thehud/rom2/BU2/U0/blk_mem_generator/valid.cstr/ramloop[14].ram.r/v2_init.ram/dpram.dp1x1.ram)              | 15    |
 pg/myblob/rom1/BU2/dbiterr               | NONE(pg/myblob/rom1/BU2/U0/blk_mem_generator/valid.cstr/ramloop[28].ram.r/v2_init.ram/dpram.dp1x1.ram)              | 29    |
-xvga1/vsync                              | NONE(pg/num_or_blob)                                                                                                | 9     |
-clock_27mhz                              | IBUFG                                                                                                               | 14    |
-disp/clock1                              | BUFG                                                                                                                | 43    |
-pg/ma_digs/the_dig/img_cero/BU2/dbiterr  | NONE(pg/ma_digs/the_dig/img_cero/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_init.ram/dpram.dp9x9.ram)  | 1     |
-pg/ma_digs/the_dig/img_uno/BU2/dbiterr   | NONE(pg/ma_digs/the_dig/img_uno/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_init.ram/dpram.dp9x9.ram)   | 1     |
-pg/ma_digs/the_dig/img_dos/BU2/dbiterr   | NONE(pg/ma_digs/the_dig/img_dos/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_init.ram/dpram.dp9x9.ram)   | 1     |
-pg/ma_digs/the_dig/img_tres/BU2/dbiterr  | NONE(pg/ma_digs/the_dig/img_tres/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_init.ram/dpram.dp9x9.ram)  | 1     |
-pg/ma_digs/the_dig/img_cuatro/BU2/dbiterr| NONE(pg/ma_digs/the_dig/img_cuatro/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_init.ram/dpram.dp9x9.ram)| 1     |
-pg/ma_digs/the_dig/img_cinco/BU2/dbiterr | NONE(pg/ma_digs/the_dig/img_cinco/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_init.ram/dpram.dp9x9.ram) | 1     |
-pg/ma_digs/the_dig/img_seis/BU2/dbiterr  | NONE(pg/ma_digs/the_dig/img_seis/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_init.ram/dpram.dp9x9.ram)  | 1     |
-pg/ma_digs/the_dig/img_siete/BU2/dbiterr | NONE(pg/ma_digs/the_dig/img_siete/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_init.ram/dpram.dp9x9.ram) | 1     |
-pg/ma_digs/the_dig/img_ocho/BU2/dbiterr  | NONE(pg/ma_digs/the_dig/img_ocho/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_init.ram/dpram.dp9x9.ram)  | 1     |
-pg/ma_digs/the_dig/img_nueve/BU2/dbiterr | NONE(pg/ma_digs/the_dig/img_nueve/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_init.ram/dpram.dp9x9.ram) | 1     |
 -----------------------------------------+---------------------------------------------------------------------------------------------------------------------+-------+
 INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
 
@@ -1256,10 +1189,10 @@ Timing Summary:
 ---------------
 Speed Grade: -4
 
-   Minimum period: 39.011ns (Maximum Frequency: 25.634MHz)
-   Minimum input arrival time before clock: 6.236ns
+   Minimum period: 38.680ns (Maximum Frequency: 25.853MHz)
+   Minimum input arrival time before clock: 6.334ns
    Maximum output required time after clock: 9.450ns
-   Maximum combinational path delay: 7.097ns
+   Maximum combinational path delay: 7.195ns
 
 Timing Detail:
 --------------
@@ -1267,23 +1200,23 @@ All values displayed in nanoseconds (ns)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clock_27mhz'
-  Clock period: 39.011ns (frequency: 25.634MHz)
-  Total number of paths / destination ports: 155314 / 1349
+  Clock period: 38.680ns (frequency: 25.853MHz)
+  Total number of paths / destination ports: 156554 / 1441
 -------------------------------------------------------------------------
-Delay:               16.255ns (Levels of Logic = 9)
-  Source:            xvga1/vcount_5 (FF)
+Delay:               16.117ns (Levels of Logic = 9)
+  Source:            xvga1/vcount_6 (FF)
   Destination:       pg/myblob/rom1/BU2/U0/blk_mem_generator/valid.cstr/ramloop[15].ram.r/v2_init.ram/dpram.dp4x4.ram (RAM)
   Source Clock:      clock_27mhz rising 2.4X
   Destination Clock: clock_27mhz rising 2.4X
 
-  Data Path: xvga1/vcount_5 to pg/myblob/rom1/BU2/U0/blk_mem_generator/valid.cstr/ramloop[15].ram.r/v2_init.ram/dpram.dp4x4.ram
+  Data Path: xvga1/vcount_6 to pg/myblob/rom1/BU2/U0/blk_mem_generator/valid.cstr/ramloop[15].ram.r/v2_init.ram/dpram.dp4x4.ram
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDRE:C->Q            13   0.568   1.240  xvga1/vcount_5 (xvga1/vcount_5)
-     LUT3_D:I0->O          2   0.439   0.736  pg/myblob/Msub_image_addr_addsub0000_xor<6>111 (N61)
-     LUT4:I2->O            1   0.439   0.517  pg/myblob/Msub_image_addr_addsub0000_xor<8>11 (pg/myblob/image_addr_addsub0000<8>)
-     MULT18X18:A8->P15     1   6.216   0.551  pg/myblob/Mmult_image_addr_mult0001 (pg/myblob/image_addr_mult0001<15>)
+     FDRE:C->Q            16   0.568   1.285  xvga1/vcount_6 (xvga1/vcount_6)
+     LUT4_D:I0->O          1   0.439   0.552  pg/myblob/Msub_image_addr_addsub0000_xor<10>11_SW0 (N85)
+     LUT4:I2->O            1   0.439   0.517  pg/myblob/Msub_image_addr_addsub0000_xor<9>12 (pg/myblob/image_addr_addsub0000<9>)
+     MULT18X18:A9->P15     1   6.216   0.551  pg/myblob/Mmult_image_addr_mult0001 (pg/myblob/image_addr_mult0001<15>)
      LUT4:I2->O            1   0.439   0.000  pg/myblob/Madd_image_addr_lut<15> (pg/myblob/Madd_image_addr_lut<15>)
      MUXCY:S->O            0   0.298   0.000  pg/myblob/Madd_image_addr_cy<15> (pg/myblob/Madd_image_addr_cy<15>)
      XORCY:CI->O           7   1.274   1.024  pg/myblob/Madd_image_addr_xor<16> (pg/myblob/image_addr<16>)
@@ -1293,81 +1226,86 @@ Delay:               16.255ns (Levels of Logic = 9)
      LUT3:I2->O            1   0.439   0.518  U0/blk_mem_generator/valid.cstr/bindec_a.bindec_inst_a/enout_18_cmp_eq00001 (U0/blk_mem_generator/valid.cstr/bindec_a.bindec_inst_a/enout_18_cmp_eq0000)
      RAMB16_S4_S4:ENA          0.359          U0/blk_mem_generator/valid.cstr/ramloop[15].ram.r/v2_init.ram/dpram.dp4x4.ram
     ----------------------------------------
-    Total                     16.255ns (10.910ns logic, 5.344ns route)
-                                       (67.1% logic, 32.9% route)
-
-=========================================================================
-Timing constraint: Default period analysis for Clock 'xvga1/vsync'
-  Clock period: 3.004ns (frequency: 332.889MHz)
-  Total number of paths / destination ports: 35 / 17
--------------------------------------------------------------------------
-Delay:               3.004ns (Levels of Logic = 1)
-  Source:            pg/num_or_blob (FF)
-  Destination:       pg/blob_0 (FF)
-  Source Clock:      xvga1/vsync falling
-  Destination Clock: xvga1/vsync falling
-
-  Data Path: pg/num_or_blob to pg/blob_0
-                                Gate     Net
-    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
-    ----------------------------------------  ------------
-     FDE_1:C->Q            3   0.568   1.009  pg/num_or_blob (pg/num_or_blob)
-     LUT3:I0->O            4   0.439   0.747  pg/num_not00011 (pg/num_not0001)
-     FDE:CE                    0.240          pg/num_0
-    ----------------------------------------
-    Total                      3.004ns (1.247ns logic, 1.757ns route)
-                                       (41.5% logic, 58.5% route)
+    Total                     16.117ns (10.910ns logic, 5.206ns route)
+                                       (67.7% logic, 32.3% route)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'disp/clock1'
-  Clock period: 10.698ns (frequency: 93.480MHz)
-  Total number of paths / destination ports: 1396 / 74
+  Clock period: 13.798ns (frequency: 72.473MHz)
+  Total number of paths / destination ports: 3648 / 73
 -------------------------------------------------------------------------
-Delay:               10.698ns (Levels of Logic = 8)
-  Source:            disp/dot_index_3 (FF)
-  Destination:       disp/dot_index_1 (FF)
+Delay:               13.798ns (Levels of Logic = 13)
+  Source:            disp/char_index_1 (FF)
+  Destination:       disp/disp_data_out (FF)
   Source Clock:      disp/clock1 rising
   Destination Clock: disp/clock1 rising
 
-  Data Path: disp/dot_index_3 to disp/dot_index_1
+  Data Path: disp/char_index_1 to disp/disp_data_out
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDRS:C->Q            15   0.568   1.274  disp/dot_index_3 (disp/dot_index_3)
-     LUT4:I0->O            1   0.439   0.000  disp/dot_index_mux0000<4>51 (disp/dot_index_mux0000<4>5)
-     MUXF5:I0->O           6   0.436   0.827  disp/dot_index_mux0000<4>5_f5 (disp/N25)
-     LUT3:I2->O            1   0.439   0.557  disp/state_cmp_eq0001_SW0 (N35)
-     LUT4:I3->O           15   0.439   1.023  disp/state_cmp_eq0001 (disp/state_cmp_eq0001)
-     LUT3:I2->O            5   0.439   0.978  disp/char_index_mux0000<1>21 (disp/N31)
-     LUT4:I1->O            4   0.439   1.032  disp/dot_index_mux0000<7>1 (disp/N10)
-     LUT4:I0->O            1   0.439   0.558  disp/dot_index_mux0000<8>_SW1 (N21)
-     LUT4:I3->O            1   0.439   0.000  disp/dot_index_mux0000<8> (disp/dot_index_mux0000<8>)
-     FDR:D                     0.370          disp/dot_index_1
+     FDE:C->Q              7   0.568   1.101  disp/char_index_1 (disp/char_index_1)
+     LUT4:I0->O            4   0.439   1.033  disp/Mmux_nibble111 (disp/N97)
+     LUT4:I0->O           27   0.439   1.360  disp/Mmux_nibble21 (disp/nibble<1>)
+     LUT4:I0->O            2   0.439   0.736  disp/Mrom_dots1311 (disp/Mrom_dots12)
+     LUT3:I2->O            1   0.439   0.000  disp/Mmux__varindex0000_16 (disp/Mmux__varindex0000_16)
+     MUXF5:I0->O           1   0.436   0.000  disp/Mmux__varindex0000_14_f5 (disp/Mmux__varindex0000_14_f5)
+     MUXF6:I0->O           2   0.447   0.910  disp/Mmux__varindex0000_12_f6 (disp/Mmux__varindex0000_12_f6)
+     LUT4:I1->O            1   0.439   0.000  disp/disp_data_out_mux0000331 (disp/disp_data_out_mux0000331)
+     MUXF5:I1->O           1   0.436   0.557  disp/disp_data_out_mux000033_f5 (disp/disp_data_out_mux000033)
+     LUT4:I3->O            1   0.439   0.552  disp/disp_data_out_mux000078 (disp/disp_data_out_mux000078)
+     LUT3:I2->O            1   0.439   0.000  disp/disp_data_out_mux0000131_G (N151)
+     MUXF5:I1->O           2   0.436   0.910  disp/disp_data_out_mux0000131 (disp/disp_data_out_mux0000131)
+     LUT2:I1->O            1   0.439   0.000  disp/disp_data_out_mux00001682 (disp/disp_data_out_mux00001681)
+     MUXF5:I0->O           1   0.436   0.000  disp/disp_data_out_mux0000168_f5 (disp/disp_data_out_mux0000)
+     FDE:D                     0.370          disp/disp_data_out
     ----------------------------------------
-    Total                     10.698ns (4.447ns logic, 6.250ns route)
-                                       (41.6% logic, 58.4% route)
+    Total                     13.798ns (6.641ns logic, 7.157ns route)
+                                       (48.1% logic, 51.9% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'xvga1/vsync'
+  Clock period: 2.927ns (frequency: 341.647MHz)
+  Total number of paths / destination ports: 35 / 17
+-------------------------------------------------------------------------
+Delay:               2.927ns (Levels of Logic = 1)
+  Source:            pg/num_or_blob (FF)
+  Destination:       pg/blob_3 (FF)
+  Source Clock:      xvga1/vsync falling
+  Destination Clock: xvga1/vsync falling
+
+  Data Path: pg/num_or_blob to pg/blob_3
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDE_1:C->Q            3   0.568   0.933  pg/num_or_blob (pg/num_or_blob)
+     LUT3:I1->O            4   0.439   0.747  pg/num_not00011 (pg/num_not0001)
+     FDE:CE                    0.240          pg/num_0
+    ----------------------------------------
+    Total                      2.927ns (1.247ns logic, 1.680ns route)
+                                       (42.6% logic, 57.4% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'clock_27mhz'
-  Total number of paths / destination ports: 200 / 164
+  Total number of paths / destination ports: 288 / 192
 -------------------------------------------------------------------------
-Offset:              6.236ns (Levels of Logic = 4)
+Offset:              6.334ns (Levels of Logic = 4)
   Source:            switch<0> (PAD)
-  Destination:       rgb_16 (FF)
+  Destination:       rgb_0 (FF)
   Destination Clock: clock_27mhz rising 2.4X
 
-  Data Path: switch<0> to rgb_16
+  Data Path: switch<0> to rgb_0
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O            13   0.825   1.240  switch_0_IBUF (switch_0_IBUF)
-     LUT2:I0->O            1   0.439   0.726  Mmux_rgb_mux00001011185 (Mmux_rgb_mux00001011185)
-     LUT4:I1->O            3   0.439   1.010  Mmux_rgb_mux00001011189 (N211)
-     LUT4:I0->O            8   0.439   0.840  Mmux_rgb_mux00001012 (N11)
+     IBUF:I->O            22   0.825   1.337  switch_0_IBUF (switch_0_IBUF)
+     LUT2:I0->O            1   0.439   0.726  Mmux_rgb_mux0000110209 (Mmux_rgb_mux0000110209)
+     LUT4:I1->O            3   0.439   1.010  Mmux_rgb_mux0000110213 (N1)
+     LUT4:I0->O            8   0.439   0.840  Mmux_rgb_mux00001011 (N3)
      FDS:S                     0.280          rgb_16
     ----------------------------------------
-    Total                      6.236ns (2.422ns logic, 3.814ns route)
-                                       (38.8% logic, 61.2% route)
+    Total                      6.334ns (2.422ns logic, 3.912ns route)
+                                       (38.2% logic, 61.8% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'clock_27mhz'
@@ -1412,7 +1350,7 @@ Offset:              5.630ns (Levels of Logic = 1)
 Timing constraint: Default path analysis
   Total number of paths / destination ports: 2 / 2
 -------------------------------------------------------------------------
-Delay:               7.097ns (Levels of Logic = 3)
+Delay:               7.195ns (Levels of Logic = 3)
   Source:            switch<1> (PAD)
   Destination:       led<1> (PAD)
 
@@ -1420,25 +1358,25 @@ Delay:               7.097ns (Levels of Logic = 3)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O            13   0.825   0.955  switch_1_IBUF (switch_1_IBUF)
+     IBUF:I->O            22   0.825   1.052  switch_1_IBUF (switch_1_IBUF)
      INV:I->O              1   0.439   0.517  led<1>1_INV_0 (led_1_OBUF)
      OBUF:I->O                 4.361          led_1_OBUF (led<1>)
     ----------------------------------------
-    Total                      7.097ns (5.625ns logic, 1.472ns route)
-                                       (79.3% logic, 20.7% route)
+    Total                      7.195ns (5.625ns logic, 1.570ns route)
+                                       (78.2% logic, 21.8% route)
 
 =========================================================================
 
 
-Total REAL time to Xst completion: 26.00 secs
-Total CPU time to Xst completion: 25.09 secs
+Total REAL time to Xst completion: 27.00 secs
+Total CPU time to Xst completion: 26.51 secs
  
 --> 
 
 
-Total memory usage is 500476 kilobytes
+Total memory usage is 497840 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :  496 (   0 filtered)
-Number of infos    :   30 (   0 filtered)
+Number of warnings :  428 (   0 filtered)
+Number of infos    :   28 (   0 filtered)
 
