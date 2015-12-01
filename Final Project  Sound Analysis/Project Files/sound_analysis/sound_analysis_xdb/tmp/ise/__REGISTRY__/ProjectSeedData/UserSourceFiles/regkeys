@@ -1,5 +1,5 @@
 NUM_USER_FILES
-7
+9
 s
 user_file_1
 ../../Verilog Files/compression.v
@@ -21,4 +21,10 @@ user_file_6
 s
 user_file_7
 ../../Verilog Files/signed_binary_12bit_to_dB.v
+s
+user_file_8
+../../Verilog Files/compression_gain_computer.v
+s
+user_file_9
+../../Verilog Files/compression_level_detector.v
 s
