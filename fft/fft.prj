@@ -1,2 +1,3 @@
-verilog work "./fft16384u.v"
+verilog work "grad_div.v"
+verilog work "fft16384u.v"
 verilog work "fft.v"

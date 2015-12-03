@@ -5,7 +5,7 @@
     The structure and the elements are likely to change over the next few releases.
     This means code written to parse this file will need to be revisited each subsequent release.-->
 
-  <application stringID="NgdBuild" timeStamp="Sun Nov 15 19:00:32 2015">
+  <application stringID="NgdBuild" timeStamp="Wed Dec  2 23:23:12 2015">
     <task stringID="NGDBUILD_REPORT">
       <section stringID="NGDBUILD_DESIGN_SUMMARY">
         <item dataType="int" stringID="NGDBUILD_NUM_ERRORS" value="0"/>
@@ -15,11 +15,15 @@
         <item dataType="int" stringID="NGDBUILD_NUM_INFOS" value="1"/>
       </section>
       <section stringID="NGDBUILD_CORE_SUMMARY">
-        <item COUNT="1" stringID="NGDBUILD_CORE" value="xfft_v3_2, Xilinx CORE Generator 10.1.03_ip3"/>
+        <item COUNT="1" stringID="NGDBUILD_CORE" value="div_gen_v2_0, Xilinx CORE Generator 10.1.03_ip3"/>
         <section stringID="NGDBUILD_CORE_GENERATION_SUMMARY">
           <section stringID="NGDBUILD_CORE_INSTANCES">
             <scope stringID="NGDBUILD_CORE_INSTANCE" value="fft16384u">
               <item stringID="NGDBUILD_CORE_INFO" type="xfft_v3_2" value="fft16384u"/>
+            </scope>
+            <scope stringID="NGDBUILD_CORE_INSTANCE" value="grad_div">
+              <item stringID="NGDBUILD_CORE_INFO" type="div_gen_v2_0" value="grad_div"/>
+              <item algorithm_type="1" c_ce_overrides_sclr="0" c_has_ce="0" c_has_div_by_zero="0" c_has_sclr="0" c_latency="-1" component_name="grad_div" divclk_sel="1" dividend_width="18" divisor_width="10" fractional_b="0" fractional_width="10" signed_b="0" stringID="NGDBUILD_CORE_PARAMETERS" value="grad_div"/>
             </scope>
           </section>
         </section>

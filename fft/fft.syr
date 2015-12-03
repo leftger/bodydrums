@@ -5,14 +5,14 @@ Parameter TMPDIR set to /afs/athena.mit.edu/user/g/r/grosas/6.111/Final_Project/
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.05 secs
+Total CPU time to Xst completion: 0.06 secs
  
 --> 
 Parameter xsthdpdir set to /afs/athena.mit.edu/user/g/r/grosas/6.111/Final_Project/bodydrums/fft/xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.05 secs
+Total CPU time to Xst completion: 0.06 secs
  
 --> 
 Reading design: fft.prj
@@ -109,7 +109,9 @@ Slice Utilization Ratio Delta      : 5
 =========================================================================
 *                          HDL Compilation                              *
 =========================================================================
-Compiling verilog file "./fft16384u.v" in library work
+Compiling verilog file "grad_div.v" in library work
+Compiling verilog file "fft16384u.v" in library work
+Module <grad_div> compiled
 Compiling verilog file "fft.v" in library work
 Module <fft16384u> compiled
 Module <debounce> compiled
@@ -121,6 +123,7 @@ Module <fft> compiled
 Module <xvga> compiled
 Module <process_audio> compiled
 Module <sqrt> compiled
+Module <column_gradient> compiled
 No errors in compilation
 Analysis of file <"fft.prj"> succeeded.
  
@@ -155,6 +158,7 @@ WARNING:Xst:2591 - "fft.v" line 723: attribute on instance <CLK_FEEDBACK> overri
 *                            HDL Analysis                               *
 =========================================================================
 Analyzing top module <fft>.
+WARNING:Xst:2211 - "grad_div.v" line 790: Instantiating black box module <grad_div>.
 Module <fft> is correct for synthesis.
  
     Set user-defined property "INIT =  FFFF" for instance <reset_sr> in unit <fft>.
@@ -284,7 +288,7 @@ Module <ac97commands> is correct for synthesis.
     Set user-defined property "INIT =  0000" for signal <state>.
     Set user-defined property "INIT =  0" for signal <command>.
 Analyzing module <process_audio> in library <work>.
-WARNING:Xst:2211 - "./fft16384u.v" line 921: Instantiating black box module <fft16384u>.
+WARNING:Xst:2211 - "fft16384u.v" line 947: Instantiating black box module <fft16384u>.
 Module <process_audio> is correct for synthesis.
  
 Analyzing module <sqrt> in library <work>.
@@ -400,10 +404,10 @@ Unit <ac97commands> synthesized.
 Synthesizing Unit <sqrt>.
     Related source file is "fft.v".
     Found 14-bit register for signal <answer>.
-    Found 28-bit comparator greater for signal <answer$cmp_gt0000> created at line 988.
-    Found 14x14-bit multiplier for signal <answer$mult0000> created at line 988.
+    Found 28-bit comparator greater for signal <answer$cmp_gt0000> created at line 1014.
+    Found 14x14-bit multiplier for signal <answer$mult0000> created at line 1014.
     Found 5-bit register for signal <bit>.
-    Found 5-bit subtractor for signal <bit$addsub0000> created at line 987.
+    Found 5-bit subtractor for signal <bit$addsub0000> created at line 1013.
     Found 1-bit register for signal <busy>.
     Summary:
 	inferred  20 D-type flip-flop(s).
@@ -448,13 +452,13 @@ WARNING:Xst:646 - Signal <mag<13:10>> is assigned but never used. This unconnect
     Found 10-bit register for signal <haddr>.
     Found 1-bit register for signal <hwe>.
     Found 28-bit register for signal <imim>.
-    Found 14x14-bit multiplier for signal <imim$mult0000> created at line 949.
+    Found 14x14-bit multiplier for signal <imim$mult0000> created at line 975.
     Found 28-bit register for signal <mag2>.
-    Found 28-bit adder for signal <mag2$add0000> created at line 953.
+    Found 28-bit adder for signal <mag2$add0000> created at line 979.
     Found 28-bit register for signal <rere>.
-    Found 14x14-bit multiplier for signal <rere$mult0000> created at line 948.
-    Found 23-bit shifter logical right for signal <xk_im_scaled$shift0000> created at line 927.
-    Found 23-bit shifter logical right for signal <xk_re_scaled$shift0000> created at line 926.
+    Found 14x14-bit multiplier for signal <rere$mult0000> created at line 974.
+    Found 23-bit shifter logical right for signal <xk_im_scaled$shift0000> created at line 953.
+    Found 23-bit shifter logical right for signal <xk_re_scaled$shift0000> created at line 952.
     Summary:
 	inferred   1 Finite State Machine(s).
 	inferred  95 D-type flip-flop(s).
@@ -772,34 +776,44 @@ WARNING:Xst:2565 - Inout <user3<2>> is never assigned.
 WARNING:Xst:2565 - Inout <user3<27>> is never assigned.
 WARNING:Xst:2565 - Inout <user3<3>> is never assigned.
 WARNING:Xst:1780 - Signal <sel> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <quotient<17:8>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <dout<15:10>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
     Found 1-bit register for signal <b>.
     Found 1-bit 4-to-1 multiplexer for signal <b$mux0000>.
+    Found 10x8-bit multiplier for signal <dividend>.
+    Found 10-bit comparator greater for signal <divisor$cmp_gt0000> created at line 788.
+    Found 8-bit register for signal <grad_color>.
+    Found 8-bit adder for signal <grad_color$sub0000> created at line 805.
     Found 1-bit register for signal <hs>.
     Found 1-bit 4-to-1 multiplexer for signal <hs$mux0000>.
     Found 1-bit register for signal <old_vdown>.
     Found 1-bit register for signal <old_vup>.
     Found 1-bit register for signal <pblank>.
     Found 1-bit register for signal <phsync>.
-    Found 3-bit register for signal <pixel>.
-    Found 10-bit comparator lessequal for signal <pixel$cmp_le0000> created at line 794.
+    Found 24-bit register for signal <pixel>.
+    Found 10-bit comparator lessequal for signal <pixel$cmp_le0000> created at line 811.
     Found 1-bit register for signal <pvsync>.
-    Found 3-bit register for signal <rgb>.
-    Found 3-bit 4-to-1 multiplexer for signal <rgb$mux0000>.
+    Found 24-bit register for signal <rgb>.
+    Found 24-bit 4-to-1 multiplexer for signal <rgb$mux0000>.
     Found 5-bit updown counter for signal <volume>.
     Found 1-bit register for signal <vs>.
     Found 1-bit 4-to-1 multiplexer for signal <vs$mux0000>.
     Found 1-bit register for signal <xblank>.
     Found 1-bit register for signal <xhsync>.
     Found 10-bit register for signal <xvcount>.
-    Found 10-bit adder for signal <xvcount$sub0000> created at line 788.
     Found 1-bit register for signal <xvsync>.
+    Found 1-bit register for signal <yblank>.
+    Found 1-bit register for signal <yhsync>.
+    Found 10-bit register for signal <yvcount>.
+    Found 10-bit adder for signal <yvcount$sub0000> created at line 799.
+    Found 1-bit register for signal <yvsync>.
     Summary:
 	inferred   1 Counter(s).
-	inferred  27 D-type flip-flop(s).
-	inferred   1 Adder/Subtractor(s).
-	inferred   1 Comparator(s).
-	inferred   6 Multiplexer(s).
+	inferred  90 D-type flip-flop(s).
+	inferred   2 Adder/Subtractor(s).
+	inferred   1 Multiplier(s).
+	inferred   2 Comparator(s).
+	inferred  27 Multiplexer(s).
 Unit <fft> synthesized.
 
 
@@ -807,13 +821,15 @@ Unit <fft> synthesized.
 HDL Synthesis Report
 
 Macro Statistics
-# Multipliers                                          : 3
+# Multipliers                                          : 4
+ 10x8-bit multiplier                                   : 1
  14x14-bit multiplier                                  : 3
-# Adders/Subtractors                                   : 7
+# Adders/Subtractors                                   : 8
  10-bit adder                                          : 1
  28-bit adder                                          : 1
  5-bit adder                                           : 1
  5-bit subtractor                                      : 1
+ 8-bit adder                                           : 1
  9-bit adder                                           : 3
 # Counters                                             : 8
  10-bit up counter                                     : 2
@@ -822,17 +838,19 @@ Macro Statistics
  4-bit up counter                                      : 1
  5-bit updown counter                                  : 1
  8-bit up counter                                      : 1
-# Registers                                            : 47
- 1-bit register                                        : 29
- 10-bit register                                       : 2
+# Registers                                            : 52
+ 1-bit register                                        : 32
+ 10-bit register                                       : 3
  14-bit register                                       : 1
  16-bit register                                       : 1
  20-bit register                                       : 6
- 24-bit register                                       : 1
+ 24-bit register                                       : 3
  28-bit register                                       : 3
- 3-bit register                                        : 3
+ 3-bit register                                        : 1
  5-bit register                                        : 1
-# Comparators                                          : 21
+ 8-bit register                                        : 1
+# Comparators                                          : 22
+ 10-bit comparator greater                             : 1
  10-bit comparator lessequal                           : 1
  28-bit comparator greater                             : 1
  8-bit comparator greatequal                           : 5
@@ -842,7 +860,7 @@ Macro Statistics
 # Multiplexers                                         : 7
  1-bit 20-to-1 multiplexer                             : 3
  1-bit 4-to-1 multiplexer                              : 3
- 3-bit 4-to-1 multiplexer                              : 1
+ 24-bit 4-to-1 multiplexer                             : 1
 # Logic shifters                                       : 3
  23-bit shifter logical right                          : 2
  32-bit shifter logical left                           : 1
@@ -866,9 +884,15 @@ Optimizing FSM <a1/state/FSM> on signal <state[1:2]> with gray encoding.
  011   | 10
 -------------------
 Loading device for application Rf_Device from file '2v6000.nph' in environment /afs/csail.mit.edu/proj/redsocs/Xilinx10.1/ISE.
+Reading core <grad_div.ngc>.
 Reading core <fft16384u.ngc>.
+Loading core <grad_div> for timing and area information for instance <my_div>.
 Loading core <fft16384u> for timing and area information for instance <fft>.
-WARNING:Xst:2404 -  FFs/Latches <pixel<2:2>> (without init value) have a constant value of 0 in block <fft>.
+
+Synthesizing (advanced) Unit <fft>.
+INFO:Xst:2385 - HDL ADVISOR - You can improve the performance of the multiplier Mmult_dividend by adding 1 register level(s).
+INFO:Xst:2385 - HDL ADVISOR - You can improve the performance of the multiplier Mmult_dividend by adding 1 register level(s).
+Unit <fft> synthesized (advanced).
 
 Synthesizing (advanced) Unit <process_audio>.
 	Found pipelined multiplier on signal <imim_mult0000>:
@@ -914,6 +938,14 @@ INFO:Xst:2261 - The FF/Latch <command_4> in Unit <ac97commands> is equivalent to
 INFO:Xst:2261 - The FF/Latch <command_2> in Unit <ac97commands> is equivalent to the following FF/Latch, which will be removed : <command_10> 
 INFO:Xst:2261 - The FF/Latch <command_1> in Unit <ac97commands> is equivalent to the following FF/Latch, which will be removed : <command_9> 
 WARNING:Xst:1710 - FF/Latch <pixel_0> (without init value) has a constant value of 0 in block <fft>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <pixel_1> (without init value) has a constant value of 0 in block <fft>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <pixel_2> (without init value) has a constant value of 0 in block <fft>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <pixel_3> (without init value) has a constant value of 0 in block <fft>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <pixel_4> (without init value) has a constant value of 0 in block <fft>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <pixel_5> (without init value) has a constant value of 0 in block <fft>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <pixel_6> (without init value) has a constant value of 0 in block <fft>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <pixel_7> (without init value) has a constant value of 0 in block <fft>. This FF/Latch will be trimmed during the optimization process.
+INFO:Xst:2261 - The FF/Latch <pixel_16> in Unit <fft> is equivalent to the following 7 FFs/Latches, which will be removed : <pixel_17> <pixel_18> <pixel_19> <pixel_20> <pixel_21> <pixel_22> <pixel_23> 
 WARNING:Xst:1710 - FF/Latch <l_cmd_addr_12> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <l_cmd_addr_18> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <l_cmd_data_9> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
@@ -949,14 +981,16 @@ WARNING:Xst:2677 - Node <right_in_data_19> of sequential type is unconnected in 
 Advanced HDL Synthesis Report
 
 Macro Statistics
-# Multipliers                                          : 3
+# Multipliers                                          : 4
+ 10x8-bit multiplier                                   : 1
  14x14-bit multiplier                                  : 1
  14x14-bit registered multiplier                       : 2
-# Adders/Subtractors                                   : 7
+# Adders/Subtractors                                   : 8
  10-bit adder                                          : 1
  28-bit adder                                          : 1
  5-bit adder                                           : 4
  5-bit subtractor                                      : 1
+ 8-bit adder                                           : 1
 # Counters                                             : 8
  10-bit up counter                                     : 2
  11-bit up counter                                     : 1
@@ -964,9 +998,10 @@ Macro Statistics
  4-bit up counter                                      : 1
  5-bit updown counter                                  : 1
  8-bit up counter                                      : 1
-# Registers                                            : 239
- Flip-Flops                                            : 239
-# Comparators                                          : 21
+# Registers                                            : 289
+ Flip-Flops                                            : 289
+# Comparators                                          : 22
+ 10-bit comparator greater                             : 1
  10-bit comparator lessequal                           : 1
  28-bit comparator greater                             : 1
  8-bit comparator greatequal                           : 5
@@ -976,7 +1011,7 @@ Macro Statistics
 # Multiplexers                                         : 7
  1-bit 20-to-1 multiplexer                             : 3
  1-bit 4-to-1 multiplexer                              : 3
- 3-bit 4-to-1 multiplexer                              : 1
+ 24-bit 4-to-1 multiplexer                             : 1
 # Logic shifters                                       : 3
  23-bit shifter logical right                          : 2
  32-bit shifter logical left                           : 1
@@ -990,6 +1025,8 @@ Macro Statistics
 =========================================================================
 INFO:Xst:2261 - The FF/Latch <l_right_data_0> in Unit <ac97> is equivalent to the following 3 FFs/Latches, which will be removed : <l_right_data_1> <l_right_data_2> <l_right_data_3> 
 WARNING:Xst:1710 - FF/Latch <l_right_data_0> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
+INFO:Xst:2261 - The FF/Latch <rgb_0> in Unit <fft> is equivalent to the following 7 FFs/Latches, which will be removed : <rgb_1> <rgb_2> <rgb_3> <rgb_4> <rgb_5> <rgb_6> <rgb_7> 
+INFO:Xst:2261 - The FF/Latch <rgb_16> in Unit <fft> is equivalent to the following 7 FFs/Latches, which will be removed : <rgb_17> <rgb_18> <rgb_19> <rgb_20> <rgb_21> <rgb_22> <rgb_23> 
 
 Optimizing unit <fft> ...
 
@@ -1037,10 +1074,337 @@ INFO:Xst:2261 - The FF/Latch <a/ac97/l_cmd_data_4> in Unit <fft> is equivalent t
 INFO:Xst:2261 - The FF/Latch <a/ac97/l_cmd_data_5> in Unit <fft> is equivalent to the following FF/Latch, which will be removed : <a/ac97/l_cmd_data_13> 
 INFO:Xst:2261 - The FF/Latch <a/ac97/l_cmd_data_6> in Unit <fft> is equivalent to the following FF/Latch, which will be removed : <a/ac97/l_cmd_data_14> 
 INFO:Xst:2261 - The FF/Latch <a/ac97/l_cmd_data_8> in Unit <fft> is equivalent to the following FF/Latch, which will be removed : <a/ac97/l_cmd_data_16> 
-Found area constraint ratio of 100 (+ 5) on block fft, actual ratio is 16.
+Found area constraint ratio of 100 (+ 5) on block fft, actual ratio is 17.
 INFO:Xst:2260 - The FF/Latch <blk00000df7> in Unit <a1/fft> is equivalent to the following 2 FFs/Latches : <blk000018b7> <blk00002354> 
 INFO:Xst:2260 - The FF/Latch <blk00000710> in Unit <a1/fft> is equivalent to the following FF/Latch : <blk00000742> 
 INFO:Xst:2260 - The FF/Latch <blk0000070f> in Unit <a1/fft> is equivalent to the following FF/Latch : <blk00000741> 
 INFO:Xst:2260 - The FF/Latch <blk00000df7> in Unit <a1/fft> is equivalent to the following 2 FFs/Latches : <blk000018b7> <blk00002354> 
 INFO:Xst:2260 - The FF/Latch <blk00000710> in Unit <a1/fft> is equivalent to the following FF/Latch : <blk00000742> 
 INFO:Xst:2260 - The FF/Latch <blk0000070f> in Unit <a1/fft> is equivalent to the following FF/Latch : <blk00000741> 
+
+Final Macro Processing ...
+
+Processing Unit <fft> :
+	Found 2-bit shift register for signal <xvcount_8>.
+	Found 2-bit shift register for signal <xblank>.
+	Found 3-bit shift register for signal <phsync>.
+	Found 3-bit shift register for signal <pvsync>.
+	Found 4-bit shift register for signal <a/ac97/left_in_data_4>.
+	Found 2-bit shift register for signal <a/ready_sync_1>.
+Unit <fft> processed.
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 311
+ Flip-Flops                                            : 311
+# Shift Registers                                      : 6
+ 2-bit shift register                                  : 3
+ 3-bit shift register                                  : 2
+ 4-bit shift register                                  : 1
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                             *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Final Report                               *
+=========================================================================
+Final Results
+RTL Top Level Output File Name     : fft.ngr
+Top Level Output File Name         : fft
+Output Format                      : NGC
+Optimization Goal                  : Speed
+Keep Hierarchy                     : NO
+
+Design Statistics
+# IOs                              : 576
+
+Cell Usage :
+# BELS                             : 14515
+#      BUF                         : 634
+#      GND                         : 17
+#      INV                         : 57
+#      LUT1                        : 73
+#      LUT2                        : 182
+#      LUT2_D                      : 6
+#      LUT3                        : 480
+#      LUT3_D                      : 27
+#      LUT3_L                      : 30
+#      LUT4                        : 5559
+#      LUT4_D                      : 38
+#      LUT4_L                      : 24
+#      MULT_AND                    : 851
+#      MUXCY                       : 2851
+#      MUXF5                       : 712
+#      MUXF6                       : 135
+#      MUXF7                       : 54
+#      MUXF8                       : 26
+#      VCC                         : 17
+#      XORCY                       : 2742
+# FlipFlops/Latches                : 9110
+#      FD                          : 779
+#      FDCE                        : 1055
+#      FDE                         : 6777
+#      FDE_1                       : 17
+#      FDR                         : 64
+#      FDRE                        : 379
+#      FDS                         : 16
+#      FDSE                        : 23
+# RAMS                             : 122
+#      RAM32X1D                    : 44
+#      RAM64X1D                    : 42
+#      RAMB16_S18_S18              : 5
+#      RAMB16_S2_S2                : 5
+#      RAMB16_S36_S36              : 3
+#      RAMB16_S4_S4                : 11
+#      RAMB16_S9_S9                : 12
+# Shift Registers                  : 1333
+#      SRL16                       : 6
+#      SRL16E                      : 1326
+#      SRL16E_1                    : 1
+# Clock Buffers                    : 3
+#      BUFG                        : 2
+#      BUFGP                       : 1
+# IO Buffers                       : 250
+#      IBUF                        : 9
+#      IBUFG                       : 1
+#      OBUF                        : 240
+# DCMs                             : 1
+#      DCM                         : 1
+# MULTs                            : 34
+#      MULT18X18                   : 2
+#      MULT18X18S                  : 32
+=========================================================================
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 2v6000bf957-4 
+
+ Number of Slices:                     5830  out of  33792    17%  
+ Number of Slice Flip Flops:           9110  out of  67584    13%  
+ Number of 4 input LUTs:               8321  out of  67584    12%  
+    Number used as logic:              6476
+    Number used as Shift registers:    1333
+    Number used as RAMs:                512
+ Number of IOs:                         576
+ Number of bonded IOBs:                 251  out of    684    36%  
+ Number of BRAMs:                        36  out of    144    25%  
+ Number of MULT18X18s:                   34  out of    144    23%  
+ Number of GCLKs:                         3  out of     16    18%  
+ Number of DCMs:                          1  out of     12     8%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+TIMING REPORT
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)  | Load  |
+-----------------------------------+------------------------+-------+
+clock_27mhz                        | vclk1:CLKFX            | 844   |
+clock_27mhz                        | IBUFG+BUFG             | 9673  |
+ac97_bit_clock                     | BUFGP                  | 81    |
+-----------------------------------+------------------------+-------+
+
+Asynchronous Control Signals Information:
+----------------------------------------
+----------------------------------------+-----------------------------+-------+
+Control Signal                          | Buffer(FF name)             | Load  |
+----------------------------------------+-----------------------------+-------+
+a1/fft/sig00000001(a1/fft/blk00000002:G)| NONE(a1/fft/blk000014f8)    | 1077  |
+a1/fft/ce_11(a1/fft/ce_11:O)            | NONE(a1/fft/blk00003479)    | 6     |
+a1/fft/ce_17(a1/fft/ce_17:O)            | NONE(a1/fft/blk00004e0c)    | 6     |
+a1/fft/ce_8(a1/fft/ce_8:O)              | NONE(a1/fft/blk000025c8)    | 6     |
+a1/fft/ce_14(a1/fft/ce_14:O)            | NONE(a1/fft/blk000041aa)    | 5     |
+a1/fft/ce_3(a1/fft/ce_3:O)              | NONE(a1/fft/blk00000f9c)    | 3     |
+a/ac97/Mmux__varindex0000_9(XST_GND:G)  | NONE(a1/Mmult_imim_mult0000)| 2     |
+a1/fft/ce_6(a1/fft/ce_6:O)              | NONE(a1/fft/blk00001a4d)    | 2     |
+a1/haddr_not0001(a1/haddr_not00011:O)   | NONE(a1/Mmult_imim_mult0000)| 2     |
+a1/fft/ce_15(a1/fft/ce_15:O)            | NONE(a1/fft/blk00004343)    | 1     |
+a1/fft/ce_5(a1/fft/ce_5:O)              | NONE(a1/fft/blk00001a09)    | 1     |
+----------------------------------------+-----------------------------+-------+
+
+Timing Summary:
+---------------
+Speed Grade: -4
+
+   Minimum period: 21.089ns (Maximum Frequency: 47.419MHz)
+   Minimum input arrival time before clock: 12.475ns
+   Maximum output required time after clock: 6.909ns
+   Maximum combinational path delay: No path found
+
+Timing Detail:
+--------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clock_27mhz'
+  Clock period: 21.089ns (frequency: 47.419MHz)
+  Total number of paths / destination ports: 202736 / 23189
+-------------------------------------------------------------------------
+Delay:               8.787ns (Levels of Logic = 2)
+  Source:            xvcount_9 (FF)
+  Destination:       my_div/BU2/U0/i_synth_opt.i_nonzero_fract.i_synth/i_algo_r2_nr.i_sdivider/i_synth_option.i_synth_model/divider_blk/div_loop[0].num_stages.numerator_gen.del_numer/first_q_17 (FF)
+  Source Clock:      clock_27mhz rising 2.4X
+  Destination Clock: clock_27mhz rising 2.4X
+
+  Data Path: xvcount_9 to my_div/BU2/U0/i_synth_opt.i_nonzero_fract.i_synth/i_algo_r2_nr.i_sdivider/i_synth_option.i_synth_model/divider_blk/div_loop[0].num_stages.numerator_gen.del_numer/first_q_17
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FD:C->Q               2   0.568   0.701  xvcount_9 (xvcount_9)
+     MULT18X18:A9->P17     1   6.630   0.517  Mmult_dividend (dividend<17>)
+     begin scope: 'my_div'
+     begin scope: 'BU2'
+     FD:D                      0.370          U0/i_synth_opt.i_nonzero_fract.i_synth/i_algo_r2_nr.i_sdivider/i_synth_option.i_synth_model/divider_blk/div_loop[0].num_stages.numerator_gen.del_numer/first_q_17
+    ----------------------------------------
+    Total                      8.787ns (7.568ns logic, 1.219ns route)
+                                       (86.1% logic, 13.9% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'ac97_bit_clock'
+  Clock period: 12.533ns (frequency: 79.789MHz)
+  Total number of paths / destination ports: 1844 / 121
+-------------------------------------------------------------------------
+Delay:               6.266ns (Levels of Logic = 3)
+  Source:            a/ac97/bit_count_4 (FF)
+  Destination:       a/ac97/Mshreg_left_in_data_4 (FF)
+  Source Clock:      ac97_bit_clock rising
+  Destination Clock: ac97_bit_clock falling
+
+  Data Path: a/ac97/bit_count_4 to a/ac97/Mshreg_left_in_data_4
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FD:C->Q              17   0.568   1.297  a/ac97/bit_count_4 (a/ac97/bit_count_4)
+     LUT3:I0->O            3   0.439   0.724  a/ac97/l_left_data_not0001131 (a/ac97/N18)
+     MUXF5:S->O            1   0.699   0.552  a/ac97/left_in_data_and000013_f5 (a/ac97/left_in_data_and000013)
+     LUT3:I2->O           18   0.439   1.023  a/ac97/left_in_data_and000048 (a/ac97/left_in_data_and0000)
+     SRL16E_1:CE               0.525          a/ac97/Mshreg_left_in_data_4
+    ----------------------------------------
+    Total                      6.266ns (2.670ns logic, 3.596ns route)
+                                       (42.6% logic, 57.4% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'clock_27mhz'
+  Total number of paths / destination ports: 1388 / 141
+-------------------------------------------------------------------------
+Offset:              12.475ns (Levels of Logic = 7)
+  Source:            switch<5> (PAD)
+  Destination:       a1/Mmult_imim_mult0000 (MULT)
+  Destination Clock: clock_27mhz rising
+
+  Data Path: switch<5> to a1/Mmult_imim_mult0000
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O            73   0.825   1.479  switch_5_IBUF (switch_5_IBUF)
+     LUT3:I0->O            4   0.439   0.955  a1/Sh101520 (a1/Sh10057)
+     LUT3:I1->O            1   0.439   0.000  a1/Sh1015311 (a1/Sh101531)
+     MUXF5:I1->O           2   0.436   0.987  a1/Sh101531_f5 (a1/Sh101_bdd6)
+     LUT3:I0->O            3   0.439   1.010  a1/Sh10141 (a1/Sh101_bdd1)
+     LUT3:I0->O            1   0.439   0.000  a1/Sh12011 (a1/Sh1201)
+     MUXF5:I1->O           2   0.436   0.702  a1/Sh1201_f5 (a1/Sh120)
+     MULT18X18S:A5             3.890          a1/Mmult_imim_mult0000
+    ----------------------------------------
+    Total                     12.475ns (7.343ns logic, 5.132ns route)
+                                       (58.9% logic, 41.1% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'ac97_bit_clock'
+  Total number of paths / destination ports: 1 / 1
+-------------------------------------------------------------------------
+Offset:              1.712ns (Levels of Logic = 1)
+  Source:            ac97_sdata_in (PAD)
+  Destination:       a/ac97/left_in_data_0 (FF)
+  Destination Clock: ac97_bit_clock falling
+
+  Data Path: ac97_sdata_in to a/ac97/left_in_data_0
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             1   0.825   0.517  ac97_sdata_in_IBUF (ac97_sdata_in_IBUF)
+     FDE_1:D                   0.370          a/ac97/left_in_data_0
+    ----------------------------------------
+    Total                      1.712ns (1.195ns logic, 0.517ns route)
+                                       (69.8% logic, 30.2% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'clock_27mhz'
+  Total number of paths / destination ports: 33 / 33
+-------------------------------------------------------------------------
+Offset:              6.909ns (Levels of Logic = 2)
+  Source:            volume_0 (FF)
+  Destination:       led<0> (PAD)
+  Source Clock:      clock_27mhz rising
+
+  Data Path: volume_0 to led<0>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDRE:C->Q             8   0.568   0.839  volume_0 (volume_0)
+     INV:I->O              2   0.439   0.701  Result<0>21_INV_0 (Result<0>2)
+     OBUF:I->O                 4.361          led_0_OBUF (led<0>)
+    ----------------------------------------
+    Total                      6.909ns (5.368ns logic, 1.541ns route)
+                                       (77.7% logic, 22.3% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'ac97_bit_clock'
+  Total number of paths / destination ports: 2 / 2
+-------------------------------------------------------------------------
+Offset:              5.630ns (Levels of Logic = 1)
+  Source:            a/ac97/ac97_synch (FF)
+  Destination:       ac97_synch (PAD)
+  Source Clock:      ac97_bit_clock rising
+
+  Data Path: a/ac97/ac97_synch to ac97_synch
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDS:C->Q              2   0.568   0.701  a/ac97/ac97_synch (a/ac97/ac97_synch)
+     OBUF:I->O                 4.361          ac97_synch_OBUF (ac97_synch)
+    ----------------------------------------
+    Total                      5.630ns (4.929ns logic, 0.701ns route)
+                                       (87.5% logic, 12.5% route)
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 384.00 secs
+Total CPU time to Xst completion: 383.13 secs
+ 
+--> 
+
+
+Total memory usage is 889412 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :  411 (   0 filtered)
+Number of infos    :   37 (   0 filtered)
+

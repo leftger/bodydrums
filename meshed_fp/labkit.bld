@@ -1,0 +1,86 @@
+Release 10.1.03 ngdbuild K.39 (lin64)
+Copyright (c) 1995-2008 Xilinx, Inc.  All rights reserved.
+
+Command Line:
+/afs/csail.mit.edu/proj/redsocs/Xilinx10.1/ISE/bin/lin64/unwrapped/ngdbuild -ise
+/afs/athena.mit.edu/user/g/r/grosas/6.111/Final_Project/bodydrums/meshed_fp/mesh
+ed_fp.ise -intstyle ise -dd _ngo -aul -nt timestamp -i -p xc2v6000-bf957-4
+labkit.ngc labkit.ngd
+
+Reading NGO file
+"/afs/athena.mit.edu/user/g/r/grosas/6.111/Final_Project/bodydrums/meshed_fp/lab
+kit.ngc" ...
+Loading design module
+"/afs/athena.mit.edu/user/g/r/grosas/6.111/Final_Project/bodydrums/meshed_fp/red
+_hud.ngc"...
+Loading design module
+"/afs/athena.mit.edu/user/g/r/grosas/6.111/Final_Project/bodydrums/meshed_fp/nin
+e_img.ngc"...
+Loading design module
+"/afs/athena.mit.edu/user/g/r/grosas/6.111/Final_Project/bodydrums/meshed_fp/eig
+ht_img.ngc"...
+Loading design module
+"/afs/athena.mit.edu/user/g/r/grosas/6.111/Final_Project/bodydrums/meshed_fp/sev
+en_img.ngc"...
+Loading design module
+"/afs/athena.mit.edu/user/g/r/grosas/6.111/Final_Project/bodydrums/meshed_fp/six
+_img.ngc"...
+Loading design module
+"/afs/athena.mit.edu/user/g/r/grosas/6.111/Final_Project/bodydrums/meshed_fp/fiv
+e_img.ngc"...
+Loading design module
+"/afs/athena.mit.edu/user/g/r/grosas/6.111/Final_Project/bodydrums/meshed_fp/fou
+r_img.ngc"...
+Loading design module
+"/afs/athena.mit.edu/user/g/r/grosas/6.111/Final_Project/bodydrums/meshed_fp/thr
+ee_img.ngc"...
+Loading design module
+"/afs/athena.mit.edu/user/g/r/grosas/6.111/Final_Project/bodydrums/meshed_fp/two
+_img.ngc"...
+Loading design module
+"/afs/athena.mit.edu/user/g/r/grosas/6.111/Final_Project/bodydrums/meshed_fp/one
+_img.ngc"...
+Loading design module
+"/afs/athena.mit.edu/user/g/r/grosas/6.111/Final_Project/bodydrums/meshed_fp/zer
+o_img.ngc"...
+Loading design module
+"/afs/athena.mit.edu/user/g/r/grosas/6.111/Final_Project/bodydrums/meshed_fp/hud
+_img.ngc"...
+Loading design module
+"/afs/athena.mit.edu/user/g/r/grosas/6.111/Final_Project/bodydrums/meshed_fp/ima
+ge_rom.ngc"...
+Loading design module
+"/afs/athena.mit.edu/user/g/r/grosas/6.111/Final_Project/bodydrums/meshed_fp/red
+_table.ngc"...
+Loading design module
+"/afs/athena.mit.edu/user/g/r/grosas/6.111/Final_Project/bodydrums/meshed_fp/gre
+en_table.ngc"...
+Loading design module
+"/afs/athena.mit.edu/user/g/r/grosas/6.111/Final_Project/bodydrums/meshed_fp/blu
+e_table.ngc"...
+Gathering constraint information from source properties...
+Done.
+
+Resolving constraint associations...
+Checking Constraint Associations...
+Done...
+Checking Partitions ...
+
+Checking expanded design ...
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+NGDBUILD Design Results Summary:
+  Number of errors:     0
+  Number of warnings:   0
+
+Total memory usage is 222644 kilobytes
+
+Writing NGD file "labkit.ngd" ...
+
+Writing NGDBUILD log file "labkit.bld"...

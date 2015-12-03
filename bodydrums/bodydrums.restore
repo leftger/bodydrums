@@ -851,6 +851,7 @@ proc restore { { project_dir "" } } {
       "image_rom.xco" 
       "labkit.ucf" 
       "labkit.v" 
+      "max_freq_amp.v" 
       "nine_img.xco" 
       "one_img.xco" 
       "picture_blob.v" 
