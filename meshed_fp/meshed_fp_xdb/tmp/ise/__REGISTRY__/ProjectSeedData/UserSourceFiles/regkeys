@@ -1,5 +1,5 @@
 NUM_USER_FILES
-37
+38
 s
 user_file_1
 bcd.v
@@ -93,6 +93,9 @@ grad_div.xco
 s
 user_file_37
 fft16384u.xco
+s
+user_file_38
+max_freq_amp_tb.v
 s
 user_file_4
 digit_selector.v
