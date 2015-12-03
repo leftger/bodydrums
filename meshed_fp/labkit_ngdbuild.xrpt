@@ -5,17 +5,17 @@
     The structure and the elements are likely to change over the next few releases.
     This means code written to parse this file will need to be revisited each subsequent release.-->
 
-  <application stringID="NgdBuild" timeStamp="Thu Dec  3 02:22:20 2015">
+  <application stringID="NgdBuild" timeStamp="Thu Dec  3 04:29:13 2015">
     <task stringID="NGDBUILD_REPORT">
       <section stringID="NGDBUILD_DESIGN_SUMMARY">
         <item dataType="int" stringID="NGDBUILD_NUM_ERRORS" value="0"/>
         <item dataType="int" stringID="NGDBUILD_FILTERED_WARNINGS" value="0"/>
-        <item dataType="int" stringID="NGDBUILD_NUM_WARNINGS" value="0"/>
+        <item dataType="int" stringID="NGDBUILD_NUM_WARNINGS" value="401"/>
         <item dataType="int" stringID="NGDBUILD_FILTERED_INFOS" value="0"/>
         <item dataType="int" stringID="NGDBUILD_NUM_INFOS" value="0"/>
       </section>
       <section stringID="NGDBUILD_CORE_SUMMARY">
-        <item COUNT="1" stringID="NGDBUILD_CORE" value="blk_mem_gen_v2_8, Xilinx CORE Generator 10.1.03_ip3"/>
+        <item COUNT="1" stringID="NGDBUILD_CORE" value="div_gen_v2_0, Xilinx CORE Generator 10.1.03_ip3"/>
         <section stringID="NGDBUILD_CORE_GENERATION_SUMMARY">
           <section stringID="NGDBUILD_CORE_INSTANCES">
             <scope stringID="NGDBUILD_CORE_INSTANCE" value="blue_table">
@@ -26,6 +26,9 @@
               <item stringID="NGDBUILD_CORE_INFO" type="blk_mem_gen_v2_8" value="eight_img"/>
               <item c_addra_width="11" c_addrb_width="11" c_algorithm="1" c_byte_size="9" c_common_clk="0" c_default_data="0" c_disable_warn_bhv_coll="0" c_disable_warn_bhv_range="0" c_has_ena="0" c_has_enb="0" c_has_mem_output_regs_a="0" c_has_mem_output_regs_b="0" c_has_mux_output_regs_a="0" c_has_mux_output_regs_b="0" c_has_regcea="0" c_has_regceb="0" c_has_ssra="0" c_has_ssrb="0" c_init_file_name="eight_img.mif" c_load_init_file="1" c_mem_type="3" c_mux_pipeline_stages="0" c_prim_type="1" c_read_depth_a="1300" c_read_depth_b="1300" c_read_width_a="2" c_read_width_b="2" c_sim_collision_check="ALL" c_sinita_val="0" c_sinitb_val="0" c_use_byte_wea="0" c_use_byte_web="0" c_use_default_data="0" c_use_ecc="0" c_use_ramb16bwer_rst_bhv="0" c_wea_width="1" c_web_width="1" c_write_depth_a="1300" c_write_depth_b="1300" c_write_mode_a="WRITE_FIRST" c_write_mode_b="WRITE_FIRST" c_write_width_a="2" c_write_width_b="2" component_name="eight_img" stringID="NGDBUILD_CORE_PARAMETERS" value="eight_img"/>
             </scope>
+            <scope stringID="NGDBUILD_CORE_INSTANCE" value="fft16384u">
+              <item stringID="NGDBUILD_CORE_INFO" type="xfft_v3_2" value="fft16384u"/>
+            </scope>
             <scope stringID="NGDBUILD_CORE_INSTANCE" value="five_img">
               <item stringID="NGDBUILD_CORE_INFO" type="blk_mem_gen_v2_8" value="five_img"/>
               <item c_addra_width="11" c_addrb_width="11" c_algorithm="1" c_byte_size="9" c_common_clk="0" c_default_data="0" c_disable_warn_bhv_coll="0" c_disable_warn_bhv_range="0" c_has_ena="0" c_has_enb="0" c_has_mem_output_regs_a="0" c_has_mem_output_regs_b="0" c_has_mux_output_regs_a="0" c_has_mux_output_regs_b="0" c_has_regcea="0" c_has_regceb="0" c_has_ssra="0" c_has_ssrb="0" c_init_file_name="five_img.mif" c_load_init_file="1" c_mem_type="3" c_mux_pipeline_stages="0" c_prim_type="1" c_read_depth_a="1300" c_read_depth_b="1300" c_read_width_a="2" c_read_width_b="2" c_sim_collision_check="ALL" c_sinita_val="0" c_sinitb_val="0" c_use_byte_wea="0" c_use_byte_web="0" c_use_default_data="0" c_use_ecc="0" c_use_ramb16bwer_rst_bhv="0" c_wea_width="1" c_web_width="1" c_write_depth_a="1300" c_write_depth_b="1300" c_write_mode_a="WRITE_FIRST" c_write_mode_b="WRITE_FIRST" c_write_width_a="2" c_write_width_b="2" component_name="five_img" stringID="NGDBUILD_CORE_PARAMETERS" value="five_img"/>
@@ -33,6 +36,10 @@
             <scope stringID="NGDBUILD_CORE_INSTANCE" value="four_img">
               <item stringID="NGDBUILD_CORE_INFO" type="blk_mem_gen_v2_8" value="four_img"/>
               <item c_addra_width="11" c_addrb_width="11" c_algorithm="1" c_byte_size="9" c_common_clk="0" c_default_data="0" c_disable_warn_bhv_coll="0" c_disable_warn_bhv_range="0" c_has_ena="0" c_has_enb="0" c_has_mem_output_regs_a="0" c_has_mem_output_regs_b="0" c_has_mux_output_regs_a="0" c_has_mux_output_regs_b="0" c_has_regcea="0" c_has_regceb="0" c_has_ssra="0" c_has_ssrb="0" c_init_file_name="four_img.mif" c_load_init_file="1" c_mem_type="3" c_mux_pipeline_stages="0" c_prim_type="1" c_read_depth_a="1300" c_read_depth_b="1300" c_read_width_a="2" c_read_width_b="2" c_sim_collision_check="ALL" c_sinita_val="0" c_sinitb_val="0" c_use_byte_wea="0" c_use_byte_web="0" c_use_default_data="0" c_use_ecc="0" c_use_ramb16bwer_rst_bhv="0" c_wea_width="1" c_web_width="1" c_write_depth_a="1300" c_write_depth_b="1300" c_write_mode_a="WRITE_FIRST" c_write_mode_b="WRITE_FIRST" c_write_width_a="2" c_write_width_b="2" component_name="four_img" stringID="NGDBUILD_CORE_PARAMETERS" value="four_img"/>
+            </scope>
+            <scope stringID="NGDBUILD_CORE_INSTANCE" value="grad_div">
+              <item stringID="NGDBUILD_CORE_INFO" type="div_gen_v2_0" value="grad_div"/>
+              <item algorithm_type="1" c_ce_overrides_sclr="0" c_has_ce="0" c_has_div_by_zero="0" c_has_sclr="0" c_latency="-1" component_name="grad_div" divclk_sel="1" dividend_width="18" divisor_width="10" fractional_b="0" fractional_width="10" signed_b="0" stringID="NGDBUILD_CORE_PARAMETERS" value="grad_div"/>
             </scope>
             <scope stringID="NGDBUILD_CORE_INSTANCE" value="green_table">
               <item stringID="NGDBUILD_CORE_INFO" type="blk_mem_gen_v2_8" value="green_table"/>

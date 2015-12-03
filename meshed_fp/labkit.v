@@ -190,9 +190,9 @@ module labkit   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
    
    // Audio Input and Output
    assign beep= 1'b0;
-   assign audio_reset_b = 1'b0;
-   assign ac97_synch = 1'b0;
-   assign ac97_sdata_out = 1'b0;
+   //assign audio_reset_b = 1'b0;
+   //assign ac97_synch = 1'b0;
+   //assign ac97_sdata_out = 1'b0;
    // ac97_sdata_in is an input
 
    // Video Output
@@ -258,16 +258,6 @@ module labkit   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
    // PS/2 Ports
    // mouse_clock, mouse_data, keyboard_clock, and keyboard_data are inputs
 
-/*
-   // LED Displays
-   assign disp_blank = 1'b1;
-   assign disp_clock = 1'b0;
-   assign disp_rs = 1'b0;
-   assign disp_ce_b = 1'b1;
-   assign disp_reset_b = 1'b0;
-   assign disp_data_out = 1'b0;
-   // disp_data_in is an input
-*/
 
    // Buttons, Switches, and Individual LEDs
    //lab3 assign led = 8'hFF;
@@ -336,12 +326,14 @@ module labkit   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
    debounce db5(.reset(reset),.clock(clock_65mhz),.noisy(~button_right),.clean(right));
 	debounce db6(.reset(reset),.clock(clock_65mhz),.noisy(~button_enter),.clean(enter));
 	
-	wire [3:0] num, blob;
+      reg [3:0] num, blob;
+      reg [1:0] volume_or_selection;
 	
 	display_16hex disp(reset, clock_27mhz, {4'b0,
-                                          4'b0,
+                                          2'b0,
+                                          volume_or_selection, // button mode selected
                                           blob, //blob selected
-														num}, // number to output
+					  num}, // number to output
 		disp_blank, disp_clock, disp_rs, disp_ce_b,
 		disp_reset_b, disp_data_out);
 	
@@ -353,15 +345,108 @@ module labkit   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
               .hsync(hsync),.vsync(vsync),.blank(blank));
 
    // feed XVGA signals to user's pong game
-   wire [23:0] pixel;
-   wire phsync,pvsync,pblank;
-   pong_game pg(.vclock(clock_65mhz),.reset(reset),
-                .up(up),.down(down),.pspeed(switch[7:4]),
+   wire [23:0] hud_pixel;
+   hud_display hd(.vclock(clock_65mhz),.reset(reset),
 		.hcount(hcount),.vcount(vcount),
-                .hsync(hsync),.vsync(vsync),.blank(blank),
-		.phsync(phsync),.pvsync(pvsync),.pblank(pblank),.pixel(pixel),
-		.left(left),.right(right),.enter(enter),.num(num),.blob(blob));
+		.hud_pixel(hud_pixel),
+		.num(num),.blob(blob));
 
+	reg old_vup, old_vdown;
+	reg [4:0] volume;
+	 
+	initial begin
+		volume_or_selection = 0;
+		num = 0;
+		blob = 0;
+		volume = 5'd8;
+	end
+	 
+	 always@(negedge vsync) begin
+		if(reset) volume <= 5'd8;
+		else begin
+			if(right) begin
+				volume_or_selection <= volume_or_selection + 1;
+			end else if (left) begin
+				volume_or_selection <= volume_or_selection - 1;
+			end if(up) begin
+				case(volume_or_selection)
+					0 : num <= num + 1;
+					1 : blob <= blob + 1;
+					default : if(~old_vup & volume !=5'd31) volume <= volume +1;
+				endcase
+			end else if (down) begin
+				case(volume_or_selection)
+					0 : num <= num - 1;
+					1 : blob <= blob - 1;
+					default : if(~old_vdown & volume!=5'd0) volume <= volume -1;
+				endcase
+			end
+		end
+		old_vup <= up;
+		old_vdown <= down;
+	 end
+
+   // AC97 driver
+   fft_audio a(clock_27mhz, reset, volume, from_ac97_data, to_ac97_data, ready,
+	       audio_reset_b, ac97_sdata_out, ac97_sdata_in,
+	       ac97_synch, ac97_bit_clock);
+
+   // loopback incoming audio to headphones
+   assign to_ac97_data = from_ac97_data;
+
+   // process incoming audio data, store results in histogram memory
+   wire [9:0] haddr;
+   wire [13:0] hdata;
+   wire hwe,sel;
+   process_audio a1(clock_27mhz,reset,switch[7:4],ready,from_ac97_data,haddr,hdata,hwe);
+
+   // 1024x10 histogram memory: A port is write-only, B port is read-only
+   // use 1Kx(16+2) dual port BRAM
+   wire [15:0] dout;
+   RAMB16_S18_S18 histogram(
+     .CLKA(clock_27mhz),.ADDRA(haddr),.DIA({2'b0,hdata}),.DIPA(2'b0),.WEA(hwe),
+     .ENA(1'b1),.SSRA(1'b0),
+     .CLKB(clock_65mhz),.ADDRB(hcount),.DOB(dout),
+     .DIB(16'b0),.DIPB(2'b0),.WEB(1'b0),.ENB(1'b1),.SSRB(1'b0));
+
+   reg[23:0] fft_pixel;
+   reg phsync,pvsync,pblank;
+   reg xhsync,xvsync,xblank;
+   reg yhsync,yvsync,yblank;
+   reg [9:0] xvcount;
+   reg [9:0] yvcount;
+
+   wire [17:0] dividend;
+   wire [17:0] quotient;
+   wire [9:0] divisor;
+   assign divisor = (dout[9:0] > 767) ? 767 : dout[9:0];
+   assign dividend = xvcount * 8'hFF;
+   grad_div my_div(.clk(clock_65mhz),.dividend(dividend),.quotient(quotient),
+      .divisor(divisor));
+   reg [7:0] grad_color;
+
+   always @ (posedge clock_65mhz) begin
+     // first pipe stage: memory access
+      yhsync <= hsync;
+      yvsync <= vsync;
+      yblank <= blank;
+      yvcount <= 10'd767 - vcount;
+     // second pipe stage: process memory result
+      xhsync <= yhsync;
+      xvsync <= yvsync;
+      xblank <= yblank;
+      xvcount <= yvcount;
+      grad_color <=8'hFF - quotient[7:0];
+	  
+     // third pipe stage: write divider to result
+     phsync <= xhsync;
+     pvsync <= xvsync;
+     pblank <= xblank;
+     fft_pixel <= xblank ? {24{1'b0}} :
+	  (dout[9:0] > xvcount) ? 
+	  {{8{1'b1}},grad_color,{8{1'b0}}}:
+	  {24{1'b0}};
+   end
    // switch[1:0] selects which video generator to use:
    //  00: user's pong game
    //  01: 1 pixel outline of active video area (adjust screen controls)
@@ -385,10 +470,10 @@ module labkit   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 	 rgb <= {{8{hcount[8]}}, {8{hcount[7]}}, {8{hcount[6]}}} ;
       end else begin
          // default: pong
-	 hs <= phsync;
-	 vs <= pvsync;
-	 b <= pblank;
-	 rgb <= pixel;
+	 hs <= hsync;
+	 vs <= vsync;
+	 b <= blank;
+	 rgb <= fft_pixel | hud_pixel;
       end
    end
 
@@ -403,7 +488,7 @@ module labkit   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
    assign vga_out_hsync = hs;
    assign vga_out_vsync = vs;
    
-   assign led = ~{3'b000,up,down,reset,switch[1:0]};
+   assign led = ~{3'b000,volume};
 
 endmodule
 
@@ -411,88 +496,37 @@ endmodule
 
 ////////////////////////////////////////////////////////////////////////////////
 //
-// pong_game: the game itself!
+// hud_display: display the statistics on the screen!!!
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-module pong_game (
+module hud_display (
    input vclock,	// 65MHz clock
    input reset,		// 1 to initialize module
-   input up,		// 1 when paddle should move up
-   input down,  	// 1 when paddle should move down
-	input left,
-	input right,
-	input enter,
-   input [3:0] pspeed,  // puck speed in pixels/tick 
+	input [3:0] num,
+	input [3:0] blob,
    input [10:0] hcount,	// horizontal index of current pixel (0..1023)
    input [9:0] 	vcount, // vertical index of current pixel (0..767)
-   input hsync,		// XVGA horizontal sync signal (active low)
-   input vsync,		// XVGA vertical sync signal (active low)
-   input blank,		// XVGA blanking (1 means output black pixel)
- 	
-   output phsync,	// pong game's horizontal sync
-   output pvsync,	// pong game's vertical sync
-   output pblank,	// pong game's blanking
-   output [23:0] pixel	,	// pong game's pixel  // r=23:16, g=15:8, b=7:0
-	output reg[3:0] num,
-	output reg[3:0] blob
+   output [23:0] hud_pixel	// pong game's pixel  // r=23:16, g=15:8, b=7:0
    );
 
-   wire [2:0] checkerboard;
-	
-   // REPLACE ME! The code below just generates a color checkerboard
-   // using 64 pixel by 64 pixel squares.
-   
-   assign phsync = hsync;
-   assign pvsync = vsync;
-   assign pblank = blank;
-   assign checkerboard = hcount[8:6] + vcount[8:6];
 
-   // here we use three bits from hcount and vcount to generate the \
-   // checkerboard
-
-   //assign pixel = {{8{checkerboard[2]}}, {8{checkerboard[1]}}, {8{checkerboard[0]}}} ;
    wire [23:0] pic_pixel;
 	picture_blob myblob
 	(.pixel_clk(vclock),.x((1024 - 320) >> 1),.hcount(hcount),
 	.y((768 - 240) >> 1),.vcount(vcount),
 	 .pixel(pic_pixel));
 	
-	wire [23:0] hud_pixel;
+	wire [23:0] hud_img_pixel;
 	
 	hud_blob thehud
 	(.pixel_clk(vclock),.x(512),.hcount(hcount),.y(0),.vcount(vcount),
-	.pixel(hud_pixel));
+	.pixel(hud_img_pixel));
 	
 	wire [23:0] digit_pixel;
 
-	 reg num_or_blob;
-	 
-	 initial begin
-		num_or_blob = 0;
-      num = 0;
-      blob = 0;
-	 end
-	 
-	 always@(negedge vsync) begin
-		if(right || left) begin
-			num_or_blob <= ~num_or_blob;
-		end
-		if(up) begin
-			case(num_or_blob)
-				0 : num <= num + 1;
-				1 : blob <= blob + 1;
-			endcase
-		end else if (down) begin
-			case(num_or_blob)
-				0 : num <= num - 1;
-				1 : blob <= blob - 1;
-			endcase
-		end
-	 end
-	 
 	 hud_digits ma_digs(.clk(vclock),.write(enter),.num(num),
 		.blob(blob),.hcount(hcount),.vcount(vcount),.pixel(digit_pixel));
 	
-	assign pixel = hud_pixel | pic_pixel | digit_pixel;
+	assign hud_pixel = hud_img_pixel | pic_pixel | digit_pixel;
 endmodule

@@ -23,7 +23,7 @@ PROP_PreferredLanguage
 Verilog
 s
 PROP_Simulator
-Modelsim-SE Verilog
+Modelsim-SE Mixed
 s
 PROP_Synthesis_Tool
 XST (VHDL/Verilog)
