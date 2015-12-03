@@ -106,18 +106,3 @@ module sqrt(clk,data,start,answer,done);
 
   assign done = ~busy;
 endmodule
-
-// pulse synchronizer
-module column_gradient
-		    (input [9:0] height,
-		    input [9:0] xvcount,
-          output [23:0] pixel);
-
-  wire [7:0] red,green;
-  assign red = /*(xvcount * 8'b1) >> 5*/(xvcount > (height >> 1))?
-		8'b1 : 8'b0;
-  assign green = /*8'b1 - ((xvcount * 8'b1) >> 5)*/(xvcount < (height >> 1))?
-		8'b1 : 8'b0;
-  assign pixel = {red[7:0],green[7:0],8'b0};
-  
-endmodule
