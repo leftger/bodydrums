@@ -836,14 +836,18 @@ proc restore { { project_dir "" } } {
   } "A problem occured while restoring project settings."
 
   set user_files { 
+      "ac97.v" 
+      "ac97commands.v" 
       "bcd.v" 
       "blue_table.xco" 
+      "debounce.v" 
       "digit_blob.v" 
       "digit_selector.v" 
       "display_16hex.v" 
       "eight_img.xco" 
       "fft.v" 
       "fft16384u.xco" 
+      "fft_audio.v" 
       "five_img.xco" 
       "four_img.xco" 
       "grad_div.xco" 
@@ -859,6 +863,7 @@ proc restore { { project_dir "" } } {
       "nine_img.xco" 
       "one_img.xco" 
       "picture_blob.v" 
+      "process_audio.v" 
       "red_hud.xco" 
       "red_table.xco" 
       "seven_img.xco" 
@@ -866,6 +871,7 @@ proc restore { { project_dir "" } } {
       "sprite_img_selector.v" 
       "three_img.xco" 
       "two_img.xco" 
+      "xvga.v" 
       "zero_img.xco"}
 
   HandleException {

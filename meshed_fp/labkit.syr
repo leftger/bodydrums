@@ -4,15 +4,15 @@ Copyright (c) 1995-2008 Xilinx, Inc.  All rights reserved.
 Parameter TMPDIR set to /afs/athena.mit.edu/user/g/r/grosas/6.111/Final_Project/bodydrums/meshed_fp/xst/projnav.tmp
 
 
-Total REAL time to Xst completion: 1.00 secs
-Total CPU time to Xst completion: 0.05 secs
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.09 secs
  
 --> 
 Parameter xsthdpdir set to /afs/athena.mit.edu/user/g/r/grosas/6.111/Final_Project/bodydrums/meshed_fp/xst
 
 
-Total REAL time to Xst completion: 1.00 secs
-Total CPU time to Xst completion: 0.05 secs
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.09 secs
  
 --> 
 Reading design: labkit.prj
@@ -146,19 +146,21 @@ Compiling verilog file "digit_blob.v" in library work
 Module <digit_selector> compiled
 Compiling verilog file "./blue_table.v" in library work
 Module <digit_blob> compiled
-Compiling verilog file "picture_blob.v" in library work
+Compiling verilog file "xvga.v" in library work
 Module <blue_table> compiled
+Compiling verilog file "picture_blob.v" in library work
+Module <xvga> compiled
 Compiling verilog file "hud_digits.v" in library work
 Module <picture_blob> compiled
 Compiling verilog file "hud_blob.v" in library work
 Module <hud_digits> compiled
 Compiling verilog file "display_16hex.v" in library work
 Module <hud_blob> compiled
-Compiling verilog file "labkit.v" in library work
+Compiling verilog file "debounce.v" in library work
 Module <display_16hex> compiled
+Compiling verilog file "labkit.v" in library work
 Module <debounce> compiled
 Module <labkit> compiled
-Module <xvga> compiled
 Module <pong_game> compiled
 No errors in compilation
 Analysis of file <"labkit.prj"> succeeded.
@@ -195,10 +197,10 @@ Analyzing hierarchy for module <digit_blob> in library <work> with parameters.
 	HEIGHT = "00000000000000000000000000110100"
 	WIDTH = "00000000000000000000000000011001"
 
-WARNING:Xst:2591 - "labkit.v" line 333: attribute on instance <CLKFX_DIVIDE> overrides generic/parameter on entity. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "labkit.v" line 333: attribute on instance <CLKFX_MULTIPLY> overrides generic/parameter on entity. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "labkit.v" line 333: attribute on instance <CLKIN_PERIOD> overrides generic/parameter on entity. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "labkit.v" line 333: attribute on instance <CLK_FEEDBACK> overrides generic/parameter on entity. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "labkit.v" line 313: attribute on instance <CLKFX_DIVIDE> overrides generic/parameter on entity. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "labkit.v" line 313: attribute on instance <CLKFX_MULTIPLY> overrides generic/parameter on entity. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "labkit.v" line 313: attribute on instance <CLKIN_PERIOD> overrides generic/parameter on entity. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "labkit.v" line 313: attribute on instance <CLK_FEEDBACK> overrides generic/parameter on entity. It is possible that simulator will not take this attribute into account.
 
 =========================================================================
 *                            HDL Analysis                               *
@@ -278,10 +280,10 @@ INFO:Xst:2561 - Always blocking tristate driving signal <systemace_data> in unit
 INFO:Xst:2561 - Always blocking tristate driving signal <tv_in_i2c_data> in unit <labkit> is removed.
 
 Synthesizing Unit <debounce>.
-    Related source file is "labkit.v".
+    Related source file is "debounce.v".
     Found 1-bit register for signal <clean>.
-    Found 20-bit up counter for signal <count>.
-    Found 1-bit xor2 for signal <count$xor0000> created at line 15.
+    Found 19-bit up counter for signal <count>.
+    Found 1-bit xor2 for signal <count$xor0000> created at line 22.
     Found 1-bit register for signal <new>.
     Summary:
 	inferred   1 Counter(s).
@@ -330,7 +332,7 @@ Unit <display_16hex> synthesized.
 
 
 Synthesizing Unit <xvga>.
-    Related source file is "labkit.v".
+    Related source file is "xvga.v".
     Found 10-bit up counter for signal <vcount>.
     Found 1-bit register for signal <vsync>.
     Found 11-bit up counter for signal <hcount>.
@@ -786,7 +788,7 @@ Macro Statistics
 # Counters                                             : 12
  10-bit up counter                                     : 1
  11-bit up counter                                     : 1
- 20-bit up counter                                     : 6
+ 19-bit up counter                                     : 6
  4-bit updown counter                                  : 2
  5-bit up counter                                      : 1
  8-bit down counter                                    : 1
@@ -924,7 +926,7 @@ Macro Statistics
 # Counters                                             : 12
  10-bit up counter                                     : 1
  11-bit up counter                                     : 1
- 20-bit up counter                                     : 6
+ 19-bit up counter                                     : 6
  4-bit updown counter                                  : 2
  5-bit up counter                                      : 1
  8-bit down counter                                    : 1
@@ -989,8 +991,8 @@ Unit <labkit> processed.
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 364
- Flip-Flops                                            : 364
+# Registers                                            : 358
+ Flip-Flops                                            : 358
 # Shift Registers                                      : 4
  7-bit shift register                                  : 4
 
@@ -1021,31 +1023,31 @@ Design Statistics
 # IOs                              : 576
 
 Cell Usage :
-# BELS                             : 2116
+# BELS                             : 2097
 #      GND                         : 18
 #      INV                         : 77
-#      LUT1                        : 154
-#      LUT2                        : 168
+#      LUT1                        : 148
+#      LUT2                        : 169
 #      LUT2_D                      : 6
 #      LUT2_L                      : 2
-#      LUT3                        : 304
+#      LUT3                        : 310
 #      LUT3_D                      : 3
 #      LUT3_L                      : 5
-#      LUT4                        : 416
+#      LUT4                        : 410
 #      LUT4_D                      : 13
 #      LUT4_L                      : 6
-#      MUXCY                       : 421
-#      MUXF5                       : 125
+#      MUXCY                       : 415
+#      MUXF5                       : 123
 #      MUXF6                       : 36
 #      MUXF7                       : 16
 #      VCC                         : 18
-#      XORCY                       : 328
-# FlipFlops/Latches                : 387
+#      XORCY                       : 322
+# FlipFlops/Latches                : 381
 #      FD                          : 5
 #      FDE                         : 97
 #      FDE_1                       : 1
 #      FDR                         : 85
-#      FDRE                        : 145
+#      FDRE                        : 139
 #      FDRS                        : 13
 #      FDS                         : 31
 #      FDSE                        : 10
@@ -1075,10 +1077,10 @@ Device utilization summary:
 
 Selected Device : 2v6000bf957-4 
 
- Number of Slices:                      629  out of  33792     1%  
- Number of Slice Flip Flops:            387  out of  67584     0%  
- Number of 4 input LUTs:               1159  out of  67584     1%  
-    Number used as logic:              1154
+ Number of Slices:                      628  out of  33792     1%  
+ Number of Slice Flip Flops:            381  out of  67584     0%  
+ Number of 4 input LUTs:               1154  out of  67584     1%  
+    Number used as logic:              1149
     Number used as Shift registers:       5
  Number of IOs:                         576
  Number of bonded IOBs:                 248  out of    684    36%  
@@ -1108,7 +1110,7 @@ Clock Information:
 -----------------------------------------+---------------------------------------------------------------------------------------------------------------------+-------+
 Clock Signal                             | Clock buffer(FF name)                                                                                               | Load  |
 -----------------------------------------+---------------------------------------------------------------------------------------------------------------------+-------+
-clock_27mhz                              | vclk1:CLKFX                                                                                                         | 385   |
+clock_27mhz                              | vclk1:CLKFX                                                                                                         | 379   |
 disp/clock1                              | BUFG                                                                                                                | 43    |
 clock_27mhz                              | IBUFG                                                                                                               | 14    |
 pg/ma_digs/the_dig/img_nueve/BU2/dbiterr | NONE(pg/ma_digs/the_dig/img_nueve/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_init.ram/dpram.dp9x9.ram) | 1     |
@@ -1136,9 +1138,9 @@ Timing Summary:
 Speed Grade: -4
 
    Minimum period: 37.788ns (Maximum Frequency: 26.463MHz)
-   Minimum input arrival time before clock: 5.611ns
+   Minimum input arrival time before clock: 6.334ns
    Maximum output required time after clock: 9.450ns
-   Maximum combinational path delay: 7.201ns
+   Maximum combinational path delay: 7.195ns
 
 Timing Detail:
 --------------
@@ -1147,7 +1149,7 @@ All values displayed in nanoseconds (ns)
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clock_27mhz'
   Clock period: 37.788ns (frequency: 26.463MHz)
-  Total number of paths / destination ports: 176640 / 1524
+  Total number of paths / destination ports: 175759 / 1506
 -------------------------------------------------------------------------
 Delay:               15.745ns (Levels of Logic = 9)
   Source:            xvga1/vcount_6_1 (FF)
@@ -1200,7 +1202,7 @@ Delay:               13.775ns (Levels of Logic = 13)
      LUT4:I1->O            1   0.439   0.000  disp/disp_data_out_mux0000331 (disp/disp_data_out_mux0000331)
      MUXF5:I1->O           1   0.436   0.557  disp/disp_data_out_mux000033_f5 (disp/disp_data_out_mux000033)
      LUT4:I3->O            1   0.439   0.552  disp/disp_data_out_mux000078 (disp/disp_data_out_mux000078)
-     LUT3:I2->O            1   0.439   0.000  disp/disp_data_out_mux0000131_G (N204)
+     LUT3:I2->O            1   0.439   0.000  disp/disp_data_out_mux0000131_G (N202)
      MUXF5:I1->O           2   0.436   0.910  disp/disp_data_out_mux0000131 (disp/disp_data_out_mux0000131)
      LUT2:I1->O            1   0.439   0.000  disp/disp_data_out_mux00001682 (disp/disp_data_out_mux00001681)
      MUXF5:I0->O           1   0.436   0.000  disp/disp_data_out_mux0000168_f5 (disp/disp_data_out_mux0000)
@@ -1234,25 +1236,25 @@ Delay:               3.139ns (Levels of Logic = 2)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'clock_27mhz'
-  Total number of paths / destination ports: 336 / 192
+  Total number of paths / destination ports: 282 / 186
 -------------------------------------------------------------------------
-Offset:              5.611ns (Levels of Logic = 4)
-  Source:            switch<1> (PAD)
+Offset:              6.334ns (Levels of Logic = 4)
+  Source:            switch<0> (PAD)
   Destination:       rgb_0 (FF)
   Destination Clock: clock_27mhz rising 2.4X
 
-  Data Path: switch<1> to rgb_0
+  Data Path: switch<0> to rgb_0
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O            23   0.825   1.343  switch_1_IBUF (switch_1_IBUF)
-     LUT4:I0->O            1   0.439   0.000  Mmux_rgb_mux00001102132 (Mmux_rgb_mux00001102131)
-     MUXF5:I0->O           3   0.436   1.010  Mmux_rgb_mux0000110213_f5 (N1)
+     IBUF:I->O            22   0.825   1.337  switch_0_IBUF (switch_0_IBUF)
+     LUT2:I0->O            1   0.439   0.726  Mmux_rgb_mux0000110209 (Mmux_rgb_mux0000110209)
+     LUT4:I1->O            3   0.439   1.010  Mmux_rgb_mux0000110213 (N1)
      LUT4:I0->O            8   0.439   0.840  Mmux_rgb_mux00001011 (N3)
      FDS:S                     0.280          rgb_16
     ----------------------------------------
-    Total                      5.611ns (2.419ns logic, 3.192ns route)
-                                       (43.1% logic, 56.9% route)
+    Total                      6.334ns (2.422ns logic, 3.912ns route)
+                                       (38.2% logic, 61.8% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'clock_27mhz'
@@ -1297,7 +1299,7 @@ Offset:              5.630ns (Levels of Logic = 1)
 Timing constraint: Default path analysis
   Total number of paths / destination ports: 2 / 2
 -------------------------------------------------------------------------
-Delay:               7.201ns (Levels of Logic = 3)
+Delay:               7.195ns (Levels of Logic = 3)
   Source:            switch<1> (PAD)
   Destination:       led<1> (PAD)
 
@@ -1305,23 +1307,23 @@ Delay:               7.201ns (Levels of Logic = 3)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O            23   0.825   1.058  switch_1_IBUF (switch_1_IBUF)
+     IBUF:I->O            22   0.825   1.052  switch_1_IBUF (switch_1_IBUF)
      INV:I->O              1   0.439   0.517  led<1>1_INV_0 (led_1_OBUF)
      OBUF:I->O                 4.361          led_1_OBUF (led<1>)
     ----------------------------------------
-    Total                      7.201ns (5.625ns logic, 1.576ns route)
-                                       (78.1% logic, 21.9% route)
+    Total                      7.195ns (5.625ns logic, 1.570ns route)
+                                       (78.2% logic, 21.8% route)
 
 =========================================================================
 
 
-Total REAL time to Xst completion: 24.00 secs
-Total CPU time to Xst completion: 18.55 secs
+Total REAL time to Xst completion: 21.00 secs
+Total CPU time to Xst completion: 19.67 secs
  
 --> 
 
 
-Total memory usage is 509092 kilobytes
+Total memory usage is 508688 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :  362 (   0 filtered)
