@@ -837,6 +837,7 @@ proc restore { { project_dir "" } } {
 
   set user_files { 
       "../../Final Project  Sound Analysis/Verilog Files/compression_gain_computer.v" 
+      "../../Final Project  Sound Analysis/Verilog Files/compression_level_detector.v" 
       "../../Final Project  Sound Analysis/Verilog Files/delay_module.v" 
       "../../Final Project  Sound Analysis/Verilog Files/limiter_module.v" 
       "../../Final Project  Sound Analysis/Verilog Files/mybram.v" 
@@ -864,7 +865,7 @@ proc restore { { project_dir "" } } {
       "A" "" "" "" "PROPEXT_xilxSynthAddBufg_virtex2" "16" 
       "A" "" "" "" "PROPEXT_xilxSynthMaxFanout_virtex2" "500" 
       "A" "" "" "" "PROP_AutoGenFile" "false" 
-      "A" "" "" "" "PROP_BehavioralSimTop" "Module|test_delay" 
+      "A" "" "" "" "PROP_BehavioralSimTop" "Module|test_binary_to_dB" 
       "A" "" "" "" "PROP_CPLDFitkeepio" "false" 
       "A" "" "" "" "PROP_CompxlibAbelLib" "true" 
       "A" "" "" "" "PROP_CompxlibCPLDDetLib" "true" 

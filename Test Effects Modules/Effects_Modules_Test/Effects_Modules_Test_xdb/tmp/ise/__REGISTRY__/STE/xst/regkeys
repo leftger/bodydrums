@@ -1,5 +1,5 @@
 CommandLine
-/afs/csail.mit.edu/proj/redsocs/Xilinx10.1/ISE/bin/lin64/unwrapped/xst -ise /afs/athena.mit.edu/user/g/e/germainm/6.111/Final_Project/bodydrums/Test Effects Modules/Effects_Modules_Test/Effects_Modules_Test.ise -intstyle ise -ifn test_limiter.xst -ofn test_limiter.stx -finalclean 1
+/afs/csail.mit.edu/proj/redsocs/Xilinx10.1/ISE/bin/lin64/unwrapped/xst -ise /afs/athena.mit.edu/user/g/e/germainm/6.111/Final_Project/bodydrums/Test Effects Modules/Effects_Modules_Test/Effects_Modules_Test.ise -intstyle ise -ifn compression_level_detector.xst -ofn compression_level_detector.stx -finalclean 1
 s
 FormatString
 xst [-ifn <InputFile>] [-ofn <OutputFile>] [-ise <iseProjectFile>] [--quiet] [-intstyle <Style>] [--deb <DebugLevel>] [--finalclean <Clean>] [--PcubeFlow] [--globOptFlow] [--XstNtrc]

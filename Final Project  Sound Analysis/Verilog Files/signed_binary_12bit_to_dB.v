@@ -59,6 +59,7 @@ module signed_binary_12bit_to_dB
        case (state)
        // We want to take the input and find the absolute value of it.
        IDLE: begin
+          done <= 1'b0;
           if (start)begin
              if (input_binary[11] == 1'b1) begin
                 absolute_value_input <= -input_binary;
@@ -68,7 +69,6 @@ module signed_binary_12bit_to_dB
              end
              state <= FIND_MSB;
              msb <= 4'd11;
-             done <= 1'b0;
           end
        end
        

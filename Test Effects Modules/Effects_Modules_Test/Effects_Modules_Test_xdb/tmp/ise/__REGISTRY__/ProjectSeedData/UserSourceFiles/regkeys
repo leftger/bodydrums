@@ -1,8 +1,11 @@
 NUM_USER_FILES
-9
+10
 s
 user_file_1
 ../Test Effects Modules Verilog Files/test_delay.v
+s
+user_file_10
+../../Final Project  Sound Analysis/Verilog Files/compression_level_detector.v
 s
 user_file_2
 ../Test Effects Modules Verilog Files/test_limiter.v

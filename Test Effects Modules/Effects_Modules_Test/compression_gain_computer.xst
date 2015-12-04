@@ -1,0 +1,4 @@
+set -tmpdir "./xst/projnav.tmp"
+elaborate
+-ifn compression_gain_computer.prj
+-ifmt mixed
