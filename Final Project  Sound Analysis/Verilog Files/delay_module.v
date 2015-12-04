@@ -24,9 +24,8 @@ module delay_module #(parameter SAMPLING_RATE=24000, SAMPLES=240)
     input start,
     input signed [11:0] incoming_sample,
     input [4:0] delay_amount,
-    output reg signed [11:0] modified_sample,
-    output reg [12:0] current_pointer=12'h000,
-    output reg [12:0] delayed_pointer=12'h000,
+    output reg signed [11:0] modified_sample=12'h000,
+    output reg signed [14:0] stored_and_scaled_sample=15'h0000,
     output reg done);
     
     // Need to store anywhere between 10 ms worth of samples and
@@ -34,17 +33,22 @@ module delay_module #(parameter SAMPLING_RATE=24000, SAMPLES=240)
     // past samples from the ZBT memory, but I'm assuming that I don't have any
     // access to the ZBT memory.
     
-    reg [12:0] addr=12'h000;
+    reg [12:0] addr=13'h0000;
+    
+    reg [12:0] current_pointer=12'h000;
+    reg [12:0] delayed_pointer=12'h000;
+    
     
     reg write=1'b0;
     reg signed [11:0] mem_in=12'h000;
     wire signed [11:0] mem_out;
     
-    // reg [12:0] current_pointer=12'h000;
-    // reg [12:0] delayed_pointer=12'h000;
+    
+    reg [12:0] wait_for_memory=13'h0000;
     
     // This reg stores a version of the stored, delayed sample that is multiplied by 7.
-    reg signed [14:0] stored_and_scaled_sample=15'h0000;
+    
+    // reg signed [14:0] stored_and_scaled_sample=15'h0000;
     
     // To have a delay from 10 ms to 320 ms, need to count
     // up to 32 *0.01 s * 240 samples per 0.01 s = 7680 samples. This means
@@ -62,8 +66,9 @@ module delay_module #(parameter SAMPLING_RATE=24000, SAMPLES=240)
     parameter READ_DELAYED_SAMPLE=3'b001;
     parameter SCALE_DELAYED_SAMPLE=3'b010;
     parameter COMBINE_DELAYED_SAMPLE=3'b100;
+    parameter GARBAGE_MEMORY=3'b111;
     
-    // This thing has 4 states:
+    // This thing has 5 states:
     // 00: do nothing until ready is asserted.
     // 01: start up the delay effects, write current sample into memory location
     // 02: read sample from delayed memory location
@@ -81,12 +86,16 @@ module delay_module #(parameter SAMPLING_RATE=24000, SAMPLES=240)
           addr <= 12'h000;
           write <= 1'b0;
           stored_and_scaled_sample <= 15'h0000;
+          done <= 1'b0;
+          wait_for_memory <= 12'b0;
        end
        
        // If we don't set a delay amount in, then the incoming and outgoing
        // samples should be exactly the same.
-       if (delay_amount == 5'b0) modified_sample <= incoming_sample;
-       
+       else if (delay_amount == 5'b0) begin
+          modified_sample <= incoming_sample;
+          done <= 1'b1;
+       end
        
        // The way echo works is through this difference equation:
        // y[n] = x[n] + c*y[n-m], where m is delay_amount,
@@ -97,10 +106,14 @@ module delay_module #(parameter SAMPLING_RATE=24000, SAMPLES=240)
              IDLE: begin
                 if (start) begin
                    done <= 1'b0;
-                   current_pointer <= current_pointer + 12'd1;
+                   current_pointer <= current_pointer + 13'h1;
                    delayed_pointer <= current_pointer - (SAMPLES*delay_amount);
-                   delay_state <= READ_DELAYED_SAMPLE;
                    write <= 1'b0;
+                   if (wait_for_memory < (SAMPLES*delay_amount)) begin
+                      wait_for_memory <= wait_for_memory + 13'h1;
+                      delay_state <= GARBAGE_MEMORY;
+                   end
+                   else delay_state <= READ_DELAYED_SAMPLE;
                 end
              end
           
@@ -116,10 +129,19 @@ module delay_module #(parameter SAMPLING_RATE=24000, SAMPLES=240)
              end
              
              COMBINE_DELAYED_SAMPLE: begin
-                modified_sample <= incoming_sample + (stored_and_scaled_sample[14:3]);
+                modified_sample <= incoming_sample - (stored_and_scaled_sample[14:3]);
                 addr <= current_pointer;
                 write <= 1'b1;
-                mem_in <= incoming_sample + (stored_and_scaled_sample[14:3]);
+                mem_in <= incoming_sample - (stored_and_scaled_sample[14:3]);
+                delay_state <= IDLE;
+                done <= 1'b1;
+             end
+             
+             GARBAGE_MEMORY: begin
+                addr <= current_pointer;
+                write <= 1'b1;
+                mem_in <= incoming_sample;
+                modified_sample <= incoming_sample;
                 delay_state <= IDLE;
                 done <= 1'b1;
              end
@@ -129,7 +151,12 @@ module delay_module #(parameter SAMPLING_RATE=24000, SAMPLES=240)
                    done <= 1'b0;
                    current_pointer <= current_pointer + 12'd1;
                    delayed_pointer <= current_pointer - (SAMPLES*delay_amount);
-                   delay_state <= READ_DELAYED_SAMPLE;
+                   write <= 1'b0; 
+                   if (wait_for_memory < (SAMPLES*delay_amount)) begin
+                      wait_for_memory <= wait_for_memory + 13'h1;
+                      delay_state <= GARBAGE_MEMORY;
+                   end
+                   else delay_state <= READ_DELAYED_SAMPLE;
                 end
              end
              

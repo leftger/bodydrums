@@ -26,9 +26,9 @@ module test_delay();
     reg [5:0] cycle;      // wait 64 clocks between samples
     integer fin,fout,code; 
     wire done;
-    reg [4:0] delay_amount=5'b00001;
-    wire [12:0] current_address;
-    wire [12:0] delay_address;
+    reg [4:0] delay_amount=5'b11111;
+    wire [14:0] current_sample;
+    
      
     
     // Shamelessly stealing code from lab 5 to test the limiter functions
@@ -62,7 +62,7 @@ module test_delay();
           // assert ready next cycle, read next sample from file
           ready <= 1;
           code = $fscanf(fin,"%d",x);
-          // if we reach the end of the input file, we're done
+          //if we reach the end of the input file, we're done
           if (code != 1) begin
              $fclose(fout);
              $stop;
@@ -83,7 +83,6 @@ module test_delay();
     
     delay_module uut(.clock(clk), .reset(reset), .start(ready),
         .incoming_sample(x), .delay_amount(delay_amount), 
-        .modified_sample(y), .done(done), .current_pointer(current_address),
-        .delayed_pointer(delay_address));
+        .modified_sample(y), .done(done), .stored_and_scaled_sample(current_sample));
 
 endmodule

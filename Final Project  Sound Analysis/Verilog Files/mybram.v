@@ -1,3 +1,4 @@
+`timescale 1ns / 1ps
 module mybram #(parameter LOGSIZE=14, WIDTH=1)
               (input wire [LOGSIZE-1:0] addr,
                input wire clk,
