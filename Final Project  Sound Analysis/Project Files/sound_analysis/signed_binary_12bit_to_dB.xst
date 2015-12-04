@@ -1,0 +1,4 @@
+set -tmpdir "./xst/projnav.tmp"
+elaborate
+-ifn signed_binary_12bit_to_dB.prj
+-ifmt mixed

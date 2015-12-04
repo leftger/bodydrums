@@ -836,12 +836,14 @@ proc restore { { project_dir "" } } {
   } "A problem occured while restoring project settings."
 
   set user_files { 
+      "../../Final Project  Sound Analysis/Verilog Files/compression_gain_computer.v" 
       "../../Final Project  Sound Analysis/Verilog Files/delay_module.v" 
       "../../Final Project  Sound Analysis/Verilog Files/limiter_module.v" 
       "../../Final Project  Sound Analysis/Verilog Files/mybram.v" 
       "../../Final Project  Sound Analysis/Verilog Files/signed_binary_12bit_to_dB.v" 
       "../Test Effects Modules Verilog Files/test_binary_to_dB.v" 
       "../Test Effects Modules Verilog Files/test_delay.v" 
+      "../Test Effects Modules Verilog Files/test_gain_calculator.v" 
       "../Test Effects Modules Verilog Files/test_limiter.v"}
 
   HandleException {

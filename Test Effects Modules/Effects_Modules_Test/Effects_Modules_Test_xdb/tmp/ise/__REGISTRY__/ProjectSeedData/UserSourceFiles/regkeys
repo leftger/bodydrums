@@ -1,5 +1,5 @@
 NUM_USER_FILES
-7
+9
 s
 user_file_1
 ../Test Effects Modules Verilog Files/test_delay.v
@@ -21,4 +21,10 @@ user_file_6
 s
 user_file_7
 ../../Final Project  Sound Analysis/Verilog Files/signed_binary_12bit_to_dB.v
+s
+user_file_8
+../Test Effects Modules Verilog Files/test_gain_calculator.v
+s
+user_file_9
+../../Final Project  Sound Analysis/Verilog Files/compression_gain_computer.v
 s

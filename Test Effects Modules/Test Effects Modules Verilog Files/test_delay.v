@@ -81,7 +81,7 @@ module test_delay();
        cycle <= cycle+1;
     end
     
-    delay_module uut(.clock(clk), .reset(reset), .ready(ready),
+    delay_module uut(.clock(clk), .reset(reset), .start(ready),
         .incoming_sample(x), .delay_amount(delay_amount), 
         .modified_sample(y), .done(done), .current_pointer(current_address),
         .delayed_pointer(delay_address));
