@@ -28,6 +28,7 @@ incremental_db
 work
 *.cr.mti
 vsim.wlf
+wlft*
 transcript
 webtalk.log
 webtalk_impact.xml
