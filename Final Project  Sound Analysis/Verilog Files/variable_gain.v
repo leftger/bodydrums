@@ -24,9 +24,9 @@ module variable_gain
     (input clock,
     input reset,
     input start,
-    input [11:0] incoming_sample,
-    input [8:0] input_gain,
-    output reg [11:0] output_sample,
+    input signed [11:0] incoming_sample,
+    input signed [8:0] input_gain,
+    output reg signed [11:0] compressed_sample,
     output reg done);
     
     reg signed [8:0] modified_input_gain;
@@ -49,7 +49,7 @@ module variable_gain
        // If the module needs to be reset, then bring all registers
        // to a known state.
        if (reset) begin
-          output_sample <= 12'h000;
+          compressed_sample <= 12'h000;
           done <= 1'b0;
           state <= IDLE;
           modified_input_gain <= 9'h000;
@@ -61,14 +61,17 @@ module variable_gain
        
        case (state)
        
+       
+       
        IDLE: begin
           if (start) begin
              modified_input_gain <= input_gain >>> 1;
-             modified_input_sample <= input_sample;
              done <= 1'b0;
              state <= FIND_GAIN;
           end
        end
+       
+       // Now we convert the dB gain into a "binary" gain that we can actually use.
        
        FIND_GAIN: begin
           if (modified_input_gain > 20) begin
@@ -122,7 +125,7 @@ module variable_gain
              -(9'sd18): multiplication_factor <= 13'sd32;
              -(9'sd19): multiplication_factor <= 13'sd29;
              -9'sd20: multiplication_factor <= 13'sd26;
-             default: modified_input_gain <= 13'sd256;
+             default: multiplication_factor <= 13'sd256;
              endcase
           end
           
@@ -130,13 +133,17 @@ module variable_gain
           
        end
        
+       // One clock cycle for multiplies (because they can take a lot of time, especially with
+       // 12-bit by 13-bit multiplies.
        APPLY_GAIN: begin
-          scaled_sample <= modified_input_sample * multiplication_factor;
+          scaled_sample <= incoming_sample * multiplication_factor;
           state <= DIVIDE_AND_OUTPUT;
        end
        
+       
+       // Divide by 128.
        DIVIDE_AND_OUTPUT: begin
-          modified_sample <= scaled_sample[24:13];
+          compressed_sample <= scaled_sample[19:8];
           state <= IDLE;
           done <= 1'b1;
        end
