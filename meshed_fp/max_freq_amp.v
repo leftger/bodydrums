@@ -10,10 +10,10 @@ module max_freq_amp #(parameter WIDTH = 1024)
 	
 	always @(*) begin
 		if(hcount == 0) begin
-			max_freq <= 4*hcount;
+			max_freq <= freq;
 			max_amp <= amplitude;
-		end else if(amplitude[9:0] > max_amp && hcount < WIDTH) begin
-			max_freq <= 4*hcount;
+		end else if(amplitude > max_amp && hcount < WIDTH) begin
+			max_freq <= freq;
 			max_amp <= amplitude;
 		end
 	end

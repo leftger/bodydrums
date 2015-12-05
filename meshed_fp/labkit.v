@@ -322,19 +322,20 @@ module labkit   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
    assign reset = user_reset | power_on_reset;
    
    // UP and DOWN buttons for pong paddle
-   wire up,down,left,right,enter;
+   wire up,down,left,right;
    debounce db2(.reset(reset),.clock(clock_65mhz),.noisy(~button_up),.clean(up));
    debounce db3(.reset(reset),.clock(clock_65mhz),.noisy(~button_down),.clean(down));
 	debounce db4(.reset(reset),.clock(clock_65mhz),.noisy(~button_left),.clean(left));
    debounce db5(.reset(reset),.clock(clock_65mhz),.noisy(~button_right),.clean(right));
-	debounce db6(.reset(reset),.clock(clock_65mhz),.noisy(~button_enter),.clean(enter));
 	
-      reg [3:0] num, blob;
-      reg [1:0] volume_or_selection;
+	wire [12:0] max_freq;
+	wire [9:0] max_amp;
+   reg [3:0] num, blob;
+	reg write;
+   reg [1:0] volume_or_selection;
 	
 	display_16hex disp(reset, clock_27mhz, {4'b0,
-                                          2'b0,
-                                          volume_or_selection, // button mode selected
+                                          4'b0, // button mode selected
                                           blob, //blob selected
 					  num}, // number to output
 		disp_blank, disp_clock, disp_rs, disp_ce_b,
@@ -351,39 +352,24 @@ module labkit   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
    wire [23:0] hud_pixel;
    hud_display hd(.vclock(clock_65mhz),.reset(reset),
 		.hcount(hcount),.vcount(vcount),
-		.hud_pixel(hud_pixel),.write(enter),
+		.hud_pixel(hud_pixel),.write(write),
 		.num(num),.blob(blob));
 
 	reg old_vup, old_vdown;
 	reg [4:0] volume;
 	 
 	initial begin
-		volume_or_selection = 0;
 		num = 0;
 		blob = 0;
+		write = 0;
 		volume = 5'd8;
 	end
 	 
-	 always@(negedge vsync) begin
+	 always@(posedge clock_27mhz) begin
 		if(reset) volume <= 5'd8;
 		else begin
-			if(right) begin
-				volume_or_selection <= volume_or_selection + 1;
-			end else if (left) begin
-				volume_or_selection <= volume_or_selection - 1;
-			end if(up) begin
-				case(volume_or_selection)
-					0 : num <= num + 1;
-					1 : blob <= blob + 1;
-					default : if(~old_vup & volume !=5'd31) volume <= volume +1;
-				endcase
-			end else if (down) begin
-				case(volume_or_selection)
-					0 : num <= num - 1;
-					1 : blob <= blob - 1;
-					default : if(~old_vdown & volume!=5'd0) volume <= volume -1;
-				endcase
-			end
+			if(up & ~old_vup & volume !=5'd31) volume <= volume +1;
+			else if (down & ~old_vdown & volume!=5'd0) volume <= volume -1;
 		end
 		old_vup <= up;
 		old_vdown <= down;
@@ -411,6 +397,52 @@ module labkit   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
      .ENA(1'b1),.SSRA(1'b0),
      .CLKB(clock_65mhz),.ADDRB(hcount),.DOB(dout),
      .DIB(16'b0),.DIPB(2'b0),.WEB(1'b0),.ENB(1'b1),.SSRB(1'b0));
+	  
+	/*module max_freq_amp #(parameter WIDTH = 1024)
+	( input [10:0] hcount,
+	input [9:0] amplitude,
+	output reg [12:0] max_freq,
+	output reg [9:0] max_amp
+	);*/
+	
+	max_freq_amp ma1 (.hcount(hcount),.amplitude(dout[9:0]),
+		.max_freq(max_freq),.max_amp(max_amp));
+	
+	/*module bcd(
+    input [12:0] binary,
+    output reg [3:0] thousands,
+    output reg [3:0] hundreds,
+    output reg [3:0] tens,
+    output reg [3:0] ones
+    );*/
+	wire [3:0] freq_thousands, freq_hundreds, freq_tens, freq_ones;
+	bcd my_bcd1 (.binary(max_freq),.thousands(freq_thousands),
+		.hundreds(freq_hundreds),.tens(freq_tens),
+		.ones(freq_ones));
+		
+	wire [3:0] max_amp_thousands, max_amp_hundreds, max_amp_tens, max_amp_ones;
+	bcd my_bcd2 (.binary(max_amp),.thousands(max_amp_thousands),
+		.hundreds(max_amp_hundreds),.tens(max_amp_tens),
+		.ones(max_amp_ones));
+	
+	reg [3:0] write_dig;
+	initial begin
+		write_dig = 0;
+	end
+	always @(posedge clock_27mhz) begin
+		if(~vsync) begin
+			case (write_dig)
+				1 : begin write <= 1; num <= freq_thousands; blob <= 0;end
+				2 : begin write <= 1; num <= freq_hundreds; blob <= 1;end
+				3 : begin write <= 1; num <= freq_tens; blob <= 2;end
+				4 : begin write <= 1; num <= freq_ones; blob <= 3;end
+				5 : begin write <= 1; num <= max_amp_hundreds; blob <=4; end
+				6 : begin write <= 1; num <= max_amp_tens; blob <=5; end
+				default: write <= 0;
+			endcase
+			write_dig <= write_dig + 1;
+		end
+	end
 
    reg[23:0] fft_pixel;
    reg phsync,pvsync,pblank;
@@ -440,7 +472,7 @@ module labkit   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
       xblank <= yblank;
       xvcount <= yvcount;
       green_grad_color <=8'hFF - quotient[7:0];
-		red_grad_color <= quotient[7:0];
+		red_grad_color <= /*quotient[7:0]*/8'hFF;
 	  
      // third pipe stage: write divider to result
      phsync <= xhsync;
@@ -477,7 +509,7 @@ module labkit   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 	 hs <= phsync;
 	 vs <= pvsync;
 	 b <= pblank;
-	 rgb <= fft_pixel;
+	 rgb <= fft_pixel | hud_pixel;
       end
    end
 
