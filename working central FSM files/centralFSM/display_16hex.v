@@ -23,6 +23,13 @@
 														1'b0,transmit_command}, //signal_out command (2 digits)
 		disp_blank, disp_clock, disp_rs, disp_ce_b,
 		disp_reset_b, disp_data_out);
+        
+    data:       {2'b00,state[1:0],4'b0000,seconds[7:0],4'b0000,000,play_record,4'b0000,songchoice,4'b0000,effectnums[27:0](tbd)}
+    blink_data: 0000_0102_0334_4567
+    blank_data: 1011_0101_0111_1111
+                state(1), seconds(2), play/record(1), songchoice(1), effectnums(7)    
+        
+    
 */
 //modified to handle blank/solid display by mqiu
 module modified_display_16hex (reset, clock_27mhz, data, 
