@@ -81,6 +81,7 @@ module test_binary_to_dB();
     wire db_done;
     wire gain_done;
     wire done;
+    reg soft_limiter=1'b0;
     
     signed_binary_12bit_to_dB uut(.clock(clk), .reset(reset),
         .start(ready), .input_binary(x), .output_db(y), .done(db_done));
@@ -89,7 +90,7 @@ module test_binary_to_dB();
         .start(db_done), .compression_amount(compression_amount),
         .input_db(y), .output_db(z), .output_level(v),  .done(gain_done));
     
-    compression_level_detector third(.clock(clk), .reset(reset),
+    compression_level_detector third(.clock(clk), .reset(reset), .soft_limiter(soft_limiter),
         .start(gain_done), .input_level(v), .output_gain(w), .done(done));
 
 endmodule
