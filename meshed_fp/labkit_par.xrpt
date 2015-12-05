@@ -5,22 +5,22 @@
     The structure and the elements are likely to change over the next few releases.
     This means code written to parse this file will need to be revisited each subsequent release.-->
 
-  <application stringID="par" timeStamp="Thu Dec  3 04:56:02 2015">
+  <application stringID="par" timeStamp="Thu Dec  3 15:17:48 2015">
     <task stringID="PAR_DEVICE_UTILIZATION">
       <section stringID="PAR_DEVICE_UTLIZATION">
-        <item AVAILABLE="684" dataType="int" stringID="PAR_EXTERNAL_IOB" value="254">
-          <item AVAILABLE="254" dataType="int" stringID="PAR_LOC_IOB" value="0"/>
+        <item AVAILABLE="684" dataType="int" stringID="PAR_EXTERNAL_IOB" value="576">
+          <item AVAILABLE="576" dataType="int" stringID="PAR_LOC_IOB" value="576"/>
         </item>
       </section>
     </task>
     <task stringID="PAR_PAR">
       <section stringID="PAR_DESIGN_SUMMARY">
-        <item stringID="PAR_REAL_TIME_COMPLETION_ROUTER" value="3 mins 20 secs "/>
-        <item stringID="PAR_CPU_TIME_COMPLETION_ROUTER" value="3 mins 19 secs "/>
+        <item stringID="PAR_REAL_TIME_COMPLETION_ROUTER" value="5 mins 39 secs "/>
+        <item stringID="PAR_CPU_TIME_COMPLETION_ROUTER" value="5 mins 35 secs "/>
         <item dataType="int" stringID="PAR_UNROUTES" value="0"/>
         <item dataType="float" stringID="PAR_TIMING_SCORE" value="0.000000"/>
-        <item stringID="PAR_REAL_TIME_COMPLETION_PAR" value="3 mins 33 secs "/>
-        <item stringID="PAR_CPU_TIME_COMPLETION_PAR" value="3 mins 30 secs "/>
+        <item stringID="PAR_REAL_TIME_COMPLETION_PAR" value="5 mins 59 secs "/>
+        <item stringID="PAR_CPU_TIME_COMPLETION_PAR" value="5 mins 51 secs "/>
       </section>
     </task>
     <task stringID="PAR_par">
@@ -38,7 +38,7 @@
       <section stringID="PAR_UNROUTES_REPORT">
         <item dataType="int" stringID="PAR_UNROUTED_NETS" value="0"/>
         <item dataType="int" stringID="PAR_TOTAL_SOURCELESS_NETS" value="0"/>
-        <item dataType="int" stringID="PAR_TOTAL_LOADLESS_NETS" value="0"/>
+        <item dataType="int" stringID="PAR_TOTAL_LOADLESS_NETS" value="322"/>
       </section>
     </task>
   </application>

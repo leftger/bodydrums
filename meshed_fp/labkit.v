@@ -348,7 +348,7 @@ module labkit   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
    wire [23:0] hud_pixel;
    hud_display hd(.vclock(clock_65mhz),.reset(reset),
 		.hcount(hcount),.vcount(vcount),
-		.hud_pixel(hud_pixel),
+		.hud_pixel(hud_pixel),.write(enter),
 		.num(num),.blob(blob));
 
 	reg old_vup, old_vdown;
@@ -420,10 +420,10 @@ module labkit   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
    wire [17:0] quotient;
    wire [9:0] divisor;
    assign divisor = (dout[9:0] > 767) ? 767 : dout[9:0];
-   assign dividend = xvcount * 8'hFF;
+   assign dividend = yvcount * 8'hFF;
    grad_div my_div(.clk(clock_65mhz),.dividend(dividend),.quotient(quotient),
       .divisor(divisor));
-   reg [7:0] grad_color;
+   reg [7:0] red_grad_color, green_grad_color;
 
    always @ (posedge clock_65mhz) begin
      // first pipe stage: memory access
@@ -436,7 +436,8 @@ module labkit   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
       xvsync <= yvsync;
       xblank <= yblank;
       xvcount <= yvcount;
-      grad_color <=8'hFF - quotient[7:0];
+      green_grad_color <=8'hFF - quotient[7:0];
+		red_grad_color <= quotient[7:0];
 	  
      // third pipe stage: write divider to result
      phsync <= xhsync;
@@ -444,7 +445,7 @@ module labkit   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
      pblank <= xblank;
      fft_pixel <= xblank ? {24{1'b0}} :
 	  (dout[9:0] > xvcount) ? 
-	  {{8{1'b1}},grad_color,{8{1'b0}}}:
+	  {red_grad_color,green_grad_color,{8{1'b0}}}:
 	  {24{1'b0}};
    end
    // switch[1:0] selects which video generator to use:
@@ -467,13 +468,13 @@ module labkit   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 	 hs <= hsync;
 	 vs <= vsync;
 	 b <= blank;
-	 rgb <= {{8{hcount[8]}}, {8{hcount[7]}}, {8{hcount[6]}}} ;
+	 rgb <= hud_pixel ;
       end else begin
          // default: pong
-	 hs <= hsync;
-	 vs <= vsync;
-	 b <= blank;
-	 rgb <= fft_pixel | hud_pixel;
+	 hs <= phsync;
+	 vs <= pvsync;
+	 b <= pblank;
+	 rgb <= fft_pixel;
       end
    end
 
@@ -490,43 +491,4 @@ module labkit   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
    
    assign led = ~{3'b000,volume};
 
-endmodule
-
-
-
-////////////////////////////////////////////////////////////////////////////////
-//
-// hud_display: display the statistics on the screen!!!
-//
-////////////////////////////////////////////////////////////////////////////////
-
-module hud_display (
-   input vclock,	// 65MHz clock
-   input reset,		// 1 to initialize module
-	input [3:0] num,
-	input [3:0] blob,
-   input [10:0] hcount,	// horizontal index of current pixel (0..1023)
-   input [9:0] 	vcount, // vertical index of current pixel (0..767)
-   output [23:0] hud_pixel	// pong game's pixel  // r=23:16, g=15:8, b=7:0
-   );
-
-
-   wire [23:0] pic_pixel;
-	picture_blob myblob
-	(.pixel_clk(vclock),.x((1024 - 320) >> 1),.hcount(hcount),
-	.y((768 - 240) >> 1),.vcount(vcount),
-	 .pixel(pic_pixel));
-	
-	wire [23:0] hud_img_pixel;
-	
-	hud_blob thehud
-	(.pixel_clk(vclock),.x(512),.hcount(hcount),.y(0),.vcount(vcount),
-	.pixel(hud_img_pixel));
-	
-	wire [23:0] digit_pixel;
-
-	 hud_digits ma_digs(.clk(vclock),.write(enter),.num(num),
-		.blob(blob),.hcount(hcount),.vcount(vcount),.pixel(digit_pixel));
-	
-	assign hud_pixel = hud_img_pixel | pic_pixel | digit_pixel;
 endmodule
