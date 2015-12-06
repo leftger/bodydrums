@@ -1,5 +1,5 @@
 NUM_USER_FILES
-12
+13
 s
 user_file_1
 ../../Verilog Files/compression.v
@@ -12,6 +12,9 @@ user_file_11
 s
 user_file_12
 ../../Verilog Files/fir31.v
+s
+user_file_13
+../../Verilog Files/bitcrusher.v
 s
 user_file_2
 ../../Verilog Files/debounce.v
