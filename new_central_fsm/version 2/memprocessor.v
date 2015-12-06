@@ -24,7 +24,7 @@ module memprocessor(reset, clk, ready, audio_in, start_song,
     input [35:0] mem_read1;  //memory read from ram 1
     
     output reg [35:0] mem_write;//memory that will be written to memory
-    output reg [11:0] audio_out;//audio that will go out to speaker
+    output signed reg [11:0] audio_out;//audio that will go out to speaker
     output reg we0; //write enable to zbt bank 0
     output reg we1; //write enable to zbt bank 1
     
