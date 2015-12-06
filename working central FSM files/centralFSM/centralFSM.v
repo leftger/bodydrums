@@ -9,14 +9,16 @@ record state
 */
 
 module centralFSM(reset, clk, ready, //from fpga, input
-      but_up, but_down, but_right, but_left, but_ent, 
-            but_3, but_2, but_1, but_0, switches/*[7:0]*/, 
+      /*but_up, but_down, but_right, but_left,*/ but_ent, 
+            /*but_3, but_2, but_1, but_0, switches*//*[7:0]*/ 
             //from user inputs, all sync/deb'd, input
-      effects/*[7:0]*/, record_mode, //to audio module, output
-      running_time, song_name,//to graphics module, output
+      effects,/*[7:0]*/  //to audio module, output
+      song_name,//to graphics module, output
       song_done,//from memory module, input
       record_mode, song_choice, start_song, pause_song,//to memory module, output
-      record_mode_sel, song_choice_sel, record_mode_sel //from param_select
+      record_mode_sel, song_name_sel,  //from param_select
+		switch_7,effect_values_sel,effect_values,
+		cfsm_state
       );
    //fpga inputs         
    input reset; //reset signal
@@ -39,7 +41,7 @@ module centralFSM(reset, clk, ready, //from fpga, input
                   // 5: speed up 2x
                   // 6: slow down 2x
    input [16:0] effect_values_sel; //effect values, effects values, from param_select
-   output [16:0] effect_values; //controlled value
+   output reg [16:0] effect_values; //controlled value
                   // [0:4] echo - 32
                   // [5:9] chorus - 32
                   // [10:11] compression - 4
@@ -47,23 +49,23 @@ module centralFSM(reset, clk, ready, //from fpga, input
                   // [14:16] distortion - 8
    
    input record_mode_sel; //1 = record, 0 = playback, from param select
-   output record_mode; //controlled value
+   output reg record_mode; //controlled value
    
    input [3:0] song_name_sel; //song choice, from param_select
-   output [3:0] song_name; //name of song, #s 1-12, controlled value
-   output [3:0] song_choice; //calculated from song name, controlled value
+   output reg [3:0] song_name; //name of song, #s 1-12, controlled value
+   output reg [3:0] song_choice; //calculated from song name, controlled value
    
-   output start_song; //start record/playback, requires song choice and mode to be set 1 clock cycle before
+   output reg start_song; //start record/playback, requires song choice and mode to be set 1 clock cycle before
    reg start_song_prev; //delay for start song
    
-   output pause_song; //pause song! switch 7 controls in record and playback, otherwise pause is 1
+   output reg pause_song; //pause song! switch 7 controls in record and playback, otherwise pause is 1
    
    input song_done; //abort! abort! stop dem incrementing, from memory
    
    reg reset_delay; //delay for reset
    
    //fsm
-   reg [1:0] state;    //00: standby
+   output reg [1:0] cfsm_state;    //00: standby
                        //01: playback
                        //10: record
                        //11: n/a - standby
@@ -82,19 +84,19 @@ module centralFSM(reset, clk, ready, //from fpga, input
             pause_song <= 1; //default paused 
             start_song_prev <= 0; //:)
             start_song <= 0; //NO
-            state <= 2'b00; //start in standby
+            cfsm_state <= 2'b00; //start in standby
         end else begin //actual fsm logic
             start_song <= start_song_prev; //delayed by 1 clock cycle
-            case(state)
+            case(cfsm_state)
                 2'b01: begin //playback
                     if (start_song_prev) begin //de-assert start next clock cycle
                         start_song_prev <= 0;
                     //check if we should go back to record
                     end else if (song_done) begin  //return to playback and pause
-                        state <= 2'b00;
+                        cfsm_state <= 2'b00;
                         pause_song <= 1;
                     end else if (but_ent_prev == 0 & but_ent == 1) begin //return to playback and pause
-                        state <= 2'b00;
+                        cfsm_state <= 2'b00;
                         pause_song <= 1;
                     end else pause_song <= switch_7; //else just update pause
                 end
@@ -103,10 +105,10 @@ module centralFSM(reset, clk, ready, //from fpga, input
                         start_song_prev <= 0;
                     //check if we should go back to record
                     end else if (song_done) begin //return to playback and pause
-                        state <= 2'b00;
+                        cfsm_state <= 2'b00;
                         pause_song <= 1;
                     end else if (but_ent_prev == 0 & but_ent == 1) begin //return to playback and pause
-                        state <= 2'b00;
+                        cfsm_state <= 2'b00;
                         pause_song <= 1;
                     end else pause_song <= switch_7; //else just update pause
                 end
@@ -122,10 +124,11 @@ module centralFSM(reset, clk, ready, //from fpga, input
                         else song_choice <= song_name_sel + 2; //correct nums for mem address calculator
                         record_mode <= record_mode_sel; //set value
                         //where to transition to
-                        if (record_mode_sel) state <= 2'b10; //record
-                        else state <= 2'b01; //playback
+                        if (record_mode_sel) cfsm_state <= 2'b10; //record
+                        else cfsm_state <= 2'b01; //playback
                     end
                 end
+				endcase
         end
     end
    

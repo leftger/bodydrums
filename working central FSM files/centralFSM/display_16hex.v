@@ -39,9 +39,10 @@ module modified_display_16hex (reset, clock_27mhz, data,
 
    input reset, clock_27mhz;    // clock and reset (active high reset)
    input [63:0] data;		// 16 hex nibbles to display
-   //modified:
-   input [16:0] blank_data; //1 when all blank, 0 otherwise, takes precedence over number
-   input [16:0] blink_data; //1 when all lit up, 0 otherwise, takes precedence over blank
+   
+	//modified:
+   input [15:0] blank_data; //1 when all blank, 0 otherwise, takes precedence over number
+   input [15:0] blink_data; //1 when all lit up, 0 otherwise, takes precedence over blank
    
    output disp_blank, disp_clock, disp_data_out, disp_rs, disp_ce_b, 
 	  disp_reset_b;

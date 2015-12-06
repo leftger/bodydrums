@@ -40,11 +40,12 @@ also determines the whole blink_fo data on the modified display 16 hex module to
 
 module param_select(
     input reset,
-    input clk
+    input clk,
     input blink_fo,
     input b_up, input b_down, input b_right, input b_left,
-    output [0:15] blink_fo_data, //will be needed to be updated every clock cycle!!!! 
-    output [3:0] song_name_sel, output [16:0] effect_choice_sel, output record_mode_sel
+    output reg [0:15] blink_fo_data, //will be needed to be updated every clock cycle!!!! 
+    output reg [3:0] song_name_sel, output reg [16:0] effect_choice_sel, 
+	 output reg record_mode_sel
     );
     
     reg [2:0] blink_state; //what gets modified.... 8 states WHOOT
@@ -87,13 +88,13 @@ module param_select(
                 //1. assigns blink_fo_data
                 //2. checks for up/down updates and updates
                 
-                case (blink_state) //yeah this may have been a bit bulkier/dense than I thought it would be
+               case (blink_state) //yeah this may have been a bit bulkier/dense than I thought it would be
                                     //better way for logic???? idk
                 3'b000: begin //none
                     blink_fo_data <= 16'b0; //no blink!
                 end
                 3'b001: begin //play/record, 0-1
-                    blink_fo_data <= {5'b0_0000,blink_fo,10'b00_0000_0000}
+                    blink_fo_data <= {5'b0_0000,blink_fo,10'b00_0000_0000};
                     if (b_up == 1 & b_up_prev == 0) begin
                         record_mode_sel <= ~record_mode_sel;
                     end else if (b_down == 1 & b_down_prev == 0) begin
@@ -101,7 +102,7 @@ module param_select(
                     end 
                 end
                 3'b010: begin //song select 0-11
-                    blink_fo_data <= {7'b000_0000,blink_fo,8'b0000_0000}
+                    blink_fo_data <= {7'b000_0000,blink_fo,8'b0000_0000};
                     //special because max is 11!!!
                     if (b_up == 1 & b_up_prev == 0) begin
                         if (song_name_sel == 11) song_name_sel <= 0;
@@ -109,45 +110,51 @@ module param_select(
                     end else if (b_down == 1 & b_down_prev == 0) begin
                         if (song_name_sel == 0) song_name_sel <= 11;
                         else song_name_sel <= song_name_sel - 1;
+						  end
                 end
                 3'b011: begin //echo 0-31 0:4
-                    blink_fo_data <= {9'b0_0000_0000,blink_fo,blink_fo,5'b0_0000}
+                    blink_fo_data <= {9'b0_0000_0000,blink_fo,blink_fo,5'b0_0000};
                     if (b_up == 1 & b_up_prev == 0) begin
-                        effect_choice_sel[0:4] <= effect_choice_sel[0:4] + 1;
+                        effect_choice_sel[4:0] <= effect_choice_sel[4:0] + 1;
                     end else if (b_down == 1 & b_down_prev == 0) begin
-                        effect_choice_sel[0:4] <= effect_choice_sel[0:4] - 1;
+                        effect_choice_sel[4:0] <= effect_choice_sel[4:0] - 1;
+						  end
                 end
                 3'b100: begin //chorus 0-31 5:9
-                    blink_fo_data <= {11'b0_0000,blink_fo,blink_fo,3'b000}
+                    blink_fo_data <= {11'b0_0000,blink_fo,blink_fo,3'b000};
                     if (b_up == 1 & b_up_prev == 0) begin
-                        effect_choice_sel[5:9] <= effect_choice_sel[5:9] + 1;
+                        effect_choice_sel[9:5] <= effect_choice_sel[9:5] + 1;
                     end else if (b_down == 1 & b_down_prev == 0) begin
-                        effect_choice_sel[5:9] <= effect_choice_sel[5:9] - 1;
-                end
+                        effect_choice_sel[9:5] <= effect_choice_sel[9:5] - 1;
+						  end	
+					 end
                 3'b101: begin //compression 0-3 10:11
-                    blink_fo_data <= {13'b0_0000_0000_0000,blink_fo,2'b00}
+                    blink_fo_data <= {13'b0_0000_0000_0000,blink_fo,2'b00};
                     if (b_up == 1 & b_up_prev == 0) begin
-                        effect_choice_sel[10:11] <= effect_choice_sel[10:11] + 1;
+                        effect_choice_sel[11:10] <= effect_choice_sel[11:10] + 1;
                     end else if (b_down == 1 & b_down_prev == 0) begin
-                        effect_choice_sel[10:11] <= effect_choice_sel[10:11] - 1;
-                end
+                        effect_choice_sel[11:10] <= effect_choice_sel[11:10] - 1;
+                    end
+					 end
                 3'b110: begin //limiter 0-3 12:14
-                    blink_fo_data <= {14'b00_0000_0000_0000,blink_fo,1'b0}
+                    blink_fo_data <= {14'b00_0000_0000_0000,blink_fo,1'b0};
                     if (b_up == 1 & b_up_prev == 0) begin
-                        effect_choice_sel[12:13] <= effect_choice_sel[12:13] + 1;
+                        effect_choice_sel[13:12] <= effect_choice_sel[13:12] + 1;
                     end else if (b_down == 1 & b_down_prev == 0) begin
-                        effect_choice_sel[12:13] <= effect_choice_sel[12:13] - 1;
-                end
+                        effect_choice_sel[13:12] <= effect_choice_sel[13:12] - 1;
+                    end
+					 end
                 default: //3'b111, 
                         begin //distortion 0-8 14:16
-                    blink_fo_data <= {15'b000_0000_0000_0000,blink_fo}
+                    blink_fo_data <= {15'b000_0000_0000_0000,blink_fo};
                     if (b_up == 1 & b_up_prev == 0) begin
-                        effect_choice_sel[14:15] <= effect_choice_sel[14:15] + 1;
+                        effect_choice_sel[15:14] <= effect_choice_sel[15:14] + 1;
                     end else if (b_down == 1 & b_down_prev == 0) begin
-                        effect_choice_sel[14:15] <= effect_choice_sel[14:15] - 1;
-                end
+                        effect_choice_sel[15:14] <= effect_choice_sel[15:14] - 1;
+						  end	
+					 end
+            endcase
             end
-            
         end
     end
 

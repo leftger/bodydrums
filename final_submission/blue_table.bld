@@ -1,0 +1,45 @@
+Release 10.1.03 ngdbuild K.39 (lin64)
+Copyright (c) 1995-2008 Xilinx, Inc.  All rights reserved.
+
+Command Line:
+/afs/csail.mit.edu/proj/redsocs/Xilinx10.1/ISE/bin/lin64/unwrapped/ngdbuild -ise
+/afs/athena.mit.edu/user/g/r/grosas/6.111/Final_Project/bodydrums/final_submissi
+on/final_submission.ise -intstyle ise -dd _ngo -nt timestamp -i -p
+xc2v6000-bf957-4 blue_table.ngc blue_table.ngd
+
+Reading NGO file
+"/afs/athena.mit.edu/user/g/r/grosas/6.111/Final_Project/bodydrums/final_submiss
+ion/blue_table.ngc" ...
+Loading design module
+"/afs/athena.mit.edu/user/g/r/grosas/6.111/Final_Project/bodydrums/final_submiss
+ion/blue_table.ngc"...
+WARNING:NgdBuild:578 - Design contains no instances.
+Gathering constraint information from source properties...
+Done.
+
+Resolving constraint associations...
+Checking Constraint Associations...
+Done...
+Checking Partitions ...
+
+Checking expanded design ...
+ERROR:NgdBuild:605 - logical root block 'blue_table' with type 'blue_table' is
+   unexpanded. Symbol 'blue_table' is not supported in target 'virtex2'.
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+NGDBUILD Design Results Summary:
+  Number of errors:     1
+  Number of warnings:   1
+
+Total memory usage is 214652 kilobytes
+
+
+One or more errors were found during NGDBUILD.  No NGD file will be written.
+
+Writing NGDBUILD log file "blue_table.bld"...
