@@ -1,5 +1,5 @@
 NUM_USER_FILES
-15
+17
 s
 user_file_1
 ../Test Effects Modules Verilog Files/test_delay.v
@@ -21,6 +21,12 @@ user_file_14
 s
 user_file_15
 ../Test Effects Modules Verilog Files/fir31_test.v
+s
+user_file_16
+../Test Effects Modules Verilog Files/test_bitcrush.v
+s
+user_file_17
+../../Final Project  Sound Analysis/Verilog Files/bitcrusher.v
 s
 user_file_2
 ../Test Effects Modules Verilog Files/test_limiter.v
