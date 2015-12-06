@@ -1,11 +1,26 @@
 NUM_USER_FILES
-10
+15
 s
 user_file_1
 ../Test Effects Modules Verilog Files/test_delay.v
 s
 user_file_10
-../../Final Project  Sound Analysis/Verilog Files/compression_level_detector.v
+../../Final Project  Sound Analysis/Verilog Files/variable_gain.v
+s
+user_file_11
+../../Final Project  Sound Analysis/Verilog Files/compression.v
+s
+user_file_12
+../Test Effects Modules Verilog Files/test_audio_FSM.v
+s
+user_file_13
+../../Final Project  Sound Analysis/Verilog Files/audio_FSM.v
+s
+user_file_14
+../../Final Project  Sound Analysis/Verilog Files/fir31.v
+s
+user_file_15
+../Test Effects Modules Verilog Files/fir31_test.v
 s
 user_file_2
 ../Test Effects Modules Verilog Files/test_limiter.v
@@ -26,8 +41,8 @@ user_file_7
 ../../Final Project  Sound Analysis/Verilog Files/signed_binary_12bit_to_dB.v
 s
 user_file_8
-../Test Effects Modules Verilog Files/test_gain_calculator.v
+../../Final Project  Sound Analysis/Verilog Files/compression_gain_computer.v
 s
 user_file_9
-../../Final Project  Sound Analysis/Verilog Files/compression_gain_computer.v
+../../Final Project  Sound Analysis/Verilog Files/compression_level_detector.v
 s

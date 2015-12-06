@@ -79,8 +79,11 @@ module test_limiter();
        cycle <= cycle+1;
     end
     
-    limiter_module uut(.clock(clk), .reset(reset), .ready(ready),
-        .incoming_sample(x), .limiting_amount(limiter_setting), 
+    reg enable=1'b0;
+    
+    limiter_module uut(.clock(clk), .reset(reset), .start(ready),
+        .incoming_sample(x), .limiting_amount(limiter_setting),
+        .enable(enable),
         .modified_sample(y), .done(done));
 
 

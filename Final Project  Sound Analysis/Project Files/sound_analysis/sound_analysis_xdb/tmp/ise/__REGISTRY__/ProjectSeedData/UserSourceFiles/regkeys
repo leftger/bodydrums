@@ -1,8 +1,17 @@
 NUM_USER_FILES
-9
+12
 s
 user_file_1
 ../../Verilog Files/compression.v
+s
+user_file_10
+../../Verilog Files/variable_gain.v
+s
+user_file_11
+../../Verilog Files/audio_FSM.v
+s
+user_file_12
+../../Verilog Files/fir31.v
 s
 user_file_2
 ../../Verilog Files/debounce.v

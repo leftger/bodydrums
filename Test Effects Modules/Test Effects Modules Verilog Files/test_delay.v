@@ -81,8 +81,10 @@ module test_delay();
        cycle <= cycle+1;
     end
     
+    reg enable=1'b1;
+    
     delay_module uut(.clock(clk), .reset(reset), .start(ready),
-        .incoming_sample(x), .delay_amount(delay_amount), 
+        .incoming_sample(x), .delay_amount(delay_amount), .enable(enable),
         .modified_sample(y), .done(done), .stored_and_scaled_sample(current_sample));
 
 endmodule
