@@ -1,0 +1,5 @@
+verilog work "../../Verilog Files/variable_gain.v"
+verilog work "../../Verilog Files/signed_binary_12bit_to_dB.v"
+verilog work "../../Verilog Files/compression_level_detector.v"
+verilog work "../../Verilog Files/compression_gain_computer.v"
+verilog work "../../Verilog Files/compression.v"

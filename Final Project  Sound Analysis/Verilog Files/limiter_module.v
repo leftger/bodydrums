@@ -21,9 +21,10 @@
 module limiter_module #(parameter SAMPLING_RATE=24000)
     (input clock,
     input reset,
-    input ready,
+    input start,
     input signed [11:0] incoming_sample,
     input [1:0] limiting_amount,
+    input enable,
     output reg signed [11:0] modified_sample,
     output reg done
     );
@@ -37,56 +38,65 @@ module limiter_module #(parameter SAMPLING_RATE=24000)
     // a certain amplitude threshold that we set with the switches (limiting_amount)
     
     reg [11:0] last_sample;
+    
     always @(posedge clock) begin
-       if (reset || ready) begin
-          // Take one clock cycle up. Compare the last sample to this sample.
-          // If they are not the same, then our results need to be
-          // recalculated in the next clock cycle.
-          
-          if (last_sample != incoming_sample) begin
-             done <= 1'b0;
-             last_sample <= incoming_sample;
-          end
-          
-          else begin
+       if (reset) begin
+          modified_sample <= 12'h000;
+          done <= 1'b0;
+          last_sample <= 12'h000;
+       end
+       
+       
+       case (enable)
+       1'b0: begin
+          modified_sample <= incoming_sample;
+          done <= 1'b1;
+       end
+       
+       1'b1: begin
+          if (start) begin
+             // Take one clock cycle up. Compare the last sample to this sample.
+             // If they are not the same, then our results need to be
+             // recalculated in the next clock cycle.
              case(limiting_amount)
                 
-                // In this setting, the limiter should do nothing.
-                2'b00: begin
-                    modified_sample <= incoming_sample;
-                end
+             // In this setting, the limiter should do nothing.
+             2'b00: begin
+                 modified_sample <= incoming_sample;
+             end
                 
-                // This is the "90% limiting" setting.
-                // If the incoming sample is larger than 90% of the maximum amplitude
-                // we can encode, then we cut it off at 90%.
-                2'b01: begin
-                   if (incoming_sample > 1844) modified_sample <= 1844;
-                   else if (incoming_sample < -1844) modified_sample <= -1844;
-                   else modified_sample <= incoming_sample;
-                end
+             // This is the "90% limiting" setting.
+             // If the incoming sample is larger than 90% of the maximum amplitude
+             // we can encode, then we cut it off at 90%.
+             2'b01: begin
+                if (incoming_sample > 1844) modified_sample <= 1844;
+                else if (incoming_sample < -1844) modified_sample <= -1844;
+                else modified_sample <= incoming_sample;
+             end
              
-                // This is the "75% limiting" setting.
-                // If the incoming sample is larger than 75% of the maximum amplitude
-                // we can encode, then we cut it off at 75%.
-                2'b10: begin
-                   if (incoming_sample > 1536) modified_sample <= 1536;
-                   else if (incoming_sample < -1536) modified_sample <= -1536;
-                   else modified_sample <= incoming_sample;
-                end
+             // This is the "75% limiting" setting.
+             // If the incoming sample is larger than 75% of the maximum amplitude
+             // we can encode, then we cut it off at 75%.
+             2'b10: begin
+                if (incoming_sample > 1536) modified_sample <= 1536;
+                else if (incoming_sample < -1536) modified_sample <= -1536;
+                else modified_sample <= incoming_sample;
+             end
                 
-                // This is the "50% limiting" setting.
-                // If the incoming sample is larger than 50% of the maximum amplitude
-                // we can encode, then we cut it off at 50%.
-                2'b11: begin
-                   if (incoming_sample > 1024) modified_sample <= 1024;
-                   else if (incoming_sample < -1024) modified_sample <= -1024;
-                   else modified_sample <= incoming_sample;
-                end
+             // This is the "50% limiting" setting.
+             // If the incoming sample is larger than 50% of the maximum amplitude
+             // we can encode, then we cut it off at 50%.
+             2'b11: begin
+                if (incoming_sample > 1024) modified_sample <= 1024;
+                else if (incoming_sample < -1024) modified_sample <= -1024;
+                else modified_sample <= incoming_sample;
+             end
              endcase
              // In any case, it should take us one clock cycle to do
              // the compare. We can now assert done.
              done <= 1'b1;
           end
        end
+       endcase
     end
 endmodule

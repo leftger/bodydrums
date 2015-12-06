@@ -64,10 +64,11 @@ module variable_gain
        
        
        IDLE: begin
+          
           if (start) begin
              modified_input_gain <= input_gain >>> 1;
-             done <= 1'b0;
              state <= FIND_GAIN;
+             done <= 1'b0;
           end
        end
        

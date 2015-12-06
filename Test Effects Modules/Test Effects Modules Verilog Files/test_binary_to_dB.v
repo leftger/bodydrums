@@ -25,7 +25,7 @@ module test_binary_to_dB();
     wire signed [8:0] z;
     wire signed [8:0] v;
     wire signed [8:0] w;
-    wire signed [11:0] outgoing_sample;
+    wire signed [11:0] c;
     reg [20:0] scount;     // keep track of which sample we're at
     reg [5:0] cycle;      // wait 64 clocks between samples
     integer fin,fout,code;
@@ -82,7 +82,7 @@ module test_binary_to_dB();
     wire db_done;
     wire gain_done;
     wire done;
-    reg soft_limiter=1'b0;
+    reg soft_limiter=1'b1;
     wire level_done;
     wire compress_done;
     //wire signed [12:0] multiplication_factor;
@@ -91,19 +91,23 @@ module test_binary_to_dB();
     
     //wire signed [8:0] modified_input_gain;
     
-    signed_binary_12bit_to_dB uut(.clock(clk), .reset(reset),
-        .start(ready), .input_binary(x), .output_db(y), .done(db_done));
+    //signed_binary_12bit_to_dB uut(.clock(clk), .reset(reset),
+    //    .start(ready), .input_binary(x), .output_db(y), .done(db_done));
         
-    compression_gain_computer another_uut(.clock(clk), .reset(reset),
-        .start(db_done), .compression_amount(compression_amount),
-        .input_db(y), .output_db(z), .output_level(v),  .done(gain_done));
+    //compression_gain_computer another_uut(.clock(clk), .reset(reset),
+    //    .start(db_done), .compression_amount(compression_amount),
+    //    .input_db(y), .output_db(z), .output_level(v),  .done(gain_done));
     
-    compression_level_detector third(.clock(clk), .reset(reset), .soft_limiter(soft_limiter),
-        .start(gain_done), .input_level(v), .output_gain(w), .done(level_done));
+    //compression_level_detector third(.clock(clk), .reset(reset), .soft_limiter(soft_limiter),
+    //    .start(gain_done), .input_level(v), .output_gain(w), .done(level_done));
 
-    variable_gain fourth(.clock(clk), .reset(reset), .start(level_done), 
-       .incoming_sample(x), .input_gain(w), .compressed_sample(outgoing_sample),
-       .done(compress_done));
+    //variable_gain fourth(.clock(clk), .reset(reset), .start(level_done), 
+    //    .incoming_sample(x), .input_gain(w), .compressed_sample(outgoing_sample),
+    //    .done(compress_done));
 
+    reg enable=1'b0;
+    compression do_dat_thang(.clock(clk), .reset(reset), .start(ready),
+        .incoming_sample(x), .compression_amount(compression_amount), .enable(enable),
+        .soft_limiter(soft_limiter), .modified_sample(c), .done(done));
 
 endmodule

@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date:    14:51:17 11/17/2015 
+// Create Date:    17:27:30 12/05/2015 
 // Design Name: 
-// Module Name:    test_delay 
+// Module Name:    test_audio_FSM 
 // Project Name: 
 // Target Devices: 
 // Tool versions: 
@@ -18,18 +18,25 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module test_delay();
+module test_audio_FSM();
     reg clk,reset,ready;	// fir31 signals
     reg signed [11:0] x;
     wire signed [11:0] y;
     reg [20:0] scount;     // keep track of which sample we're at
-    reg [5:0] cycle;      // wait 64 clocks between samples
+    reg [7:0] cycle;      // wait 256 clocks between samples
     integer fin,fout,code; 
     wire done;
-    reg [4:0] delay_amount=5'b11111;
     wire [14:0] current_sample;
     
-     
+    
+    reg playback=1'b1;
+    reg [4:0] delay_amount=5'b11111;
+    reg [1:0] compression_amount=2'b01;
+    reg [1:0] limiter_amount=2'b11;
+    
+    wire sample_ready;
+    
+    
     
     // Shamelessly stealing code from lab 5 to test the limiter functions
     // (making sure it performs EXACTLY how we expect them to)
@@ -58,7 +65,7 @@ module test_delay();
     always #5 clk = ~clk;
 
     always @(posedge clk) begin
-       if (cycle == 6'd63) begin
+       if (cycle == 8'd255) begin
           // assert ready next cycle, read next sample from file
           ready <= 1;
           code = $fscanf(fin,"%d",x);
@@ -80,11 +87,19 @@ module test_delay();
 
        cycle <= cycle+1;
     end
+    wire signed [11:0] z;
     
-    reg enable=1'b1;
     
-    delay_module uut(.clock(clk), .reset(reset), .start(ready),
-        .incoming_sample(x), .delay_amount(delay_amount), .enable(enable),
-        .modified_sample(y), .done(done), .stored_and_scaled_sample(current_sample));
-
+    audio_FSM uut(.clock(clk), .reset(reset), .playback(playback),
+        .new_sample_ready(ready), .delay_enable(1'b0), .amount_of_delay(delay_amount),
+        .chorus_enable(1'b0), .compression_enable(1'b1),
+        .compression_amount(compression_amount), .soft_limiter_enable(1'b0),
+        .hard_limiter_enable(1'b0), .hard_limiter_amount(limiter_amount),
+        .distortion_enable(1'b0), .distortion_amount(1'b0),
+        .samples_in(x), .to_ac97_data(y),
+        .sample_ready(sample_ready));
+    
+    
+    
+    
 endmodule
