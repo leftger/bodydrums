@@ -490,7 +490,7 @@ module labkit   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 	 
 	audio_FSM gs_fsm(.clock(clock_27mhz),.reset(reset),.playback(~record_mode),
 		.new_sample_ready(ready),.delay_enable(switch_sync[0]),
-		.amount_of_delay(effect_values_sel[4:0]),.chorus_enable(switch_sync[1]),
+		.amount_of_delay(effect_values_sel[5:0]),.chorus_enable(switch_sync[1]),
 		.compression_enable(switch_sync[2]),
 		.compression_amount(effect_values_sel[11:10]),
 		.soft_limiter_enable(switch_sync[3]),
@@ -528,7 +528,7 @@ module labkit   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
    wire [9:0] haddr;
    wire [13:0] hdata;
    wire hwe,sel;
-   process_audio a1(clock_27mhz,reset,ready,from_ac97_data,haddr,hdata,hwe);
+   process_audio a1(clock_27mhz,reset,ready,to_ac97_data,haddr,hdata,hwe);
 
    // 1024x10 histogram memory: A port is write-only, B port is read-only
    // use 1Kx(16+2) dual port BRAM

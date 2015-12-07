@@ -60,6 +60,8 @@ module delay_module #(parameter SAMPLING_RATE=24000, SAMPLES=240)
     parameter IDLE=3'b000;
     parameter READ_DELAYED_SAMPLE=3'b001;
     parameter SCALE_DELAYED_SAMPLE=3'b010;
+    parameter WAIT_ONE_SAMPLE=3'b100;
+    parameter WAIT_ANOTHER_SAMPLE=3'b101;
     parameter COMBINE_DELAYED_SAMPLE=3'b100;
     parameter GARBAGE_MEMORY=3'b111;
     
@@ -114,7 +116,7 @@ module delay_module #(parameter SAMPLING_RATE=24000, SAMPLES=240)
           end
        
           // The way echo works is through this difference equation:
-          // y[n] = x[n] + c*y[n-m], where m is delay_amount,
+          // y[n] = x[n] - c*y[n-m], where m is delay_amount,
           // x[n] is incoming_sample, y is modified_sample, and 
           // c = a coefficient between 0 and 1 (I used 7/8).
           else begin
@@ -122,7 +124,7 @@ module delay_module #(parameter SAMPLING_RATE=24000, SAMPLES=240)
                 IDLE: begin
                    if (start) begin
                       done <= 1'b0;
-                      current_pointer <= current_pointer + 13'h1;
+                      current_pointer <= current_pointer + 1;
                       delayed_pointer <= current_pointer - (SAMPLES*delay_amount);
                       write <= 1'b0;
                       if (wait_for_memory < (SAMPLES*delay_amount)) begin
@@ -141,11 +143,14 @@ module delay_module #(parameter SAMPLING_RATE=24000, SAMPLES=240)
                 
                 SCALE_DELAYED_SAMPLE: begin
                    stored_and_scaled_sample <= mem_out * 7;
-                   delay_state <= COMBINE_DELAYED_SAMPLE;
+                   delay_state <= WAIT_ONE_SAMPLE;
                 end
+
+                WAIT_ONE_SAMPLE: delay_state <= WAIT_ANOTHER_SAMPLE;
+                WAIT_ANOTHER_SAMPLE: delay_state <= COMBINE_DELAYED_SAMPLE;
                 
                 COMBINE_DELAYED_SAMPLE: begin
-                   modified_sample <= incoming_sample - (stored_and_scaled_sample[14:3]);
+                   modified_sample <= incoming_sample - (stored_and_scaled_sample[14:3]); // basically bitshift
                    addr <= current_pointer;
                    write <= 1'b1;
                    mem_in <= incoming_sample - (stored_and_scaled_sample[14:3]);

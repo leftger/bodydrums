@@ -24,7 +24,7 @@ module audio_FSM
     input playback,
     input new_sample_ready,// sample ready in from AC 97
     input delay_enable,
-    input [4:0] amount_of_delay,
+    input [5:0] amount_of_delay,
     input chorus_enable,
     input compression_enable,
     input [1:0] compression_amount,

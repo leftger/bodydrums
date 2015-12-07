@@ -23,7 +23,7 @@ module delay_module #(parameter SAMPLING_RATE=24000, SAMPLES=240)
     input reset,
     input start,
     input signed [11:0] incoming_sample,
-    input [4:0] delay_amount,
+    input [5:0] delay_amount,
     input enable,
     output reg signed [11:0] modified_sample=12'h000,
     output reg done);
@@ -33,24 +33,19 @@ module delay_module #(parameter SAMPLING_RATE=24000, SAMPLES=240)
     // past samples from the ZBT memory, but I'm assuming that I don't have any
     // access to the ZBT memory.
     
-    reg [12:0] addr=13'h0000;
-    
-    reg [12:0] current_pointer=12'h000;
-    reg [12:0] delayed_pointer=12'h000;
-    
-    
-    reg write=1'b0;
-    reg signed [11:0] mem_in=12'h000;
+    reg [12:0] addr;   
+    reg [12:0] current_pointer;
+    reg [12:0] delayed_pointer;
+    reg write;
+    reg signed [11:0] mem_in;
     wire signed [11:0] mem_out;
-    
-    
-    reg [12:0] wait_for_memory=13'h0000;
-    
+    reg [12:0] wait_for_memory;
+
     // This reg stores a version of the stored, delayed sample that is multiplied by 7.
     
-    reg signed [14:0] stored_and_scaled_sample=15'h0000;
+    reg signed [14:0] stored_and_scaled_sample;
     
-    // To have a delay from 10 ms to 320 ms, need to count
+    // To have a delay from 15 ms to 320 ms, need to count
     // up to 32 *0.01 s * 240 samples per 0.01 s = 7680 samples. This means
     // we need log(7680) / log(2) = about 13 bits for the memory address bank.
     // Of course, that means we have 8192 memory locations by 12 bits 
@@ -60,11 +55,13 @@ module delay_module #(parameter SAMPLING_RATE=24000, SAMPLES=240)
        store_delay_samples(.addr(addr),.clk(clock),
        .we(write),.din(mem_in),.dout(mem_out));
        
-    reg [2:0] delay_state=3'b000;
+    reg [2:0] delay_state;
     
     parameter IDLE=3'b000;
     parameter READ_DELAYED_SAMPLE=3'b001;
     parameter SCALE_DELAYED_SAMPLE=3'b010;
+    parameter WAIT_ONE_SAMPLE=3'b100;
+    parameter WAIT_ANOTHER_SAMPLE=3'b101;
     parameter COMBINE_DELAYED_SAMPLE=3'b100;
     parameter GARBAGE_MEMORY=3'b111;
     
@@ -73,6 +70,17 @@ module delay_module #(parameter SAMPLING_RATE=24000, SAMPLES=240)
     // 01: start up the delay effects, write current sample into memory location
     // 02: read sample from delayed memory location
     // 03: combine sample from delayed memory location with current sample.
+
+    initial begin
+	addr = 13'h0000;
+	current_pointer=12'h000;
+	delayed_pointer=12'h000;
+	write=1'b0;
+	mem_in=12'h000;
+	wait_for_memory=13'h0000;
+ 	stored_and_scaled_sample=15'h0000;
+	delay_state=3'b000;
+    end
     
     always @(posedge clock) begin
        
@@ -108,7 +116,7 @@ module delay_module #(parameter SAMPLING_RATE=24000, SAMPLES=240)
           end
        
           // The way echo works is through this difference equation:
-          // y[n] = x[n] + c*y[n-m], where m is delay_amount,
+          // y[n] = x[n] - c*y[n-m], where m is delay_amount,
           // x[n] is incoming_sample, y is modified_sample, and 
           // c = a coefficient between 0 and 1 (I used 7/8).
           else begin
@@ -116,8 +124,8 @@ module delay_module #(parameter SAMPLING_RATE=24000, SAMPLES=240)
                 IDLE: begin
                    if (start) begin
                       done <= 1'b0;
-                      current_pointer <= current_pointer + 13'h1;
-                      delayed_pointer <= current_pointer - (SAMPLES*delay_amount);
+                      current_pointer <= current_pointer + 1;
+                      delayed_pointer <= current_pointer - (SAMPLES*delay_amount / 2);
                       write <= 1'b0;
                       if (wait_for_memory < (SAMPLES*delay_amount)) begin
                          wait_for_memory <= wait_for_memory + 13'h1;
@@ -135,11 +143,14 @@ module delay_module #(parameter SAMPLING_RATE=24000, SAMPLES=240)
                 
                 SCALE_DELAYED_SAMPLE: begin
                    stored_and_scaled_sample <= mem_out * 7;
-                   delay_state <= COMBINE_DELAYED_SAMPLE;
+                   delay_state <= WAIT_ONE_SAMPLE;
                 end
+
+                WAIT_ONE_SAMPLE: delay_state <= WAIT_ANOTHER_SAMPLE;
+                WAIT_ANOTHER_SAMPLE: delay_state <= COMBINE_DELAYED_SAMPLE;
                 
                 COMBINE_DELAYED_SAMPLE: begin
-                   modified_sample <= incoming_sample - (stored_and_scaled_sample[14:3]);
+                   modified_sample <= incoming_sample - (stored_and_scaled_sample[14:3]); // basically bitshift
                    addr <= current_pointer;
                    write <= 1'b1;
                    mem_in <= incoming_sample - (stored_and_scaled_sample[14:3]);

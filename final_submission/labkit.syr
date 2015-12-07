@@ -5,14 +5,14 @@ Parameter TMPDIR set to /afs/athena.mit.edu/user/g/r/grosas/6.111/Final_Project/
 
 
 Total REAL time to Xst completion: 1.00 secs
-Total CPU time to Xst completion: 0.05 secs
+Total CPU time to Xst completion: 0.03 secs
  
 --> 
 Parameter xsthdpdir set to /afs/athena.mit.edu/user/g/r/grosas/6.111/Final_Project/bodydrums/final_submission/xst
 
 
 Total REAL time to Xst completion: 1.00 secs
-Total CPU time to Xst completion: 0.05 secs
+Total CPU time to Xst completion: 0.03 secs
  
 --> 
 Reading design: labkit.prj
@@ -293,6 +293,8 @@ Analyzing hierarchy for module <delay_module> in library <work> with parameters.
 	SAMPLES = "00000000000000000000000011110000"
 	SAMPLING_RATE = "00000000000000000101110111000000"
 	SCALE_DELAYED_SAMPLE = "010"
+	WAIT_ANOTHER_SAMPLE = "101"
+	WAIT_ONE_SAMPLE = "100"
 
 Analyzing hierarchy for module <compression> in library <work> with parameters.
 	SAMPLING_RATE = "00000000000000000101110111000000"
@@ -562,6 +564,9 @@ Analyzing module <delay_module> in library <work>.
 	SAMPLES = 32'sb00000000000000000000000011110000
 	SAMPLING_RATE = 32'sb00000000000000000101110111000000
 	SCALE_DELAYED_SAMPLE = 3'b010
+	WAIT_ANOTHER_SAMPLE = 3'b101
+	WAIT_ONE_SAMPLE = 3'b100
+WARNING:Xst:883 - "delay_module.v" line 152: Ignored duplicate item in case statement. 
 Module <delay_module> is correct for synthesis.
  
 Analyzing module <mybram> in library <work>.
@@ -1296,42 +1301,38 @@ Unit <digit_selector> synthesized.
 
 Synthesizing Unit <delay_module>.
     Related source file is "delay_module.v".
-WARNING:Xst:646 - Signal <stored_and_scaled_sample<2:0>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <stored_and_scaled_sample> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
     Found finite state machine <FSM_2> for signal <delay_state>.
     -----------------------------------------------------------------------
-    | States             | 5                                              |
-    | Transitions        | 7                                              |
+    | States             | 6                                              |
+    | Transitions        | 8                                              |
     | Inputs             | 2                                              |
-    | Outputs            | 6                                              |
+    | Outputs            | 7                                              |
     | Clock              | clock (rising_edge)                            |
     | Clock enable       | delay_state$not0000 (positive)                 |
     | Power Up State     | 000                                            |
     | Encoding           | automatic                                      |
     | Implementation     | LUT                                            |
     -----------------------------------------------------------------------
-WARNING:Xst:643 - "delay_module.v" line 137: The result of a 12x4-bit multiplication is partially used. Only the 15 least significant bits are used. If you are doing this on purpose, you may safely ignore this warning. Otherwise, make sure you are not losing information, leading to unexpected circuit behavior.
     Found 12-bit register for signal <modified_sample>.
     Found 1-bit register for signal <done>.
     Found 13-bit register for signal <addr>.
     Found 13-bit register for signal <current_pointer>.
     Found 13-bit adder for signal <current_pointer$addsub0000>.
-    Found 14-bit comparator less for signal <delay_state$cmp_lt0000> created at line 122.
+    Found 15-bit comparator less for signal <delay_state$cmp_lt0000> created at line 130.
     Found 13-bit register for signal <delayed_pointer>.
     Found 13-bit subtractor for signal <delayed_pointer$addsub0000>.
-    Found 5x9-bit multiplier for signal <delayed_pointer$mult0001> created at line 120.
+    Found 6x9-bit multiplier for signal <delayed_pointer$mult0001> created at line 128.
     Found 12-bit register for signal <mem_in>.
-    Found 12-bit subtractor for signal <modified_sample$sub0000> created at line 142.
-    Found 15-bit register for signal <stored_and_scaled_sample>.
-    Found 12x4-bit multiplier for signal <stored_and_scaled_sample$mult0001> created at line 137.
     Found 13-bit register for signal <wait_for_memory>.
     Found 13-bit adder for signal <wait_for_memory$addsub0000>.
-    Found 14-bit comparator less for signal <wait_for_memory$cmp_lt0000> created at line 165.
+    Found 15-bit comparator less for signal <wait_for_memory$cmp_lt0000> created at line 176.
     Found 1-bit register for signal <write>.
     Summary:
 	inferred   1 Finite State Machine(s).
-	inferred  93 D-type flip-flop(s).
-	inferred   4 Adder/Subtractor(s).
-	inferred   2 Multiplier(s).
+	inferred  78 D-type flip-flop(s).
+	inferred   3 Adder/Subtractor(s).
+	inferred   1 Multiplier(s).
 	inferred   2 Comparator(s).
 Unit <delay_module> synthesized.
 
@@ -1668,31 +1669,30 @@ WARNING:Xst:646 - Signal <border> is assigned but never used. This unconnected s
 Unit <labkit> synthesized.
 
 INFO:Xst:1767 - HDL ADVISOR - Resource sharing has identified that some arithmetic operations in this design can share the same physical resources for reduced device utilization. For improved clock frequency you may try to disable resource sharing.
+WARNING:Xst:524 - All outputs of the instance <store_delay_samples> of the block <mybram> are unconnected in block <delay_module>.
+   This instance will be removed from the design along with all underlying logic
 
 =========================================================================
 HDL Synthesis Report
 
 Macro Statistics
-# RAMs                                                 : 1
- 8192x12-bit single-port RAM                           : 1
 # ROMs                                                 : 9
  16x1-bit ROM                                          : 2
  16x19-bit ROM                                         : 1
  16x40-bit ROM                                         : 1
  16x9-bit ROM                                          : 4
  32x13-bit ROM                                         : 1
-# Multipliers                                          : 26
+# Multipliers                                          : 25
  10x8-bit multiplier                                   : 1
  11x11-bit multiplier                                  : 1
  11x2-bit multiplier                                   : 1
  11x7-bit multiplier                                   : 14
  11x9-bit multiplier                                   : 2
- 12x4-bit multiplier                                   : 1
  13x12-bit multiplier                                  : 1
  14x14-bit multiplier                                  : 3
- 5x9-bit multiplier                                    : 1
+ 6x9-bit multiplier                                    : 1
  9x10-bit multiplier                                   : 1
-# Adders/Subtractors                                   : 210
+# Adders/Subtractors                                   : 207
  1-bit adder carry out                                 : 1
  10-bit adder                                          : 1
  10-bit adder carry out                                : 14
@@ -1702,9 +1702,8 @@ Macro Statistics
  11-bit adder carry out                                : 14
  11-bit subtractor                                     : 29
  12-bit adder                                          : 2
- 12-bit subtractor                                     : 1
- 13-bit adder                                          : 2
- 13-bit subtractor                                     : 3
+ 13-bit adder                                          : 1
+ 13-bit subtractor                                     : 2
  17-bit adder                                          : 2
  19-bit adder                                          : 3
  2-bit adder                                           : 3
@@ -1735,14 +1734,13 @@ Macro Statistics
  5-bit updown counter                                  : 1
  8-bit down counter                                    : 1
  8-bit up counter                                      : 2
-# Registers                                            : 243
- 1-bit register                                        : 129
+# Registers                                            : 236
+ 1-bit register                                        : 128
  10-bit register                                       : 4
  11-bit register                                       : 1
- 12-bit register                                       : 11
- 13-bit register                                       : 5
+ 12-bit register                                       : 9
+ 13-bit register                                       : 2
  14-bit register                                       : 1
- 15-bit register                                       : 1
  16-bit register                                       : 1
  17-bit register                                       : 1
  19-bit register                                       : 17
@@ -1771,7 +1769,7 @@ Macro Statistics
  11-bit comparator less                                : 16
  12-bit comparator less                                : 17
  13-bit comparator greater                             : 3
- 14-bit comparator less                                : 2
+ 15-bit comparator less                                : 2
  19-bit comparator greatequal                          : 2
  19-bit comparator less                                : 2
  25-bit comparator greatequal                          : 1
@@ -1840,6 +1838,7 @@ Optimizing FSM <gs_fsm/delay/delay_state> on signal <delay_state[1:3]> with gray
  001   | 011
  010   | 010
  100   | 110
+ 101   | 111
  111   | 001
 -------------------
 Loading device for application Rf_Device from file '2v6000.nph' in environment /afs/csail.mit.edu/proj/redsocs/Xilinx10.1/ISE.
@@ -1896,24 +1895,7 @@ INFO:Xst:2385 - HDL ADVISOR - You can improve the performance of the multiplier 
 Unit <compression_level_detector> synthesized (advanced).
 
 Synthesizing (advanced) Unit <delay_module>.
-INFO:Xst - The RAM <store_delay_samples/Mram_mem> will be implemented as a BLOCK RAM, absorbing the following register(s): <store_delay_samples/dout>
-    -----------------------------------------------------------------------
-    | ram_type           | Block                               |          |
-    -----------------------------------------------------------------------
-    | Port A                                                              |
-    |     aspect ratio   | 8192-word x 12-bit                  |          |
-    |     mode           | read-first                          |          |
-    |     clkA           | connected to signal <clock>         | rise     |
-    |     weA            | connected to signal <write>         | high     |
-    |     addrA          | connected to signal <addr>          |          |
-    |     diA            | connected to signal <mem_in>        |          |
-    |     doA            | connected to signal <mem_out>       |          |
-    -----------------------------------------------------------------------
-    | optimization       | speed                               |          |
-    -----------------------------------------------------------------------
-INFO:Xst:2385 - HDL ADVISOR - You can improve the performance of the multiplier Mmult_stored_and_scaled_sample_mult0001 by adding 1 register level(s).
 INFO:Xst:2385 - HDL ADVISOR - You can improve the performance of the multiplier Mmult_delayed_pointer_mult0001 by adding 1 register level(s).
-INFO:Xst:2385 - HDL ADVISOR - You can improve the performance of the multiplier Mmult_stored_and_scaled_sample_mult0001 by adding 1 register level(s).
 INFO:Xst:2385 - HDL ADVISOR - You can improve the performance of the multiplier Mmult_delayed_pointer_mult0001 by adding 1 register level(s).
 Unit <delay_module> synthesized (advanced).
 
@@ -2060,9 +2042,6 @@ WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_12> (without 
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_13> (without init value) has a constant value of 0 in block <hud_blob>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_14> (without init value) has a constant value of 0 in block <hud_blob>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_15> (without init value) has a constant value of 0 in block <hud_blob>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:2677 - Node <stored_and_scaled_sample_0> of sequential type is unconnected in block <delay_module>.
-WARNING:Xst:2677 - Node <stored_and_scaled_sample_1> of sequential type is unconnected in block <delay_module>.
-WARNING:Xst:2677 - Node <stored_and_scaled_sample_2> of sequential type is unconnected in block <delay_module>.
 WARNING:Xst:1710 - FF/Latch <fft_pixel_0> (without init value) has a constant value of 0 in block <labkit>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <fft_pixel_1> (without init value) has a constant value of 0 in block <labkit>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <fft_pixel_2> (without init value) has a constant value of 0 in block <labkit>. This FF/Latch will be trimmed during the optimization process.
@@ -2141,27 +2120,24 @@ WARNING:Xst:2677 - Node <done> of sequential type is unconnected in block <num_t
 Advanced HDL Synthesis Report
 
 Macro Statistics
-# RAMs                                                 : 1
- 8192x12-bit single-port block RAM                     : 1
 # ROMs                                                 : 9
  16x1-bit ROM                                          : 2
  16x19-bit ROM                                         : 1
  16x40-bit ROM                                         : 1
  16x9-bit ROM                                          : 4
  32x13-bit ROM                                         : 1
-# Multipliers                                          : 26
+# Multipliers                                          : 25
  10x8-bit multiplier                                   : 1
  11x11-bit multiplier                                  : 1
  11x2-bit multiplier                                   : 1
  11x7-bit multiplier                                   : 14
  11x9-bit multiplier                                   : 2
- 12x4-bit multiplier                                   : 1
  13x12-bit multiplier                                  : 1
  14x14-bit multiplier                                  : 1
  14x14-bit registered multiplier                       : 2
- 5x9-bit multiplier                                    : 1
+ 6x9-bit multiplier                                    : 1
  9x10-bit multiplier                                   : 1
-# Adders/Subtractors                                   : 210
+# Adders/Subtractors                                   : 207
  1-bit adder carry out                                 : 1
  10-bit adder                                          : 1
  10-bit adder carry out                                : 14
@@ -2171,9 +2147,8 @@ Macro Statistics
  11-bit adder carry out                                : 14
  11-bit subtractor                                     : 29
  12-bit adder                                          : 2
- 12-bit subtractor                                     : 1
- 13-bit adder                                          : 2
- 13-bit subtractor                                     : 3
+ 13-bit adder                                          : 1
+ 13-bit subtractor                                     : 2
  17-bit adder                                          : 2
  19-bit adder                                          : 3
  2-bit adder                                           : 3
@@ -2204,8 +2179,8 @@ Macro Statistics
  5-bit updown counter                                  : 1
  8-bit down counter                                    : 1
  8-bit up counter                                      : 2
-# Registers                                            : 1492
- Flip-Flops                                            : 1492
+# Registers                                            : 1428
+ Flip-Flops                                            : 1428
 # Latches                                              : 2
  10-bit latch                                          : 1
  13-bit latch                                          : 1
@@ -2217,7 +2192,7 @@ Macro Statistics
  11-bit comparator less                                : 16
  12-bit comparator less                                : 17
  13-bit comparator greater                             : 3
- 14-bit comparator less                                : 2
+ 15-bit comparator less                                : 2
  19-bit comparator greatequal                          : 2
  19-bit comparator less                                : 2
  25-bit comparator greatequal                          : 1
@@ -2456,10 +2431,511 @@ INFO:Xst:2261 - The FF/Latch <a/ac97/l_cmd_data_5> in Unit <labkit> is equivalen
 INFO:Xst:2261 - The FF/Latch <a/ac97/l_cmd_data_6> in Unit <labkit> is equivalent to the following FF/Latch, which will be removed : <a/ac97/l_cmd_data_14> 
 INFO:Xst:2261 - The FF/Latch <a/ac97/l_cmd_data_8> in Unit <labkit> is equivalent to the following FF/Latch, which will be removed : <a/ac97/l_cmd_data_16> 
 INFO:Xst:2261 - The FF/Latch <addr_calc/record_state> in Unit <labkit> is equivalent to the following FF/Latch, which will be removed : <mem_pros/record_state> 
-Found area constraint ratio of 100 (+ 5) on block labkit, actual ratio is 22.
+Found area constraint ratio of 100 (+ 5) on block labkit, actual ratio is 21.
 INFO:Xst:2260 - The FF/Latch <blk00000df7> in Unit <a1/fft> is equivalent to the following 2 FFs/Latches : <blk000018b7> <blk00002354> 
 INFO:Xst:2260 - The FF/Latch <blk00000710> in Unit <a1/fft> is equivalent to the following FF/Latch : <blk00000742> 
 INFO:Xst:2260 - The FF/Latch <blk0000070f> in Unit <a1/fft> is equivalent to the following FF/Latch : <blk00000741> 
 INFO:Xst:2260 - The FF/Latch <blk00000df7> in Unit <a1/fft> is equivalent to the following 2 FFs/Latches : <blk000018b7> <blk00002354> 
 INFO:Xst:2260 - The FF/Latch <blk00000710> in Unit <a1/fft> is equivalent to the following FF/Latch : <blk00000742> 
 INFO:Xst:2260 - The FF/Latch <blk0000070f> in Unit <a1/fft> is equivalent to the following FF/Latch : <blk00000741> 
+
+Final Macro Processing ...
+
+Processing Unit <labkit> :
+	Found 2-bit shift register for signal <xblank>.
+	Found 4-bit shift register for signal <vs>.
+	Found 4-bit shift register for signal <hs>.
+	Found 2-bit shift register for signal <b>.
+	Found 2-bit shift register for signal <zbt1/write_data_old2_35>.
+	Found 2-bit shift register for signal <zbt1/write_data_old2_34>.
+	Found 2-bit shift register for signal <zbt1/write_data_old2_33>.
+	Found 2-bit shift register for signal <zbt1/write_data_old2_32>.
+	Found 2-bit shift register for signal <zbt1/write_data_old2_31>.
+	Found 2-bit shift register for signal <zbt1/write_data_old2_30>.
+	Found 2-bit shift register for signal <zbt1/write_data_old2_29>.
+	Found 2-bit shift register for signal <zbt1/write_data_old2_28>.
+	Found 2-bit shift register for signal <zbt1/write_data_old2_27>.
+	Found 2-bit shift register for signal <zbt1/write_data_old2_26>.
+	Found 2-bit shift register for signal <zbt1/write_data_old2_25>.
+	Found 2-bit shift register for signal <zbt1/write_data_old2_24>.
+	Found 2-bit shift register for signal <zbt1/write_data_old2_23>.
+	Found 2-bit shift register for signal <zbt1/write_data_old2_22>.
+	Found 2-bit shift register for signal <zbt1/write_data_old2_21>.
+	Found 2-bit shift register for signal <zbt1/write_data_old2_20>.
+	Found 2-bit shift register for signal <zbt1/write_data_old2_19>.
+	Found 2-bit shift register for signal <zbt1/write_data_old2_18>.
+	Found 2-bit shift register for signal <zbt1/write_data_old2_17>.
+	Found 2-bit shift register for signal <zbt1/write_data_old2_16>.
+	Found 2-bit shift register for signal <zbt1/write_data_old2_15>.
+	Found 2-bit shift register for signal <zbt1/write_data_old2_14>.
+	Found 2-bit shift register for signal <zbt1/write_data_old2_13>.
+	Found 2-bit shift register for signal <zbt1/write_data_old2_12>.
+	Found 2-bit shift register for signal <zbt1/write_data_old2_11>.
+	Found 2-bit shift register for signal <zbt1/write_data_old2_10>.
+	Found 2-bit shift register for signal <zbt1/write_data_old2_9>.
+	Found 2-bit shift register for signal <zbt1/write_data_old2_8>.
+	Found 2-bit shift register for signal <zbt1/write_data_old2_7>.
+	Found 2-bit shift register for signal <zbt1/write_data_old2_6>.
+	Found 2-bit shift register for signal <zbt1/write_data_old2_5>.
+	Found 2-bit shift register for signal <zbt1/write_data_old2_4>.
+	Found 2-bit shift register for signal <zbt1/write_data_old2_3>.
+	Found 2-bit shift register for signal <zbt1/write_data_old2_2>.
+	Found 2-bit shift register for signal <zbt1/write_data_old2_1>.
+	Found 2-bit shift register for signal <zbt1/write_data_old2_0>.
+	Found 2-bit shift register for signal <zbt1/we_delay_1>.
+	Found 2-bit shift register for signal <zbt0/we_delay_1>.
+	Found 7-bit shift register for signal <disp/control_30>.
+	Found 7-bit shift register for signal <disp/control_22>.
+	Found 7-bit shift register for signal <disp/control_14>.
+	Found 7-bit shift register for signal <disp/control_6>.
+	Found 8-bit shift register for signal <a/ac97/left_in_data_8>.
+	Found 2-bit shift register for signal <a/ready_sync_1>.
+Unit <labkit> processed.
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 1592
+ Flip-Flops                                            : 1592
+# Shift Registers                                      : 48
+ 2-bit shift register                                  : 41
+ 4-bit shift register                                  : 2
+ 7-bit shift register                                  : 4
+ 8-bit shift register                                  : 1
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                             *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Final Report                               *
+=========================================================================
+Final Results
+RTL Top Level Output File Name     : labkit.ngr
+Top Level Output File Name         : labkit
+Output Format                      : NGC
+Optimization Goal                  : Speed
+Keep Hierarchy                     : NO
+
+Design Statistics
+# IOs                              : 576
+
+Cell Usage :
+# BELS                             : 18941
+#      BUF                         : 634
+#      GND                         : 34
+#      INV                         : 199
+#      LUT1                        : 464
+#      LUT2                        : 648
+#      LUT2_D                      : 2
+#      LUT3                        : 1028
+#      LUT3_D                      : 24
+#      LUT3_L                      : 28
+#      LUT4                        : 6616
+#      LUT4_D                      : 42
+#      LUT4_L                      : 22
+#      MULT_AND                    : 851
+#      MUXCY                       : 3750
+#      MUXF5                       : 895
+#      MUXF6                       : 176
+#      MUXF7                       : 71
+#      MUXF8                       : 27
+#      VCC                         : 34
+#      XORCY                       : 3396
+# FlipFlops/Latches                : 10474
+#      FD                          : 834
+#      FDCE                        : 1055
+#      FDE                         : 7171
+#      FDE_1                       : 13
+#      FDR                         : 165
+#      FDRE                        : 969
+#      FDRS                        : 16
+#      FDRSE                       : 8
+#      FDS                         : 121
+#      FDSE                        : 100
+#      LDCPE                       : 22
+# RAMS                             : 181
+#      RAM32X1D                    : 44
+#      RAM64X1D                    : 42
+#      RAMB16_S18_S18              : 5
+#      RAMB16_S1_S1                : 40
+#      RAMB16_S2_S2                : 8
+#      RAMB16_S36_S36              : 8
+#      RAMB16_S4_S4                : 12
+#      RAMB16_S9_S9                : 22
+# Shift Registers                  : 1375
+#      SRL16                       : 6
+#      SRL16E                      : 1368
+#      SRL16E_1                    : 1
+# Clock Buffers                    : 5
+#      BUFG                        : 4
+#      BUFGP                       : 1
+# IO Buffers                       : 331
+#      IBUF                        : 18
+#      IBUFG                       : 1
+#      IOBUF                       : 72
+#      OBUF                        : 240
+# DCMs                             : 1
+#      DCM                         : 1
+# MULTs                            : 54
+#      MULT18X18                   : 22
+#      MULT18X18S                  : 32
+=========================================================================
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 2v6000bf957-4 
+
+ Number of Slices:                     7267  out of  33792    21%  
+ Number of Slice Flip Flops:          10474  out of  67584    15%  
+ Number of 4 input LUTs:              10960  out of  67584    16%  
+    Number used as logic:              9073
+    Number used as Shift registers:    1375
+    Number used as RAMs:                512
+ Number of IOs:                         576
+ Number of bonded IOBs:                 332  out of    684    48%  
+ Number of BRAMs:                        95  out of    144    65%  
+ Number of MULT18X18s:                   54  out of    144    37%  
+ Number of GCLKs:                         5  out of     16    31%  
+ Number of DCMs:                          1  out of     12     8%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+TIMING REPORT
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------+-------+
+Clock Signal                                                                   | Clock buffer(FF name)                                                                                               | Load  |
+-------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------+-------+
+clock_27mhz                                                                    | vclk1:CLKFX                                                                                                         | 1078  |
+clock_27mhz                                                                    | IBUFG+BUFG                                                                                                          | 10847 |
+ma1/Mcompar_max_freq_cmp_gt0000_cy<9>1(ma1/Mcompar_max_freq_cmp_gt0000_cy<9>:O)| BUFG(*)(ma1/max_freq_11)                                                                                            | 22    |
+disp/clock1                                                                    | BUFG                                                                                                                | 43    |
+ac97_bit_clock                                                                 | BUFGP                                                                                                               | 73    |
+hd/ma_digs/the_dig/img_nueve/BU2/dbiterr                                       | NONE(hd/ma_digs/the_dig/img_nueve/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_init.ram/dpram.dp9x9.ram) | 1     |
+hd/ma_digs/the_dig/img_ocho/BU2/dbiterr                                        | NONE(hd/ma_digs/the_dig/img_ocho/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_init.ram/dpram.dp9x9.ram)  | 1     |
+hd/ma_digs/the_dig/img_siete/BU2/dbiterr                                       | NONE(hd/ma_digs/the_dig/img_siete/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_init.ram/dpram.dp9x9.ram) | 1     |
+hd/ma_digs/the_dig/img_seis/BU2/dbiterr                                        | NONE(hd/ma_digs/the_dig/img_seis/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_init.ram/dpram.dp9x9.ram)  | 1     |
+hd/ma_digs/the_dig/img_cinco/BU2/dbiterr                                       | NONE(hd/ma_digs/the_dig/img_cinco/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_init.ram/dpram.dp9x9.ram) | 1     |
+hd/ma_digs/the_dig/img_cuatro/BU2/dbiterr                                      | NONE(hd/ma_digs/the_dig/img_cuatro/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_init.ram/dpram.dp9x9.ram)| 1     |
+hd/ma_digs/the_dig/img_tres/BU2/dbiterr                                        | NONE(hd/ma_digs/the_dig/img_tres/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_init.ram/dpram.dp9x9.ram)  | 1     |
+hd/ma_digs/the_dig/img_dos/BU2/dbiterr                                         | NONE(hd/ma_digs/the_dig/img_dos/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_init.ram/dpram.dp9x9.ram)   | 1     |
+hd/ma_digs/the_dig/img_uno/BU2/dbiterr                                         | NONE(hd/ma_digs/the_dig/img_uno/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_init.ram/dpram.dp9x9.ram)   | 1     |
+hd/ma_digs/the_dig/img_cero/BU2/dbiterr                                        | NONE(hd/ma_digs/the_dig/img_cero/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_init.ram/dpram.dp9x9.ram)  | 1     |
+hd/thehud/rom2/BU2/dbiterr                                                     | NONE(hd/thehud/rom2/BU2/U0/blk_mem_generator/valid.cstr/ramloop[14].ram.r/v2_init.ram/dpram.dp1x1.ram)              | 15    |
+hd/myblob/rom1/BU2/dbiterr                                                     | NONE(hd/myblob/rom1/BU2/U0/blk_mem_generator/valid.cstr/ramloop[28].ram.r/v2_init.ram/dpram.dp1x1.ram)              | 29    |
+-------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------+-------+
+(*) This 1 clock signal(s) are generated by combinatorial logic,
+and XST is not able to identify which are the primary clock signals.
+Please use the CLOCK_SIGNAL constraint to specify the clock signal(s) generated by combinatorial logic.
+INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
+
+Asynchronous Control Signals Information:
+----------------------------------------
+-----------------------------------------------------+-----------------------------+-------+
+Control Signal                                       | Buffer(FF name)             | Load  |
+-----------------------------------------------------+-----------------------------+-------+
+a1/fft/sig00000001(a1/fft/blk00000002:G)             | NONE(a1/fft/blk000048a5)    | 1077  |
+a1/fft/ce_11(a1/fft/ce_11:O)                         | NONE(a1/fft/blk000035c3)    | 6     |
+a1/fft/ce_17(a1/fft/ce_17:O)                         | NONE(a1/fft/blk00004ed6)    | 6     |
+a1/fft/ce_8(a1/fft/ce_8:O)                           | NONE(a1/fft/blk000025c8)    | 6     |
+a1/fft/ce_14(a1/fft/ce_14:O)                         | NONE(a1/fft/blk00004284)    | 5     |
+a/ac97/Mmux__varindex0000_9(XST_GND:G)               | NONE(a1/Mmult_imim_mult0000)| 3     |
+a1/fft/ce_3(a1/fft/ce_3:O)                           | NONE(a1/fft/blk00000f63)    | 3     |
+a1/fft/ce_6(a1/fft/ce_6:O)                           | NONE(a1/fft/blk00001a4d)    | 2     |
+a1/haddr_not0001(a1/haddr_not00011:O)                | NONE(a1/Mmult_imim_mult0000)| 2     |
+a1/fft/ce_15(a1/fft/ce_15:O)                         | NONE(a1/fft/blk00004343)    | 1     |
+a1/fft/ce_5(a1/fft/ce_5:O)                           | NONE(a1/fft/blk00001a09)    | 1     |
+ma1/max_amp_0__and0000(ma1/max_amp_0__and00001:O)    | NONE(ma1/max_amp_0)         | 1     |
+ma1/max_amp_0__and0001(ma1/max_amp_0__and00011:O)    | NONE(ma1/max_amp_0)         | 1     |
+ma1/max_amp_1__and0000(ma1/max_amp_1__and00001:O)    | NONE(ma1/max_amp_1)         | 1     |
+ma1/max_amp_1__and0001(ma1/max_amp_1__and00011:O)    | NONE(ma1/max_amp_1)         | 1     |
+ma1/max_amp_2__and0000(ma1/max_amp_2__and00001:O)    | NONE(ma1/max_amp_2)         | 1     |
+ma1/max_amp_2__and0001(ma1/max_amp_2__and00011:O)    | NONE(ma1/max_amp_2)         | 1     |
+ma1/max_amp_3__and0000(ma1/max_amp_3__and00001:O)    | NONE(ma1/max_amp_3)         | 1     |
+ma1/max_amp_3__and0001(ma1/max_amp_3__and00011:O)    | NONE(ma1/max_amp_3)         | 1     |
+ma1/max_amp_4__and0000(ma1/max_amp_4__and00001:O)    | NONE(ma1/max_amp_4)         | 1     |
+ma1/max_amp_4__and0001(ma1/max_amp_4__and00011:O)    | NONE(ma1/max_amp_4)         | 1     |
+ma1/max_amp_5__and0000(ma1/max_amp_5__and00001:O)    | NONE(ma1/max_amp_5)         | 1     |
+ma1/max_amp_5__and0001(ma1/max_amp_5__and00011:O)    | NONE(ma1/max_amp_5)         | 1     |
+ma1/max_amp_6__and0000(ma1/max_amp_6__and00001:O)    | NONE(ma1/max_amp_6)         | 1     |
+ma1/max_amp_6__and0001(ma1/max_amp_6__and00011:O)    | NONE(ma1/max_amp_6)         | 1     |
+ma1/max_amp_7__and0000(ma1/max_amp_7__and00001:O)    | NONE(ma1/max_amp_7)         | 1     |
+ma1/max_amp_7__and0001(ma1/max_amp_7__and00011:O)    | NONE(ma1/max_amp_7)         | 1     |
+ma1/max_amp_8__and0000(ma1/max_amp_8__and00001:O)    | NONE(ma1/max_amp_8)         | 1     |
+ma1/max_amp_8__and0001(ma1/max_amp_8__and00011:O)    | NONE(ma1/max_amp_8)         | 1     |
+ma1/max_amp_9__and0000(ma1/max_amp_9__and00001:O)    | NONE(ma1/max_amp_9)         | 1     |
+ma1/max_amp_9__and0001(ma1/max_amp_9__and00011:O)    | NONE(ma1/max_amp_9)         | 1     |
+ma1/max_freq_0__and0000(ma1/max_freq_0__and00001:O)  | NONE(ma1/max_freq_0)        | 1     |
+ma1/max_freq_10__and0000(ma1/max_freq_10__and00001:O)| NONE(ma1/max_freq_10)       | 1     |
+ma1/max_freq_10__and0001(ma1/max_freq_10__and00011:O)| NONE(ma1/max_freq_10)       | 1     |
+ma1/max_freq_11__and0000(ma1/max_freq_11__and00001:O)| NONE(ma1/max_freq_11)       | 1     |
+ma1/max_freq_11__and0001(ma1/max_freq_11__and00011:O)| NONE(ma1/max_freq_11)       | 1     |
+ma1/max_freq_1__and0000(ma1/max_freq_1__and00001:O)  | NONE(ma1/max_freq_1)        | 1     |
+ma1/max_freq_1__and0001(ma1/max_freq_1__and00011:O)  | NONE(ma1/max_freq_1)        | 1     |
+ma1/max_freq_2__and0000(ma1/max_freq_2__and00001:O)  | NONE(ma1/max_freq_2)        | 1     |
+ma1/max_freq_2__and0001(ma1/max_freq_2__and00011:O)  | NONE(ma1/max_freq_2)        | 1     |
+ma1/max_freq_3__and0000(ma1/max_freq_3__and00001:O)  | NONE(ma1/max_freq_3)        | 1     |
+ma1/max_freq_3__and0001(ma1/max_freq_3__and00011:O)  | NONE(ma1/max_freq_3)        | 1     |
+ma1/max_freq_4__and0000(ma1/max_freq_4__and00001:O)  | NONE(ma1/max_freq_4)        | 1     |
+ma1/max_freq_4__and0001(ma1/max_freq_4__and00011:O)  | NONE(ma1/max_freq_4)        | 1     |
+ma1/max_freq_5__and0000(ma1/max_freq_5__and00001:O)  | NONE(ma1/max_freq_5)        | 1     |
+ma1/max_freq_5__and0001(ma1/max_freq_5__and00011:O)  | NONE(ma1/max_freq_5)        | 1     |
+ma1/max_freq_6__and0000(ma1/max_freq_6__and00001:O)  | NONE(ma1/max_freq_6)        | 1     |
+ma1/max_freq_6__and0001(ma1/max_freq_6__and00011:O)  | NONE(ma1/max_freq_6)        | 1     |
+ma1/max_freq_7__and0000(ma1/max_freq_7__and00001:O)  | NONE(ma1/max_freq_7)        | 1     |
+ma1/max_freq_7__and0001(ma1/max_freq_7__and00011:O)  | NONE(ma1/max_freq_7)        | 1     |
+ma1/max_freq_8__and0000(ma1/max_freq_8__and00001:O)  | NONE(ma1/max_freq_8)        | 1     |
+ma1/max_freq_8__and0001(ma1/max_freq_8__and00011:O)  | NONE(ma1/max_freq_8)        | 1     |
+ma1/max_freq_9__and0000(ma1/max_freq_9__and00001:O)  | NONE(ma1/max_freq_9)        | 1     |
+ma1/max_freq_9__and0001(ma1/max_freq_9__and00011:O)  | NONE(ma1/max_freq_9)        | 1     |
+-----------------------------------------------------+-----------------------------+-------+
+
+Timing Summary:
+---------------
+Speed Grade: -4
+
+   Minimum period: 71.213ns (Maximum Frequency: 14.042MHz)
+   Minimum input arrival time before clock: 3.372ns
+   Maximum output required time after clock: 6.914ns
+   Maximum combinational path delay: 7.617ns
+
+Timing Detail:
+--------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clock_27mhz'
+  Clock period: 71.213ns (frequency: 14.042MHz)
+  Total number of paths / destination ports: 490164 / 27181
+-------------------------------------------------------------------------
+Delay:               11.869ns (Levels of Logic = 5)
+  Source:            reset_sr (FF)
+  Destination:       a1/fft/blk0000011b/blk0000011e (FF)
+  Source Clock:      clock_27mhz rising 2.4X
+  Destination Clock: clock_27mhz rising
+
+  Data Path: reset_sr to a1/fft/blk0000011b/blk0000011e
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     SRL16:CLK->Q         81   2.901   1.249  reset_sr (power_on_reset)
+     LUT4:I2->O          479   0.439   2.246  a1/_or00001 (a1/_or0000)
+     begin scope: 'a1/fft'
+     BUF:I->O            479   0.439   2.286  ce_1 (ce_1)
+     begin scope: 'blk0000011b'
+     LUT4:I3->O            1   0.439   0.000  blk00000144 (sig00005721)
+     MUXCY:S->O            1   1.501   0.000  blk00000145 (sig000056fa)
+     FDRE:D                    0.370          blk0000011e
+    ----------------------------------------
+    Total                     11.869ns (6.089ns logic, 5.780ns route)
+                                       (51.3% logic, 48.7% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'disp/clock1'
+  Clock period: 11.817ns (frequency: 84.626MHz)
+  Total number of paths / destination ports: 1252 / 75
+-------------------------------------------------------------------------
+Delay:               11.817ns (Levels of Logic = 8)
+  Source:            disp/dot_index_0 (FF)
+  Destination:       disp/dot_index_9 (FF)
+  Source Clock:      disp/clock1 rising
+  Destination Clock: disp/clock1 rising
+
+  Data Path: disp/dot_index_0 to disp/dot_index_9
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDRS:C->Q            20   0.568   1.326  disp/dot_index_0 (disp/dot_index_0)
+     LUT3:I0->O            4   0.439   0.781  disp/dot_index_mux0000<6>21 (disp/N26)
+     LUT3:I2->O            5   0.439   0.804  disp/dot_index_mux0000<4>52 (disp/N29)
+     LUT3:I2->O            1   0.439   0.557  disp/state_cmp_eq0001_SW0 (N186)
+     LUT4:I3->O           17   0.439   1.220  disp/state_cmp_eq0001 (disp/state_cmp_eq0001)
+     LUT2:I1->O            3   0.439   0.759  disp/dot_index_mux0000<4>61 (disp/N44)
+     LUT4:I2->O            3   0.439   1.010  disp/dot_index_mux0000<0>61 (disp/N32)
+     LUT2:I0->O            2   0.439   0.910  disp/dot_index_mux0000<2>41 (disp/N103)
+     LUT4:I1->O            1   0.439   0.000  disp/dot_index_mux0000<0>102 (disp/dot_index_mux0000<0>102)
+     FDRS:D                    0.370          disp/dot_index_9
+    ----------------------------------------
+    Total                     11.817ns (4.450ns logic, 7.367ns route)
+                                       (37.7% logic, 62.3% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'ac97_bit_clock'
+  Clock period: 12.395ns (frequency: 80.678MHz)
+  Total number of paths / destination ports: 1740 / 109
+-------------------------------------------------------------------------
+Delay:               6.197ns (Levels of Logic = 3)
+  Source:            a/ac97/bit_count_5 (FF)
+  Destination:       a/ac97/Mshreg_left_in_data_8 (FF)
+  Source Clock:      ac97_bit_clock rising
+  Destination Clock: ac97_bit_clock falling
+
+  Data Path: a/ac97/bit_count_5 to a/ac97/Mshreg_left_in_data_8
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FD:C->Q              15   0.568   1.274  a/ac97/bit_count_5 (a/ac97/bit_count_5)
+     LUT3:I0->O            3   0.439   0.724  a/ac97/l_left_data_not0001132 (a/ac97/N18)
+     MUXF5:S->O            1   0.699   0.551  a/ac97/left_in_data_and000013_f5 (a/ac97/left_in_data_and000013)
+     LUT3:I2->O           14   0.439   0.978  a/ac97/left_in_data_and000048 (a/ac97/left_in_data_and0000)
+     SRL16E_1:CE               0.525          a/ac97/Mshreg_left_in_data_8
+    ----------------------------------------
+    Total                      6.197ns (2.670ns logic, 3.528ns route)
+                                       (43.1% logic, 56.9% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'clock_27mhz'
+  Total number of paths / destination ports: 463 / 427
+-------------------------------------------------------------------------
+Offset:              3.372ns (Levels of Logic = 2)
+  Source:            switch<6> (PAD)
+  Destination:       gen_modules[6].d/count_0 (FF)
+  Destination Clock: clock_27mhz rising
+
+  Data Path: switch<6> to gen_modules[6].d/count_0
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             4   0.825   0.787  switch_6_IBUF (switch_6_IBUF)
+     LUT4:I3->O           20   0.439   1.041  gen_modules[6].d/count_or00001 (gen_modules[6].d/count_or0000)
+     FDRE:R                    0.280          gen_modules[6].d/count_0
+    ----------------------------------------
+    Total                      3.372ns (1.544ns logic, 1.828ns route)
+                                       (45.8% logic, 54.2% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'ac97_bit_clock'
+  Total number of paths / destination ports: 1 / 1
+-------------------------------------------------------------------------
+Offset:              1.712ns (Levels of Logic = 1)
+  Source:            ac97_sdata_in (PAD)
+  Destination:       a/ac97/left_in_data_0 (FF)
+  Destination Clock: ac97_bit_clock falling
+
+  Data Path: ac97_sdata_in to a/ac97/left_in_data_0
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             1   0.825   0.517  ac97_sdata_in_IBUF (ac97_sdata_in_IBUF)
+     FDE_1:D                   0.370          a/ac97/left_in_data_0
+    ----------------------------------------
+    Total                      1.712ns (1.195ns logic, 0.517ns route)
+                                       (69.8% logic, 30.2% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'clock_27mhz'
+  Total number of paths / destination ports: 220 / 148
+-------------------------------------------------------------------------
+Offset:              6.914ns (Levels of Logic = 2)
+  Source:            zbt0/we_delay_1 (FF)
+  Destination:       ram0_data<35> (PAD)
+  Source Clock:      clock_27mhz rising
+
+  Data Path: zbt0/we_delay_1 to ram0_data<35>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDE:C->Q              1   0.568   0.517  zbt0/we_delay_1 (zbt0/we_delay_1)
+     INV:I->O             36   0.439   1.098  zbt0/we_delay<1>_inv1_INV_0 (zbt0/we_delay<1>_inv)
+     IOBUF:T->IO               4.292          ram0_data_35_IOBUF (ram0_data<35>)
+    ----------------------------------------
+    Total                      6.914ns (5.299ns logic, 1.615ns route)
+                                       (76.6% logic, 23.4% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'disp/clock1'
+  Total number of paths / destination ports: 4 / 4
+-------------------------------------------------------------------------
+Offset:              5.630ns (Levels of Logic = 1)
+  Source:            disp/disp_rs (FF)
+  Destination:       disp_rs (PAD)
+  Source Clock:      disp/clock1 rising
+
+  Data Path: disp/disp_rs to disp_rs
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDE:C->Q              2   0.568   0.701  disp/disp_rs (disp/disp_rs)
+     OBUF:I->O                 4.361          disp_rs_OBUF (disp_rs)
+    ----------------------------------------
+    Total                      5.630ns (4.929ns logic, 0.701ns route)
+                                       (87.5% logic, 12.5% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'ac97_bit_clock'
+  Total number of paths / destination ports: 2 / 2
+-------------------------------------------------------------------------
+Offset:              5.630ns (Levels of Logic = 1)
+  Source:            a/ac97/ac97_synch (FF)
+  Destination:       ac97_synch (PAD)
+  Source Clock:      ac97_bit_clock rising
+
+  Data Path: a/ac97/ac97_synch to ac97_synch
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDS:C->Q              2   0.568   0.701  a/ac97/ac97_synch (a/ac97/ac97_synch)
+     OBUF:I->O                 4.361          ac97_synch_OBUF (ac97_synch)
+    ----------------------------------------
+    Total                      5.630ns (4.929ns logic, 0.701ns route)
+                                       (87.5% logic, 12.5% route)
+
+=========================================================================
+Timing constraint: Default path analysis
+  Total number of paths / destination ports: 2 / 2
+-------------------------------------------------------------------------
+Delay:               7.617ns (Levels of Logic = 3)
+  Source:            clock_27mhz (PAD)
+  Destination:       ram0_clk (PAD)
+
+  Data Path: clock_27mhz to ram0_clk
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUFG:I->O            2   1.414   0.701  clock_27mhz_IBUFG (clock_27mhz_IBUFG1)
+     INV:I->O              2   0.439   0.701  ram1_clk1_INV_0 (ram1_clk_OBUF)
+     OBUF:I->O                 4.361          ram0_clk_OBUF (ram0_clk)
+    ----------------------------------------
+    Total                      7.617ns (6.214ns logic, 1.403ns route)
+                                       (81.6% logic, 18.4% route)
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 401.00 secs
+Total CPU time to Xst completion: 398.52 secs
+ 
+--> 
+
+
+Total memory usage is 943868 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :  527 (   0 filtered)
+Number of infos    :  178 (   0 filtered)
+
