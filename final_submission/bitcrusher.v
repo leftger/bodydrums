@@ -44,7 +44,6 @@ module bitcrusher
           done <= 1'b0;
           sample_to_bitcrush <= 12'h000;
           state <= IDLE;
-          last_sample <= 12'h000;
        end
        
        if (start) begin

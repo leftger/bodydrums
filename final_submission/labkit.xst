@@ -1,5 +1,5 @@
-set -tmpdir "/afs/athena.mit.edu/user/g/r/grosas/6.111/Final_Project/bodydrums/final_submission/xst/projnav.tmp"
-set -xsthdpdir "/afs/athena.mit.edu/user/g/r/grosas/6.111/Final_Project/bodydrums/final_submission/xst"
+set -tmpdir "/afs/athena.mit.edu/user/g/e/germainm/6.111/Final_Project/bodydrums/final_submission/xst/projnav.tmp"
+set -xsthdpdir "/afs/athena.mit.edu/user/g/e/germainm/6.111/Final_Project/bodydrums/final_submission/xst"
 run
 -ifn labkit.prj
 -ifmt mixed

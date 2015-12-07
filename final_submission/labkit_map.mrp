@@ -4,43 +4,43 @@ Xilinx Mapping Report File for Design 'labkit'
 Design Information
 ------------------
 Command Line   : map -ise
-/afs/athena.mit.edu/user/g/r/grosas/6.111/Final_Project/bodydrums/final_submissi
-on/final_submission.ise -intstyle ise -p xc2v6000-bf957-4 -cm area -pr off -k 4
--c 100 -tx off -o labkit_map.ncd labkit.ngd labkit.pcf 
+/afs/athena.mit.edu/user/g/e/germainm/6.111/Final_Project/bodydrums/final_submis
+sion/final_submission.ise -intstyle ise -p xc2v6000-bf957-4 -cm area -pr off -k
+4 -c 100 -tx off -o labkit_map.ncd labkit.ngd labkit.pcf 
 Target Device  : xc2v6000
 Target Package : bf957
 Target Speed   : -4
 Mapper Version : virtex2 -- $Revision: 1.46.12.2 $
-Mapped Date    : Sun Dec  6 23:17:22 2015
+Mapped Date    : Mon Dec  7 16:06:47 2015
 
 Design Summary
 --------------
 Number of errors:      0
-Number of warnings:  411
+Number of warnings:  328
 Logic Utilization:
-  Total Number Slice Registers:       9,487 out of  67,584   14%
-    Number used as Flip Flops:        9,465
+  Total Number Slice Registers:       9,539 out of  67,584   14%
+    Number used as Flip Flops:        9,517
     Number used as Latches:              22
-  Number of 4 input LUTs:             9,736 out of  67,584   14%
+  Number of 4 input LUTs:             9,894 out of  67,584   14%
 Logic Distribution:
-  Number of occupied Slices:          7,687 out of  33,792   22%
-    Number of Slices containing only related logic:   7,687 out of   7,687 100%
-    Number of Slices containing unrelated logic:          0 out of   7,687   0%
+  Number of occupied Slices:          7,761 out of  33,792   22%
+    Number of Slices containing only related logic:   7,761 out of   7,761 100%
+    Number of Slices containing unrelated logic:          0 out of   7,761   0%
       *See NOTES below for an explanation of the effects of unrelated logic.
-  Total Number of 4 input LUTs:      10,253 out of  67,584   15%
-    Number used as logic:             7,923
-    Number used as a route-thru:        517
+  Total Number of 4 input LUTs:      10,423 out of  67,584   15%
+    Number used as logic:             8,081
+    Number used as a route-thru:        529
     Number used for Dual Port RAMs:     512
       (Two LUTs used per Dual Port RAM)
     Number used as Shift registers:   1,301
   Number of bonded IOBs:                576 out of     684   84%
-  Number of RAMB16s:                     95 out of     144   65%
-  Number of MULT18X18s:                  54 out of     144   37%
+  Number of RAMB16s:                     69 out of     144   47%
+  Number of MULT18X18s:                  53 out of     144   36%
   Number of BUFGMUXs:                     5 out of      16   31%
   Number of DCMs:                         1 out of      12    8%
 
-Peak Memory Usage:  726 MB
-Total REAL time to MAP completion:  27 secs 
+Peak Memory Usage:  724 MB
+Total REAL time to MAP completion:  29 secs 
 Total CPU time to MAP completion:   26 secs 
 
 NOTES:
@@ -647,258 +647,6 @@ WARNING:PhysDesignRules:1060 - Dangling pins on
 WARNING:PhysDesignRules:812 - Dangling pin <DOB3> on
    block:<a1/fft/blk00000da9.B>:<RAMB16_RAMB16B>.
 WARNING:PhysDesignRules:812 - Dangling pin <DOB1> on
-   block:<hd/myblob/bcm/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_
-   init.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB2> on
-   block:<hd/myblob/bcm/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_
-   init.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB3> on
-   block:<hd/myblob/bcm/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_
-   init.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB4> on
-   block:<hd/myblob/bcm/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_
-   init.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB5> on
-   block:<hd/myblob/bcm/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_
-   init.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB6> on
-   block:<hd/myblob/bcm/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_
-   init.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB7> on
-   block:<hd/myblob/bcm/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_
-   init.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB9> on
-   block:<hd/myblob/bcm/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_
-   init.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB10> on
-   block:<hd/myblob/bcm/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_
-   init.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB11> on
-   block:<hd/myblob/bcm/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_
-   init.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB12> on
-   block:<hd/myblob/bcm/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_
-   init.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB13> on
-   block:<hd/myblob/bcm/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_
-   init.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB14> on
-   block:<hd/myblob/bcm/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_
-   init.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB15> on
-   block:<hd/myblob/bcm/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_
-   init.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB17> on
-   block:<hd/myblob/bcm/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_
-   init.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB18> on
-   block:<hd/myblob/bcm/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_
-   init.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB19> on
-   block:<hd/myblob/bcm/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_
-   init.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB20> on
-   block:<hd/myblob/bcm/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_
-   init.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB21> on
-   block:<hd/myblob/bcm/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_
-   init.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB22> on
-   block:<hd/myblob/bcm/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_
-   init.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB23> on
-   block:<hd/myblob/bcm/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_
-   init.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB25> on
-   block:<hd/myblob/bcm/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_
-   init.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB26> on
-   block:<hd/myblob/bcm/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_
-   init.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB27> on
-   block:<hd/myblob/bcm/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_
-   init.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB28> on
-   block:<hd/myblob/bcm/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_
-   init.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB29> on
-   block:<hd/myblob/bcm/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_
-   init.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB30> on
-   block:<hd/myblob/bcm/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_
-   init.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB31> on
-   block:<hd/myblob/bcm/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_
-   init.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB1> on
-   block:<hd/myblob/gcm/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_
-   init.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB2> on
-   block:<hd/myblob/gcm/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_
-   init.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB3> on
-   block:<hd/myblob/gcm/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_
-   init.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB4> on
-   block:<hd/myblob/gcm/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_
-   init.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB5> on
-   block:<hd/myblob/gcm/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_
-   init.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB6> on
-   block:<hd/myblob/gcm/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_
-   init.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB7> on
-   block:<hd/myblob/gcm/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_
-   init.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB9> on
-   block:<hd/myblob/gcm/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_
-   init.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB10> on
-   block:<hd/myblob/gcm/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_
-   init.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB11> on
-   block:<hd/myblob/gcm/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_
-   init.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB12> on
-   block:<hd/myblob/gcm/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_
-   init.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB13> on
-   block:<hd/myblob/gcm/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_
-   init.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB14> on
-   block:<hd/myblob/gcm/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_
-   init.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB15> on
-   block:<hd/myblob/gcm/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_
-   init.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB17> on
-   block:<hd/myblob/gcm/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_
-   init.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB18> on
-   block:<hd/myblob/gcm/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_
-   init.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB19> on
-   block:<hd/myblob/gcm/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_
-   init.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB20> on
-   block:<hd/myblob/gcm/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_
-   init.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB21> on
-   block:<hd/myblob/gcm/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_
-   init.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB22> on
-   block:<hd/myblob/gcm/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_
-   init.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB23> on
-   block:<hd/myblob/gcm/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_
-   init.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB25> on
-   block:<hd/myblob/gcm/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_
-   init.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB26> on
-   block:<hd/myblob/gcm/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_
-   init.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB27> on
-   block:<hd/myblob/gcm/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_
-   init.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB28> on
-   block:<hd/myblob/gcm/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_
-   init.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB29> on
-   block:<hd/myblob/gcm/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_
-   init.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB30> on
-   block:<hd/myblob/gcm/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_
-   init.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB31> on
-   block:<hd/myblob/gcm/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_
-   init.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB1> on
-   block:<hd/myblob/rcm/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_
-   init.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB2> on
-   block:<hd/myblob/rcm/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_
-   init.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB3> on
-   block:<hd/myblob/rcm/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_
-   init.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB4> on
-   block:<hd/myblob/rcm/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_
-   init.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB5> on
-   block:<hd/myblob/rcm/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_
-   init.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB6> on
-   block:<hd/myblob/rcm/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_
-   init.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB7> on
-   block:<hd/myblob/rcm/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_
-   init.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB9> on
-   block:<hd/myblob/rcm/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_
-   init.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB10> on
-   block:<hd/myblob/rcm/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_
-   init.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB11> on
-   block:<hd/myblob/rcm/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_
-   init.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB12> on
-   block:<hd/myblob/rcm/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_
-   init.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB13> on
-   block:<hd/myblob/rcm/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_
-   init.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB14> on
-   block:<hd/myblob/rcm/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_
-   init.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB15> on
-   block:<hd/myblob/rcm/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_
-   init.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB17> on
-   block:<hd/myblob/rcm/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_
-   init.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB18> on
-   block:<hd/myblob/rcm/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_
-   init.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB19> on
-   block:<hd/myblob/rcm/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_
-   init.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB20> on
-   block:<hd/myblob/rcm/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_
-   init.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB21> on
-   block:<hd/myblob/rcm/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_
-   init.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB22> on
-   block:<hd/myblob/rcm/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_
-   init.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB23> on
-   block:<hd/myblob/rcm/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_
-   init.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB25> on
-   block:<hd/myblob/rcm/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_
-   init.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB26> on
-   block:<hd/myblob/rcm/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_
-   init.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB27> on
-   block:<hd/myblob/rcm/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_
-   init.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB28> on
-   block:<hd/myblob/rcm/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_
-   init.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB29> on
-   block:<hd/myblob/rcm/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_
-   init.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB30> on
-   block:<hd/myblob/rcm/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_
-   init.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB31> on
-   block:<hd/myblob/rcm/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_
-   init.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB1> on
    block:<hd/thehud/rcm/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_
    init.ram/spram.ram.B>:<RAMB16_RAMB16B>.
 WARNING:PhysDesignRules:812 - Dangling pin <DOB2> on
@@ -1066,6 +814,8 @@ WARNING:PhysDesignRules:812 - Dangling pin <DOB30> on
 WARNING:PhysDesignRules:812 - Dangling pin <DOB31> on
    block:<hd/ma_digs/the_dig/digit_map/BU2/U0/blk_mem_generator/valid.cstr/ramlo
    op[0].ram.r/v2_init.ram/spram.ram.B>:<RAMB16_RAMB16B>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOA0> on
+   block:<gs_fsm/delay/store_delay_samples/Mram_mem1.A>:<RAMB16_RAMB16A>.
 
 Section 3 - Informational
 -------------------------
@@ -1079,9 +829,9 @@ INFO:PhysDesignRules:772 - To achieve optimal frequency synthesis performance
 
 Section 4 - Removed Logic Summary
 ---------------------------------
-2377 block(s) removed
- 231 block(s) optimized away
-1962 signal(s) removed
+2369 block(s) removed
+ 223 block(s) optimized away
+1961 signal(s) removed
 
 Section 5 - Removed Logic
 -------------------------
@@ -6690,7 +6440,6 @@ The signal "a1/fft/blk0000053b/sig00005bc9" is sourceless and has been removed.
 The signal "a1/fft/blk0000053b/blk00000586/O" is sourceless and has been
 removed.
 The signal "hd/thehud/rom2/BU2/N1" is sourceless and has been removed.
-The signal "hd/myblob/rom1/BU2/N1" is sourceless and has been removed.
 Unused block "a1/fft/blk00000003/blk00000076" (ROM) removed.
 Unused block "a1/fft/blk00000003/blk000000a2" (ROM) removed.
 Unused block "a1/fft/blk00000003/blk000000a3" (ROM) removed.
@@ -6822,14 +6571,6 @@ Unused block "hd/ma_digs/the_dig/img_tres/GND" (ZERO) removed.
 Unused block "hd/ma_digs/the_dig/img_tres/VCC" (ONE) removed.
 Unused block "hd/ma_digs/the_dig/img_uno/GND" (ZERO) removed.
 Unused block "hd/ma_digs/the_dig/img_uno/VCC" (ONE) removed.
-Unused block "hd/myblob/bcm/GND" (ZERO) removed.
-Unused block "hd/myblob/bcm/VCC" (ONE) removed.
-Unused block "hd/myblob/gcm/GND" (ZERO) removed.
-Unused block "hd/myblob/gcm/VCC" (ONE) removed.
-Unused block "hd/myblob/rcm/GND" (ZERO) removed.
-Unused block "hd/myblob/rcm/VCC" (ONE) removed.
-Unused block "hd/myblob/rom1/GND" (ZERO) removed.
-Unused block "hd/myblob/rom1/VCC" (ONE) removed.
 Unused block "hd/thehud/rcm/GND" (ZERO) removed.
 Unused block "hd/thehud/rcm/VCC" (ONE) removed.
 Unused block "hd/thehud/rom2/GND" (ZERO) removed.
@@ -7288,14 +7029,6 @@ GND 		hd/ma_digs/the_dig/img_tres/BU2/XST_GND
 VCC 		hd/ma_digs/the_dig/img_tres/BU2/XST_VCC
 GND 		hd/ma_digs/the_dig/img_uno/BU2/XST_GND
 VCC 		hd/ma_digs/the_dig/img_uno/BU2/XST_VCC
-GND 		hd/myblob/bcm/BU2/XST_GND
-VCC 		hd/myblob/bcm/BU2/XST_VCC
-GND 		hd/myblob/gcm/BU2/XST_GND
-VCC 		hd/myblob/gcm/BU2/XST_VCC
-GND 		hd/myblob/rcm/BU2/XST_GND
-VCC 		hd/myblob/rcm/BU2/XST_VCC
-GND 		hd/myblob/rom1/BU2/XST_GND
-VCC 		hd/myblob/rom1/BU2/XST_VCC
 GND 		hd/thehud/rcm/BU2/XST_GND
 VCC 		hd/thehud/rcm/BU2/XST_VCC
 GND 		hd/thehud/rom2/BU2/XST_GND

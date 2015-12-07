@@ -57,15 +57,16 @@ module audio_FSM
     
     
     wire hard_limiter_done;
-    //wire signed [11:0] hard_limiter_applied;
+    wire signed [11:0] hard_limiter_applied;
     limiter_module hard_limiter(.clock(clock), .reset(reset),
         .start(compression_done), .incoming_sample(compression_applied_sample),
         .limiting_amount(hard_limiter_amount), .enable(hard_limiter_enable), 
-        .modified_sample(to_ac97_data), .done(hard_limiter_done));
+        .modified_sample(hard_limiter_applied), .done(hard_limiter_done));
         
-    //fir31_12khz_cutoff filter(.clock(clock), .reset(reset),
-    //    .start(hard_limiter_done), .x(hard_limiter_applied),
-    //    .y(to_ac97_data), .done(sample_ready));
+    bitcrusher buttcrush(.clock(clock), .reset(reset), .start(hard_limiter_done),
+        .enable(distortion_enable), .bits_to_crush(distortion_amount),
+        .incoming_sample(hard_limiter_applied),.modified_sample(to_ac97_data),
+        .done(sample_ready));
     
     always @(posedge clock) begin
        if (reset) begin

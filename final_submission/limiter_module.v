@@ -69,8 +69,8 @@ module limiter_module #(parameter SAMPLING_RATE=24000)
              // If the incoming sample is larger than 90% of the maximum amplitude
              // we can encode, then we cut it off at 90%.
              2'b01: begin
-                if (incoming_sample > 1844) modified_sample <= 1844;
-                else if (incoming_sample < -1844) modified_sample <= -1844;
+                if (incoming_sample > 1024) modified_sample <= 1024;
+                else if (incoming_sample < -1024) modified_sample <= -1024;
                 else modified_sample <= incoming_sample;
              end
              
@@ -78,8 +78,8 @@ module limiter_module #(parameter SAMPLING_RATE=24000)
              // If the incoming sample is larger than 75% of the maximum amplitude
              // we can encode, then we cut it off at 75%.
              2'b10: begin
-                if (incoming_sample > 1536) modified_sample <= 1536;
-                else if (incoming_sample < -1536) modified_sample <= -1536;
+                if (incoming_sample > 512) modified_sample <= 512;
+                else if (incoming_sample < -512) modified_sample <= -512;
                 else modified_sample <= incoming_sample;
              end
                 
@@ -87,8 +87,8 @@ module limiter_module #(parameter SAMPLING_RATE=24000)
              // If the incoming sample is larger than 50% of the maximum amplitude
              // we can encode, then we cut it off at 50%.
              2'b11: begin
-                if (incoming_sample > 1024) modified_sample <= 1024;
-                else if (incoming_sample < -1024) modified_sample <= -1024;
+                if (incoming_sample > 256) modified_sample <= 256;
+                else if (incoming_sample < -256) modified_sample <= -256;
                 else modified_sample <= incoming_sample;
              end
              endcase

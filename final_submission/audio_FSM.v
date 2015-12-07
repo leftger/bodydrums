@@ -22,9 +22,9 @@ module audio_FSM
     (input clock,
     input reset,
     input playback,
-    input new_sample_ready,// sample ready in from AC 97
+    input new_sample_ready,
     input delay_enable,
-    input [5:0] amount_of_delay,
+    input [4:0] amount_of_delay,
     input chorus_enable,
     input compression_enable,
     input [1:0] compression_amount,
@@ -33,9 +33,9 @@ module audio_FSM
     input [1:0] hard_limiter_amount,
     input distortion_enable,
     input [2:0] distortion_amount,
-    input signed [11:0] samples_in, // input from memory
-    output signed [11:0] to_ac97_data, // data out to ac97
-    output sample_ready /*sample ready out to ac97*/);
+    input signed [11:0] samples_in,
+    output signed [11:0] to_ac97_data,
+    output sample_ready);
     
     reg start_effects_modules;
     
@@ -57,15 +57,16 @@ module audio_FSM
     
     
     wire hard_limiter_done;
-    //wire signed [11:0] hard_limiter_applied;
+    wire signed [11:0] hard_limiter_applied;
     limiter_module hard_limiter(.clock(clock), .reset(reset),
         .start(compression_done), .incoming_sample(compression_applied_sample),
         .limiting_amount(hard_limiter_amount), .enable(hard_limiter_enable), 
-        .modified_sample(to_ac97_data), .done(hard_limiter_done));
+        .modified_sample(hard_limiter_applied), .done(hard_limiter_done));
         
-    //fir31_12khz_cutoff filter(.clock(clock), .reset(reset),
-    //    .start(hard_limiter_done), .x(hard_limiter_applied),
-    //    .y(to_ac97_data), .done(sample_ready));
+    bitcrusher buttcrush(.clock(clock), .reset(reset), .start(hard_limiter_done),
+        .enable(distortion_enable), .bits_to_crush(distortion_amount),
+        .incoming_sample(hard_limiter_applied),.modified_sample(to_ac97_data),
+        .done(sample_ready));
     
     always @(posedge clock) begin
        if (reset) begin

@@ -490,7 +490,7 @@ module labkit   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 	 
 	audio_FSM gs_fsm(.clock(clock_27mhz),.reset(reset),.playback(~record_mode),
 		.new_sample_ready(ready),.delay_enable(switch_sync[0]),
-		.amount_of_delay(effect_values_sel[5:0]),.chorus_enable(switch_sync[1]),
+		.amount_of_delay(effect_values_sel[4:0]),.chorus_enable(switch_sync[1]),
 		.compression_enable(switch_sync[2]),
 		.compression_amount(effect_values_sel[11:10]),
 		.soft_limiter_enable(switch_sync[3]),

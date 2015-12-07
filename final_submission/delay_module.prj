@@ -1,0 +1,2 @@
+verilog work "mybram.v"
+verilog work "delay_module.v"
