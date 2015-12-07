@@ -650,7 +650,8 @@ module labkit   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
    assign vga_out_hsync = hs;
    assign vga_out_vsync = vs;
    
-   assign led[6:0] = ~{2'b00,volume};
+   assign led[5:0] = ~{1'b0,volume};
+	assign led[6] = ~song_done; //track?!?!
 	assign led[7] = ~pause_song; //need to know somehow
 
 endmodule
