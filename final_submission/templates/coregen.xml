@@ -269,6 +269,62 @@ zero_img YourInstanceName (
 
  
 		</Template>
+		<Template label="mit_logo_green" treetype="template">
+ 
+ 
+// The following must be inserted into your Verilog file for this
+// core to be instantiated. Change the instance name and port connections
+// (in parentheses) to your own signal names.
+ 
+mit_logo_green YourInstanceName (
+    .clka(clka),
+    .addra(addra), // Bus [1 : 0] 
+    .douta(douta)); // Bus [7 : 0] 
+
+ 
+		</Template>
+		<Template label="mit_logo_blue" treetype="template">
+ 
+ 
+// The following must be inserted into your Verilog file for this
+// core to be instantiated. Change the instance name and port connections
+// (in parentheses) to your own signal names.
+ 
+mit_logo_blue YourInstanceName (
+    .clka(clka),
+    .addra(addra), // Bus [1 : 0] 
+    .douta(douta)); // Bus [7 : 0] 
+
+ 
+		</Template>
+		<Template label="mit_logo_rom" treetype="template">
+ 
+ 
+// The following must be inserted into your Verilog file for this
+// core to be instantiated. Change the instance name and port connections
+// (in parentheses) to your own signal names.
+ 
+mit_logo_rom YourInstanceName (
+    .clka(clka),
+    .addra(addra), // Bus [12 : 0] 
+    .douta(douta)); // Bus [1 : 0] 
+
+ 
+		</Template>
+		<Template label="mit_logo_red" treetype="template">
+ 
+ 
+// The following must be inserted into your Verilog file for this
+// core to be instantiated. Change the instance name and port connections
+// (in parentheses) to your own signal names.
+ 
+mit_logo_red YourInstanceName (
+    .clka(clka),
+    .addra(addra), // Bus [1 : 0] 
+    .douta(douta)); // Bus [7 : 0] 
+
+ 
+		</Template>
 	</Folder>
 	<Folder label="VHDL Component Instantiation" treetype="folder">
 		<Template label="blue_table" treetype="template">
@@ -765,6 +821,110 @@ end component;
 -- Substitute your own instance name and net names.
  
 your_instance_name : zero_img
+        port map (
+            clka =&gt; clka,
+            addra =&gt; addra,
+            douta =&gt; douta);
+ 
+		</Template>
+		<Template label="mit_logo_green" treetype="template">
+ 
+ 
+-- The following code must appear in the VHDL architecture header:
+ 
+component mit_logo_green
+    port (
+    clka: IN std_logic;
+    addra: IN std_logic_VECTOR(1 downto 0);
+    douta: OUT std_logic_VECTOR(7 downto 0));
+end component;
+
+
+ 
+-------------------------------------------------------------
+ 
+-- The following code must appear in the VHDL architecture body.
+-- Substitute your own instance name and net names.
+ 
+your_instance_name : mit_logo_green
+        port map (
+            clka =&gt; clka,
+            addra =&gt; addra,
+            douta =&gt; douta);
+ 
+		</Template>
+		<Template label="mit_logo_blue" treetype="template">
+ 
+ 
+-- The following code must appear in the VHDL architecture header:
+ 
+component mit_logo_blue
+    port (
+    clka: IN std_logic;
+    addra: IN std_logic_VECTOR(1 downto 0);
+    douta: OUT std_logic_VECTOR(7 downto 0));
+end component;
+
+
+ 
+-------------------------------------------------------------
+ 
+-- The following code must appear in the VHDL architecture body.
+-- Substitute your own instance name and net names.
+ 
+your_instance_name : mit_logo_blue
+        port map (
+            clka =&gt; clka,
+            addra =&gt; addra,
+            douta =&gt; douta);
+ 
+		</Template>
+		<Template label="mit_logo_rom" treetype="template">
+ 
+ 
+-- The following code must appear in the VHDL architecture header:
+ 
+component mit_logo_rom
+    port (
+    clka: IN std_logic;
+    addra: IN std_logic_VECTOR(12 downto 0);
+    douta: OUT std_logic_VECTOR(1 downto 0));
+end component;
+
+
+ 
+-------------------------------------------------------------
+ 
+-- The following code must appear in the VHDL architecture body.
+-- Substitute your own instance name and net names.
+ 
+your_instance_name : mit_logo_rom
+        port map (
+            clka =&gt; clka,
+            addra =&gt; addra,
+            douta =&gt; douta);
+ 
+		</Template>
+		<Template label="mit_logo_red" treetype="template">
+ 
+ 
+-- The following code must appear in the VHDL architecture header:
+ 
+component mit_logo_red
+    port (
+    clka: IN std_logic;
+    addra: IN std_logic_VECTOR(1 downto 0);
+    douta: OUT std_logic_VECTOR(7 downto 0));
+end component;
+
+
+ 
+-------------------------------------------------------------
+ 
+-- The following code must appear in the VHDL architecture body.
+-- Substitute your own instance name and net names.
+ 
+your_instance_name : mit_logo_red
         port map (
             clka =&gt; clka,
             addra =&gt; addra,

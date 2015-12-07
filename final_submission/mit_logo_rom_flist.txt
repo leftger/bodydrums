@@ -1,0 +1,13 @@
+# Output products list for <mit_logo_rom>
+mit_logo_rom.asy
+mit_logo_rom.mif
+mit_logo_rom.ngc
+mit_logo_rom.sym
+mit_logo_rom.v
+mit_logo_rom.veo
+mit_logo_rom.vhd
+mit_logo_rom.vho
+mit_logo_rom.xco
+mit_logo_rom_blk_mem_gen_v2_8_xst_1.ngc_xst.xrpt
+mit_logo_rom_flist.txt
+mit_logo_rom_xmdf.tcl

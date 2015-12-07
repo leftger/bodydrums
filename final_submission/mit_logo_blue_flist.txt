@@ -1,0 +1,13 @@
+# Output products list for <mit_logo_blue>
+mit_logo_blue.asy
+mit_logo_blue.mif
+mit_logo_blue.ngc
+mit_logo_blue.sym
+mit_logo_blue.v
+mit_logo_blue.veo
+mit_logo_blue.vhd
+mit_logo_blue.vho
+mit_logo_blue.xco
+mit_logo_blue_blk_mem_gen_v2_8_xst_1.ngc_xst.xrpt
+mit_logo_blue_flist.txt
+mit_logo_blue_xmdf.tcl

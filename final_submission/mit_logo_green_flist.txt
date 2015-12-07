@@ -1,0 +1,13 @@
+# Output products list for <mit_logo_green>
+mit_logo_green.asy
+mit_logo_green.mif
+mit_logo_green.ngc
+mit_logo_green.sym
+mit_logo_green.v
+mit_logo_green.veo
+mit_logo_green.vhd
+mit_logo_green.vho
+mit_logo_green.xco
+mit_logo_green_blk_mem_gen_v2_8_xst_1.ngc_xst.xrpt
+mit_logo_green_flist.txt
+mit_logo_green_xmdf.tcl

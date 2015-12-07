@@ -490,7 +490,7 @@ module labkit_experiment(beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac9
 	 
 	audio_FSM gs_fsm(.clock(clock_27mhz),.reset(reset),.playback(~record_mode),
 		.new_sample_ready(ready),.delay_enable(switch_sync[0]),
-		.amount_of_delay(effect_values_sel[5:0]),.chorus_enable(switch_sync[1]),
+		.amount_of_delay(effect_values_sel[4:0]),.chorus_enable(switch_sync[1]),
 		.compression_enable(switch_sync[2]),
 		.compression_amount(effect_values_sel[11:10]),
 		.soft_limiter_enable(switch_sync[3]),
@@ -640,8 +640,8 @@ module labkit_experiment(beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac9
 
   wire [23:0] secret_pixel;
 
-  pong_ball secret_ball (.vsync(vsync),.vclock(clock_65mhz),
-    .reset(reset), .pspeed(max_amp[9:6]),.hcount(hcount),.vcount(vcount),
+  pong_ball secret_ball (.vsync(vsync),.vclock(clock_65mhz),.up(vup),.down(vdown),
+    .reset(reset), .pspeed({1'b0,max_amp[9:7]}),.hcount(hcount),.vcount(vcount),
     .enabled(switch_sync[2] & switch_sync[3] & switch_sync[4]),
     .pixel(secret_pixel));
 
