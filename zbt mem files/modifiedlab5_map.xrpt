@@ -5,7 +5,7 @@
     The structure and the elements are likely to change over the next few releases.
     This means code written to parse this file will need to be revisited each subsequent release.-->
 
-  <application stringID="Map" timeStamp="Mon Nov 23 18:59:20 2015">
+  <application stringID="Map" timeStamp="Sat Dec  5 20:43:45 2015">
     <task stringID="MAP_PACK_REPORT">
       <section stringID="MAP_DESIGN_INFORMATION">
         <item stringID="MAP_PART" value="2v6000bf957-4"/>
@@ -18,24 +18,24 @@
         <item dataType="int" stringID="MAP_NUM_ERRORS" value="0"/>
         <item dataType="int" stringID="MAP_FILTERED_WARNINGS" value="0"/>
         <item dataType="int" stringID="MAP_NUM_WARNINGS" value="253"/>
-        <item UNITS="KB" dataType="int" stringID="MAP_PEAK_MEMORY" value="504072"/>
+        <item UNITS="KB" dataType="int" stringID="MAP_PEAK_MEMORY" value="504020"/>
         <item stringID="MAP_TOTAL_REAL_TIME" value="4 secs "/>
         <item stringID="MAP_TOTAL_CPU_TIME" value="3 secs "/>
       </section>
       <section stringID="MAP_SLICE_REPORTING"/>
       <section stringID="MAP_LOGIC_UTILIZATION">
-        <item dataType="int" stringID="MAP_NUM_SLICE_FF" value="736"/>
+        <item dataType="int" stringID="MAP_NUM_SLICE_FF" value="744"/>
         <item dataType="int" stringID="MAP_NUM_SLICE_LATCH" value="0"/>
         <item dataType="int" stringID="MAP_NUM_SLICE" value="33792"/>
         <item dataType="int" stringID="MAP_FLOPS_PER_SLICE" value="2"/>
-        <item dataType="int" stringID="MAP_NUM_4_INPUT_LUT" value="686"/>
-        <item dataType="int" stringID="MAP_NUM_LUT_RT" value="686"/>
+        <item dataType="int" stringID="MAP_NUM_4_INPUT_LUT" value="685"/>
+        <item dataType="int" stringID="MAP_NUM_LUT_RT" value="685"/>
       </section>
       <section stringID="MAP_LOGIC_DISTRIBUTION">
-        <item dataType="int" stringID="MAP_AGG_SLICE" value="629"/>
+        <item dataType="int" stringID="MAP_AGG_SLICE" value="631"/>
         <item dataType="int" stringID="MAP_NUM_SLICE_UNRELATED" value="0"/>
-        <item dataType="int" stringID="MAP_NUM_4_INPUT_LUT" value="883"/>
-        <item dataType="int" stringID="MAP_NUM_LUT_RT" value="197"/>
+        <item dataType="int" stringID="MAP_NUM_4_INPUT_LUT" value="881"/>
+        <item dataType="int" stringID="MAP_NUM_LUT_RT" value="196"/>
         <item dataType="int" stringID="MAP_NUM_DP_RAM" value="0"/>
         <item dataType="int" stringID="MAP_NUM_RAM32" value="0"/>
         <item dataType="int" stringID="MAP_NUM_RAM16" value="0"/>

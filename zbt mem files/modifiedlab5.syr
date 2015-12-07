@@ -1,18 +1,18 @@
 Release 10.1.03 - xst K.39 (lin64)
 Copyright (c) 1995-2008 Xilinx, Inc.  All rights reserved.
 --> 
-Parameter TMPDIR set to /afs/athena.mit.edu/user/m/q/mqiu/Downloads/6111/bodydrums/zbt mem files/xst/projnav.tmp
+Parameter TMPDIR set to /afs/athena.mit.edu/user/g/r/grosas/6.111/Final_Project/bodydrums/zbt mem files/xst/projnav.tmp
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.06 secs
+Total CPU time to Xst completion: 0.04 secs
  
 --> 
-Parameter xsthdpdir set to /afs/athena.mit.edu/user/m/q/mqiu/Downloads/6111/bodydrums/zbt mem files/xst
+Parameter xsthdpdir set to /afs/athena.mit.edu/user/g/r/grosas/6.111/Final_Project/bodydrums/zbt mem files/xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.06 secs
+Total CPU time to Xst completion: 0.04 secs
  
 --> 
 Reading design: modifiedlab5.prj
@@ -295,32 +295,32 @@ Synthesizing Unit <ac97>.
     Found 1-bit 20-to-1 multiplexer for signal <$varindex0000> created at line 191.
     Found 1-bit 20-to-1 multiplexer for signal <$varindex0001> created at line 194.
     Found 1-bit 20-to-1 multiplexer for signal <$varindex0002> created at line 202.
-    Found 9-bit comparator greatequal for signal <ac97_sdata_out$cmp_ge0000> created at line 200.
-    Found 9-bit comparator lessequal for signal <ac97_sdata_out$cmp_le0000> created at line 200.
-    Found 9-bit up counter for signal <bit_count>.
+    Found 8-bit comparator greatequal for signal <ac97_sdata_out$cmp_ge0000> created at line 200.
+    Found 8-bit comparator lessequal for signal <ac97_sdata_out$cmp_le0000> created at line 200.
+    Found 8-bit up counter for signal <bit_count>.
     Found 20-bit register for signal <l_cmd_addr>.
     Found 20-bit register for signal <l_cmd_data>.
     Found 1-bit register for signal <l_cmd_v>.
     Found 20-bit register for signal <l_left_data>.
-    Found 9-bit comparator greatequal for signal <l_left_data$cmp_ge0000> created at line 189.
-    Found 9-bit comparator greatequal for signal <l_left_data$cmp_ge0001> created at line 192.
-    Found 9-bit comparator greatequal for signal <l_left_data$cmp_ge0002> created at line 195.
-    Found 9-bit comparator greater for signal <l_left_data$cmp_gt0000> created at line 195.
-    Found 9-bit comparator greater for signal <l_left_data$cmp_gt0001> created at line 192.
-    Found 9-bit comparator greater for signal <l_left_data$cmp_gt0002> created at line 189.
-    Found 9-bit comparator lessequal for signal <l_left_data$cmp_le0000> created at line 179.
-    Found 9-bit comparator lessequal for signal <l_left_data$cmp_le0001> created at line 189.
-    Found 9-bit comparator lessequal for signal <l_left_data$cmp_le0002> created at line 192.
-    Found 9-bit comparator lessequal for signal <l_left_data$cmp_le0003> created at line 195.
-    Found 9-bit comparator less for signal <l_left_data$cmp_lt0000> created at line 195.
-    Found 9-bit comparator less for signal <l_left_data$cmp_lt0001> created at line 192.
-    Found 9-bit comparator less for signal <l_left_data$cmp_lt0002> created at line 189.
+    Found 8-bit comparator greatequal for signal <l_left_data$cmp_ge0000> created at line 189.
+    Found 8-bit comparator greatequal for signal <l_left_data$cmp_ge0001> created at line 192.
+    Found 8-bit comparator greatequal for signal <l_left_data$cmp_ge0002> created at line 195.
+    Found 8-bit comparator greater for signal <l_left_data$cmp_gt0000> created at line 195.
+    Found 8-bit comparator greater for signal <l_left_data$cmp_gt0001> created at line 192.
+    Found 8-bit comparator greater for signal <l_left_data$cmp_gt0002> created at line 189.
+    Found 8-bit comparator lessequal for signal <l_left_data$cmp_le0000> created at line 179.
+    Found 8-bit comparator lessequal for signal <l_left_data$cmp_le0001> created at line 189.
+    Found 8-bit comparator lessequal for signal <l_left_data$cmp_le0002> created at line 192.
+    Found 8-bit comparator lessequal for signal <l_left_data$cmp_le0003> created at line 195.
+    Found 8-bit comparator less for signal <l_left_data$cmp_lt0000> created at line 195.
+    Found 8-bit comparator less for signal <l_left_data$cmp_lt0001> created at line 192.
+    Found 8-bit comparator less for signal <l_left_data$cmp_lt0002> created at line 189.
     Found 1-bit register for signal <l_left_v>.
     Found 20-bit register for signal <l_right_data>.
-    Found 9-bit comparator greatequal for signal <left_in_data$cmp_ge0000> created at line 210.
-    Found 9-bit comparator lessequal for signal <left_in_data$cmp_le0000> created at line 210.
-    Found 9-bit comparator greater for signal <right_in_data$cmp_gt0000> created at line 213.
-    Found 9-bit comparator less for signal <right_in_data$cmp_lt0000> created at line 213.
+    Found 8-bit comparator greatequal for signal <left_in_data$cmp_ge0000> created at line 210.
+    Found 8-bit comparator lessequal for signal <left_in_data$cmp_le0000> created at line 210.
+    Found 8-bit comparator greater for signal <right_in_data$cmp_gt0000> created at line 213.
+    Found 8-bit comparator less for signal <right_in_data$cmp_lt0000> created at line 213.
     Summary:
 	inferred   1 Counter(s).
 	inferred 125 D-type flip-flop(s).
@@ -607,16 +607,16 @@ Macro Statistics
 # ROMs                                                 : 1
  16x38-bit ROM                                         : 1
 # Adders/Subtractors                                   : 5
- 10-bit adder                                          : 3
  19-bit adder                                          : 1
  5-bit adder                                           : 1
+ 9-bit adder                                           : 3
 # Counters                                             : 18
  10-bit up counter                                     : 1
  19-bit up counter                                     : 12
  2-bit up counter                                      : 2
  4-bit up counter                                      : 1
  5-bit updown counter                                  : 1
- 9-bit up counter                                      : 1
+ 8-bit up counter                                      : 1
 # Registers                                            : 69
  1-bit register                                        : 36
  12-bit register                                       : 3
@@ -630,10 +630,10 @@ Macro Statistics
 # Comparators                                          : 23
  19-bit comparator greatequal                          : 2
  19-bit comparator less                                : 2
- 9-bit comparator greatequal                           : 5
- 9-bit comparator greater                              : 4
- 9-bit comparator less                                 : 4
- 9-bit comparator lessequal                            : 6
+ 8-bit comparator greatequal                           : 5
+ 8-bit comparator greater                              : 4
+ 8-bit comparator less                                 : 4
+ 8-bit comparator lessequal                            : 6
 # Multiplexers                                         : 3
  1-bit 20-to-1 multiplexer                             : 3
 # Tristates                                            : 2
@@ -672,21 +672,15 @@ WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <l_cmd_data_3> (with
 WARNING:Xst:1426 - The value init of the FF/Latch command_valid hinder the constant cleaning in the block ac97commands.
    You should achieve better results by setting this init to 1.
 WARNING:Xst:1293 - FF/Latch <command_5> has a constant value of 0 in block <ac97commands>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <command_7> has a constant value of 0 in block <ac97commands>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <command_13> has a constant value of 0 in block <ac97commands>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <command_14> has a constant value of 0 in block <ac97commands>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <command_16> has a constant value of 0 in block <ac97commands>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <command_22> has a constant value of 0 in block <ac97commands>. This FF/Latch will be trimmed during the optimization process.
-INFO:Xst:2261 - The FF/Latch <command_0> in Unit <ac97commands> is equivalent to the following FF/Latch, which will be removed : <command_8> 
-INFO:Xst:2261 - The FF/Latch <command_4> in Unit <ac97commands> is equivalent to the following FF/Latch, which will be removed : <command_12> 
-INFO:Xst:2261 - The FF/Latch <command_2> in Unit <ac97commands> is equivalent to the following FF/Latch, which will be removed : <command_10> 
+INFO:Xst:2261 - The FF/Latch <command_7> in Unit <ac97commands> is equivalent to the following FF/Latch, which will be removed : <command_14> 
 INFO:Xst:2261 - The FF/Latch <command_1> in Unit <ac97commands> is equivalent to the following FF/Latch, which will be removed : <command_9> 
 WARNING:Xst:1710 - FF/Latch <l_cmd_addr_12> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <l_cmd_addr_18> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <l_cmd_data_9> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <l_cmd_data_11> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <l_cmd_data_17> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <l_cmd_data_18> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <l_right_data_0> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <l_right_data_1> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <l_right_data_2> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
@@ -732,16 +726,16 @@ Macro Statistics
  2-bit up counter                                      : 2
  4-bit up counter                                      : 1
  5-bit updown counter                                  : 1
- 9-bit up counter                                      : 1
-# Registers                                            : 660
- Flip-Flops                                            : 660
+ 8-bit up counter                                      : 1
+# Registers                                            : 664
+ Flip-Flops                                            : 664
 # Comparators                                          : 23
  19-bit comparator greatequal                          : 2
  19-bit comparator less                                : 2
- 9-bit comparator greatequal                           : 5
- 9-bit comparator greater                              : 4
- 9-bit comparator less                                 : 4
- 9-bit comparator lessequal                            : 6
+ 8-bit comparator greatequal                           : 5
+ 8-bit comparator greater                              : 4
+ 8-bit comparator less                                 : 4
+ 8-bit comparator lessequal                            : 6
 # Multiplexers                                         : 3
  1-bit 20-to-1 multiplexer                             : 3
 # Xors                                                 : 11
@@ -842,9 +836,7 @@ Optimizing unit <modifiedlab5audio> ...
 WARNING:Xst:1710 - FF/Latch <a/ac97/l_cmd_addr_12> (without init value) has a constant value of 0 in block <modifiedlab5>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <a/ac97/l_cmd_addr_18> (without init value) has a constant value of 0 in block <modifiedlab5>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <a/ac97/l_cmd_data_9> (without init value) has a constant value of 0 in block <modifiedlab5>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <a/ac97/l_cmd_data_11> (without init value) has a constant value of 0 in block <modifiedlab5>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <a/ac97/l_cmd_data_17> (without init value) has a constant value of 0 in block <modifiedlab5>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <a/ac97/l_cmd_data_18> (without init value) has a constant value of 0 in block <modifiedlab5>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:2677 - Node <a/ac97/right_in_data_0> of sequential type is unconnected in block <modifiedlab5>.
 WARNING:Xst:2677 - Node <a/ac97/right_in_data_1> of sequential type is unconnected in block <modifiedlab5>.
 WARNING:Xst:2677 - Node <a/ac97/right_in_data_2> of sequential type is unconnected in block <modifiedlab5>.
@@ -868,12 +860,11 @@ WARNING:Xst:2677 - Node <a/ac97/right_in_data_19> of sequential type is unconnec
 
 Mapping all equations...
 Building and optimizing final netlist ...
-INFO:Xst:2261 - The FF/Latch <a/ac97/l_cmd_data_4> in Unit <modifiedlab5> is equivalent to the following FF/Latch, which will be removed : <a/ac97/l_cmd_data_12> 
 INFO:Xst:2261 - The FF/Latch <a/ac97/l_cmd_data_5> in Unit <modifiedlab5> is equivalent to the following FF/Latch, which will be removed : <a/ac97/l_cmd_data_13> 
-INFO:Xst:2261 - The FF/Latch <a/ac97/l_cmd_data_6> in Unit <modifiedlab5> is equivalent to the following FF/Latch, which will be removed : <a/ac97/l_cmd_data_14> 
-INFO:Xst:2261 - The FF/Latch <a/ac97/l_cmd_data_8> in Unit <modifiedlab5> is equivalent to the following FF/Latch, which will be removed : <a/ac97/l_cmd_data_16> 
+INFO:Xst:2261 - The FF/Latch <a/ac97/l_cmd_data_11> in Unit <modifiedlab5> is equivalent to the following FF/Latch, which will be removed : <a/ac97/l_cmd_data_18> 
 INFO:Xst:2261 - The FF/Latch <addr_calc/record_state> in Unit <modifiedlab5> is equivalent to the following FF/Latch, which will be removed : <mem_pros/record_state> 
 Found area constraint ratio of 100 (+ 5) on block modifiedlab5, actual ratio is 1.
+FlipFlop a/ac97/bit_count_3 has been replicated 1 time(s)
 
 Final Macro Processing ...
 
@@ -924,8 +915,8 @@ Unit <modifiedlab5> processed.
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 696
- Flip-Flops                                            : 696
+# Registers                                            : 704
+ Flip-Flops                                            : 704
 # Shift Registers                                      : 40
  2-bit shift register                                  : 39
  8-bit shift register                                  : 1
@@ -957,31 +948,31 @@ Design Statistics
 # IOs                              : 576
 
 Cell Usage :
-# BELS                             : 1464
+# BELS                             : 1461
 #      GND                         : 1
 #      INV                         : 45
-#      LUT1                        : 197
-#      LUT2                        : 110
+#      LUT1                        : 196
+#      LUT2                        : 107
 #      LUT2_D                      : 1
-#      LUT2_L                      : 2
 #      LUT3                        : 171
-#      LUT3_L                      : 3
-#      LUT4                        : 282
-#      LUT4_D                      : 40
-#      LUT4_L                      : 15
-#      MUXCY                       : 321
-#      MUXF5                       : 23
+#      LUT3_D                      : 2
+#      LUT3_L                      : 1
+#      LUT4                        : 288
+#      LUT4_D                      : 38
+#      LUT4_L                      : 19
+#      MUXCY                       : 320
+#      MUXF5                       : 20
 #      MUXF6                       : 4
 #      MUXF7                       : 1
 #      VCC                         : 1
-#      XORCY                       : 247
-# FlipFlops/Latches                : 736
-#      FD                          : 18
-#      FDE                         : 180
+#      XORCY                       : 246
+# FlipFlops/Latches                : 744
+#      FD                          : 26
+#      FDE                         : 184
 #      FDE_1                       : 13
-#      FDR                         : 9
+#      FDR                         : 4
 #      FDRE                        : 448
-#      FDS                         : 5
+#      FDS                         : 6
 #      FDSE                        : 63
 # Shift Registers                  : 41
 #      SRL16                       : 2
@@ -1001,9 +992,9 @@ Device utilization summary:
 Selected Device : 2v6000bf957-4 
 
  Number of Slices:                      583  out of  33792     1%  
- Number of Slice Flip Flops:            736  out of  67584     1%  
- Number of 4 input LUTs:                907  out of  67584     1%  
-    Number used as logic:               866
+ Number of Slice Flip Flops:            744  out of  67584     1%  
+ Number of 4 input LUTs:                909  out of  67584     1%  
+    Number used as logic:               868
     Number used as Shift registers:      41
  Number of IOs:                         576
  Number of bonded IOBs:                 325  out of    684    47%  
@@ -1030,8 +1021,8 @@ Clock Information:
 -----------------------------------+------------------------+-------+
 Clock Signal                       | Clock buffer(FF name)  | Load  |
 -----------------------------------+------------------------+-------+
-clock_27mhz                        | IBUF+BUFG              | 703   |
-ac97_bit_clock                     | IBUF+BUFG              | 74    |
+clock_27mhz                        | IBUF+BUFG              | 707   |
+ac97_bit_clock                     | IBUF+BUFG              | 78    |
 -----------------------------------+------------------------+-------+
 
 Asynchronous Control Signals Information:
@@ -1042,7 +1033,7 @@ Timing Summary:
 ---------------
 Speed Grade: -4
 
-   Minimum period: 11.113ns (Maximum Frequency: 89.985MHz)
+   Minimum period: 10.563ns (Maximum Frequency: 94.670MHz)
    Minimum input arrival time before clock: 3.540ns
    Maximum output required time after clock: 7.507ns
    Maximum combinational path delay: 7.028ns
@@ -1054,7 +1045,7 @@ All values displayed in nanoseconds (ns)
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clock_27mhz'
   Clock period: 10.193ns (frequency: 98.102MHz)
-  Total number of paths / destination ports: 92367 / 1802
+  Total number of paths / destination ports: 92399 / 1802
 -------------------------------------------------------------------------
 Delay:               10.193ns (Levels of Logic = 24)
   Source:            addr_calc/addr_index_5 (FF)
@@ -1068,7 +1059,7 @@ Delay:               10.193ns (Levels of Logic = 24)
     ----------------------------------------  ------------
      FDE:C->Q             21   0.568   1.087  addr_calc/addr_index_5 (addr_calc/addr_index_5)
      LUT4:I3->O            1   0.439   0.725  addr_calc/_COND_5<0>9 (addr_calc/_COND_5<0>9)
-     LUT3:I1->O            2   0.439   0.741  addr_calc/_COND_5<0>64_SW0 (N177)
+     LUT3:I1->O            2   0.439   0.741  addr_calc/_COND_5<0>64_SW0 (N192)
      LUT4:I3->O            1   0.439   0.726  addr_calc/_COND_5<0>64 (addr_calc/_COND_5<0>)
      LUT2:I1->O            1   0.439   0.000  addr_calc/Mcompar_mem_address_cmp_ge0000_lut<0> (addr_calc/Mcompar_mem_address_cmp_ge0000_lut<0>)
      MUXCY:S->O            1   0.298   0.000  addr_calc/Mcompar_mem_address_cmp_ge0000_cy<0> (addr_calc/Mcompar_mem_address_cmp_ge0000_cy<0>)
@@ -1098,27 +1089,27 @@ Delay:               10.193ns (Levels of Logic = 24)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'ac97_bit_clock'
-  Clock period: 11.113ns (frequency: 89.985MHz)
-  Total number of paths / destination ports: 1939 / 110
+  Clock period: 10.563ns (frequency: 94.670MHz)
+  Total number of paths / destination ports: 1741 / 114
 -------------------------------------------------------------------------
-Delay:               5.556ns (Levels of Logic = 3)
-  Source:            a/ac97/bit_count_7 (FF)
+Delay:               5.281ns (Levels of Logic = 3)
+  Source:            a/ac97/bit_count_6 (FF)
   Destination:       a/ac97/Mshreg_left_in_data_8 (FF)
   Source Clock:      ac97_bit_clock rising
   Destination Clock: ac97_bit_clock falling
 
-  Data Path: a/ac97/bit_count_7 to a/ac97/Mshreg_left_in_data_8
+  Data Path: a/ac97/bit_count_6 to a/ac97/Mshreg_left_in_data_8
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FD:C->Q              11   0.568   1.193  a/ac97/bit_count_7 (a/ac97/bit_count_7)
-     LUT4_D:I0->O          5   0.439   0.978  a/ac97/left_in_data_and000031 (a/ac97/N19)
-     LUT3:I1->O            1   0.439   0.000  a/ac97/left_in_data_and000060_G (N275)
-     MUXF5:I1->O          14   0.436   0.978  a/ac97/left_in_data_and000060 (a/ac97/left_in_data_and0000)
+     FD:C->Q              16   0.568   1.208  a/ac97/bit_count_6 (a/ac97/bit_count_6)
+     LUT4:I1->O            1   0.439   0.552  a/ac97/left_in_data_and000024 (a/ac97/left_in_data_and000024)
+     LUT4_L:I2->LO         1   0.439   0.134  a/ac97/left_in_data_and000026 (a/ac97/left_in_data_and000026)
+     LUT4:I2->O           14   0.439   0.978  a/ac97/left_in_data_and000049 (a/ac97/left_in_data_and0000)
      SRL16E_1:CE               0.525          a/ac97/Mshreg_left_in_data_8
     ----------------------------------------
-    Total                      5.556ns (2.407ns logic, 3.149ns route)
-                                       (43.3% logic, 56.7% route)
+    Total                      5.281ns (2.410ns logic, 2.872ns route)
+                                       (45.6% logic, 54.4% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'clock_27mhz'
@@ -1221,14 +1212,14 @@ Delay:               7.028ns (Levels of Logic = 3)
 
 
 Total REAL time to Xst completion: 14.00 secs
-Total CPU time to Xst completion: 12.94 secs
+Total CPU time to Xst completion: 13.28 secs
  
 --> 
 
 
-Total memory usage is 490916 kilobytes
+Total memory usage is 491068 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :  325 (   0 filtered)
-Number of infos    :   97 (   0 filtered)
+Number of warnings :  319 (   0 filtered)
+Number of infos    :   93 (   0 filtered)
 

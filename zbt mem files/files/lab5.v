@@ -121,7 +121,7 @@ module ac97 (
   output reg ac97_synch,
   input wire ac97_bit_clock
 );
-  reg [8:0] bit_count;
+  reg [7:0] bit_count;
 
   reg [19:0] l_cmd_addr;
   reg [19:0] l_cmd_data;
@@ -153,20 +153,20 @@ module ac97 (
 
   always @(posedge ac97_bit_clock) begin
     // Generate the sync signal
-    if (bit_count == 511)
+    if (bit_count == 255)
       ac97_synch <= 1'b1;
     if (bit_count == 15)
       ac97_synch <= 1'b0;
 
     // Generate the ready signal
-    if (bit_count == 256)
+    if (bit_count == 128)
       ready <= 1'b1;
     if (bit_count == 2)
       ready <= 1'b0;
 
     // Latch user data at the end of each frame. This ensures that the
     // first frame after reset will be empty.
-    if (bit_count == 511) begin
+    if (bit_count == 255) begin
       l_cmd_addr <= {command_address, 12'h000};
       l_cmd_data <= {command_data, 4'h0};
       l_cmd_v <= command_valid;
@@ -269,6 +269,10 @@ module ac97commands (
         command <= 24'h0A_0000;
       4'hB: // PCM out bypass mix1
         command <= 24'h20_8000;
+		4'hC: // extended audio control reg
+		  command <= 24'h2A_0001;
+		4'hD: // adc control register
+		  command <= 24'h32_5DC0;
       default:
         command <= 24'h80_0000;
     endcase // case(state)

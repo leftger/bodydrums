@@ -1,5 +1,5 @@
-set -tmpdir "/afs/athena.mit.edu/user/m/q/mqiu/Downloads/6111/bodydrums/zbt mem files/xst/projnav.tmp"
-set -xsthdpdir "/afs/athena.mit.edu/user/m/q/mqiu/Downloads/6111/bodydrums/zbt mem files/xst"
+set -tmpdir "/afs/athena.mit.edu/user/g/r/grosas/6.111/Final_Project/bodydrums/zbt mem files/xst/projnav.tmp"
+set -xsthdpdir "/afs/athena.mit.edu/user/g/r/grosas/6.111/Final_Project/bodydrums/zbt mem files/xst"
 run
 -ifn modifiedlab5.prj
 -ifmt mixed

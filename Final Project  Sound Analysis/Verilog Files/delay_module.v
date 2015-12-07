@@ -33,22 +33,17 @@ module delay_module #(parameter SAMPLING_RATE=24000, SAMPLES=240)
     // past samples from the ZBT memory, but I'm assuming that I don't have any
     // access to the ZBT memory.
     
-    reg [12:0] addr=13'h0000;
-    
-    reg [12:0] current_pointer=12'h000;
-    reg [12:0] delayed_pointer=12'h000;
-    
-    
-    reg write=1'b0;
-    reg signed [11:0] mem_in=12'h000;
+    reg [12:0] addr;   
+    reg [12:0] current_pointer;
+    reg [12:0] delayed_pointer;
+    reg write;
+    reg signed [11:0] mem_in;
     wire signed [11:0] mem_out;
-    
-    
-    reg [12:0] wait_for_memory=13'h0000;
-    
+    reg [12:0] wait_for_memory;
+
     // This reg stores a version of the stored, delayed sample that is multiplied by 7.
     
-    reg signed [14:0] stored_and_scaled_sample=15'h0000;
+    reg signed [14:0] stored_and_scaled_sample;
     
     // To have a delay from 10 ms to 320 ms, need to count
     // up to 32 *0.01 s * 240 samples per 0.01 s = 7680 samples. This means
@@ -60,7 +55,7 @@ module delay_module #(parameter SAMPLING_RATE=24000, SAMPLES=240)
        store_delay_samples(.addr(addr),.clk(clock),
        .we(write),.din(mem_in),.dout(mem_out));
        
-    reg [2:0] delay_state=3'b000;
+    reg [2:0] delay_state;
     
     parameter IDLE=3'b000;
     parameter READ_DELAYED_SAMPLE=3'b001;
@@ -73,6 +68,17 @@ module delay_module #(parameter SAMPLING_RATE=24000, SAMPLES=240)
     // 01: start up the delay effects, write current sample into memory location
     // 02: read sample from delayed memory location
     // 03: combine sample from delayed memory location with current sample.
+
+    initial begin
+	addr = 13'h0000;
+	current_pointer=12'h000;
+	delayed_pointer=12'h000;
+	write=1'b0;
+	mem_in=12'h000;
+	wait_for_memory=13'h0000;
+ 	stored_and_scaled_sample=15'h0000;
+	delay_state=3'b000;
+    end
     
     always @(posedge clock) begin
        

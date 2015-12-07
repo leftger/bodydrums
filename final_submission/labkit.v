@@ -565,6 +565,24 @@ module labkit   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 		.start(1'b1),.input_binary({1'b0,max_amp,1'b0}),
 		.output_db(calculated_db));
 	
+	wire [3:0] seconds_thousands, seconds_hundreds, seconds_tens,seconds_ones;
+	bcd my_bcd3(.binary(seconds),.thousands(seconds_thousands),.hundreds(seconds_hundreds),
+	.tens(seconds_tens),.ones(seconds_ones));
+	
+	wire [3:0] fx_bank;
+	assign fx_bank = switch_sync[7] + 
+		switch_sync[6] + 
+		switch_sync[5] + 
+		switch_sync[4] + 
+		switch_sync[3] + 
+		switch_sync[2] + 
+		switch_sync[1] + 
+		switch_sync[0];
+		
+	wire [3:0] song_tens, song_ones;
+	bcd my_bcd4(.binary(song_name),
+	.tens(song_tens),.ones(song_ones));
+	
 	reg [3:0] write_dig;
 	initial begin
 		write_dig = 0;
@@ -578,6 +596,13 @@ module labkit   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 				4 : begin write <= 1; num <= freq_ones; blob <= 3;end
 				5 : begin write <= 1; num <= max_amp_tens; blob <=4; end
 				6 : begin write <= 1; num <= max_amp_ones; blob <=5; end
+				7 : begin write <= 1; num <= seconds_thousands; blob <=6; end
+				8 : begin write <= 1; num <= seconds_hundreds; blob <=7; end
+				9 : begin write <= 1; num <= seconds_tens; blob <=8; end
+				10 : begin write <= 1; num <= seconds_ones; blob <=9; end
+				11 : begin write<= 1; num <= fx_bank; blob <=11; end
+				12 : begin write<= 1; num <= song_tens; blob <=12; end
+				13 : begin write<= 1; num <= song_ones; blob <=13; end
 				default: write <= 0;
 			endcase
 			write_dig <= write_dig + 1;
