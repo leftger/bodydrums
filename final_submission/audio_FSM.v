@@ -49,7 +49,7 @@ module audio_FSM
     
     wire signed [11:0] chorus_applied_sample;
     wire chorus_done;
-    chorus_effect chorus(.clock(), .reset(), .start(delay_done),
+    chorus_effect chorus(.clock(clock), .reset(reset), .start(delay_done),
         .incoming_sample(delay_applied_sample), .enable(chorus_enable), 
         .modified_sample(chorus_applied_sample), .done(chorus_done));
     
