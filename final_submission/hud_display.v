@@ -16,13 +16,6 @@ module hud_display (
    input [9:0] 	vcount, // vertical index of current pixel (0..767)
    output [23:0] hud_pixel	// pong game's pixel  // r=23:16, g=15:8, b=7:0
    );
-
-
-   wire [23:0] pic_pixel;
-	picture_blob myblob
-	(.pixel_clk(vclock),.x((1024 - 320) >> 1),.hcount(hcount),
-	.y((768 - 240) >> 1),.vcount(vcount),
-	 .pixel(pic_pixel));
 	
 	wire [23:0] hud_img_pixel;
 	
@@ -35,5 +28,5 @@ module hud_display (
 	 hud_digits ma_digs(.clk(vclock),.write(write),.num(num),
 		.blob(blob),.hcount(hcount),.vcount(vcount),.pixel(digit_pixel));
 	
-	assign hud_pixel = hud_img_pixel | pic_pixel | digit_pixel;
+	assign hud_pixel = hud_img_pixel | digit_pixel;
 endmodule

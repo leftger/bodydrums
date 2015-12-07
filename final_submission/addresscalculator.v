@@ -171,13 +171,13 @@ module addresscalculator(reset, clk, ready, /*clkmultik,*/ record_mode,
                     else begin //playback
                         if (mem_address < highest_addr[addr_index]) begin //increment memory address
                             if (spslsw[1] & ~spslsw[0]) begin //speed up
-									mem_address <= mem_address + 2;
-									end else if (spslsw[0] & ~spslsw[1]) begin //slow down
-										if (everyotherready) mem_address <= mem_address + 1;
-									end else begin //normal increment
-										mem_address <= mem_address + 1;
-									end
-								end else begin //if mem_addr hits the highest_addr recorded
+								mem_address <= mem_address + 2;
+							end else if (spslsw[0] & ~spslsw[1]) begin //slow down
+								if (everyotherready) mem_address <= mem_address + 1;
+								end else begin //normal increment
+									mem_address <= mem_address + 1;
+								end
+							end else begin //if mem_addr hits the highest_addr recorded
                             song_done <= 1; //stop incrementing addresses
                         end
                     end
