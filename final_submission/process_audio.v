@@ -9,7 +9,7 @@ module process_audio(clock_27mhz,reset,sel,ready,from_ac97_data,haddr,hdata,hwe)
   input reset;
   input [3:0] sel;
   input ready;
-  input [15:0] from_ac97_data;
+  input [11:0] from_ac97_data;
   output [9:0] haddr,hdata;
   output hwe;
 
@@ -29,7 +29,7 @@ module process_audio(clock_27mhz,reset,sel,ready,from_ac97_data,haddr,hdata,hwe)
   // Number of stages using Block Ram: 7
   // Output ordering: Bit/Digit Reversed Order
   fft16384u fft(.clk(clock_27mhz), .ce(reset | ready),
-                .xn_re(from_ac97_data[15:4]), .xn_im(12'b0),
+                .xn_re(from_ac97_data), .xn_im(12'b0),
                 .start(1'b1), .fwd_inv(1'b1), .fwd_inv_we(reset),
                 .xk_re(xk_re), .xk_im(xk_im), .xk_index(xk_index));
 

@@ -61,6 +61,8 @@ module ac97commands (clock, ready, command_address, command_data,
    end // always @ (posedge clock)
 endmodule // ac97commands
 
+
+
 ///////////////////////////////////////////////////////////////////////////////
 //
 // generate PCM data for 750hz sine wave (assuming f(ready) = 48khz)
