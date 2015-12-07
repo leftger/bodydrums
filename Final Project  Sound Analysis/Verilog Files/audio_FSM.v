@@ -47,10 +47,17 @@ module audio_FSM
         .done(delay_done));
     
     
+    wire signed [11:0] chorus_applied_sample;
+    wire chorus_done;
+    chorus_effect chorus(.clock(), .reset(), .start(delay_done),
+        .incoming_sample(delay_applied_sample), .enable(chorus_enable), 
+        .modified_sample(chorus_applied_sample), .done(chorus_done));
+    
+    
     wire compression_done;
     wire signed [11:0] compression_applied_sample;
-    compression compress(.clock(clock), .reset(reset), .start(delay_done),
-        .incoming_sample(delay_applied_sample), 
+    compression compress(.clock(clock), .reset(reset), .start(chorus_done),
+        .incoming_sample(chorus_applied_sample), 
         .compression_amount(compression_amount), .soft_limiter(soft_limiter_enable),
         .enable(compression_enable), .modified_sample(compression_applied_sample),
         .done(compression_done));

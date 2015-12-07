@@ -720,5 +720,7 @@ WARNING:PhysDesignRules:812 - Dangling pin <DOB30> on
 WARNING:PhysDesignRules:812 - Dangling pin <DOB31> on
    block:<hd/ma_digs/the_dig/digit_map/BU2/U0/blk_mem_generator/valid.cstr/ramlo
    op[0].ram.r/v2_init.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-DRC detected 0 errors and 324 warnings.  Please see the previously displayed
+WARNING:PhysDesignRules:812 - Dangling pin <DOA0> on
+   block:<gs_fsm/delay/store_delay_samples/Mram_mem1.A>:<RAMB16_RAMB16A>.
+DRC detected 0 errors and 325 warnings.  Please see the previously displayed
 individual error or warning messages for more details.

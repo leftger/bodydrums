@@ -846,6 +846,7 @@ proc restore { { project_dir "" } } {
       "blink_fo.v" 
       "blue_table.xco" 
       "central_FSM.v" 
+      "chorus_effect.v" 
       "compression.v" 
       "compression_gain_computer.v" 
       "compression_level_detector.v" 
