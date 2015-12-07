@@ -59,8 +59,8 @@ title('Red values in 24 bit bitmap')
 %table where each index specifies an r, g, and b value separately.
 %
 %Because of this, now we need to load both the image and it's colormap.
-[picture color_table] = imread('paulrevere6.bmp');
-
+[picture color_table] = imread('hud.bmp');
+ 
 %% Displaying without the color table
 %If we try to display the picture without the colormap, the image does not
 %make sense
@@ -139,7 +139,7 @@ rounded_data = round(scaled_data);  %rounds them down
 data = dec2bin(rounded_data,8);     %convert the binary data to 8 bit binary #s
 
 %open a file
-output_name = 'color_table_red.coe';
+output_name = 'hud_table_red.coe';
 file = fopen(output_name,'w');
 
 %write the header info
@@ -213,7 +213,7 @@ title('Regenerated Picture')
 data = dec2bin(pixel_columns,2);     %convert the binary data to 6 bit binary #s
 
 %open a file
-output_name = 'image_data.coe';
+output_name = 'hud_image.coe';
 file = fopen(output_name,'w');
 
 %write the header info
