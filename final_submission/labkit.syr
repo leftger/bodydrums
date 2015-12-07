@@ -5,14 +5,14 @@ Parameter TMPDIR set to /afs/athena.mit.edu/user/g/r/grosas/6.111/Final_Project/
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.03 secs
+Total CPU time to Xst completion: 0.05 secs
  
 --> 
 Parameter xsthdpdir set to /afs/athena.mit.edu/user/g/r/grosas/6.111/Final_Project/bodydrums/final_submission/xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.03 secs
+Total CPU time to Xst completion: 0.05 secs
  
 --> 
 Reading design: labkit.prj
@@ -258,7 +258,8 @@ Analyzing hierarchy for module <modifiedlab5audio> in library <work>.
 
 Analyzing hierarchy for module <audio_FSM> in library <work>.
 
-Analyzing hierarchy for module <process_audio> in library <work>.
+Analyzing hierarchy for module <process_audio> in library <work> with parameters.
+	sel = "1000"
 
 Analyzing hierarchy for module <max_freq_amp> in library <work> with parameters.
 	WIDTH = "00000000000000000000010000000000"
@@ -357,7 +358,7 @@ WARNING:Xst:2591 - "labkit.v" line 252: attribute on instance <CLK_FEEDBACK> ove
 *                            HDL Analysis                               *
 =========================================================================
 Analyzing top module <labkit>.
-WARNING:Xst:2211 - "./grad_div.v" line 597: Instantiating black box module <grad_div>.
+WARNING:Xst:2211 - "./grad_div.v" line 599: Instantiating black box module <grad_div>.
 Module <labkit> is correct for synthesis.
  
     Set user-defined property "CLKDV_DIVIDE =  2.0000000000000000" for instance <vclk1> in unit <labkit>.
@@ -601,6 +602,7 @@ Analyzing module <limiter_module> in library <work>.
 Module <limiter_module> is correct for synthesis.
  
 Analyzing module <process_audio> in library <work>.
+	sel = 4'b1000
 WARNING:Xst:2211 - "./fft16384u.v" line 31: Instantiating black box module <fft16384u>.
 Module <process_audio> is correct for synthesis.
  
@@ -659,6 +661,7 @@ Unit <debounce> synthesized.
 
 Synthesizing Unit <centralFSM>.
     Related source file is "central_FSM.v".
+WARNING:Xst:647 - Input <switch<7>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
     Found 1-bit register for signal <start_song>.
     Found 7-bit register for signal <effects>.
     Found 2-bit register for signal <cfsm_state>.
@@ -669,11 +672,12 @@ Synthesizing Unit <centralFSM>.
     Found 17-bit register for signal <effect_values>.
     Found 1-bit register for signal <but_ent_prev>.
     Found 1-bit register for signal <reset_delay>.
-    Found 4-bit adder for signal <song_choice$addsub0000> created at line 129.
-    Found 4-bit comparator less for signal <song_choice$cmp_lt0000> created at line 128.
+    Found 4-bit adder for signal <song_choice$addsub0000> created at line 133.
+    Found 4-bit comparator less for signal <song_choice$cmp_lt0000> created at line 132.
     Found 1-bit register for signal <start_song_prev>.
+    Found 1-bit register for signal <vb0_prev>.
     Summary:
-	inferred  40 D-type flip-flop(s).
+	inferred  41 D-type flip-flop(s).
 	inferred   1 Adder/Subtractor(s).
 	inferred   1 Comparator(s).
 Unit <centralFSM> synthesized.
@@ -778,23 +782,25 @@ Unit <param_select> synthesized.
 Synthesizing Unit <addresscalculator>.
     Related source file is "addresscalculator.v".
     Using one-hot encoding for signal <addr_index>.
-    Found 16x38-bit ROM for signal <song_choice$rom0000>.
+    Found 16x19-bit ROM for signal <song_max$mux0000> created at line 71.
     Found 1-bit register for signal <song_done>.
-    Found 19-bit up counter for signal <mem_address>.
+    Found 19-bit register for signal <mem_address>.
     Found 12-bit register for signal <addr_index>.
     Found 2-bit up counter for signal <counter3>.
+    Found 1-bit register for signal <everyotherready>.
     Found 228-bit register for signal <highest_addr>.
-    Found 19-bit comparator greatequal for signal <highest_addr_0$cmp_ge0000> created at line 159.
-    Found 19-bit comparator greatequal for signal <mem_address$cmp_ge0000> created at line 168.
+    Found 19-bit comparator greatequal for signal <highest_addr_0$cmp_ge0000> created at line 163.
+    Found 19-bit adder for signal <mem_address$addsub0000>.
+    Found 19-bit comparator greatequal for signal <mem_address$cmp_ge0000> created at line 172.
     Found 1-bit register for signal <record_state>.
-    Found 19-bit comparator less for signal <song_done$cmp_lt0000> created at line 159.
-    Found 19-bit comparator less for signal <song_done$cmp_lt0001> created at line 168.
+    Found 19-bit comparator less for signal <song_done$cmp_lt0000> created at line 163.
+    Found 19-bit comparator less for signal <song_done$cmp_lt0001> created at line 172.
     Found 19-bit register for signal <song_max>.
     Summary:
 	inferred   1 ROM(s).
-	inferred   2 Counter(s).
-	inferred 261 D-type flip-flop(s).
-	inferred   1 Adder/Subtractor(s).
+	inferred   1 Counter(s).
+	inferred 281 D-type flip-flop(s).
+	inferred   2 Adder/Subtractor(s).
 	inferred   4 Comparator(s).
 Unit <addresscalculator> synthesized.
 
@@ -1176,6 +1182,8 @@ Unit <modifiedlab5audio> synthesized.
 
 Synthesizing Unit <process_audio>.
     Related source file is "process_audio.v".
+WARNING:Xst:646 - Signal <xk_re<7:0>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <xk_im<7:0>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <mag<13:10>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
     Found finite state machine <FSM_1> for signal <state>.
     -----------------------------------------------------------------------
@@ -1198,14 +1206,11 @@ WARNING:Xst:646 - Signal <mag<13:10>> is assigned but never used. This unconnect
     Found 28-bit adder for signal <mag2$add0000> created at line 63.
     Found 28-bit register for signal <rere>.
     Found 14x14-bit multiplier for signal <rere$mult0000> created at line 58.
-    Found 23-bit shifter logical right for signal <xk_im_scaled$shift0000> created at line 37.
-    Found 23-bit shifter logical right for signal <xk_re_scaled$shift0000> created at line 36.
     Summary:
 	inferred   1 Finite State Machine(s).
 	inferred  95 D-type flip-flop(s).
 	inferred   1 Adder/Subtractor(s).
 	inferred   2 Multiplier(s).
-	inferred   2 Combinational logic shifter(s).
 Unit <process_audio> synthesized.
 
 
@@ -1603,9 +1608,7 @@ WARNING:Xst:2565 - Inout <user3<2>> is never assigned.
 WARNING:Xst:2565 - Inout <user3<27>> is never assigned.
 WARNING:Xst:2565 - Inout <user3<3>> is never assigned.
 WARNING:Xst:1780 - Signal <volume_or_selection> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:646 - Signal <vb0> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:1780 - Signal <to_ac97_data<15:12>> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:653 - Signal <to_ac97_data<11:0>> is used but never assigned. This sourceless signal will be automatically connected to value 000000000000.
+WARNING:Xst:646 - Signal <to_ac97_data<15:12>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <song_name> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:1780 - Signal <sel> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <sample_ready> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
@@ -1613,21 +1616,19 @@ WARNING:Xst:646 - Signal <quotient<17:8>> is assigned but never used. This uncon
 WARNING:Xst:646 - Signal <max_amp_thousands> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <max_amp_hundreds> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <from_ac97_data<15:12>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:646 - Signal <fir_ac97_data_out> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <effects> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <effect_values> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <dout<15:10>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <border> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
     Found 1-bit register for signal <b>.
-    Found 1-bit 4-to-1 multiplexer for signal <b$mux0000>.
     Found 4-bit register for signal <blob>.
     Found 10x8-bit multiplier for signal <dividend>.
-    Found 10-bit comparator greater for signal <divisor$cmp_gt0000> created at line 595.
+    Found 10-bit comparator greater for signal <divisor$cmp_gt0000> created at line 597.
     Found 24-bit register for signal <fft_pixel>.
-    Found 10-bit comparator lessequal for signal <fft_pixel$cmp_le0000> created at line 619.
+    Found 10-bit comparator lessequal for signal <fft_pixel$cmp_le0000> created at line 621.
     Found 8-bit register for signal <green_grad_color>.
-    Found 8-bit adder for signal <green_grad_color$sub0000> created at line 612.
+    Found 8-bit adder for signal <green_grad_color$sub0000> created at line 614.
     Found 1-bit register for signal <hs>.
-    Found 1-bit 4-to-1 multiplexer for signal <hs$mux0000>.
     Found 4-bit register for signal <num>.
     Found 1-bit register for signal <old_b1>.
     Found 1-bit register for signal <old_b2>.
@@ -1635,10 +1636,8 @@ WARNING:Xst:646 - Signal <dout<15:10>> is assigned but never used. This unconnec
     Found 1-bit register for signal <phsync>.
     Found 1-bit register for signal <pvsync>.
     Found 24-bit register for signal <rgb>.
-    Found 24-bit 4-to-1 multiplexer for signal <rgb$mux0000>.
     Found 5-bit updown counter for signal <volume>.
     Found 1-bit register for signal <vs>.
-    Found 1-bit 4-to-1 multiplexer for signal <vs$mux0000>.
     Found 1-bit register for signal <write>.
     Found 4-bit up counter for signal <write_dig>.
     Found 1-bit register for signal <xblank>.
@@ -1648,7 +1647,7 @@ WARNING:Xst:646 - Signal <dout<15:10>> is assigned but never used. This unconnec
     Found 1-bit register for signal <yblank>.
     Found 1-bit register for signal <yhsync>.
     Found 10-bit register for signal <yvcount>.
-    Found 10-bit adder for signal <yvcount$sub0000> created at line 606.
+    Found 10-bit adder for signal <yvcount$sub0000> created at line 608.
     Found 1-bit register for signal <yvsync>.
     Summary:
 	inferred   2 Counter(s).
@@ -1656,7 +1655,6 @@ WARNING:Xst:646 - Signal <dout<15:10>> is assigned but never used. This unconnec
 	inferred   2 Adder/Subtractor(s).
 	inferred   1 Multiplier(s).
 	inferred   2 Comparator(s).
-	inferred  27 Multiplexer(s).
 Unit <labkit> synthesized.
 
 INFO:Xst:1767 - HDL ADVISOR - Resource sharing has identified that some arithmetic operations in this design can share the same physical resources for reduced device utilization. For improved clock frequency you may try to disable resource sharing.
@@ -1669,7 +1667,7 @@ Macro Statistics
  8192x12-bit single-port RAM                           : 1
 # ROMs                                                 : 8
  16x1-bit ROM                                          : 1
- 16x38-bit ROM                                         : 1
+ 16x19-bit ROM                                         : 1
  16x40-bit ROM                                         : 1
  16x9-bit ROM                                          : 4
  32x13-bit ROM                                         : 1
@@ -1684,7 +1682,7 @@ Macro Statistics
  14x14-bit multiplier                                  : 3
  5x9-bit multiplier                                    : 1
  9x10-bit multiplier                                   : 1
-# Adders/Subtractors                                   : 158
+# Adders/Subtractors                                   : 159
  10-bit adder                                          : 1
  10-bit adder carry out                                : 14
  10-bit addsub                                         : 1
@@ -1697,7 +1695,7 @@ Macro Statistics
  13-bit adder                                          : 2
  13-bit subtractor                                     : 3
  17-bit adder                                          : 2
- 19-bit adder                                          : 2
+ 19-bit adder                                          : 3
  2-bit adder                                           : 2
  2-bit subtractor                                      : 2
  28-bit adder                                          : 1
@@ -1711,10 +1709,10 @@ Macro Statistics
  9-bit adder                                           : 4
  9-bit addsub                                          : 1
  9-bit subtractor                                      : 2
-# Counters                                             : 34
+# Counters                                             : 33
  10-bit up counter                                     : 2
  11-bit up counter                                     : 1
- 19-bit up counter                                     : 18
+ 19-bit up counter                                     : 17
  2-bit up counter                                      : 2
  25-bit up counter                                     : 2
  3-bit updown counter                                  : 1
@@ -1724,8 +1722,8 @@ Macro Statistics
  5-bit updown counter                                  : 1
  8-bit down counter                                    : 1
  8-bit up counter                                      : 2
-# Registers                                            : 240
- 1-bit register                                        : 127
+# Registers                                            : 243
+ 1-bit register                                        : 129
  10-bit register                                       : 4
  11-bit register                                       : 1
  12-bit register                                       : 11
@@ -1734,7 +1732,7 @@ Macro Statistics
  15-bit register                                       : 1
  16-bit register                                       : 1
  17-bit register                                       : 1
- 19-bit register                                       : 16
+ 19-bit register                                       : 17
  2-bit register                                        : 4
  20-bit register                                       : 6
  24-bit register                                       : 5
@@ -1776,17 +1774,14 @@ Macro Statistics
  8-bit comparator less                                 : 4
  8-bit comparator lessequal                            : 6
  9-bit comparator greater                              : 1
-# Multiplexers                                         : 13
+# Multiplexers                                         : 9
  1-bit 16-to-1 multiplexer                             : 1
  1-bit 20-to-1 multiplexer                             : 3
- 1-bit 4-to-1 multiplexer                              : 3
  1-bit 40-to-1 multiplexer                             : 1
  11-bit 16-to-1 multiplexer                            : 1
  16-bit 8-to-1 multiplexer                             : 1
- 24-bit 4-to-1 multiplexer                             : 1
  4-bit 16-to-1 multiplexer                             : 2
-# Logic shifters                                       : 5
- 23-bit shifter logical right                          : 2
+# Logic shifters                                       : 3
  32-bit shifter logical left                           : 2
  9-bit shifter logical right                           : 1
 # Tristates                                            : 2
@@ -1874,6 +1869,10 @@ Loading core <red_hud> for timing and area information for instance <digit_map>.
 Loading core <fft16384u> for timing and area information for instance <fft>.
 WARNING:Xst:2404 -  FFs/Latches <output_db<8:8>> (without init value) have a constant value of 0 in block <signed_binary_12bit_to_dB>.
 
+Synthesizing (advanced) Unit <addresscalculator>.
+INFO:Xst - In order to maximize performance and save block RAM resources, the small ROM <Mrom_song_max_mux0000> will be implemented on LUT. If you want to force its implementation on block, use option/constraint rom_style.
+Unit <addresscalculator> synthesized (advanced).
+
 Synthesizing (advanced) Unit <compression_level_detector>.
 INFO:Xst:2385 - HDL ADVISOR - You can improve the performance of the multiplier Mmult_other_part_of_output_mult0002 by adding 1 register level(s).
 INFO:Xst:2385 - HDL ADVISOR - You can improve the performance of the multiplier Mmult_other_part_of_output_mult0003 by adding 1 register level(s).
@@ -1937,23 +1936,6 @@ INFO:Xst:2385 - HDL ADVISOR - You can improve the performance of the multiplier 
 Unit <digit_blob> synthesized (advanced).
 
 Synthesizing (advanced) Unit <labkit>.
-INFO:Xst - The ROM <addr_calc/Mrom_song_choice_rom0000> will be implemented as a read-only BLOCK RAM, absorbing the register: <central_fsm/song_choice>.
-INFO:Xst - The RAM <addr_calc/Mrom_song_choice_rom0000> will be implemented as BLOCK RAM
-    -----------------------------------------------------------------------
-    | ram_type           | Block                               |          |
-    -----------------------------------------------------------------------
-    | Port A                                                              |
-    |     aspect ratio   | 16-word x 38-bit                    |          |
-    |     mode           | write-first                         |          |
-    |     clkA           | connected to signal <clock_27mhz>   | rise     |
-    |     enA            | connected to signal <central_fsm/song_choice_not0001> | high     |
-    |     weA            | connected to signal <analyzer1_data<0>> | high     |
-    |     addrA          | connected to internal node          |          |
-    |     diA            | connected to signal <analyzer1_data> |          |
-    |     doA            | connected to internal node          |          |
-    -----------------------------------------------------------------------
-    | optimization       | speed                               |          |
-    -----------------------------------------------------------------------
 INFO:Xst:2385 - HDL ADVISOR - You can improve the performance of the multiplier Mmult_dividend by adding 1 register level(s).
 INFO:Xst:2385 - HDL ADVISOR - You can improve the performance of the multiplier Mmult_dividend by adding 1 register level(s).
 Unit <labkit> synthesized (advanced).
@@ -1973,10 +1955,10 @@ INFO:Xst:2385 - HDL ADVISOR - You can improve the performance of the multiplier 
 Unit <picture_blob> synthesized (advanced).
 
 Synthesizing (advanced) Unit <process_audio>.
-	Found pipelined multiplier on signal <imim_mult0000>:
+	Found pipelined multiplier on signal <rere_mult0000>:
 		- 1 pipeline level(s) found in a register connected to the multiplier macro output.
 		Pushing register(s) into the multiplier macro.
-	Found pipelined multiplier on signal <rere_mult0000>:
+	Found pipelined multiplier on signal <imim_mult0000>:
 		- 1 pipeline level(s) found in a register connected to the multiplier macro output.
 		Pushing register(s) into the multiplier macro.
 Unit <process_audio> synthesized (advanced).
@@ -2077,10 +2059,10 @@ WARNING:Xst:1710 - FF/Latch <fft_pixel_6> (without init value) has a constant va
 WARNING:Xst:1710 - FF/Latch <fft_pixel_7> (without init value) has a constant value of 0 in block <labkit>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <blob_3> has a constant value of 0 in block <labkit>. This FF/Latch will be trimmed during the optimization process.
 INFO:Xst:2261 - The FF/Latch <fft_pixel_16> in Unit <labkit> is equivalent to the following 7 FFs/Latches, which will be removed : <fft_pixel_17> <fft_pixel_18> <fft_pixel_19> <fft_pixel_20> <fft_pixel_21> <fft_pixel_22> <fft_pixel_23> 
-WARNING:Xst:1710 - FF/Latch <out_data_8> (without init value) has a constant value of 0 in block <a>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <out_data_9> (without init value) has a constant value of 0 in block <a>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <out_data_10> (without init value) has a constant value of 0 in block <a>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <out_data_11> (without init value) has a constant value of 0 in block <a>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <number_13_0> (without init value) has a constant value of 0 in block <ma_digs>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <number_13_1> (without init value) has a constant value of 0 in block <ma_digs>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <number_13_2> (without init value) has a constant value of 0 in block <ma_digs>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <number_13_3> (without init value) has a constant value of 0 in block <ma_digs>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <l_cmd_addr_12> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <l_cmd_addr_18> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <l_cmd_data_9> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
@@ -2095,18 +2077,6 @@ WARNING:Xst:1710 - FF/Latch <l_right_data_4> (without init value) has a constant
 WARNING:Xst:1710 - FF/Latch <l_right_data_5> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <l_right_data_6> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <l_right_data_7> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <l_right_data_8> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <l_right_data_9> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <l_right_data_10> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <l_right_data_11> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <l_right_data_12> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <l_right_data_13> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <l_right_data_14> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <l_right_data_15> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <l_right_data_16> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <l_right_data_17> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <l_right_data_18> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <l_right_data_19> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <0> (without init value) has a constant value of 0 in block <12>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <absolute_value_input_0> (without init value) has a constant value of 0 in block <num_to_db>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <number_8_0> (without init value) has a constant value of 0 in block <ma_digs>. This FF/Latch will be trimmed during the optimization process.
@@ -2129,19 +2099,34 @@ WARNING:Xst:1710 - FF/Latch <number_12_0> (without init value) has a constant va
 WARNING:Xst:1710 - FF/Latch <number_12_1> (without init value) has a constant value of 0 in block <ma_digs>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <number_12_2> (without init value) has a constant value of 0 in block <ma_digs>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <number_12_3> (without init value) has a constant value of 0 in block <ma_digs>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <number_13_0> (without init value) has a constant value of 0 in block <ma_digs>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <number_13_1> (without init value) has a constant value of 0 in block <ma_digs>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <number_13_2> (without init value) has a constant value of 0 in block <ma_digs>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <number_13_3> (without init value) has a constant value of 0 in block <ma_digs>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <out_data_0> (without init value) has a constant value of 0 in block <a>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <out_data_1> (without init value) has a constant value of 0 in block <a>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <out_data_2> (without init value) has a constant value of 0 in block <a>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <out_data_3> (without init value) has a constant value of 0 in block <a>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <out_data_4> (without init value) has a constant value of 0 in block <a>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <out_data_5> (without init value) has a constant value of 0 in block <a>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <out_data_6> (without init value) has a constant value of 0 in block <a>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <out_data_7> (without init value) has a constant value of 0 in block <a>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:2677 - Node <clean> of sequential type is unconnected in block <bb0>.
+WARNING:Xst:2677 - Node <song_name_0> of sequential type is unconnected in block <central_fsm>.
+WARNING:Xst:2677 - Node <song_name_1> of sequential type is unconnected in block <central_fsm>.
+WARNING:Xst:2677 - Node <song_name_2> of sequential type is unconnected in block <central_fsm>.
+WARNING:Xst:2677 - Node <song_name_3> of sequential type is unconnected in block <central_fsm>.
+WARNING:Xst:2677 - Node <effect_values_0> of sequential type is unconnected in block <central_fsm>.
+WARNING:Xst:2677 - Node <effect_values_1> of sequential type is unconnected in block <central_fsm>.
+WARNING:Xst:2677 - Node <effect_values_2> of sequential type is unconnected in block <central_fsm>.
+WARNING:Xst:2677 - Node <effect_values_3> of sequential type is unconnected in block <central_fsm>.
+WARNING:Xst:2677 - Node <effect_values_4> of sequential type is unconnected in block <central_fsm>.
+WARNING:Xst:2677 - Node <effect_values_5> of sequential type is unconnected in block <central_fsm>.
+WARNING:Xst:2677 - Node <effect_values_6> of sequential type is unconnected in block <central_fsm>.
+WARNING:Xst:2677 - Node <effect_values_7> of sequential type is unconnected in block <central_fsm>.
+WARNING:Xst:2677 - Node <effect_values_8> of sequential type is unconnected in block <central_fsm>.
+WARNING:Xst:2677 - Node <effect_values_9> of sequential type is unconnected in block <central_fsm>.
+WARNING:Xst:2677 - Node <effect_values_10> of sequential type is unconnected in block <central_fsm>.
+WARNING:Xst:2677 - Node <effect_values_11> of sequential type is unconnected in block <central_fsm>.
+WARNING:Xst:2677 - Node <effect_values_12> of sequential type is unconnected in block <central_fsm>.
+WARNING:Xst:2677 - Node <effect_values_13> of sequential type is unconnected in block <central_fsm>.
+WARNING:Xst:2677 - Node <effect_values_14> of sequential type is unconnected in block <central_fsm>.
+WARNING:Xst:2677 - Node <effect_values_15> of sequential type is unconnected in block <central_fsm>.
+WARNING:Xst:2677 - Node <effect_values_16> of sequential type is unconnected in block <central_fsm>.
+WARNING:Xst:2677 - Node <effects_0> of sequential type is unconnected in block <central_fsm>.
+WARNING:Xst:2677 - Node <effects_1> of sequential type is unconnected in block <central_fsm>.
+WARNING:Xst:2677 - Node <effects_2> of sequential type is unconnected in block <central_fsm>.
+WARNING:Xst:2677 - Node <effects_3> of sequential type is unconnected in block <central_fsm>.
+WARNING:Xst:2677 - Node <effects_4> of sequential type is unconnected in block <central_fsm>.
+WARNING:Xst:2677 - Node <effects_5> of sequential type is unconnected in block <central_fsm>.
+WARNING:Xst:2677 - Node <effects_6> of sequential type is unconnected in block <central_fsm>.
 WARNING:Xst:2677 - Node <right_in_data_0> of sequential type is unconnected in block <ac97>.
 WARNING:Xst:2677 - Node <right_in_data_1> of sequential type is unconnected in block <ac97>.
 WARNING:Xst:2677 - Node <right_in_data_2> of sequential type is unconnected in block <ac97>.
@@ -2163,37 +2148,21 @@ WARNING:Xst:2677 - Node <right_in_data_17> of sequential type is unconnected in 
 WARNING:Xst:2677 - Node <right_in_data_18> of sequential type is unconnected in block <ac97>.
 WARNING:Xst:2677 - Node <right_in_data_19> of sequential type is unconnected in block <ac97>.
 WARNING:Xst:2677 - Node <done> of sequential type is unconnected in block <delay>.
-WARNING:Xst:2677 - Node <done> of sequential type is unconnected in block <compress>.
 WARNING:Xst:2677 - Node <output_gain_0> of sequential type is unconnected in block <level_detector>.
-WARNING:Xst:2677 - Node <done> of sequential type is unconnected in block <apply_gain>.
-WARNING:Xst:2677 - Node <modified_sample_0> of sequential type is unconnected in block <hard_limiter>.
-WARNING:Xst:2677 - Node <modified_sample_1> of sequential type is unconnected in block <hard_limiter>.
-WARNING:Xst:2677 - Node <modified_sample_2> of sequential type is unconnected in block <hard_limiter>.
-WARNING:Xst:2677 - Node <modified_sample_3> of sequential type is unconnected in block <hard_limiter>.
-WARNING:Xst:2677 - Node <modified_sample_4> of sequential type is unconnected in block <hard_limiter>.
-WARNING:Xst:2677 - Node <modified_sample_5> of sequential type is unconnected in block <hard_limiter>.
-WARNING:Xst:2677 - Node <modified_sample_6> of sequential type is unconnected in block <hard_limiter>.
-WARNING:Xst:2677 - Node <modified_sample_7> of sequential type is unconnected in block <hard_limiter>.
-WARNING:Xst:2677 - Node <modified_sample_8> of sequential type is unconnected in block <hard_limiter>.
-WARNING:Xst:2677 - Node <modified_sample_9> of sequential type is unconnected in block <hard_limiter>.
-WARNING:Xst:2677 - Node <modified_sample_10> of sequential type is unconnected in block <hard_limiter>.
-WARNING:Xst:2677 - Node <modified_sample_11> of sequential type is unconnected in block <hard_limiter>.
 WARNING:Xst:2677 - Node <done> of sequential type is unconnected in block <hard_limiter>.
 WARNING:Xst:2677 - Node <done> of sequential type is unconnected in block <num_to_db>.
-WARNING:Xst:2677 - Node <clean> of sequential type is unconnected in block <gen_modules[0].d>.
 WARNING:Xst:2677 - Node <clean> of sequential type is unconnected in block <gen_modules[1].d>.
-WARNING:Xst:2677 - Node <clean> of sequential type is unconnected in block <gen_modules[2].d>.
 WARNING:Xst:2677 - Node <clean> of sequential type is unconnected in block <gen_modules[5].d>.
 
 =========================================================================
 Advanced HDL Synthesis Report
 
 Macro Statistics
-# RAMs                                                 : 2
- 16x38-bit single-port block RAM                       : 1
+# RAMs                                                 : 1
  8192x12-bit single-port block RAM                     : 1
-# ROMs                                                 : 7
+# ROMs                                                 : 8
  16x1-bit ROM                                          : 1
+ 16x19-bit ROM                                         : 1
  16x40-bit ROM                                         : 1
  16x9-bit ROM                                          : 4
  32x13-bit ROM                                         : 1
@@ -2209,7 +2178,7 @@ Macro Statistics
  14x14-bit registered multiplier                       : 2
  5x9-bit multiplier                                    : 1
  9x10-bit multiplier                                   : 1
-# Adders/Subtractors                                   : 158
+# Adders/Subtractors                                   : 159
  10-bit adder                                          : 1
  10-bit adder carry out                                : 14
  10-bit addsub                                         : 1
@@ -2222,7 +2191,7 @@ Macro Statistics
  13-bit adder                                          : 2
  13-bit subtractor                                     : 3
  17-bit adder                                          : 2
- 19-bit adder                                          : 2
+ 19-bit adder                                          : 3
  2-bit adder                                           : 2
  2-bit subtractor                                      : 2
  28-bit adder                                          : 1
@@ -2236,10 +2205,10 @@ Macro Statistics
  9-bit adder                                           : 1
  9-bit addsub                                          : 1
  9-bit subtractor                                      : 2
-# Counters                                             : 34
+# Counters                                             : 33
  10-bit up counter                                     : 2
  11-bit up counter                                     : 1
- 19-bit up counter                                     : 18
+ 19-bit up counter                                     : 17
  2-bit up counter                                      : 2
  25-bit up counter                                     : 2
  3-bit updown counter                                  : 1
@@ -2249,8 +2218,8 @@ Macro Statistics
  5-bit updown counter                                  : 1
  8-bit down counter                                    : 1
  8-bit up counter                                      : 2
-# Registers                                            : 1442
- Flip-Flops                                            : 1442
+# Registers                                            : 1491
+ Flip-Flops                                            : 1491
 # Latches                                              : 2
  10-bit latch                                          : 1
  13-bit latch                                          : 1
@@ -2278,17 +2247,14 @@ Macro Statistics
  8-bit comparator less                                 : 4
  8-bit comparator lessequal                            : 6
  9-bit comparator greater                              : 1
-# Multiplexers                                         : 13
+# Multiplexers                                         : 9
  1-bit 16-to-1 multiplexer                             : 1
  1-bit 20-to-1 multiplexer                             : 3
- 1-bit 4-to-1 multiplexer                              : 3
  1-bit 40-to-1 multiplexer                             : 1
  11-bit 16-to-1 multiplexer                            : 1
  16-bit 8-to-1 multiplexer                             : 1
- 24-bit 4-to-1 multiplexer                             : 1
  4-bit 16-to-1 multiplexer                             : 2
-# Logic shifters                                       : 5
- 23-bit shifter logical right                          : 2
+# Logic shifters                                       : 3
  32-bit shifter logical left                           : 2
  9-bit shifter logical right                           : 1
 # Xors                                                 : 17
@@ -2306,18 +2272,18 @@ INFO:Xst:2261 - The FF/Latch <zbt1/write_data_old1_13> in Unit <labkit> is equiv
 INFO:Xst:2261 - The FF/Latch <zbt1/write_data_old1_14> in Unit <labkit> is equivalent to the following FF/Latch, which will be removed : <zbt0/write_data_old1_14> 
 INFO:Xst:2261 - The FF/Latch <zbt1/write_data_old1_20> in Unit <labkit> is equivalent to the following FF/Latch, which will be removed : <zbt0/write_data_old1_20> 
 INFO:Xst:2261 - The FF/Latch <zbt1/write_data_old1_15> in Unit <labkit> is equivalent to the following FF/Latch, which will be removed : <zbt0/write_data_old1_15> 
-INFO:Xst:2261 - The FF/Latch <zbt1/write_data_old1_16> in Unit <labkit> is equivalent to the following FF/Latch, which will be removed : <zbt0/write_data_old1_16> 
 INFO:Xst:2261 - The FF/Latch <zbt1/write_data_old1_21> in Unit <labkit> is equivalent to the following FF/Latch, which will be removed : <zbt0/write_data_old1_21> 
-INFO:Xst:2261 - The FF/Latch <zbt1/write_data_old1_17> in Unit <labkit> is equivalent to the following FF/Latch, which will be removed : <zbt0/write_data_old1_17> 
+INFO:Xst:2261 - The FF/Latch <zbt1/write_data_old1_16> in Unit <labkit> is equivalent to the following FF/Latch, which will be removed : <zbt0/write_data_old1_16> 
 INFO:Xst:2261 - The FF/Latch <zbt1/write_data_old1_22> in Unit <labkit> is equivalent to the following FF/Latch, which will be removed : <zbt0/write_data_old1_22> 
+INFO:Xst:2261 - The FF/Latch <zbt1/write_data_old1_17> in Unit <labkit> is equivalent to the following FF/Latch, which will be removed : <zbt0/write_data_old1_17> 
 INFO:Xst:2261 - The FF/Latch <zbt1/write_data_old1_23> in Unit <labkit> is equivalent to the following FF/Latch, which will be removed : <zbt0/write_data_old1_23> 
 INFO:Xst:2261 - The FF/Latch <zbt1/write_data_old1_18> in Unit <labkit> is equivalent to the following FF/Latch, which will be removed : <zbt0/write_data_old1_18> 
-INFO:Xst:2261 - The FF/Latch <zbt1/write_data_old1_19> in Unit <labkit> is equivalent to the following FF/Latch, which will be removed : <zbt0/write_data_old1_19> 
 INFO:Xst:2261 - The FF/Latch <zbt1/write_data_old1_24> in Unit <labkit> is equivalent to the following FF/Latch, which will be removed : <zbt0/write_data_old1_24> 
-INFO:Xst:2261 - The FF/Latch <zbt1/write_data_old1_25> in Unit <labkit> is equivalent to the following FF/Latch, which will be removed : <zbt0/write_data_old1_25> 
+INFO:Xst:2261 - The FF/Latch <zbt1/write_data_old1_19> in Unit <labkit> is equivalent to the following FF/Latch, which will be removed : <zbt0/write_data_old1_19> 
 INFO:Xst:2261 - The FF/Latch <zbt1/write_data_old1_30> in Unit <labkit> is equivalent to the following FF/Latch, which will be removed : <zbt0/write_data_old1_30> 
-INFO:Xst:2261 - The FF/Latch <zbt1/write_data_old1_26> in Unit <labkit> is equivalent to the following FF/Latch, which will be removed : <zbt0/write_data_old1_26> 
+INFO:Xst:2261 - The FF/Latch <zbt1/write_data_old1_25> in Unit <labkit> is equivalent to the following FF/Latch, which will be removed : <zbt0/write_data_old1_25> 
 INFO:Xst:2261 - The FF/Latch <zbt1/write_data_old1_31> in Unit <labkit> is equivalent to the following FF/Latch, which will be removed : <zbt0/write_data_old1_31> 
+INFO:Xst:2261 - The FF/Latch <zbt1/write_data_old1_26> in Unit <labkit> is equivalent to the following FF/Latch, which will be removed : <zbt0/write_data_old1_26> 
 INFO:Xst:2261 - The FF/Latch <zbt1/write_data_old1_32> in Unit <labkit> is equivalent to the following FF/Latch, which will be removed : <zbt0/write_data_old1_32> 
 INFO:Xst:2261 - The FF/Latch <zbt1/write_data_old1_27> in Unit <labkit> is equivalent to the following FF/Latch, which will be removed : <zbt0/write_data_old1_27> 
 INFO:Xst:2261 - The FF/Latch <zbt1/write_data_old1_33> in Unit <labkit> is equivalent to the following FF/Latch, which will be removed : <zbt0/write_data_old1_33> 
@@ -2335,6 +2301,9 @@ INFO:Xst:2261 - The FF/Latch <zbt1/write_data_old1_6> in Unit <labkit> is equiva
 INFO:Xst:2261 - The FF/Latch <zbt1/write_data_old1_7> in Unit <labkit> is equivalent to the following FF/Latch, which will be removed : <zbt0/write_data_old1_7> 
 INFO:Xst:2261 - The FF/Latch <zbt1/write_data_old1_8> in Unit <labkit> is equivalent to the following FF/Latch, which will be removed : <zbt0/write_data_old1_8> 
 INFO:Xst:2261 - The FF/Latch <zbt1/write_data_old1_9> in Unit <labkit> is equivalent to the following FF/Latch, which will be removed : <zbt0/write_data_old1_9> 
+INFO:Xst:2261 - The FF/Latch <zbt1/write_data_old2_34> in Unit <labkit> is equivalent to the following FF/Latch, which will be removed : <zbt0/write_data_old2_34> 
+INFO:Xst:2261 - The FF/Latch <zbt1/write_data_old2_29> in Unit <labkit> is equivalent to the following FF/Latch, which will be removed : <zbt0/write_data_old2_29> 
+INFO:Xst:2261 - The FF/Latch <zbt1/write_data_old2_35> in Unit <labkit> is equivalent to the following FF/Latch, which will be removed : <zbt0/write_data_old2_35> 
 INFO:Xst:2261 - The FF/Latch <zbt1/write_data_old2_0> in Unit <labkit> is equivalent to the following FF/Latch, which will be removed : <zbt0/write_data_old2_0> 
 INFO:Xst:2261 - The FF/Latch <zbt1/write_data_old2_1> in Unit <labkit> is equivalent to the following FF/Latch, which will be removed : <zbt0/write_data_old2_1> 
 INFO:Xst:2261 - The FF/Latch <zbt1/write_data_old2_2> in Unit <labkit> is equivalent to the following FF/Latch, which will be removed : <zbt0/write_data_old2_2> 
@@ -2343,10 +2312,10 @@ INFO:Xst:2261 - The FF/Latch <zbt1/write_data_old2_4> in Unit <labkit> is equiva
 INFO:Xst:2261 - The FF/Latch <zbt1/write_data_old2_5> in Unit <labkit> is equivalent to the following FF/Latch, which will be removed : <zbt0/write_data_old2_5> 
 INFO:Xst:2261 - The FF/Latch <zbt1/write_data_old2_6> in Unit <labkit> is equivalent to the following FF/Latch, which will be removed : <zbt0/write_data_old2_6> 
 INFO:Xst:2261 - The FF/Latch <zbt1/write_data_old2_7> in Unit <labkit> is equivalent to the following FF/Latch, which will be removed : <zbt0/write_data_old2_7> 
-INFO:Xst:2261 - The FF/Latch <zbt1/write_data_old2_8> in Unit <labkit> is equivalent to the following FF/Latch, which will be removed : <zbt0/write_data_old2_8> 
-INFO:Xst:2261 - The FF/Latch <zbt1/write_data_old2_9> in Unit <labkit> is equivalent to the following FF/Latch, which will be removed : <zbt0/write_data_old2_9> 
 INFO:Xst:2261 - The FF/Latch <zbt1/write_data_old2_10> in Unit <labkit> is equivalent to the following FF/Latch, which will be removed : <zbt0/write_data_old2_10> 
+INFO:Xst:2261 - The FF/Latch <zbt1/write_data_old2_8> in Unit <labkit> is equivalent to the following FF/Latch, which will be removed : <zbt0/write_data_old2_8> 
 INFO:Xst:2261 - The FF/Latch <zbt1/write_data_old2_11> in Unit <labkit> is equivalent to the following FF/Latch, which will be removed : <zbt0/write_data_old2_11> 
+INFO:Xst:2261 - The FF/Latch <zbt1/write_data_old2_9> in Unit <labkit> is equivalent to the following FF/Latch, which will be removed : <zbt0/write_data_old2_9> 
 INFO:Xst:2261 - The FF/Latch <zbt1/write_data_old2_12> in Unit <labkit> is equivalent to the following FF/Latch, which will be removed : <zbt0/write_data_old2_12> 
 INFO:Xst:2261 - The FF/Latch <zbt1/write_data_old2_13> in Unit <labkit> is equivalent to the following FF/Latch, which will be removed : <zbt0/write_data_old2_13> 
 INFO:Xst:2261 - The FF/Latch <zbt1/write_data_old2_14> in Unit <labkit> is equivalent to the following FF/Latch, which will be removed : <zbt0/write_data_old2_14> 
@@ -2366,24 +2335,11 @@ INFO:Xst:2261 - The FF/Latch <zbt1/write_data_old2_31> in Unit <labkit> is equiv
 INFO:Xst:2261 - The FF/Latch <zbt1/write_data_old2_26> in Unit <labkit> is equivalent to the following FF/Latch, which will be removed : <zbt0/write_data_old2_26> 
 INFO:Xst:2261 - The FF/Latch <zbt1/write_data_old2_32> in Unit <labkit> is equivalent to the following FF/Latch, which will be removed : <zbt0/write_data_old2_32> 
 INFO:Xst:2261 - The FF/Latch <zbt1/write_data_old2_27> in Unit <labkit> is equivalent to the following FF/Latch, which will be removed : <zbt0/write_data_old2_27> 
-INFO:Xst:2261 - The FF/Latch <zbt1/write_data_old2_28> in Unit <labkit> is equivalent to the following FF/Latch, which will be removed : <zbt0/write_data_old2_28> 
 INFO:Xst:2261 - The FF/Latch <zbt1/write_data_old2_33> in Unit <labkit> is equivalent to the following FF/Latch, which will be removed : <zbt0/write_data_old2_33> 
-INFO:Xst:2261 - The FF/Latch <zbt1/write_data_old2_29> in Unit <labkit> is equivalent to the following FF/Latch, which will be removed : <zbt0/write_data_old2_29> 
-INFO:Xst:2261 - The FF/Latch <zbt1/write_data_old2_34> in Unit <labkit> is equivalent to the following FF/Latch, which will be removed : <zbt0/write_data_old2_34> 
-INFO:Xst:2261 - The FF/Latch <zbt1/write_data_old2_35> in Unit <labkit> is equivalent to the following FF/Latch, which will be removed : <zbt0/write_data_old2_35> 
+INFO:Xst:2261 - The FF/Latch <zbt1/write_data_old2_28> in Unit <labkit> is equivalent to the following FF/Latch, which will be removed : <zbt0/write_data_old2_28> 
 INFO:Xst:2261 - The FF/Latch <l_right_data_0> in Unit <ac97> is equivalent to the following 7 FFs/Latches, which will be removed : <l_right_data_1> <l_right_data_2> <l_right_data_3> <l_right_data_4> <l_right_data_5> <l_right_data_6> <l_right_data_7> 
-INFO:Xst:2261 - The FF/Latch <out_data_0> in Unit <modifiedlab5audio> is equivalent to the following 11 FFs/Latches, which will be removed : <out_data_1> <out_data_2> <out_data_3> <out_data_4> <out_data_5> <out_data_6> <out_data_7> <out_data_8> <out_data_9> <out_data_10> <out_data_11> 
 WARNING:Xst:1710 - FF/Latch <l_right_data_0> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <out_data_0> (without init value) has a constant value of 0 in block <modifiedlab5audio>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <ma1/max_freq_12> (without init value) has a constant value of 0 in block <labkit>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:2677 - Node <gen_modules[5].d/clean> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <gen_modules[5].d/new> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <gen_modules[1].d/clean> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <gen_modules[1].d/new> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <gen_modules[0].d/clean> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <gen_modules[0].d/new> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <bb0/clean> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <bb0/new> of sequential type is unconnected in block <labkit>.
 WARNING:Xst:1710 - FF/Latch <threshold_amount_0> (without init value) has a constant value of 0 in block <compression_gain_computer>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <threshold_amount_8> (without init value) has a constant value of 0 in block <compression_gain_computer>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <blink_fo_data_7> (without init value) has a constant value of 0 in block <param_select>. This FF/Latch will be trimmed during the optimization process.
@@ -2396,16 +2352,23 @@ WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <blink_fo_data_15> (
 INFO:Xst:2261 - The FF/Latch <dots_7> in Unit <modified_display_16hex> is equivalent to the following 4 FFs/Latches, which will be removed : <dots_15> <dots_23> <dots_31> <dots_39> 
 INFO:Xst:2261 - The FF/Latch <blink_fo_data_0> in Unit <param_select> is equivalent to the following FF/Latch, which will be removed : <blink_fo_data_1> 
 INFO:Xst:2261 - The FF/Latch <blink_fo_data_2> in Unit <param_select> is equivalent to the following FF/Latch, which will be removed : <blink_fo_data_3> 
+INFO:Xst:2261 - The FF/Latch <song_max_0> in Unit <addresscalculator> is equivalent to the following 6 FFs/Latches, which will be removed : <song_max_1> <song_max_2> <song_max_3> <song_max_4> <song_max_5> <song_max_6> 
+INFO:Xst:2261 - The FF/Latch <song_max_9> in Unit <addresscalculator> is equivalent to the following FF/Latch, which will be removed : <song_max_12> 
 INFO:Xst:2261 - The FF/Latch <threshold_amount_2> in Unit <compression_gain_computer> is equivalent to the following FF/Latch, which will be removed : <threshold_amount_5> 
 INFO:Xst:2261 - The FF/Latch <threshold_amount_3> in Unit <compression_gain_computer> is equivalent to the following FF/Latch, which will be removed : <threshold_amount_6> 
 
 Optimizing unit <labkit> ...
+
+Optimizing unit <centralFSM> ...
+INFO:Xst:2261 - The FF/Latch <song_choice_0> in Unit <centralFSM> is equivalent to the following FF/Latch, which will be removed : <song_name_0> 
 
 Optimizing unit <modified_display_16hex> ...
 INFO:Xst:2261 - The FF/Latch <dots_17> in Unit <modified_display_16hex> is equivalent to the following FF/Latch, which will be removed : <dots_20> 
 INFO:Xst:2261 - The FF/Latch <dots_9> in Unit <modified_display_16hex> is equivalent to the following FF/Latch, which will be removed : <dots_12> 
 
 Optimizing unit <param_select> ...
+
+Optimizing unit <addresscalculator> ...
 
 Optimizing unit <memprocessor> ...
 
@@ -2434,3 +2397,654 @@ Optimizing unit <digit_selector> ...
 Optimizing unit <modifiedlab5audio> ...
 
 Optimizing unit <process_audio> ...
+
+Optimizing unit <signed_binary_12bit_to_dB> ...
+
+Optimizing unit <delay_module> ...
+
+Optimizing unit <hud_digits> ...
+
+Optimizing unit <compression> ...
+
+Optimizing unit <hud_display> ...
+WARNING:Xst:1710 - FF/Latch <hd/ma_digs/number_13_3> (without init value) has a constant value of 0 in block <labkit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <hd/ma_digs/number_13_2> (without init value) has a constant value of 0 in block <labkit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <hd/ma_digs/number_13_1> (without init value) has a constant value of 0 in block <labkit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <hd/ma_digs/number_13_0> (without init value) has a constant value of 0 in block <labkit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <hd/ma_digs/number_12_3> (without init value) has a constant value of 0 in block <labkit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <hd/ma_digs/number_12_2> (without init value) has a constant value of 0 in block <labkit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <hd/ma_digs/number_12_1> (without init value) has a constant value of 0 in block <labkit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <hd/ma_digs/number_12_0> (without init value) has a constant value of 0 in block <labkit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <hd/ma_digs/number_11_3> (without init value) has a constant value of 0 in block <labkit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <hd/ma_digs/number_11_2> (without init value) has a constant value of 0 in block <labkit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <hd/ma_digs/number_11_1> (without init value) has a constant value of 0 in block <labkit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <hd/ma_digs/number_11_0> (without init value) has a constant value of 0 in block <labkit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <hd/ma_digs/number_10_3> (without init value) has a constant value of 0 in block <labkit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <hd/ma_digs/number_10_2> (without init value) has a constant value of 0 in block <labkit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <hd/ma_digs/number_10_1> (without init value) has a constant value of 0 in block <labkit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <hd/ma_digs/number_10_0> (without init value) has a constant value of 0 in block <labkit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <hd/ma_digs/number_9_3> (without init value) has a constant value of 0 in block <labkit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <hd/ma_digs/number_9_2> (without init value) has a constant value of 0 in block <labkit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <hd/ma_digs/number_9_1> (without init value) has a constant value of 0 in block <labkit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <hd/ma_digs/number_9_0> (without init value) has a constant value of 0 in block <labkit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <hd/ma_digs/number_8_3> (without init value) has a constant value of 0 in block <labkit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <hd/ma_digs/number_8_2> (without init value) has a constant value of 0 in block <labkit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <hd/ma_digs/number_8_1> (without init value) has a constant value of 0 in block <labkit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <hd/ma_digs/number_8_0> (without init value) has a constant value of 0 in block <labkit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <num_to_db/absolute_value_input_0> (without init value) has a constant value of 0 in block <labkit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <a/ac97/l_cmd_data_18> (without init value) has a constant value of 0 in block <labkit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <a/ac97/l_cmd_data_17> (without init value) has a constant value of 0 in block <labkit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <a/ac97/l_cmd_data_11> (without init value) has a constant value of 0 in block <labkit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <a/ac97/l_cmd_data_9> (without init value) has a constant value of 0 in block <labkit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <a/ac97/l_cmd_addr_18> (without init value) has a constant value of 0 in block <labkit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <a/ac97/l_cmd_addr_12> (without init value) has a constant value of 0 in block <labkit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:2677 - Node <gen_modules[5].d/clean> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <gen_modules[5].d/new> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <gen_modules[1].d/clean> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <gen_modules[1].d/new> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <gen_modules[5].d/count_0> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <gen_modules[5].d/count_1> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <gen_modules[5].d/count_2> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <gen_modules[5].d/count_3> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <gen_modules[5].d/count_4> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <gen_modules[5].d/count_5> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <gen_modules[5].d/count_6> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <gen_modules[5].d/count_7> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <gen_modules[5].d/count_8> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <gen_modules[5].d/count_9> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <gen_modules[5].d/count_10> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <gen_modules[5].d/count_11> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <gen_modules[5].d/count_12> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <gen_modules[5].d/count_13> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <gen_modules[5].d/count_14> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <gen_modules[5].d/count_15> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <gen_modules[5].d/count_16> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <gen_modules[5].d/count_17> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <gen_modules[5].d/count_18> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <gen_modules[1].d/count_0> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <gen_modules[1].d/count_1> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <gen_modules[1].d/count_2> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <gen_modules[1].d/count_3> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <gen_modules[1].d/count_4> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <gen_modules[1].d/count_5> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <gen_modules[1].d/count_6> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <gen_modules[1].d/count_7> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <gen_modules[1].d/count_8> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <gen_modules[1].d/count_9> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <gen_modules[1].d/count_10> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <gen_modules[1].d/count_11> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <gen_modules[1].d/count_12> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <gen_modules[1].d/count_13> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <gen_modules[1].d/count_14> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <gen_modules[1].d/count_15> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <gen_modules[1].d/count_16> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <gen_modules[1].d/count_17> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <gen_modules[1].d/count_18> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <central_fsm/effects_6> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <central_fsm/effects_5> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <central_fsm/effects_4> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <central_fsm/effects_3> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <central_fsm/effects_2> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <central_fsm/effects_1> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <central_fsm/effects_0> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <central_fsm/effect_values_16> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <central_fsm/effect_values_15> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <central_fsm/effect_values_14> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <central_fsm/effect_values_13> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <central_fsm/effect_values_12> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <central_fsm/effect_values_11> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <central_fsm/effect_values_10> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <central_fsm/effect_values_9> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <central_fsm/effect_values_8> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <central_fsm/effect_values_7> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <central_fsm/effect_values_6> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <central_fsm/effect_values_5> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <central_fsm/effect_values_4> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <central_fsm/effect_values_3> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <central_fsm/effect_values_2> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <central_fsm/effect_values_1> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <central_fsm/effect_values_0> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <central_fsm/song_name_3> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <central_fsm/song_name_2> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <central_fsm/song_name_1> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <gs_fsm/hard_limiter/done> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <a/ac97/right_in_data_0> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <a/ac97/right_in_data_1> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <a/ac97/right_in_data_2> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <a/ac97/right_in_data_3> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <a/ac97/right_in_data_4> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <a/ac97/right_in_data_5> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <a/ac97/right_in_data_6> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <a/ac97/right_in_data_7> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <a/ac97/right_in_data_8> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <a/ac97/right_in_data_9> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <a/ac97/right_in_data_10> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <a/ac97/right_in_data_11> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <a/ac97/right_in_data_12> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <a/ac97/right_in_data_13> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <a/ac97/right_in_data_14> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <a/ac97/right_in_data_15> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <a/ac97/right_in_data_16> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <a/ac97/right_in_data_17> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <a/ac97/right_in_data_18> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <a/ac97/right_in_data_19> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <num_to_db/done> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <gs_fsm/delay/done> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <gs_fsm/compress/level_detector/output_gain_0> of sequential type is unconnected in block <labkit>.
+
+Mapping all equations...
+Building and optimizing final netlist ...
+INFO:Xst:2261 - The FF/Latch <a/ac97/l_cmd_data_4> in Unit <labkit> is equivalent to the following FF/Latch, which will be removed : <a/ac97/l_cmd_data_12> 
+INFO:Xst:2261 - The FF/Latch <a/ac97/l_cmd_data_5> in Unit <labkit> is equivalent to the following FF/Latch, which will be removed : <a/ac97/l_cmd_data_13> 
+INFO:Xst:2261 - The FF/Latch <a/ac97/l_cmd_data_6> in Unit <labkit> is equivalent to the following FF/Latch, which will be removed : <a/ac97/l_cmd_data_14> 
+INFO:Xst:2261 - The FF/Latch <a/ac97/l_cmd_data_8> in Unit <labkit> is equivalent to the following FF/Latch, which will be removed : <a/ac97/l_cmd_data_16> 
+INFO:Xst:2261 - The FF/Latch <addr_calc/record_state> in Unit <labkit> is equivalent to the following FF/Latch, which will be removed : <mem_pros/record_state> 
+Found area constraint ratio of 100 (+ 5) on block labkit, actual ratio is 21.
+INFO:Xst:2260 - The FF/Latch <blk00000df7> in Unit <a1/fft> is equivalent to the following 2 FFs/Latches : <blk000018b7> <blk00002354> 
+INFO:Xst:2260 - The FF/Latch <blk00000710> in Unit <a1/fft> is equivalent to the following FF/Latch : <blk00000742> 
+INFO:Xst:2260 - The FF/Latch <blk0000070f> in Unit <a1/fft> is equivalent to the following FF/Latch : <blk00000741> 
+INFO:Xst:2260 - The FF/Latch <blk00000df7> in Unit <a1/fft> is equivalent to the following 2 FFs/Latches : <blk000018b7> <blk00002354> 
+INFO:Xst:2260 - The FF/Latch <blk00000710> in Unit <a1/fft> is equivalent to the following FF/Latch : <blk00000742> 
+INFO:Xst:2260 - The FF/Latch <blk0000070f> in Unit <a1/fft> is equivalent to the following FF/Latch : <blk00000741> 
+
+Final Macro Processing ...
+
+Processing Unit <labkit> :
+	Found 2-bit shift register for signal <xblank>.
+	Found 4-bit shift register for signal <hs>.
+	Found 4-bit shift register for signal <vs>.
+	Found 2-bit shift register for signal <b>.
+	Found 2-bit shift register for signal <zbt1/write_data_old2_35>.
+	Found 2-bit shift register for signal <zbt1/write_data_old2_34>.
+	Found 2-bit shift register for signal <zbt1/write_data_old2_33>.
+	Found 2-bit shift register for signal <zbt1/write_data_old2_32>.
+	Found 2-bit shift register for signal <zbt1/write_data_old2_31>.
+	Found 2-bit shift register for signal <zbt1/write_data_old2_30>.
+	Found 2-bit shift register for signal <zbt1/write_data_old2_29>.
+	Found 2-bit shift register for signal <zbt1/write_data_old2_28>.
+	Found 2-bit shift register for signal <zbt1/write_data_old2_27>.
+	Found 2-bit shift register for signal <zbt1/write_data_old2_26>.
+	Found 2-bit shift register for signal <zbt1/write_data_old2_25>.
+	Found 2-bit shift register for signal <zbt1/write_data_old2_24>.
+	Found 2-bit shift register for signal <zbt1/write_data_old2_23>.
+	Found 2-bit shift register for signal <zbt1/write_data_old2_22>.
+	Found 2-bit shift register for signal <zbt1/write_data_old2_21>.
+	Found 2-bit shift register for signal <zbt1/write_data_old2_20>.
+	Found 2-bit shift register for signal <zbt1/write_data_old2_19>.
+	Found 2-bit shift register for signal <zbt1/write_data_old2_18>.
+	Found 2-bit shift register for signal <zbt1/write_data_old2_17>.
+	Found 2-bit shift register for signal <zbt1/write_data_old2_16>.
+	Found 2-bit shift register for signal <zbt1/write_data_old2_15>.
+	Found 2-bit shift register for signal <zbt1/write_data_old2_14>.
+	Found 2-bit shift register for signal <zbt1/write_data_old2_13>.
+	Found 2-bit shift register for signal <zbt1/write_data_old2_12>.
+	Found 2-bit shift register for signal <zbt1/write_data_old2_11>.
+	Found 2-bit shift register for signal <zbt1/write_data_old2_10>.
+	Found 2-bit shift register for signal <zbt1/write_data_old2_9>.
+	Found 2-bit shift register for signal <zbt1/write_data_old2_8>.
+	Found 2-bit shift register for signal <zbt1/write_data_old2_7>.
+	Found 2-bit shift register for signal <zbt1/write_data_old2_6>.
+	Found 2-bit shift register for signal <zbt1/write_data_old2_5>.
+	Found 2-bit shift register for signal <zbt1/write_data_old2_4>.
+	Found 2-bit shift register for signal <zbt1/write_data_old2_3>.
+	Found 2-bit shift register for signal <zbt1/write_data_old2_2>.
+	Found 2-bit shift register for signal <zbt1/write_data_old2_1>.
+	Found 2-bit shift register for signal <zbt1/write_data_old2_0>.
+	Found 2-bit shift register for signal <zbt1/we_delay_1>.
+	Found 2-bit shift register for signal <zbt0/we_delay_1>.
+	Found 7-bit shift register for signal <disp/control_30>.
+	Found 7-bit shift register for signal <disp/control_22>.
+	Found 7-bit shift register for signal <disp/control_14>.
+	Found 7-bit shift register for signal <disp/control_6>.
+	Found 8-bit shift register for signal <a/ac97/left_in_data_8>.
+	Found 2-bit shift register for signal <a/ready_sync_1>.
+Unit <labkit> processed.
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 1586
+ Flip-Flops                                            : 1586
+# Shift Registers                                      : 48
+ 2-bit shift register                                  : 41
+ 4-bit shift register                                  : 2
+ 7-bit shift register                                  : 4
+ 8-bit shift register                                  : 1
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                             *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Final Report                               *
+=========================================================================
+Final Results
+RTL Top Level Output File Name     : labkit.ngr
+Top Level Output File Name         : labkit
+Output Format                      : NGC
+Optimization Goal                  : Speed
+Keep Hierarchy                     : NO
+
+Design Statistics
+# IOs                              : 576
+
+Cell Usage :
+# BELS                             : 18998
+#      BUF                         : 634
+#      GND                         : 34
+#      INV                         : 197
+#      LUT1                        : 435
+#      LUT2                        : 671
+#      LUT2_D                      : 2
+#      LUT3                        : 1036
+#      LUT3_D                      : 24
+#      LUT3_L                      : 28
+#      LUT4                        : 6691
+#      LUT4_D                      : 37
+#      LUT4_L                      : 23
+#      MULT_AND                    : 851
+#      MUXCY                       : 3739
+#      MUXF5                       : 892
+#      MUXF6                       : 176
+#      MUXF7                       : 71
+#      MUXF8                       : 27
+#      VCC                         : 34
+#      XORCY                       : 3396
+# FlipFlops/Latches                : 10468
+#      FD                          : 822
+#      FDCE                        : 1055
+#      FDE                         : 7203
+#      FDE_1                       : 13
+#      FDR                         : 165
+#      FDRE                        : 931
+#      FDRS                        : 16
+#      FDRSE                       : 8
+#      FDS                         : 133
+#      FDSE                        : 100
+#      LDCPE                       : 22
+# RAMS                             : 187
+#      RAM32X1D                    : 44
+#      RAM64X1D                    : 42
+#      RAMB16_S18_S18              : 5
+#      RAMB16_S1_S1                : 40
+#      RAMB16_S2                   : 6
+#      RAMB16_S2_S2                : 8
+#      RAMB16_S36_S36              : 8
+#      RAMB16_S4_S4                : 12
+#      RAMB16_S9_S9                : 22
+# Shift Registers                  : 1375
+#      SRL16                       : 6
+#      SRL16E                      : 1368
+#      SRL16E_1                    : 1
+# Clock Buffers                    : 5
+#      BUFG                        : 4
+#      BUFGP                       : 1
+# IO Buffers                       : 329
+#      IBUF                        : 16
+#      IBUFG                       : 1
+#      IOBUF                       : 72
+#      OBUF                        : 240
+# DCMs                             : 1
+#      DCM                         : 1
+# MULTs                            : 55
+#      MULT18X18                   : 23
+#      MULT18X18S                  : 32
+=========================================================================
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 2v6000bf957-4 
+
+ Number of Slices:                     7285  out of  33792    21%  
+ Number of Slice Flip Flops:          10468  out of  67584    15%  
+ Number of 4 input LUTs:              11031  out of  67584    16%  
+    Number used as logic:              9144
+    Number used as Shift registers:    1375
+    Number used as RAMs:                512
+ Number of IOs:                         576
+ Number of bonded IOBs:                 330  out of    684    48%  
+ Number of BRAMs:                       101  out of    144    70%  
+ Number of MULT18X18s:                   55  out of    144    38%  
+ Number of GCLKs:                         5  out of     16    31%  
+ Number of DCMs:                          1  out of     12     8%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+TIMING REPORT
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------+-------+
+Clock Signal                                                                   | Clock buffer(FF name)                                                                                               | Load  |
+-------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------+-------+
+clock_27mhz                                                                    | vclk1:CLKFX                                                                                                         | 1054  |
+clock_27mhz                                                                    | IBUFG+BUFG                                                                                                          | 10865 |
+ma1/Mcompar_max_freq_cmp_gt0000_cy<9>1(ma1/Mcompar_max_freq_cmp_gt0000_cy<9>:O)| BUFG(*)(ma1/max_freq_11)                                                                                            | 22    |
+disp/clock1                                                                    | BUFG                                                                                                                | 43    |
+ac97_bit_clock                                                                 | BUFGP                                                                                                               | 73    |
+hd/ma_digs/the_dig/img_nueve/BU2/dbiterr                                       | NONE(hd/ma_digs/the_dig/img_nueve/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_init.ram/dpram.dp9x9.ram) | 1     |
+hd/ma_digs/the_dig/img_ocho/BU2/dbiterr                                        | NONE(hd/ma_digs/the_dig/img_ocho/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_init.ram/dpram.dp9x9.ram)  | 1     |
+hd/ma_digs/the_dig/img_siete/BU2/dbiterr                                       | NONE(hd/ma_digs/the_dig/img_siete/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_init.ram/dpram.dp9x9.ram) | 1     |
+hd/ma_digs/the_dig/img_seis/BU2/dbiterr                                        | NONE(hd/ma_digs/the_dig/img_seis/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_init.ram/dpram.dp9x9.ram)  | 1     |
+hd/ma_digs/the_dig/img_cinco/BU2/dbiterr                                       | NONE(hd/ma_digs/the_dig/img_cinco/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_init.ram/dpram.dp9x9.ram) | 1     |
+hd/ma_digs/the_dig/img_cuatro/BU2/dbiterr                                      | NONE(hd/ma_digs/the_dig/img_cuatro/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_init.ram/dpram.dp9x9.ram)| 1     |
+hd/ma_digs/the_dig/img_tres/BU2/dbiterr                                        | NONE(hd/ma_digs/the_dig/img_tres/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_init.ram/dpram.dp9x9.ram)  | 1     |
+hd/ma_digs/the_dig/img_dos/BU2/dbiterr                                         | NONE(hd/ma_digs/the_dig/img_dos/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_init.ram/dpram.dp9x9.ram)   | 1     |
+hd/ma_digs/the_dig/img_uno/BU2/dbiterr                                         | NONE(hd/ma_digs/the_dig/img_uno/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_init.ram/dpram.dp9x9.ram)   | 1     |
+hd/ma_digs/the_dig/img_cero/BU2/dbiterr                                        | NONE(hd/ma_digs/the_dig/img_cero/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_init.ram/dpram.dp9x9.ram)  | 1     |
+hd/thehud/rom2/BU2/dbiterr                                                     | NONE(hd/thehud/rom2/BU2/U0/blk_mem_generator/valid.cstr/ramloop[14].ram.r/v2_init.ram/dpram.dp1x1.ram)              | 15    |
+hd/myblob/rom1/BU2/dbiterr                                                     | NONE(hd/myblob/rom1/BU2/U0/blk_mem_generator/valid.cstr/ramloop[28].ram.r/v2_init.ram/dpram.dp1x1.ram)              | 29    |
+-------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------+-------+
+(*) This 1 clock signal(s) are generated by combinatorial logic,
+and XST is not able to identify which are the primary clock signals.
+Please use the CLOCK_SIGNAL constraint to specify the clock signal(s) generated by combinatorial logic.
+INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
+
+Asynchronous Control Signals Information:
+----------------------------------------
+-----------------------------------------------------+-----------------------------+-------+
+Control Signal                                       | Buffer(FF name)             | Load  |
+-----------------------------------------------------+-----------------------------+-------+
+a1/fft/sig00000001(a1/fft/blk00000002:G)             | NONE(a1/fft/blk00000f9c)    | 1077  |
+a1/fft/ce_11(a1/fft/ce_11:O)                         | NONE(a1/fft/blk000035de)    | 6     |
+a1/fft/ce_17(a1/fft/ce_17:O)                         | NONE(a1/fft/blk00004e28)    | 6     |
+a1/fft/ce_8(a1/fft/ce_8:O)                           | NONE(a1/fft/blk000025c8)    | 6     |
+a1/fft/ce_14(a1/fft/ce_14:O)                         | NONE(a1/fft/blk000041aa)    | 5     |
+a/ac97/Mmux__varindex0000_9(XST_GND:G)               | NONE(a1/Mmult_rere_mult0000)| 3     |
+a1/fft/ce_3(a1/fft/ce_3:O)                           | NONE(a1/fft/blk00000f9c)    | 3     |
+a1/fft/ce_6(a1/fft/ce_6:O)                           | NONE(a1/fft/blk00001a4d)    | 2     |
+a1/haddr_not0001(a1/haddr_not00011:O)                | NONE(a1/Mmult_rere_mult0000)| 2     |
+a1/fft/ce_15(a1/fft/ce_15:O)                         | NONE(a1/fft/blk00004343)    | 1     |
+a1/fft/ce_5(a1/fft/ce_5:O)                           | NONE(a1/fft/blk00001a09)    | 1     |
+ma1/max_amp_0__and0000(ma1/max_amp_0__and00001:O)    | NONE(ma1/max_amp_0)         | 1     |
+ma1/max_amp_0__and0001(ma1/max_amp_0__and00011:O)    | NONE(ma1/max_amp_0)         | 1     |
+ma1/max_amp_1__and0000(ma1/max_amp_1__and00001:O)    | NONE(ma1/max_amp_1)         | 1     |
+ma1/max_amp_1__and0001(ma1/max_amp_1__and00011:O)    | NONE(ma1/max_amp_1)         | 1     |
+ma1/max_amp_2__and0000(ma1/max_amp_2__and00001:O)    | NONE(ma1/max_amp_2)         | 1     |
+ma1/max_amp_2__and0001(ma1/max_amp_2__and00011:O)    | NONE(ma1/max_amp_2)         | 1     |
+ma1/max_amp_3__and0000(ma1/max_amp_3__and00001:O)    | NONE(ma1/max_amp_3)         | 1     |
+ma1/max_amp_3__and0001(ma1/max_amp_3__and00011:O)    | NONE(ma1/max_amp_3)         | 1     |
+ma1/max_amp_4__and0000(ma1/max_amp_4__and00001:O)    | NONE(ma1/max_amp_4)         | 1     |
+ma1/max_amp_4__and0001(ma1/max_amp_4__and00011:O)    | NONE(ma1/max_amp_4)         | 1     |
+ma1/max_amp_5__and0000(ma1/max_amp_5__and00001:O)    | NONE(ma1/max_amp_5)         | 1     |
+ma1/max_amp_5__and0001(ma1/max_amp_5__and00011:O)    | NONE(ma1/max_amp_5)         | 1     |
+ma1/max_amp_6__and0000(ma1/max_amp_6__and00001:O)    | NONE(ma1/max_amp_6)         | 1     |
+ma1/max_amp_6__and0001(ma1/max_amp_6__and00011:O)    | NONE(ma1/max_amp_6)         | 1     |
+ma1/max_amp_7__and0000(ma1/max_amp_7__and00001:O)    | NONE(ma1/max_amp_7)         | 1     |
+ma1/max_amp_7__and0001(ma1/max_amp_7__and00011:O)    | NONE(ma1/max_amp_7)         | 1     |
+ma1/max_amp_8__and0000(ma1/max_amp_8__and00001:O)    | NONE(ma1/max_amp_8)         | 1     |
+ma1/max_amp_8__and0001(ma1/max_amp_8__and00011:O)    | NONE(ma1/max_amp_8)         | 1     |
+ma1/max_amp_9__and0000(ma1/max_amp_9__and00001:O)    | NONE(ma1/max_amp_9)         | 1     |
+ma1/max_amp_9__and0001(ma1/max_amp_9__and00011:O)    | NONE(ma1/max_amp_9)         | 1     |
+ma1/max_freq_0__and0000(ma1/max_freq_0__and00001:O)  | NONE(ma1/max_freq_0)        | 1     |
+ma1/max_freq_10__and0000(ma1/max_freq_10__and00001:O)| NONE(ma1/max_freq_10)       | 1     |
+ma1/max_freq_10__and0001(ma1/max_freq_10__and00011:O)| NONE(ma1/max_freq_10)       | 1     |
+ma1/max_freq_11__and0000(ma1/max_freq_11__and00001:O)| NONE(ma1/max_freq_11)       | 1     |
+ma1/max_freq_11__and0001(ma1/max_freq_11__and00011:O)| NONE(ma1/max_freq_11)       | 1     |
+ma1/max_freq_1__and0000(ma1/max_freq_1__and00001:O)  | NONE(ma1/max_freq_1)        | 1     |
+ma1/max_freq_1__and0001(ma1/max_freq_1__and00011:O)  | NONE(ma1/max_freq_1)        | 1     |
+ma1/max_freq_2__and0000(ma1/max_freq_2__and00001:O)  | NONE(ma1/max_freq_2)        | 1     |
+ma1/max_freq_2__and0001(ma1/max_freq_2__and00011:O)  | NONE(ma1/max_freq_2)        | 1     |
+ma1/max_freq_3__and0000(ma1/max_freq_3__and00001:O)  | NONE(ma1/max_freq_3)        | 1     |
+ma1/max_freq_3__and0001(ma1/max_freq_3__and00011:O)  | NONE(ma1/max_freq_3)        | 1     |
+ma1/max_freq_4__and0000(ma1/max_freq_4__and00001:O)  | NONE(ma1/max_freq_4)        | 1     |
+ma1/max_freq_4__and0001(ma1/max_freq_4__and00011:O)  | NONE(ma1/max_freq_4)        | 1     |
+ma1/max_freq_5__and0000(ma1/max_freq_5__and00001:O)  | NONE(ma1/max_freq_5)        | 1     |
+ma1/max_freq_5__and0001(ma1/max_freq_5__and00011:O)  | NONE(ma1/max_freq_5)        | 1     |
+ma1/max_freq_6__and0000(ma1/max_freq_6__and00001:O)  | NONE(ma1/max_freq_6)        | 1     |
+ma1/max_freq_6__and0001(ma1/max_freq_6__and00011:O)  | NONE(ma1/max_freq_6)        | 1     |
+ma1/max_freq_7__and0000(ma1/max_freq_7__and00001:O)  | NONE(ma1/max_freq_7)        | 1     |
+ma1/max_freq_7__and0001(ma1/max_freq_7__and00011:O)  | NONE(ma1/max_freq_7)        | 1     |
+ma1/max_freq_8__and0000(ma1/max_freq_8__and00001:O)  | NONE(ma1/max_freq_8)        | 1     |
+ma1/max_freq_8__and0001(ma1/max_freq_8__and00011:O)  | NONE(ma1/max_freq_8)        | 1     |
+ma1/max_freq_9__and0000(ma1/max_freq_9__and00001:O)  | NONE(ma1/max_freq_9)        | 1     |
+ma1/max_freq_9__and0001(ma1/max_freq_9__and00011:O)  | NONE(ma1/max_freq_9)        | 1     |
+-----------------------------------------------------+-----------------------------+-------+
+
+Timing Summary:
+---------------
+Speed Grade: -4
+
+   Minimum period: 71.182ns (Maximum Frequency: 14.049MHz)
+   Minimum input arrival time before clock: 3.372ns
+   Maximum output required time after clock: 6.914ns
+   Maximum combinational path delay: 7.617ns
+
+Timing Detail:
+--------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clock_27mhz'
+  Clock period: 71.182ns (frequency: 14.049MHz)
+  Total number of paths / destination ports: 490549 / 27145
+-------------------------------------------------------------------------
+Delay:               11.864ns (Levels of Logic = 5)
+  Source:            reset_sr (FF)
+  Destination:       a1/fft/blk0000011b/blk0000011e (FF)
+  Source Clock:      clock_27mhz rising 2.4X
+  Destination Clock: clock_27mhz rising
+
+  Data Path: reset_sr to a1/fft/blk0000011b/blk0000011e
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     SRL16:CLK->Q         79   2.901   1.243  reset_sr (power_on_reset)
+     LUT4:I2->O          479   0.439   2.246  a1/_or00001 (a1/_or0000)
+     begin scope: 'a1/fft'
+     BUF:I->O            479   0.439   2.286  ce_1 (ce_1)
+     begin scope: 'blk0000011b'
+     LUT4:I3->O            1   0.439   0.000  blk00000144 (sig00005721)
+     MUXCY:S->O            1   1.501   0.000  blk00000145 (sig000056fa)
+     FDRE:D                    0.370          blk0000011e
+    ----------------------------------------
+    Total                     11.864ns (6.089ns logic, 5.775ns route)
+                                       (51.3% logic, 48.7% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'disp/clock1'
+  Clock period: 11.817ns (frequency: 84.626MHz)
+  Total number of paths / destination ports: 1252 / 75
+-------------------------------------------------------------------------
+Delay:               11.817ns (Levels of Logic = 8)
+  Source:            disp/dot_index_0 (FF)
+  Destination:       disp/dot_index_9 (FF)
+  Source Clock:      disp/clock1 rising
+  Destination Clock: disp/clock1 rising
+
+  Data Path: disp/dot_index_0 to disp/dot_index_9
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDRS:C->Q            20   0.568   1.326  disp/dot_index_0 (disp/dot_index_0)
+     LUT3:I0->O            4   0.439   0.781  disp/dot_index_mux0000<6>21 (disp/N26)
+     LUT3:I2->O            5   0.439   0.804  disp/dot_index_mux0000<4>52 (disp/N29)
+     LUT3:I2->O            1   0.439   0.557  disp/state_cmp_eq0001_SW0 (N198)
+     LUT4:I3->O           17   0.439   1.220  disp/state_cmp_eq0001 (disp/state_cmp_eq0001)
+     LUT2:I1->O            3   0.439   0.759  disp/dot_index_mux0000<4>61 (disp/N44)
+     LUT4:I2->O            3   0.439   1.010  disp/dot_index_mux0000<0>61 (disp/N32)
+     LUT2:I0->O            2   0.439   0.910  disp/dot_index_mux0000<2>41 (disp/N103)
+     LUT4:I1->O            1   0.439   0.000  disp/dot_index_mux0000<0>102 (disp/dot_index_mux0000<0>102)
+     FDRS:D                    0.370          disp/dot_index_9
+    ----------------------------------------
+    Total                     11.817ns (4.450ns logic, 7.367ns route)
+                                       (37.7% logic, 62.3% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'ac97_bit_clock'
+  Clock period: 12.407ns (frequency: 80.600MHz)
+  Total number of paths / destination ports: 1740 / 109
+-------------------------------------------------------------------------
+Delay:               6.203ns (Levels of Logic = 3)
+  Source:            a/ac97/bit_count_6 (FF)
+  Destination:       a/ac97/Mshreg_left_in_data_8 (FF)
+  Source Clock:      ac97_bit_clock rising
+  Destination Clock: ac97_bit_clock falling
+
+  Data Path: a/ac97/bit_count_6 to a/ac97/Mshreg_left_in_data_8
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FD:C->Q              15   0.568   1.274  a/ac97/bit_count_6 (a/ac97/bit_count_6)
+     LUT3:I0->O            3   0.439   0.724  a/ac97/l_left_data_not0001132 (a/ac97/N18)
+     MUXF5:S->O            1   0.699   0.558  a/ac97/left_in_data_and000013_f5 (a/ac97/left_in_data_and000013)
+     LUT4:I3->O           14   0.439   0.978  a/ac97/left_in_data_and000048 (a/ac97/left_in_data_and0000)
+     SRL16E_1:CE               0.525          a/ac97/Mshreg_left_in_data_8
+    ----------------------------------------
+    Total                      6.203ns (2.670ns logic, 3.534ns route)
+                                       (43.0% logic, 57.0% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'clock_27mhz'
+  Total number of paths / destination ports: 417 / 381
+-------------------------------------------------------------------------
+Offset:              3.372ns (Levels of Logic = 2)
+  Source:            switch<7> (PAD)
+  Destination:       gen_modules[7].d/count_0 (FF)
+  Destination Clock: clock_27mhz rising
+
+  Data Path: switch<7> to gen_modules[7].d/count_0
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             4   0.825   0.787  switch_7_IBUF (switch_7_IBUF)
+     LUT4:I3->O           20   0.439   1.041  gen_modules[7].d/count_or00001 (gen_modules[7].d/count_or0000)
+     FDRE:R                    0.280          gen_modules[7].d/count_0
+    ----------------------------------------
+    Total                      3.372ns (1.544ns logic, 1.828ns route)
+                                       (45.8% logic, 54.2% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'ac97_bit_clock'
+  Total number of paths / destination ports: 1 / 1
+-------------------------------------------------------------------------
+Offset:              1.712ns (Levels of Logic = 1)
+  Source:            ac97_sdata_in (PAD)
+  Destination:       a/ac97/left_in_data_0 (FF)
+  Destination Clock: ac97_bit_clock falling
+
+  Data Path: ac97_sdata_in to a/ac97/left_in_data_0
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             1   0.825   0.517  ac97_sdata_in_IBUF (ac97_sdata_in_IBUF)
+     FDE_1:D                   0.370          a/ac97/left_in_data_0
+    ----------------------------------------
+    Total                      1.712ns (1.195ns logic, 0.517ns route)
+                                       (69.8% logic, 30.2% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'clock_27mhz'
+  Total number of paths / destination ports: 219 / 147
+-------------------------------------------------------------------------
+Offset:              6.914ns (Levels of Logic = 2)
+  Source:            zbt0/we_delay_1 (FF)
+  Destination:       ram0_data<35> (PAD)
+  Source Clock:      clock_27mhz rising
+
+  Data Path: zbt0/we_delay_1 to ram0_data<35>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDE:C->Q              1   0.568   0.517  zbt0/we_delay_1 (zbt0/we_delay_1)
+     INV:I->O             36   0.439   1.098  zbt0/we_delay<1>_inv1_INV_0 (zbt0/we_delay<1>_inv)
+     IOBUF:T->IO               4.292          ram0_data_35_IOBUF (ram0_data<35>)
+    ----------------------------------------
+    Total                      6.914ns (5.299ns logic, 1.615ns route)
+                                       (76.6% logic, 23.4% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'disp/clock1'
+  Total number of paths / destination ports: 4 / 4
+-------------------------------------------------------------------------
+Offset:              5.630ns (Levels of Logic = 1)
+  Source:            disp/disp_rs (FF)
+  Destination:       disp_rs (PAD)
+  Source Clock:      disp/clock1 rising
+
+  Data Path: disp/disp_rs to disp_rs
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDE:C->Q              2   0.568   0.701  disp/disp_rs (disp/disp_rs)
+     OBUF:I->O                 4.361          disp_rs_OBUF (disp_rs)
+    ----------------------------------------
+    Total                      5.630ns (4.929ns logic, 0.701ns route)
+                                       (87.5% logic, 12.5% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'ac97_bit_clock'
+  Total number of paths / destination ports: 2 / 2
+-------------------------------------------------------------------------
+Offset:              5.630ns (Levels of Logic = 1)
+  Source:            a/ac97/ac97_synch (FF)
+  Destination:       ac97_synch (PAD)
+  Source Clock:      ac97_bit_clock rising
+
+  Data Path: a/ac97/ac97_synch to ac97_synch
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDS:C->Q              2   0.568   0.701  a/ac97/ac97_synch (a/ac97/ac97_synch)
+     OBUF:I->O                 4.361          ac97_synch_OBUF (ac97_synch)
+    ----------------------------------------
+    Total                      5.630ns (4.929ns logic, 0.701ns route)
+                                       (87.5% logic, 12.5% route)
+
+=========================================================================
+Timing constraint: Default path analysis
+  Total number of paths / destination ports: 2 / 2
+-------------------------------------------------------------------------
+Delay:               7.617ns (Levels of Logic = 3)
+  Source:            clock_27mhz (PAD)
+  Destination:       ram0_clk (PAD)
+
+  Data Path: clock_27mhz to ram0_clk
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUFG:I->O            2   1.414   0.701  clock_27mhz_IBUFG (clock_27mhz_IBUFG1)
+     INV:I->O              2   0.439   0.701  ram1_clk1_INV_0 (ram1_clk_OBUF)
+     OBUF:I->O                 4.361          ram0_clk_OBUF (ram0_clk)
+    ----------------------------------------
+    Total                      7.617ns (6.214ns logic, 1.403ns route)
+                                       (81.6% logic, 18.4% route)
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 404.00 secs
+Total CPU time to Xst completion: 402.24 secs
+ 
+--> 
+
+
+Total memory usage is 944340 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :  628 (   0 filtered)
+Number of infos    :  180 (   0 filtered)
+

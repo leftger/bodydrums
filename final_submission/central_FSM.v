@@ -16,7 +16,7 @@ module centralFSM(reset, clk, //from fpga, input
       song_choice, start_song, pause_song,//to memory module, output
       effect_values,record_mode,
       record_mode_sel, song_name_sel, effect_values_sel, //from param_select
-      cfsm_state
+      cfsm_state, vb0
       );
    //fpga inputs         
    input reset; //reset signal
@@ -55,9 +55,12 @@ module centralFSM(reset, clk, //from fpga, input
    output reg start_song; //start record/playback, requires song choice and mode to be set 1 clock cycle before
    reg start_song_prev; //delay for start song
    
-   output reg pause_song; //pause song! switch 7 controls in record and playback, otherwise pause is 1
+   output reg pause_song; //pause song!b0 controls in record and playback, otherwise pause is 1
    
    input song_done; //abort! abort! stop dem incrementing, from memory
+	
+	input vb0; //pause button
+	reg vb0_prev; //prev input
    
    reg reset_delay; //delay for reset
    
@@ -83,9 +86,11 @@ module centralFSM(reset, clk, //from fpga, input
             start_song <= 0; //NO
             cfsm_state <= 2'b00; //start in standby
             effects <= switch[6:0];
+				vb0_prev <= vb0;
         end else begin //actual fsm logic
             start_song <= start_song_prev; //delayed by 1 clock cycle
 				but_ent_prev <= but_ent;
+				vb0_prev <= vb0;
             case(cfsm_state)
                 2'b01: begin //playback
                     if (start_song_prev) begin //de-assert start next clock cycle
@@ -97,7 +102,7 @@ module centralFSM(reset, clk, //from fpga, input
                     end else if (but_ent_prev == 0 & but_ent == 1) begin //return to playback and pause
                         cfsm_state <= 2'b00;
                         pause_song <= 1;
-                    end else pause_song <= switch[7]; //else just update pause
+                    end else if (vb0_prev == 0 & vb0 == 1) pause_song <= ~pause_song; //else just update pause
                 end
                 2'b10: begin //record
                     if (start_song_prev) begin //de-assert start next clock cycle
@@ -109,11 +114,10 @@ module centralFSM(reset, clk, //from fpga, input
                     end else if (but_ent_prev == 0 & but_ent == 1) begin //return to playback and pause
                         cfsm_state <= 2'b00;
                         pause_song <= 1;
-                    end else pause_song <= switch[7]; //else just update pause
+                    end else if (vb0_prev == 0 & vb0 == 1) pause_song <= ~pause_song;
                 end
                 default: begin //same as 2'b00/ - standby
                     //TBD: SHOULD VALUES BE SET TO DEFAULT IN THIS STATE FOR GERZAIN?
-                    pause_song <= 1; //redundant, but defs needs to be 1
                     if (but_ent_prev == 0 & but_ent == 1) begin //transition state
                         //where to transition to
 								if (record_mode_sel) cfsm_state <= 2'b10; //record
@@ -124,12 +128,12 @@ module centralFSM(reset, clk, //from fpga, input
                         effect_values <= effect_values_sel; //set value
                         song_name <= song_name_sel; //set value
                         effects <= switch[6:0]; //set value
-                        
+                        pause_song <= 0;
                         if (song_name_sel < 6) song_choice <= song_name_sel; //if so, name is choice
                         else song_choice <= song_name_sel + 2; //correct nums for mem address calculator
                         
                         record_mode <= record_mode_sel; //set value
-                    end //if
+                    end else pause_song <= 1;////redundant, but defs needs to be 1
                 end //default
             endcase
         end //fsm logic

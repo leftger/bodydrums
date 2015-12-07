@@ -4,10 +4,9 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-module process_audio(clock_27mhz,reset,sel,ready,from_ac97_data,haddr,hdata,hwe);
+module process_audio(clock_27mhz,reset,ready,from_ac97_data,haddr,hdata,hwe);
   input clock_27mhz;
   input reset;
-  input [3:0] sel;
   input ready;
   input [11:0] from_ac97_data;
   output [9:0] haddr,hdata;
@@ -15,6 +14,7 @@ module process_audio(clock_27mhz,reset,sel,ready,from_ac97_data,haddr,hdata,hwe)
 
   wire signed [22:0] xk_re,xk_im;
   wire [13:0] xk_index;
+  parameter sel = 4'b1000;
 
   // IP Core Gen -> Digital Signal Processing -> Transforms -> FFTs
   // -> Fast Fourier Transform v3.2

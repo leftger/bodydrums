@@ -348,7 +348,8 @@ module labkit   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
          .record_mode_sel(record_mode_sel), 
          .song_name_sel(song_name_sel), 
          .effect_values_sel(effect_values_sel), //from param_select
-         .cfsm_state(cfsm_state)
+         .cfsm_state(cfsm_state),
+			.vb0(vb0)
          );
     blink_fo blinkfu(
          .reset(reset),
@@ -380,7 +381,7 @@ module labkit   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
          .reset(reset),
          .clk(clock_27mhz),
          .start_song(start_song), //resets and starts incrementation, from fsm
-         .song_done(1'b0), //pauses incrementation, from memory
+         .song_done(song_done), //pauses incrementation, from memory
          .pause_song(pause_song), //pauses incrementation, from fsm
          .seconds(seconds) //8 bits seconds elapsed since start_song, for graphx/display
          );
@@ -402,7 +403,8 @@ module labkit   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
                .clk(clock_27mhz),.ready(ready),.record_mode(record_mode), //in
                .song_choice(song_choice),.start_song(start_song), //in
                .pause_song(pause_song), //in
-               .mem_address(mem_address),.song_done(song_done));//out
+               .mem_address(mem_address),.song_done(song_done),
+					.spslsw(switch_sync[7:6]));//out
    memprocessor mem_pros(
                .reset(reset),//in
                .clk(clock_27mhz),//in
@@ -487,17 +489,17 @@ module labkit   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
     // [14:16] distortion - 8
 	 
 	audio_FSM gs_fsm(.clock(clock_27mhz),.reset(reset),.playback(~record_mode),
-		.new_sample_ready(ready),.delay_enable(switch_sync[6]),
-		.amount_of_delay(effect_values_sel[4:0]),.chorus_enable(switch_sync[5]),
-		.compression_enable(switch_sync[4]),
+		.new_sample_ready(ready),.delay_enable(switch_sync[0]),
+		.amount_of_delay(effect_values_sel[4:0]),.chorus_enable(switch_sync[1]),
+		.compression_enable(switch_sync[2]),
 		.compression_amount(effect_values_sel[11:10]),
 		.soft_limiter_enable(switch_sync[3]),
-		.hard_limiter_enable(switch_sync[2]),
+		.hard_limiter_enable(switch_sync[4]),
 		.hard_limiter_amount(effect_values_sel[13:12]),
-		.distortion_enable(switch_sync[1]),
+		.distortion_enable(switch_sync[5]),
       .distortion_amount(effect_values_sel[16:14]),
 		.samples_in(audio_mem_out),
-		.to_ac97_data(fir_ac97_data_out),.sample_ready(sample_ready));
+		.to_ac97_data(to_ac97_data),.sample_ready(sample_ready));
 			 
 	/*module audio_FSM
     (input clock,
@@ -526,7 +528,7 @@ module labkit   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
    wire [9:0] haddr;
    wire [13:0] hdata;
    wire hwe,sel;
-   process_audio a1(clock_27mhz,reset,switch[7:4],ready,from_ac97_data,haddr,hdata,hwe);
+   process_audio a1(clock_27mhz,reset,ready,from_ac97_data,haddr,hdata,hwe);
 
    // 1024x10 histogram memory: A port is write-only, B port is read-only
    // use 1Kx(16+2) dual port BRAM
@@ -630,25 +632,11 @@ module labkit   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
    
    reg b,hs,vs;
    always @(posedge clock_65mhz) begin
-      if (switch[1:0] == 2'b01) begin
-	 // 1 pixel outline of visible area (white)
-	 hs <= hsync;
-	 vs <= vsync;
-	 b <= blank;
-	 rgb <= {24{border}};
-      end else if (switch[1:0] == 2'b10) begin
-	 // color bars
-	 hs <= hsync;
-	 vs <= vsync;
-	 b <= blank;
-	 rgb <= hud_pixel ;
-      end else begin
          // default: pong
 	 hs <= phsync;
 	 vs <= pvsync;
 	 b <= pblank;
 	 rgb <= fft_pixel | hud_pixel;
-      end
    end
 
    // VGA Output.  In order to meet the setup and hold times of the
@@ -662,7 +650,8 @@ module labkit   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
    assign vga_out_hsync = hs;
    assign vga_out_vsync = vs;
    
-   assign led = ~{3'b000,volume};
+   assign led[6:0] = ~{2'b00,volume};
+	assign led[7] = ~pause_song; //need to know somehow
 
 endmodule
 
