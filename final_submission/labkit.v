@@ -528,7 +528,7 @@ module labkit   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
    wire [9:0] haddr;
    wire [13:0] hdata;
    wire hwe,sel;
-   process_audio a1(clock_27mhz,reset,ready,from_ac97_data,haddr,hdata,hwe);
+   process_audio a1(clock_27mhz,reset,ready,to_ac97_data,haddr,hdata,hwe);
 
    // 1024x10 histogram memory: A port is write-only, B port is read-only
    // use 1Kx(16+2) dual port BRAM
