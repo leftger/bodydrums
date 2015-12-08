@@ -54,22 +54,26 @@ module pong_ball #(parameter SCRN_WIDTH = 1024, SCRN_HEIGHT = 768,
 	
 	// gotta put them pixels on that screen :)
 	assign pixel = enabled ? (puck_pixel | paddle_pixel) : puck_pixel;
+
+	reg game_over;
 	
 	// initial state
 	initial begin
 		x_pos = (SCRN_WIDTH - PUCK_W) >> 1;
 		y_pos = (SCRN_HEIGHT - PUCK_H) >> 1;
 		direction = 2'b00;
-		paddle_y <= (SCRN_HEIGHT - PADDLE_H) >> 1;
+		paddle_y = (SCRN_HEIGHT - PADDLE_H) >> 1;
+		game_over = 0;
 	end
 	
 	always@(negedge vsync) begin
 		// conditions on reset
-		if(reset) begin
+		if(reset | game_over) begin
 			x_pos <= (SCRN_WIDTH - PUCK_W) >> 1;
 			y_pos <= (SCRN_HEIGHT - PUCK_H) >> 1;
 			direction <= 2'b00;
 			paddle_y <= (SCRN_HEIGHT - PADDLE_H) >> 1;
+			game_over <= 0;
 		end
 		else begin
 			// if puck hits upper bound
@@ -87,8 +91,7 @@ module pong_ball #(parameter SCRN_WIDTH = 1024, SCRN_HEIGHT = 768,
 				end
 				// otherwise end the game
 				else begin
-					x_pos <= (SCRN_WIDTH - PUCK_W) >> 1;
-					y_pos <= (SCRN_HEIGHT - PUCK_H) >> 1;
+					game_over <= 1;
 				end
 			end
 			// if it hits right bound
