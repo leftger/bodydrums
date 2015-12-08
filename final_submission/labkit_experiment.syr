@@ -4,15 +4,15 @@ Copyright (c) 1995-2008 Xilinx, Inc.  All rights reserved.
 Parameter TMPDIR set to /afs/athena.mit.edu/user/g/r/grosas/6.111/Final_Project/bodydrums/final_submission/xst/projnav.tmp
 
 
-Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.04 secs
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.05 secs
  
 --> 
 Parameter xsthdpdir set to /afs/athena.mit.edu/user/g/r/grosas/6.111/Final_Project/bodydrums/final_submission/xst
 
 
-Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.04 secs
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.05 secs
  
 --> 
 Reading design: labkit_experiment.prj
@@ -109,26 +109,26 @@ Slice Utilization Ratio Delta      : 5
 =========================================================================
 *                          HDL Compilation                              *
 =========================================================================
-Compiling verilog file "zero_img.v" in library work
-Compiling verilog file "two_img.v" in library work
+Compiling verilog file "./zero_img.v" in library work
+Compiling verilog file "./two_img.v" in library work
 Module <zero_img> compiled
-Compiling verilog file "three_img.v" in library work
+Compiling verilog file "./three_img.v" in library work
 Module <two_img> compiled
-Compiling verilog file "six_img.v" in library work
+Compiling verilog file "./six_img.v" in library work
 Module <three_img> compiled
-Compiling verilog file "seven_img.v" in library work
+Compiling verilog file "./seven_img.v" in library work
 Module <six_img> compiled
-Compiling verilog file "red_hud.v" in library work
+Compiling verilog file "./red_hud.v" in library work
 Module <seven_img> compiled
-Compiling verilog file "one_img.v" in library work
+Compiling verilog file "./one_img.v" in library work
 Module <red_hud> compiled
-Compiling verilog file "nine_img.v" in library work
+Compiling verilog file "./nine_img.v" in library work
 Module <one_img> compiled
 Compiling verilog file "mybram.v" in library work
 Module <nine_img> compiled
-Compiling verilog file "four_img.v" in library work
+Compiling verilog file "./four_img.v" in library work
 Module <mybram> compiled
-Compiling verilog file "five_img.v" in library work
+Compiling verilog file "./five_img.v" in library work
 Module <four_img> compiled
 Compiling verilog file "./eight_img.v" in library work
 Module <five_img> compiled
@@ -140,12 +140,16 @@ Compiling verilog file "signed_binary_12bit_to_dB.v" in library work
 Module <sprite_img_selector> compiled
 Module <signed_binary_12bit_to_dB> compiled
 Module <lookup_g_R> compiled
-Compiling verilog file "mit_logo_rom.v" in library work
+Compiling verilog file "./mit_logo_rom.v" in library work
 Module <lookup_effective_g_M> compiled
-Compiling verilog file "mit_logo_red.v" in library work
+Compiling verilog file "./mit_logo_red.v" in library work
 Module <mit_logo_rom> compiled
-Compiling verilog file "hud_img.v" in library work
+Compiling verilog file "mit_logo_green.v" in library work
 Module <mit_logo_red> compiled
+Compiling verilog file "mit_logo_blue.v" in library work
+Module <mit_logo_green> compiled
+Compiling verilog file "./hud_img.v" in library work
+Module <mit_logo_blue> compiled
 Compiling verilog file "digit_selector.v" in library work
 Module <hud_img> compiled
 Compiling verilog file "digit_blob.v" in library work
@@ -2730,17 +2734,17 @@ Design Statistics
 # IOs                              : 576
 
 Cell Usage :
-# BELS                             : 21071
+# BELS                             : 21072
 #      BUF                         : 634
 #      GND                         : 34
 #      INV                         : 235
 #      LUT1                        : 576
-#      LUT2                        : 1011
+#      LUT2                        : 1003
 #      LUT2_D                      : 1
-#      LUT3                        : 1183
+#      LUT3                        : 1191
 #      LUT3_D                      : 25
 #      LUT3_L                      : 28
-#      LUT4                        : 7264
+#      LUT4                        : 7265
 #      LUT4_D                      : 54
 #      LUT4_L                      : 24
 #      MULT_AND                    : 851
@@ -2800,10 +2804,10 @@ Device utilization summary:
 
 Selected Device : 2v6000bf957-4 
 
- Number of Slices:                     7931  out of  33792    23%  
+ Number of Slices:                     7932  out of  33792    23%  
  Number of Slice Flip Flops:          10957  out of  67584    16%  
- Number of 4 input LUTs:              12288  out of  67584    18%  
-    Number used as logic:             10401
+ Number of 4 input LUTs:              12289  out of  67584    18%  
+    Number used as logic:             10402
     Number used as Shift registers:    1375
     Number used as RAMs:                512
  Number of IOs:                         576
@@ -2863,15 +2867,15 @@ Asynchronous Control Signals Information:
 -----------------------------------------------------+-----------------------------+-------+
 Control Signal                                       | Buffer(FF name)             | Load  |
 -----------------------------------------------------+-----------------------------+-------+
-a1/fft/sig00000001(a1/fft/blk00000002:G)             | NONE(a1/fft/blk0000534f)    | 1077  |
-a1/fft/ce_11(a1/fft/ce_11:O)                         | NONE(a1/fft/blk0000345f)    | 6     |
-a1/fft/ce_17(a1/fft/ce_17:O)                         | NONE(a1/fft/blk00004e0c)    | 6     |
-a1/fft/ce_8(a1/fft/ce_8:O)                           | NONE(a1/fft/blk00002522)    | 6     |
-a1/fft/ce_14(a1/fft/ce_14:O)                         | NONE(a1/fft/blk00004326)    | 5     |
-a/ac97/Mmux__varindex0000_9(XST_GND:G)               | NONE(a1/Mmult_imim_mult0000)| 3     |
+a1/fft/sig00000001(a1/fft/blk00000002:G)             | NONE(a1/fft/blk00004343)    | 1077  |
+a1/fft/ce_11(a1/fft/ce_11:O)                         | NONE(a1/fft/blk000035c3)    | 6     |
+a1/fft/ce_17(a1/fft/ce_17:O)                         | NONE(a1/fft/blk00004ed6)    | 6     |
+a1/fft/ce_8(a1/fft/ce_8:O)                           | NONE(a1/fft/blk0000247c)    | 6     |
+a1/fft/ce_14(a1/fft/ce_14:O)                         | NONE(a1/fft/blk000041aa)    | 5     |
+a/ac97/Mmux__varindex0000_9(XST_GND:G)               | NONE(a1/Mmult_rere_mult0000)| 3     |
 a1/fft/ce_3(a1/fft/ce_3:O)                           | NONE(a1/fft/blk00000f2a)    | 3     |
-a1/fft/ce_6(a1/fft/ce_6:O)                           | NONE(a1/fft/blk00001a8d)    | 2     |
-a1/haddr_not0001(a1/haddr_not00011:O)                | NONE(a1/Mmult_imim_mult0000)| 2     |
+a1/fft/ce_6(a1/fft/ce_6:O)                           | NONE(a1/fft/blk00001a4d)    | 2     |
+a1/haddr_not0001(a1/haddr_not00011:O)                | NONE(a1/Mmult_rere_mult0000)| 2     |
 a1/fft/ce_15(a1/fft/ce_15:O)                         | NONE(a1/fft/blk00004343)    | 1     |
 a1/fft/ce_5(a1/fft/ce_5:O)                           | NONE(a1/fft/blk00001a09)    | 1     |
 ma1/max_amp_0__and0000(ma1/max_amp_0__and00001:O)    | NONE(ma1/max_amp_0)         | 1     |
@@ -2935,7 +2939,7 @@ All values displayed in nanoseconds (ns)
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clock_27mhz'
   Clock period: 71.663ns (frequency: 13.954MHz)
-  Total number of paths / destination ports: 365457 / 27677
+  Total number of paths / destination ports: 365505 / 27677
 -------------------------------------------------------------------------
 Delay:               11.944ns (Levels of Logic = 5)
   Source:            reset_sr (FF)
@@ -3162,12 +3166,12 @@ Delay:               7.617ns (Levels of Logic = 3)
 
 
 Total REAL time to Xst completion: 404.00 secs
-Total CPU time to Xst completion: 402.67 secs
+Total CPU time to Xst completion: 401.44 secs
  
 --> 
 
 
-Total memory usage is 951904 kilobytes
+Total memory usage is 951944 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :  528 (   0 filtered)

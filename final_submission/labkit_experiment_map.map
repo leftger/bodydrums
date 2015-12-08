@@ -12,7 +12,7 @@ Target Device  : xc2v6000
 Target Package : bf957
 Target Speed   : -4
 Mapper Version : virtex2 -- $Revision: 1.46.12.2 $
-Mapped Date    : Mon Dec  7 18:42:19 2015
+Mapped Date    : Mon Dec  7 19:14:21 2015
 
 Mapping design into LUTs...
 Running directed packing...
@@ -29,14 +29,14 @@ Logic Utilization:
   Total Number Slice Registers:       9,970 out of  67,584   14%
     Number used as Flip Flops:        9,948
     Number used as Latches:              22
-  Number of 4 input LUTs:            10,957 out of  67,584   16%
+  Number of 4 input LUTs:            10,958 out of  67,584   16%
 Logic Distribution:
   Number of occupied Slices:          8,386 out of  33,792   24%
     Number of Slices containing only related logic:   8,386 out of   8,386 100%
     Number of Slices containing unrelated logic:          0 out of   8,386   0%
       *See NOTES below for an explanation of the effects of unrelated logic.
-  Total Number of 4 input LUTs:      11,587 out of  67,584   17%
-    Number used as logic:             9,144
+  Total Number of 4 input LUTs:      11,588 out of  67,584   17%
+    Number used as logic:             9,145
     Number used as a route-thru:        630
     Number used for Dual Port RAMs:     512
       (Two LUTs used per Dual Port RAM)

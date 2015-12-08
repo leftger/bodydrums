@@ -641,7 +641,7 @@ module labkit_experiment(beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac9
   wire [23:0] secret_pixel;
 
   pong_ball secret_ball (.vsync(vsync),.vclock(clock_65mhz),.up(vup),.down(vdown),
-    .reset(reset), .pspeed({1'b0,max_amp[9:7]}),.hcount(hcount),.vcount(vcount),
+    .reset(vleft), .pspeed({1'b0,max_amp[9:7]}),.hcount(hcount),.vcount(vcount),
     .enabled(switch_sync[2] & switch_sync[3] & switch_sync[4]),
     .pixel(secret_pixel));
 

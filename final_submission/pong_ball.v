@@ -53,7 +53,7 @@ module pong_ball #(parameter SCRN_WIDTH = 1024, SCRN_HEIGHT = 768,
 	// alpha_blender theblend (.enabled(enabled),.obj_one(puck_pixel),.obj_two(bigred_pixel),.blended(blended_pixel));
 	
 	// gotta put them pixels on that screen :)
-	assign pixel = puck_pixel | paddle_pixel;
+	assign pixel = enabled ? (puck_pixel | paddle_pixel) : puck_pixel;
 	
 	// initial state
 	initial begin
