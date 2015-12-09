@@ -58,11 +58,17 @@ module delay_module #(parameter SAMPLING_RATE=24000, SAMPLES=240)
     
     parameter GARBAGE_MEMORY=3'b111;
     
-    // This thing has 5 states:
-    // 00: do nothing until ready is asserted.
-    // 01: start up the delay effects, write current sample into memory location
-    // 02: read sample from delayed memory location
-    // 03: combine sample from delayed memory location with current sample.
+    // This thing has 7 states:
+    // 3'b000: do nothing until start is asserted; when start is asserted,
+	//         increment the memory pointers and deassert done.
+    // 3'b001: begin the read sample from address from delayed_pointer operation.
+    // 3'b010: save mem_out sample into a register.
+    // 3'b100: combine sample from delayed memory location with current sample.
+    // 3'b101: wait one sample before reading from mem_out.
+	// 3'b110: wait another sample before reading from mem_out.
+	// 3'b111: scale and combine input sample and the sample from memory;
+	//         this sample is output and stored into the memory address
+	//         from current_pointer. Latch done to 1'b1.
     
     always @(posedge clock) begin
        
@@ -98,9 +104,9 @@ module delay_module #(parameter SAMPLING_RATE=24000, SAMPLES=240)
           end
        
           // The way echo works is through this difference equation:
-          // y[n] = x[n] + c*y[n-m], where m is delay_amount,
+          // y[n] = c*x[n] + c*y[n-m], where m is delay_amount,
           // x[n] is incoming_sample, y is modified_sample, and 
-          // c = a coefficient between 0 and 1 (I used 7/8).
+          // c = a coefficient between 0 and 1 (I used 1/2 for ez math).
           else begin
              case(delay_state)
                 IDLE: begin

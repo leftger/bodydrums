@@ -25,6 +25,16 @@ module audio_FSM
     
     reg start_effects_modules;
     
+	// This module calls the effects modules and routes the control signals from the other
+	// modules and the outside world to the effects modules.
+	// Signal flow is as follows:
+	// input => delay_module => chorus_effect => compression => limiter_module => bitcrusher => output
+	
+	// Each module is written such that if the control signal is disabled or the control
+	// parameter for that module is zero, the module just acts as a one-cycle delay and
+	// passes the raw input to the output.
+	
+	
     wire signed [11:0] delay_applied_sample;
     wire delay_done;
     delay_module delay(.clock(clock), .reset(reset), .start(start_effects_modules),
@@ -73,27 +83,6 @@ module audio_FSM
 endmodule
 
 
-///////////////////////////////////////////////////////////////////////////////
-//
-// to_fft_selector Module (Written by Germain Martinez)
-//
-///////////////////////////////////////////////////////////////////////////////
-
-module to_fft_selector #(parameter PLAYBACK = 1'b1,
-	parameter RECORD = 1'b0)(
-	input [11:0] from_fir_germain,
-	input [11:0] from_ac97_audio,
-	input [1:0] input_mode,
-	output reg [11:0] to_fft);
-
-	always @(input_mode) begin
-		case(input_mode)
-			1:
-
-	end
-
-endmodule
-
 
 ///////////////////////////////////////////////////////////////////////////////
 //
@@ -113,8 +102,8 @@ module signed_binary_12bit_to_dB
     // The maximum dB value we expect is 0dB. Anything else is considered to be
     // a NEGATIVE NUMBER even though it's encoded as a positive integer.
     // This module implements an algorithm that calculates dB of a binary number
-    // to a precision of 0.5 dB (maximum error is found to be 0.5dB, which is
-    // fine for this project).
+    // to a precision of 1 dB. The maximum error is found to be 0.5dB, which is
+    // fine for this project, but needs to be taken into account in future implementations.
     
     reg [11:0] absolute_value_input;
     reg [3:0] msb=4'd11;
@@ -279,7 +268,12 @@ module bitcrusher
     
     reg signed [11:0] sample_to_bitcrush=12'b000;
 
-    
+    // This module implements bitcrushing. Bitcrushing distorts the output signal
+    // by reducing the output signal's dynamic range. To do this, the module
+    // right shifts by bits_to_crush, then left shifts back the same amount.
+    // In extreme cases of bitcrushing,
+    // the output is reduced to clicks, though this implementation doesn't go that far.
+    // The smallest this implementation goes is it reduces the output to a 5-bit resolution.	
     
     always @(posedge clock) begin
        if (reset) begin
@@ -343,8 +337,8 @@ module chorus_effect
     output done);
     
     
-    // The Chorus effect is achieved by concatenating 4 echo modules,
-    // each of which having a different delay_amount.
+    // The Chorus effect is achieved by chaining 4 echo modules one after another.
+    // Each of them are set to a different delay_amount.
     
     
     // 30 ms delay
@@ -513,7 +507,17 @@ module compression_gain_computer #(parameter THRESHOLD=18)
     parameter LIMITER=1'b1;
     parameter COMPRESSOR=1'b0;
     
-    
+    // This file computes the gain that the compression module should 
+	// scale the input signal by. This module is defined by the following
+	// difference equation:
+	// yG[n] = xG[n] if xG <= THRESHOLD
+	// yG[n] = THRESHOLD + (xG[n]-THRESHOLD) / R if xG > THRESHOLD
+	// where R = the compression ratio, compression_amount.
+	// If R = 2'b01, compression ratio of 2:1.
+	// If R = 2'b10, compression ratio of 4:1.
+	// If R = 2'b11, compression ratio of 8:1.
+	
+	
     always @(posedge clock) begin
        
        if (reset) begin 
@@ -574,6 +578,125 @@ module compression_gain_computer #(parameter THRESHOLD=18)
 
 endmodule
 
+///////////////////////////////////////////////////////////////////////////////
+//
+// compression_level_detector (Written by Germain Martinez)
+//
+///////////////////////////////////////////////////////////////////////////////
+
+module compression_level_detector
+    (input clock,
+    input reset,
+    input start,
+    input signed [8:0] input_level,
+    input soft_limiter,
+    output reg signed [8:0] output_gain,
+    output reg done);
+    
+    // States
+    reg [1:0] state;
+    parameter IDLE=2'b00;
+    parameter DECIDE=2'b01;
+    parameter OUTPUT=2'b10;
+    
+    // Registers to hold temporary calculated values
+    reg signed [8:0] last_output_gain;
+    reg signed [8:0] modified_input_level;
+    reg signed [18:0] part_of_output;
+    reg signed [18:0] other_part_of_output;
+    reg signed [18:0] combined_output;
+    
+    // Registers to hold attack and release time constants
+    reg signed [9:0] attack_time_constant=10'd511;
+    reg signed [9:0] release_time_constant=10'd511;
+    
+    // Register to hold the make-up gain
+    reg signed [8:0] make_up_gain=9'd12;
+    
+    // This module takes the input_level, which is calculated by compression_gain_computer
+	// and puts it through a branching peak detector. When the dB value hits a peak past
+	// the threshold after a long period of low amplitude, the level_detector sees 
+	// this and adjusts the output gain accordingly so the output signal doesn't have 
+	// discontinuities. This is called the "attack". The same scenario applies when 
+	// the dB value hits a low point; this is called the "release".
+	
+	
+	
+	// The attack time constant and release time constant are both ratios out of 512;
+    // A time constant of 0.998, for example, is signified by
+    // ATTACK_TIME_CONSTANT = 510
+	
+	
+    always @(posedge clock) begin
+       if (reset) begin
+          last_output_gain <= 9'b0;
+          modified_input_level <= 9'b0;
+          part_of_output <= 9'b0;
+          other_part_of_output <= 9'b0;
+          combined_output <= 19'b0;
+          state <= IDLE;
+       end
+       
+       case (state)
+       
+       // Don't do anything until we receive a new input from the last stage;
+       // Waste a clock cycle by saving the input_level.
+       IDLE: begin
+          done <= 1'b0;
+          if (start) begin
+             modified_input_level <= input_level;
+             state <= DECIDE;
+          end
+       end
+       
+       // Now we decide whether this is a peak or not, and adjust the compression
+       // gain accordingly. If this is going to be a peak, slowly adjust the gain
+       // over the course of the release time constant.
+       // If this is not a peak, smooth out the gain level instead over the course of the
+       // release time constant.
+       DECIDE: begin
+          if (modified_input_level > last_output_gain) begin
+             part_of_output <= attack_time_constant * last_output_gain;
+             other_part_of_output <= (10'sd512 - attack_time_constant) * modified_input_level;
+          end
+          else if (modified_input_level <= last_output_gain) begin
+             part_of_output <= release_time_constant * last_output_gain;
+             other_part_of_output <= (10'sd512 - release_time_constant) * modified_input_level;
+          end
+          state <= OUTPUT;
+       end
+       
+       // Output the calculated level (this will be your actual gain that you apply)
+       // The soft_limiter switch determines whether or not we use make-up gain.
+       
+       OUTPUT: begin
+          combined_output <= (part_of_output + other_part_of_output);
+          last_output_gain <= combined_output[18:10];
+          
+          if (soft_limiter) begin
+             output_gain <= -combined_output[18:10];
+          end
+          
+          else  begin
+             output_gain <= (make_up_gain - combined_output[18:10]);
+          end
+          state <= IDLE;
+          done <= 1'b1;
+       end
+       
+       default: begin
+          done <= 1'b0;
+          if (start) begin
+             modified_input_level <= input_level;
+             state <= DECIDE;
+          end
+       end
+       
+       endcase
+    end
+endmodule
+
+
 
 `timescale 1ns / 1ps
 ///////////////////////////////////////////////////////////////////////////////
@@ -593,7 +716,7 @@ module delay_module #(parameter SAMPLING_RATE=24000, SAMPLES=240)
     output reg done);
     
     // Need to store anywhere between 10 ms worth of samples and
-    // 320 ms worth of samples into BRAM. A better implementation would just pull
+    // 310 ms worth of samples into BRAM. A better implementation would just pull
     // past samples from the ZBT memory, but I'm assuming that I don't have any
     // access to the ZBT memory.
     
@@ -635,12 +758,18 @@ module delay_module #(parameter SAMPLING_RATE=24000, SAMPLES=240)
     
     parameter GARBAGE_MEMORY=3'b111;
     
-    // This thing has 5 states:
-    // 00: do nothing until ready is asserted.
-    // 01: start up the delay effects, write current sample into memory location
-    // 02: read sample from delayed memory location
-    // 03: combine sample from delayed memory location with current sample.
-    
+    // This thing has 7 states:
+    // 3'b000: do nothing until start is asserted; when start is asserted,
+	//         increment the memory pointers and deassert done.
+    // 3'b001: begin the read sample from address from delayed_pointer operation.
+    // 3'b010: save mem_out sample into a register.
+    // 3'b100: combine sample from delayed memory location with current sample.
+    // 3'b101: wait one sample before reading from mem_out.
+	// 3'b110: wait another sample before reading from mem_out.
+	// 3'b111: scale and combine input sample and the sample from memory;
+	//         this sample is output and stored into the memory address
+	//         from current_pointer. Latch done to 1'b1.
+	
     always @(posedge clock) begin
        
        
@@ -675,9 +804,9 @@ module delay_module #(parameter SAMPLING_RATE=24000, SAMPLES=240)
           end
        
           // The way echo works is through this difference equation:
-          // y[n] = x[n] + c*y[n-m], where m is delay_amount,
+          // y[n] = c*x[n] + c*y[n-m], where m is delay_amount,
           // x[n] is incoming_sample, y is modified_sample, and 
-          // c = a coefficient between 0 and 1 (I used 7/8).
+          // c = a coefficient between 0 and 1 (I used 1/2 for ez math).
           else begin
              case(delay_state)
                 IDLE: begin
@@ -767,14 +896,16 @@ module limiter_module #(parameter SAMPLING_RATE=24000)
     output reg done
     );
     
-    // Note: since we are using a signed 12-bit encoding, remember that
-    // the encoded bit values can be from -(2^(n-1)) = -2048 to 
-    // 2^(n-1) - 1 = 2047 (where n is the number of bits)
-    
-    
     // This module implements "hard limiting", which clips the signal at
-    // a certain amplitude threshold that we set with the switches (limiting_amount)
-    
+    // a certain amplitude threshold that we set with limiting_amount.
+	
+	// limiting_amount control values:
+	// 2'b00: Nothing
+	// 2'b01: threshold = 1024 or -1024
+	// 2'b10: threshold = 512 or -512
+    // 2'b11: threshold = 256 or -256
+	
+	
     reg [11:0] last_sample;
     
     always @(posedge clock) begin
@@ -873,6 +1004,16 @@ module variable_gain
     parameter FIND_GAIN=2'b01;
     parameter APPLY_GAIN=2'b10;
     parameter DIVIDE_AND_OUTPUT=2'b11;
+	
+	// This module takes as input the level_gain from the level detector
+	// and applies that gain to the input audio sample. The level detector
+	// outputs dB, but we want to convert that back to a binary number that we can
+	// define as gain. Instead of doing that, the level_gain gets put into a case statement
+	// that sets multiplication_factor. This multiplies the input binary sample by multiplication_factor,
+	// then divides that result by 1024 to achieve an approximate gain fraction.
+	
+	// The precision is not a huge concern, though it's definitely something to look into
+	// in the future.
     
     always @(posedge clock) begin
        

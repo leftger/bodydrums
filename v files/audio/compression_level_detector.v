@@ -20,6 +20,13 @@ module compression_level_detector
     parameter DECIDE=2'b01;
     parameter OUTPUT=2'b10;
     
+	// This module takes the input_level, which is calculated by compression_gain_computer
+	// and puts it through a branching peak detector. When the dB value hits a peak past
+	// the threshold after a long period of low amplitude, the level_detector sees 
+	// this and adjusts the output gain accordingly so the output signal doesn't have 
+	// discontinuities. This is called the "attack". The same scenario applies when 
+	// the dB value hits a low point; this is called the "release".
+	
     // Registers to hold temporary calculated values
     reg signed [8:0] last_output_gain;
     reg signed [8:0] modified_input_level;

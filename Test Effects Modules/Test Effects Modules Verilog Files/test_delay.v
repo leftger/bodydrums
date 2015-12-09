@@ -36,8 +36,8 @@ module test_delay();
     
     initial begin
        // open input/output files
-       fin = $fopen("inputtest.samples","r"); // This is a 1khz wave added to a 5khz wave
-       fout = $fopen("inputtest.output","w");
+       fin = $fopen("fir31.samples","r"); // This is a 1khz wave added to a 5khz wave
+       fout = $fopen("fir31.output","w");
        if (fin == 0 || fout == 0) begin
           $display("can't open file...");
           $stop;
@@ -82,9 +82,12 @@ module test_delay();
     end
     
     reg enable=1'b1;
+    wire signed [11:0] mem_out;
     
     delay_module uut(.clock(clk), .reset(reset), .start(ready),
         .incoming_sample(x), .delay_amount(delay_amount), .enable(enable),
-        .modified_sample(y), .done(done), .stored_and_scaled_sample(current_sample));
+        .modified_sample(y), .done(done), .mem_out(mem_out));
+
+    
 
 endmodule
