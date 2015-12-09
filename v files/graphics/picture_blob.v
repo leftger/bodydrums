@@ -1,0 +1,40 @@
+`timescale 1ns / 1ps
+////////////////////////////////////////////////////
+//
+// picture_blob: display a picture
+//
+//////////////////////////////////////////////////
+
+module picture_blob
+	#(parameter WIDTH = 320, HEIGHT = 240)
+	(input pixel_clk,
+    input [10:0] x,hcount,
+	 input [9:0] y,vcount,
+	 output reg [23:0] pixel);
+	 
+	 wire [16:0] image_addr;
+	 wire [5:0] image_bits;
+	 wire [7:0] red_mapped, green_mapped, blue_mapped;
+	 
+	 
+	 always@ (posedge pixel_clk) begin
+		if ((hcount >= x && hcount < (x+WIDTH)) &&
+			(vcount >= y && vcount < (y+HEIGHT)))
+			pixel <= {red_mapped, green_mapped, blue_mapped};
+		else pixel <= 0;
+	 end
+	 
+	 // calculate rom address and read the location
+	 assign image_addr = (hcount-x) + (vcount-y) * WIDTH;
+	 
+	 image_rom rom1(.clka(pixel_clk), .addra(image_addr),
+		.douta(image_bits));
+		
+		// use color map to create 8bits R, 8bits G, 8 bits B;
+	red_table rcm (.clka(pixel_clk), .addra(image_bits), .douta(red_mapped));
+	green_table gcm (.clka(pixel_clk), .addra(image_bits), .douta(green_mapped));
+	blue_table bcm (.clka(pixel_clk), .addra(image_bits), .douta(blue_mapped));
+
+endmodule
+
+
